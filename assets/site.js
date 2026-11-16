@@ -3,9 +3,10 @@
 const $ = id => document.getElementById(id);
 const page = document.body.dataset.page;
 const DATA_URL = './data/videos.json';
+const QUOTES_URL = './data/quotes.json';
 const PAGE_SIZE = 15;
 const storageKey = 'ven-napan-library-favorites-v1';
-let items = [], favorites = new Set(), visibleCount = PAGE_SIZE, activeCategory = '', selected = [];
+let items = [], quotes = [], favorites = new Set(), visibleCount = PAGE_SIZE, activeCategory = '', selected = [];
 const esc = value => String(value ?? '').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const norm = value => String(value || '').normalize('NFC').toLocaleLowerCase('th').replace(/[\u200b\u200c\u200d]/g,'').trim();
 const safeLink = url => {try{const u=new URL(url);return u.protocol==='https:' && /(^|\.)(youtube\.com|youtu\.be|facebook\.com|fb\.watch)$/.test(u.hostname)}catch{return false}};
@@ -70,6 +71,54 @@ function chooseCover(group){
  const originals=group.filter(x=>x.thumbnail).sort(byDateDesc);
  return originals[0] || [...group].sort(byDateDesc)[0];
 }
+function quoteCard(q){
+ const image=esc(q.image),text=esc(q.text),url=esc(q.source_url);
+ return `<article class="quote-card" data-photo-id="${esc(q.id)}">
+   <a class="quote-image" href="${image}" target="_blank" rel="noopener noreferrer" aria-label="เปิดภาพคำคมธรรมะต้นฉบับ">
+     <img src="${image}" alt="ภาพคำคมธรรมะจากเพจพระมหานภันต์ ข้อความ: ${esc(q.text.replace(/\s+/g,' ').slice(0,110))}" loading="lazy" decoding="async">
+   </a>
+   <div class="quote-body"><blockquote class="quote-text">${text}</blockquote>
+     <div class="quote-footer"><span>ข้อความจากภาพต้นฉบับ</span>
+       <a href="${url}" target="_blank" rel="noopener noreferrer">ดูโพสต์ Facebook ↗</a></div>
+   </div>
+ </article>`;
+}
+function quoteCategoryCard(){
+ if(!quotes.length)return '';
+ const q=quotes[0];
+ return `<a class="series-card quote-series-card" href="./quotes.html">
+  <div class="series-image"><img src="${esc(q.image)}" alt="ภาพคำคมธรรมะจากเพจพระมหานภันต์" loading="lazy"><span class="series-number">10</span></div>
+  <div class="series-info"><strong>คำคมธรรมะ</strong><span>${quotes.length.toLocaleString('th-TH')} ภาพ <b aria-hidden="true">↗</b></span></div>
+ </a>`;
+}
+function renderHomeQuotes(){
+ const target=$('homeQuotes');
+ if(target)target.innerHTML=quotes.length?quotes.slice(0,2).map(quoteCard).join(''):'<p class="empty">ยังไม่มีภาพคำคมที่ผ่านการตรวจสอบ</p>';
+}
+function renderQuotesPage(){
+ const input=$('quoteSearch');
+ function render(){
+   const q=norm(input.value);
+   const filtered=quotes.filter(item=>!q||norm(item.text).includes(q));
+   $('quoteGrid').innerHTML=filtered.map(quoteCard).join('');
+   $('quoteEmpty').hidden=filtered.length>0;
+   $('quotesCount').textContent='พบ '+filtered.length.toLocaleString('th-TH')+' ภาพคำคมธรรมะ';
+ }
+ input.addEventListener('input',render);
+ render();
+}
+function validateQuotes(raw){
+ const seen=new Set(),hashes=new Set();
+ const items=Array.isArray(raw?.items)?raw.items:[];
+ return items.filter(x=>{
+  if(!/^\d{10,18}$/.test(String(x.id||'')))return false;
+  if(!/^\.\/assets\/quotes\/\d{10,18}\.jpg$/.test(String(x.image||'')))return false;
+  if(x.image!=='./assets/quotes/'+x.id+'.jpg')return false;
+  if(x.source_url!=='https://www.facebook.com/photo.php?fbid='+x.id)return false;
+  if(typeof x.text!=='string'||!x.text.trim()||seen.has(x.id)||hashes.has(x.sha256))return false;
+  seen.add(x.id);hashes.add(x.sha256);return true;
+ });
+}
 function categoryCard(name,group,i){
  const image=thumb(chooseCover(group));
  return `<a class="series-card" href="${esc(uri('category.html',{name}))}">
@@ -85,6 +134,7 @@ function relatedNote(){
 }
 function renderHome(){
  $('homeTotal').textContent=items.length.toLocaleString('th-TH');
+ renderHomeQuotes();
  $('homeCategories').innerHTML=categoryCards(categoryNames().slice(0,6));
  const selections=categoryNames().slice(0,6).map(name=>chooseCover(items.filter(x=>x.category===name))).filter(Boolean);
  $('homeFeatured').innerHTML=selections.map(card).join('');
@@ -95,8 +145,8 @@ function renderHome(){
 }
 function renderCategories(){
  const categories=categoryNames();
- $('categorySummary').textContent=categories.length.toLocaleString('th-TH')+' หมวดรายการ';
- $('allCategories').innerHTML=categoryCards(categories);
+ $('categorySummary').textContent=categories.length.toLocaleString('th-TH')+' หมวดวิดีโอ'+(quotes.length?' · 1 หมวดคำคมธรรมะ':'');
+ $('allCategories').innerHTML=categoryCards(categories)+quoteCategoryCard();
  const note=$('relatedNotice');note.hidden=!categories.some(n=>n.includes('หลวงพี่ช่วยด้วย'));
 }
 function renderFeatured(){
@@ -275,8 +325,14 @@ async function boot(){
    if(!x.key||!x.title||!x.category||!safeLink(x.url)||seen.has(x.key))return false;
    seen.add(x.key);return true;
   });
+  if(['home','categories','quotes'].includes(page)){
+    const qres=await fetch(QUOTES_URL,{cache:'no-cache'});
+    if(!qres.ok)throw new Error('Quote catalog HTTP '+qres.status);
+    quotes=validateQuotes(await qres.json());
+  }
   switch(page){
    case 'home':renderHome();break;
+   case 'quotes':renderQuotesPage();break;
    case 'categories':renderCategories();break;
    case 'featured':renderFeatured();break;
    case 'library':populateLibrary();break;

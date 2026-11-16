@@ -116,3 +116,34 @@ img{display:block;max-width:100%}svg{width:20px;height:20px;fill:none;stroke:cur
 .foot-inner{flex-wrap:wrap;gap:10px}.foot-inner nav{order:3;width:100%}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+
+/* Source-backed Dhamma quote gallery: preserve entire original photos, no generated overlays. */
+.quote-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.quote-card{min-width:0;background:#fff;border:1px solid #d8e8f5;border-radius:17px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 5px 22px rgba(14,89,153,.045)}
+.quote-card:hover{border-color:#afd6ef;box-shadow:0 13px 36px rgba(13,81,140,.10)}
+.quote-image{display:grid;place-items:center;background:#f1f8fd;min-height:280px;aspect-ratio:1.65}
+.quote-image img{display:block;width:100%;height:100%;max-height:460px;object-fit:contain;object-position:center}
+.quote-body{display:flex;flex-direction:column;flex:1;padding:20px 22px}
+.quote-text{font-size:15px;line-height:1.95;color:#174879;font-weight:500;white-space:pre-line;margin:0 0 18px;overflow-wrap:anywhere}
+.quote-footer{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-top:auto;padding-top:13px;border-top:1px solid #e4eff7}
+.quote-footer span{font-size:10px;color:#7898ae}
+.quote-footer a{font-size:11px;color:#096cb7;font-weight:600}
+.quote-footer a:hover{text-decoration:underline}
+.quote-series-card .series-image{background:#ebf7ff}
+.quote-series-card .series-image img{object-fit:contain;padding:5px;filter:none}
+.quote-toolbar{display:flex;align-items:center;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+.quote-toolbar label{font-size:13px;color:#24567d;font-weight:600}
+.quote-toolbar input{min-height:45px;border:1px solid #cde4f5;border-radius:10px;padding:8px 13px;max-width:420px;min-width:220px;flex:1;background:#fff;font-size:12px}
+.quote-toolbar p{color:#6086a2;font-size:12px;margin:0 0 0 auto}
+@media(max-width:740px){.quote-grid{grid-template-columns:1fr;gap:18px}.quote-body{padding:17px}.quote-text{font-size:13px}.quote-image{min-height:220px}.quote-toolbar{align-items:stretch;flex-direction:column}.quote-toolbar input{width:100%;max-width:none}.quote-toolbar p{margin:0}}
+
+
+/* Image viewport: all aspect ratios remain fully visible with no text overlap. */
+.quote-image{height:345px;min-height:0;aspect-ratio:auto;overflow:hidden}
+.quote-image img{height:100%;max-height:100%;object-fit:contain}
+@media(max-width:740px){.quote-image{height:295px;min-height:0}}
+
+/* Absolutely position original photos within their aspect-ratio preserving viewport. */
+.quote-image{position:relative;display:block;overflow:hidden}
+.quote-image img{position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:contain;object-position:center}
