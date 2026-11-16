@@ -71,6 +71,12 @@ def shell(active,title,description,content):
 <meta name="description" content="{escape(description,quote=True)}">
 <meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}">
 <title>{escape(title)}</title>
+<!-- Normalize the archive entrypoint before loading any relative assets. -->
+<script>
+if (location.pathname === '/pmnapan-library') {{
+ history.replaceState(null, '', '/pmnapan-library/' + location.search + location.hash);
+}}
+</script>
 <link rel="icon" type="image/png" href="./assets/mascot.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">

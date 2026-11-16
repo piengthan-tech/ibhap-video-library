@@ -5,6 +5,12 @@
 <meta name="description" content="เฉพาะภาพคำคมธรรมะและข้อความจริงจากเพจพระมหานภันต์พร้อมลิงก์ Facebook ต้นฉบับ">
 <meta property="og:type" content="website"><meta property="og:title" content="คำคมธรรมะ | PMNapan Library Dhamma Archive"><meta property="og:description" content="เฉพาะภาพคำคมธรรมะและข้อความจริงจากเพจพระมหานภันต์พร้อมลิงก์ Facebook ต้นฉบับ">
 <title>คำคมธรรมะ | PMNapan Library Dhamma Archive</title>
+<!-- Normalize the archive entrypoint before loading any relative assets. -->
+<script>
+if (location.pathname === '/pmnapan-library') {
+ history.replaceState(null, '', '/pmnapan-library/' + location.search + location.hash);
+}
+</script>
 <link rel="icon" type="image/png" href="./assets/mascot.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">

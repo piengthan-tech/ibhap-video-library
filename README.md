@@ -153,3 +153,12 @@
 - หน้า YouTube และหน้าแรกจะไม่แสดงเครดิต TikTok; ลิงก์ชี้ไป https://www.tiktok.com/@domskyline21 โดยตรง
 - ตรวจ render ด้วย Chrome สี่กรณี: หน้าแรก, หน้าคลิปสั้น, หน้ารายละเอียด TikTok และ YouTube
 - ไม่มีการแก้ไขทะเบียนวิดีโอ หรือภาพที่มีอยู่แล้ว
+
+
+## YDML domain path — 16 พฤศจิกายน 2569
+
+- Public archive URL: https://www.ydml.co.th/pmnapan-library/
+- Runs through Netlify 200 reverse-proxy from the YDML main site to the existing GitHub Pages library; original GitHub Pages archive remains accessible.
+- HTML on the GitHub Pages source normalizes the bare path /pmnapan-library to /pmnapan-library/ before relative CSS, JS, and images are loaded. Normalizes using browser history without changing or redirecting the archive source content.
+- sitemap.xml references the new YDML URLs for 10 video categories and every existing video details page.
+- Not part of the library data change; the video and quote inventories remain unchanged.
