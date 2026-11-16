@@ -1,13 +1,13 @@
 {
   "name": "PMNapan Library Dhamma Archive",
-  "generated_at": "2026-11-16T15:48:56+07:00",
+  "generated_at": "2026-11-16T15:59:52+07:00",
   "editorial_policy": {
     "verified_participation": "Use original creator titles/descriptions and organizer evidence. Do not invent quotations or contents.",
     "separate_subtitle_program": "หลวงพี่ช่วยด้วย · ซับไตเติล IBHAP",
     "related_show_note": "รายการต้นฉบับ Workpoint ดำเนินรายการโดยพระมหาสมปอง ตาลปุตฺโต; คลิปอยู่ในชุดงานซับไตเติลของมูลนิธิ สกพ. ไม่ได้แปลว่าพระมหานภันต์เป็นผู้บรรยาย"
   },
   "stats": {
-    "count": 665,
+    "count": 664,
     "categories": {
       "อาสาหาธรรม": 30,
       "มามองพุทธ มุมมองพระ": 82,
@@ -18,11 +18,11 @@
       "ทอล์ค ทู ธรรม": 2,
       "สวัสดีความสุข": 4,
       "หลวงพี่ช่วยด้วย · ซับไตเติล IBHAP": 29,
-      "ธรรมะคลิปสั้น | Dhamma Shorts": 373
+      "ธรรมะคลิปสั้น | Dhamma Shorts": 372
     },
     "platforms": {
       "YouTube": 292,
-      "TikTok": 373
+      "TikTok": 372
     }
   },
   "items": [
@@ -4817,23 +4817,6 @@
       "source_channel": "ลิงจั๊กจั๊ก (@domskyline21)",
       "relation": "related_tiktok_short",
       "thumbnail": "./assets/tiktok-covers/7524734715270532370.webp",
-      "thumbnail_source": "original_tiktok_profile_cover",
-      "verified_basis": "คลิปจากบัญชี TikTok ที่ระบุพระมหานภันต์หรือกิจกรรมเกี่ยวข้อง มีภาพปกตรวจดูจากต้นทาง"
-    },
-    {
-      "key": "TikTok:7522017795815640341",
-      "video_id": "7522017795815640341",
-      "platform": "TikTok",
-      "category": "ธรรมะคลิปสั้น | Dhamma Shorts",
-      "title": "ขอแสดงมุทิตาจิต  แด่พระอาจารย์ พระมหานภันต์ สนฺติภทฺโท ผู้ช่วยเจ้าอาวาส วัดสระเกศราชวรมหาวิหาร ประธานกรรมการ มูลนิธิ สกพ. - IBHAP Foundation เลขาธิการ Religions for Peace Interreligious Council of Thailand เนื่องในโอกาสที่ท่าน ได้รับรางวัล THAILAND MORAL AWARDS ประจำปี 2024 #วัดสระเกศ #TMA2024 #thai",
-      "url": "https://www.tiktok.com/@domskyline21/video/7522017795815640341",
-      "published_at": "2025-07-01",
-      "minutes": 0.45,
-      "description": "ขอแสดงมุทิตาจิต  แด่พระอาจารย์ พระมหานภันต์ สนฺติภทฺโท ผู้ช่วยเจ้าอาวาส วัดสระเกศราชวรมหาวิหาร ประธานกรรมการ มูลนิธิ สกพ. - IBHAP Foundation เลขาธิการ Religions for Peace Interreligious Council of Thailand เนื่องในโอกาสที่ท่าน ได้รับรางวัล THAILAND MORAL AWARDS ประจำปี 2024 #วัดสระเกศ #TMA2024 #thailandmoralawards2024",
-      "kind": "คลิปสั้น",
-      "source_channel": "ลิงจั๊กจั๊ก (@domskyline21)",
-      "relation": "related_tiktok_short",
-      "thumbnail": "./assets/tiktok-covers/7522017795815640341.webp",
       "thumbnail_source": "original_tiktok_profile_cover",
       "verified_basis": "คลิปจากบัญชี TikTok ที่ระบุพระมหานภันต์หรือกิจกรรมเกี่ยวข้อง มีภาพปกตรวจดูจากต้นทาง"
     },
