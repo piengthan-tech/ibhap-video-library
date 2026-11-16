@@ -228,9 +228,18 @@ function renderVideoDetail(){
  $('pageTitle').textContent='รายละเอียดวิดีโอ';
  $('currentCrumb').textContent='รายละเอียดวิดีโอ';
  const src=thumb(x);
+ const showSourceCredit=x.platform==='TikTok' && x.url.startsWith('https://www.tiktok.com/@domskyline21/video/');
+ const sourceCredit=showSourceCredit ? `<aside class="source-credit video-source-credit" aria-label="ขอบคุณแหล่งเผยแพร่วิดีโอสั้น">
+ <span class="source-credit-mark" aria-hidden="true">♫</span>
+ <div class="source-credit-copy">
+ <span class="source-credit-eyebrow">ขอบคุณแหล่งเผยแพร่วิดีโอสั้น</span>
+ <p>ขอขอบคุณ คุณลิงจั๊กจั๊ก (@domskyline21) สำหรับการเผยแพร่วิดีโอสั้นที่เกี่ยวข้องกับพระมหานภันต์</p>
+ </div>
+ <a class="source-credit-link" href="https://www.tiktok.com/@domskyline21" target="_blank" rel="noopener noreferrer" aria-label="เปิดบัญชี TikTok คุณลิงจั๊กจั๊ก">@domskyline21 <span aria-hidden="true">↗</span></a>
+ </aside>` : '';
  $('videoDetail').innerHTML=`<div class="detail-poster ${x.platform==='TikTok'?'short-detail-poster':''}">${src?`<img src="${esc(src)}" alt="ภาพปกวิดีโอ ${esc(x.title)}">`:''}</div>
  <div class="detail-content"><div class="detail-badges"><a href="${esc(x.platform==='TikTok'?'./shorts.html':uri('category.html',{name:x.category}))}">${esc(x.category)}</a><span>${esc(x.platform)}</span></div>
- <h2>${esc(x.title)}</h2><dl><div><dt>วันที่เผยแพร่</dt><dd>${esc(formatDate(x.published_at))}</dd></div>
+ <h2>${esc(x.title)}</h2>${sourceCredit}<dl><div><dt>วันที่เผยแพร่</dt><dd>${esc(formatDate(x.published_at))}</dd></div>
  ${x.minutes?'<div><dt>ความยาว</dt><dd>'+duration(x.minutes)+'</dd></div>':''}
  ${x.sourceChannel?'<div><dt>ช่องเผยแพร่</dt><dd>'+esc(x.sourceChannel)+'</dd></div>':''}
  </dl>

@@ -196,3 +196,14 @@ img{display:block;max-width:100%}svg{width:20px;height:20px;fill:none;stroke:cur
  .source-credit-copy p{font-size:11px}
  .source-credit-link{margin-left:47px;padding:8px 12px;font-size:11px}
 }
+
+
+/* Source acknowledgment belongs only to TikTok clip detail pages and the Shorts banner. */
+.video-source-credit{margin:14px 0 20px;align-items:flex-start;flex-wrap:wrap}
+.video-source-credit .source-credit-copy{flex-basis:calc(100% - 60px)}
+.video-source-credit .source-credit-link{margin-left:56px}
+@media(max-width:650px){
+ .video-source-credit{padding:12px}
+ .video-source-credit .source-credit-copy{flex-basis:calc(100% - 50px)}
+ .video-source-credit .source-credit-link{margin-left:47px}
+}
