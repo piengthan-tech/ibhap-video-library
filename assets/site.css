@@ -177,3 +177,22 @@ img{display:block;max-width:100%}svg{width:20px;height:20px;fill:none;stroke:cur
 @media(max-width:1100px){.shorts-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.shorts-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.short-info{padding:12px}.short-cover{aspect-ratio:9/14}.short-info h3{font-size:11px}.shorts-search-bar{gap:8px}.shorts-search-bar span{width:100%}}
 @media(max-width:370px){.shorts-grid{grid-template-columns:minmax(0,1fr)}}
+
+
+/* Source attribution in both visible top banners — original account linked directly. */
+.source-credit{display:flex;align-items:center;gap:14px;margin-top:27px;padding:14px 16px;border:1px solid #bbdcf5;border-left:4px solid #117ad0;border-radius:12px;background:rgba(255,255,255,.89);box-shadow:0 7px 24px rgba(26,105,173,.09)}
+.source-credit-mark{display:grid;place-items:center;flex:none;background:#0d3154;border-radius:11px;height:43px;width:43px;font-size:24px;line-height:1;color:white}
+.source-credit-copy{min-width:0;flex:1}
+.source-credit-eyebrow{display:block;color:#247bba;font-size:10px;font-weight:700;letter-spacing:.25px;line-height:1.6;margin-bottom:3px}
+.source-credit-copy p{font-size:12px;line-height:1.7;font-weight:500;color:#16476f;margin:0}
+.source-credit-link{display:inline-flex;align-items:center;gap:7px;justify-content:center;flex:none;padding:10px 12px;color:#fff;background:#076fbe;border-radius:9px;font:700 11px/1.5 'Inter','Prompt',sans-serif;white-space:nowrap}
+.source-credit-link:hover{background:#07599a;color:white}
+.shorts-credit-banner{background:linear-gradient(120deg,#edf8ff,#d7efff);padding:0 0 23px;border-bottom:1px solid #dfedf8}
+.shorts-credit-banner .source-credit{margin-top:0;border-color:#b2d8ef;background:white;max-width:1120px}
+@media(max-width:730px){
+ .source-credit{align-items:flex-start;flex-wrap:wrap;gap:10px;padding:14px 13px}
+ .source-credit-mark{width:37px;height:37px;font-size:22px}
+ .source-credit-copy{flex-basis:calc(100% - 50px)}
+ .source-credit-copy p{font-size:11px}
+ .source-credit-link{margin-left:47px;padding:8px 12px;font-size:11px}
+}
