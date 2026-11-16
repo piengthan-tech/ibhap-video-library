@@ -5,3 +5,7 @@ scripts/
 .netlify/
 *.zip
 *.tmp
+_research/
+_review/
+.modern-*.png
+assets/mascot-transparent.png

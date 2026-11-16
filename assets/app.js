@@ -83,6 +83,7 @@ function buildCard(item) {
     <div class="video-body">
       <div class="video-meta"><span class="category-dot ${item.category==='อาสาหาธรรม'?'':'mam'}"></span>${escapeHtml(categoryShort)}<span aria-hidden="true">·</span>${escapeHtml(date)}</div>
       <h3 class="video-title">${escapeHtml(item.title)}</h3>
+      ${item.relation==='ibhap_subtitles' ? '<p class="related-tag">ซับไตเติลโดยมูลนิธิ สกพ. · ผู้ดำเนินรายการพระมหาสมปอง</p>' : ''}
       <div class="video-foot">
         <button class="video-details" type="button" data-action="details" data-id="${escAttr(item.key)}">รายละเอียด <span aria-hidden="true">→</span></button>
         ${link ? `<a class="watch-link" href="${escAttr(link)}" target="_blank" rel="noopener noreferrer" aria-label="รับชม ${escAttr(item.title)} จาก ${escAttr(item.platform)}">รับชมคลิป <span aria-hidden="true">↗</span></a>` : ''}
@@ -133,7 +134,10 @@ function sanitizeData(raw) {
     title:String(x.title||'ไม่มีชื่อเรื่อง'),description:String(x.description||''),
     category:String(x.category||'รายการอื่น'),platform:String(x.platform||'YouTube'),
     url:String(x.url||''),video_id:String(x.video_id||''),published_at:String(x.published_at||''),
-    minutes:Number(x.minutes||0),kind:String(x.kind||'ตอนเต็ม/ไลฟ์'),thumbnail:String(x.thumbnail||'')
+    minutes:Number(x.minutes||0),kind:String(x.kind||'ตอนเต็ม/ไลฟ์'),thumbnail:String(x.thumbnail||''),
+    relation:String(x.relation||'direct'),sourceNote:String(x.source_note||''),
+    sourceChannel:String(x.source_channel||''),verifiedBasis:String(x.verified_basis||''),
+    sourcePlaylist:String(x.source_playlist||'')
   };
   return item;
  }).filter(x=>{
@@ -151,11 +155,13 @@ function renderCategories() {
   el('categoryGrid').innerHTML=categories.map(([name,items],i)=>{
     const selected=items.find(x=>x.thumbnail)||items[0];
     const src=thumbUrl(selected);
-    return `<button class="category-card" type="button" data-category="${escapeHtml(name)}">
+    const isRelated=name.includes('หลวงพี่ช่วยด้วย');
+    return `<button class="category-card ${isRelated?'related-category':''}" type="button" data-category="${escapeHtml(name)}">
       <span class="category-cover">${src?`<img src="${escapeHtml(src)}" alt="" loading="lazy">`:''}</span>
-      <span class="category-content"><span class="category-index">0${i+1} / SERIES</span><strong>${escapeHtml(name)}</strong><span class="category-count">${items.length.toLocaleString('th-TH')} คลิป <span aria-hidden="true">→</span></span></span>
+      <span class="category-content"><span class="category-index">0${i+1} / SERIES${isRelated?' · RELATED MEDIA':''}</span><strong>${escapeHtml(name)}</strong><span class="category-count">${items.length.toLocaleString('th-TH')} คลิป <span aria-hidden="true">→</span></span></span>
     </button>`;
   }).join('');
+  el('programNotice').hidden=!categories.some(([name])=>name.includes('หลวงพี่ช่วยด้วย'));
   el('seriesTabs').innerHTML=`<button class="tab active" data-series="all" aria-pressed="true" type="button">ทั้งหมด</button>`+
     categories.map(([name])=>`<button class="tab" type="button" data-series="${escapeHtml(name)}" aria-pressed="false">${escapeHtml(name)}</button>`).join('');
 }
@@ -164,7 +170,7 @@ function renderFeatured(){
   const categories=[...new Set(state.items.map(x=>x.category))];
   for(const category of categories){
     const group=state.items.filter(x=>x.category===category).sort((a,b)=>b.published_at.localeCompare(a.published_at));
-    featured.push(...group.slice(0,3));
+    featured.push(...group.slice(0,1));
   }
   el('featuredGrid').innerHTML=featured.map(buildCard).join('');
 }
@@ -195,7 +201,12 @@ function openDetails(key,{updateHistory=true}={}) {
  el('dialogTags').innerHTML=`<span>${escapeHtml(item.category)}</span><span>${escapeHtml(item.platform)}</span><span>${escapeHtml(item.kind)}</span>`;
  el('dialogTitle').textContent=item.title;
  el('dialogFacts').textContent=`เผยแพร่ ${dateLabel(item.published_at)}${item.minutes ? ' · ความยาว '+minutesToClock(item.minutes):''}`;
- el('dialogDescription').textContent=item.description || 'ไม่พบคำอธิบายจากผู้เผยแพร่ โปรดดูรายละเอียดเพิ่มเติมที่ต้นทาง';
+ const sourceNote=el('dialogSourceNote');
+ sourceNote.hidden=!item.sourceNote;
+ sourceNote.textContent=item.sourceNote;
+ const desc=el('dialogDescription');
+ desc.textContent=item.description||'ไม่มีคำอธิบายจากผู้เผยแพร่';
+ el('dialogChannel').textContent=item.sourceChannel ? 'ช่องเผยแพร่: '+item.sourceChannel : '';
  const url=el('dialogWatch');url.href=item.url;url.textContent='เปิดดูวิดีโอต้นทาง ↗';
  if(updateHistory){const link=new URL(location.href);link.searchParams.set('clip',item.key);history.replaceState(null,'',link);}
  if(!el('videoDialog').open)el('videoDialog').showModal();

@@ -35,7 +35,7 @@
     <div class="hero-eyebrow"><span class="hero-line"></span> VIDEO ARCHIVE</div>
     <h1 id="heroTitle">PMNapan Linrary<br><span>Dhamma Archive</span></h1>
     <p class="hero-subhead">คลังวิดีโอพระมหานภันต์ สนฺติภทฺโท</p>
-    <p class="hero-detail">สารบัญวิดีโอและลิงก์จากแหล่งเผยแพร่ต้นฉบับ</p>
+    <p class="hero-detail">คลิปพระมหานภันต์ และงานสื่อซับไตเติลที่เกี่ยวข้องกับมูลนิธิ สกพ.</p>
     <div class="hero-actions"><a href="#library" class="hero-cta"><span aria-hidden="true">▶</span> เข้าสู่คลังวิดีโอ</a><a href="#categories" class="hero-cta-secondary">เลือกหมวดรายการ <span aria-hidden="true">↗</span></a></div>
     <div class="hero-count"><span id="heroVideoCount">—</span> วิดีโอในคลัง</div>
    </div>
@@ -54,6 +54,11 @@
   <div class="container">
    <div class="section-head"><div><span class="section-kicker">CATEGORIES</span><h2>เนื้อหาแนะนำ</h2><p class="section-description">หมวดรายการที่มีอยู่ในสารบัญ</p></div><a href="#library" class="section-link">ดูคลิปทั้งหมด <span aria-hidden="true">→</span></a></div>
    <div id="categoryGrid" class="category-grid" aria-label="หมวดรายการ"></div>
+   <aside class="program-notice" id="programNotice" hidden>
+      <strong>เกี่ยวกับหมวด “หลวงพี่ช่วยด้วย”</strong>
+      <p>รายการต้นฉบับของ Workpoint ดำเนินรายการโดยพระมหาสมปอง ตาลปุตฺโต ส่วนคลิปในหมวดนี้มาจากโครงการจัดทำซับไตเติลของมูลนิธิ สกพ. จึงไม่ถือว่าเป็นคลิปบรรยายของพระมหานภันต์</p>
+      <a href="https://www.youtube.com/playlist?list=PLFU5BMWz_rx10E1AiFivlOPsVO8qQFvmx" target="_blank" rel="noopener noreferrer">ดูเพลย์ลิสต์ต้นทาง ↗</a>
+   </aside>
   </div>
  </section>
  <section class="section featured" id="featured">
@@ -84,7 +89,9 @@
  <section class="source-section" id="about"><div class="container source-inner"><div><span class="section-kicker">SOURCE INFORMATION</span><h2>แหล่งเผยแพร่ต้นฉบับ</h2></div><div class="source-links"><a href="https://www.youtube.com/@Napan" target="_blank" rel="noopener noreferrer">YouTube · PM Napan ↗</a><a href="https://www.youtube.com/channel/UCjScesRz_L16aIs-Kdtsh_g" target="_blank" rel="noopener noreferrer">YouTube · IBHAP Foundation ↗</a></div></div></section>
 </main>
 <footer class="footer"><div class="container footer-inner"><span>PMNapan Linrary Dhamma Archive</span><span>สารบัญลิงก์วิดีโอต้นฉบับ</span><span>© <span id="copyrightYear"></span></span></div></footer>
-<dialog class="video-dialog" id="videoDialog" aria-labelledby="dialogTitle"><div class="dialog-shell"><button class="dialog-close" id="closeDialog" type="button" aria-label="ปิดรายละเอียด">×</button><div class="dialog-image" id="dialogImage"></div><div class="dialog-content"><div class="dialog-tags" id="dialogTags"></div><h2 id="dialogTitle"></h2><div class="dialog-facts" id="dialogFacts"></div><h3>คำอธิบายจากผู้เผยแพร่</h3><p class="dialog-description" id="dialogDescription"></p><div class="dialog-actions"><a class="dialog-watch" id="dialogWatch" target="_blank" rel="noopener noreferrer">เปิดวิดีโอต้นฉบับ ↗</a><button class="dialog-copy" id="dialogCopy" type="button">คัดลอกลิงก์</button></div></div></div></dialog>
+<dialog class="video-dialog" id="videoDialog" aria-labelledby="dialogTitle"><div class="dialog-shell"><button class="dialog-close" id="closeDialog" type="button" aria-label="ปิดรายละเอียด">×</button><div class="dialog-image" id="dialogImage"></div><div class="dialog-content"><div class="dialog-tags" id="dialogTags"></div><h2 id="dialogTitle"></h2><div class="dialog-facts" id="dialogFacts"></div><p class="dialog-source-note" id="dialogSourceNote" hidden></p>
+   <p class="dialog-channel" id="dialogChannel"></p>
+   <h3>คำอธิบายจากผู้เผยแพร่</h3><p class="dialog-description" id="dialogDescription"></p><div class="dialog-actions"><a class="dialog-watch" id="dialogWatch" target="_blank" rel="noopener noreferrer">เปิดวิดีโอต้นฉบับ ↗</a><button class="dialog-copy" id="dialogCopy" type="button">คัดลอกลิงก์</button></div></div></div></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

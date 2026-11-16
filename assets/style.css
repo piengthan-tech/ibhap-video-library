@@ -15,3 +15,22 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 
 @media(max-width:650px){.hero-mascot{align-self:stretch;width:100%;justify-self:stretch}.hero-mascot img{max-width:100%;margin:0 auto}.mascot-halo{left:50%;transform:translateX(-50%)}}
+
+
+/* Archives grow through structured categories, not hand-built decorative entries. */
+@media(min-width:1051px){.category-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:651px) and (max-width:1050px){.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.category-card{min-height:211px}
+.category-content{min-height:211px;padding:19px 22px}
+.category-content strong{font-size:20px;line-height:1.5;overflow-wrap:anywhere}
+.category-index{font-size:9px}
+.related-category{border-color:#b8d1e4;background:#133d5f}
+.related-category:after{background:linear-gradient(95deg,rgba(7,37,64,.94) 0%,rgba(25,60,92,.65) 65%,rgba(20,69,105,.24) 100%)}
+.related-tag{margin:0 0 11px;color:#255a7a;background:#e9f6ff;font-size:10px;line-height:1.7;padding:7px 9px;border-radius:7px}
+.program-notice{margin-top:23px;background:#eef7ff;border:1px solid #cbdff0;border-radius:12px;padding:16px 20px;display:flex;gap:13px;align-items:flex-start;flex-wrap:wrap}
+.program-notice strong{font-size:12px;color:#173e69}
+.program-notice p{flex:1;min-width:300px;margin:0;color:#4d6983;line-height:1.85;font-size:11px}
+.program-notice a{font-size:11px;color:#026bb9;text-decoration:underline}
+.dialog-source-note{padding:13px 15px;border-radius:9px;background:#e9f5fe;color:#174e77;font-size:12px;line-height:1.85;margin:0 0 14px}
+.dialog-channel{color:#7290a6;font-size:11px;margin:0 0 14px}
+@media(max-width:650px){.category-card,.category-content{min-height:184px}.category-content{padding:16px}.category-content strong{font-size:19px}.program-notice p{min-width:0}}
