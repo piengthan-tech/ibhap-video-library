@@ -162,3 +162,12 @@
 - HTML on the GitHub Pages source normalizes the bare path /pmnapan-library to /pmnapan-library/ before relative CSS, JS, and images are loaded. Normalizes using browser history without changing or redirecting the archive source content.
 - sitemap.xml references the new YDML URLs for 10 video categories and every existing video details page.
 - Not part of the library data change; the video and quote inventories remain unchanged.
+
+
+## แสดง URL สะอาดเมื่อมาจาก ChatGPT (16 พฤศจิกายน 2569)
+
+- URL ของเว็บไซต์ที่เผยแพร่ยังคงเป็น https://www.ydml.co.th/pmnapan-library/
+- บางครั้งเมื่อเปิดผ่านข้อความแชต ระบบส่งลิงก์พร้อม ?utm_source=chatgpt.com ซึ่งเป็นพารามิเตอร์แหล่งที่มา ไม่ใช่ชื่อเว็บไซต์
+- หน้า HTML ทั้งเก้าหน้าเรียก URL normalization แบบ client-side โดยใช้ history.replaceState เพื่อตัด utm_source ที่มีค่า chatgpt.com, chatgpt หรือ chat.openai.com ออกจากแถบที่อยู่
+- คงพารามิเตอร์ใช้งาน เช่น id คลิป, คำค้น, ค่าแหล่งที่มาอื่น ๆ และ hash anchor ไว้
+- ไม่เปลี่ยนการตั้งค่า DNS หรือ Netlify routing และไม่เปลี่ยนข้อมูลวิดีโอ

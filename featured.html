@@ -5,11 +5,22 @@
 <meta name="description" content="คลิปจากรายการพร้อมภาพปกจากแหล่งเผยแพร่จริง">
 <meta property="og:type" content="website"><meta property="og:title" content="คลิปจากรายการ | PMNapan Library Dhamma Archive"><meta property="og:description" content="คลิปจากรายการพร้อมภาพปกจากแหล่งเผยแพร่จริง">
 <title>คลิปจากรายการ | PMNapan Library Dhamma Archive</title>
-<!-- Normalize the archive entrypoint before loading any relative assets. -->
+<!-- Keep the public address clean; preserve functional search and video parameters. -->
 <script>
-if (location.pathname === '/pmnapan-library') {
- history.replaceState(null, '', '/pmnapan-library/' + location.search + location.hash);
-}
+(() => {
+ const url = new URL(location.href);
+ let changed = false;
+ if (url.pathname === '/pmnapan-library') {
+  url.pathname = '/pmnapan-library/';
+  changed = true;
+ }
+ const source = url.searchParams.get('utm_source') || '';
+ if (['chatgpt.com', 'chatgpt', 'chat.openai.com'].includes(source.toLowerCase())) {
+  url.searchParams.delete('utm_source');
+  changed = true;
+ }
+ if (changed) history.replaceState(null, '', url.pathname + url.search + url.hash);
+})();
 </script>
 <link rel="icon" type="image/png" href="./assets/mascot.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
