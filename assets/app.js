@@ -32,10 +32,14 @@ function minutesToClock(minutes) {
 function detectYear(item) { return item.published_at ? item.published_at.slice(0,4) : 'ไม่ทราบปี'; }
 function cleanDescription(text, max = 180) {
   let s = String(text || '').replace(/https?:\/\/\S+/g,'').replace(/#[^\s#]+/g,'').replace(/\s+/g,' ').trim();
-  if(!s) return 'รับชมรายละเอียดและเนื้อหาได้จากลิงก์ของผู้เผยแพร่ต้นฉบับ';
+  if(!s) return '';
   return s.length > max ? s.slice(0,max-1).trimEnd()+'…' : s;
 }
-function thumbUrl(item) { return item.platform === 'YouTube' && validId(item.video_id) ? `https://i.ytimg.com/vi/${item.video_id}/hqdefault.jpg` : ''; }
+function thumbUrl(item) {
+  // Thumbnail for อาสาหาธรรม is a verified video frame from the matching original file.
+  if (item.thumbnail && /^\.\/assets\/episode-stills\/[-_a-zA-Z0-9]{11}\.jpg$/.test(item.thumbnail)) return item.thumbnail;
+  return item.platform === 'YouTube' && validId(item.video_id) ? `https://i.ytimg.com/vi/${item.video_id}/hqdefault.jpg` : '';
+}
 function favoriteId(item) { return `${item.platform}:${item.video_id}`; }
 function loadFavorites() { try { const v = JSON.parse(localStorage.getItem(favoriteKey) || '[]'); state.favorites = new Set(Array.isArray(v)? v : []); } catch { state.favorites = new Set(); } }
 function saveFavorites() { try {localStorage.setItem(favoriteKey,JSON.stringify([...state.favorites]));}catch{} }
@@ -67,7 +71,7 @@ function buildCard(item) {
   const isFav = state.favorites.has(favoriteId(item));
   const date = dateLabel(item.published_at);
   const link = isSafeSource(item.url) ? item.url : '';
-  const categoryShort = item.category === 'อาสาหาธรรม' ? 'อาสาหาธรรม' : 'มามองพุทธ มุมมองพระ';
+  const categoryShort = item.category;
   return `<article class="video-card" data-id="${escAttr(item.key)}">
     <div class="video-thumb ${src?'':'no-image'}">
       ${src ? `<img loading="lazy" decoding="async" src="${escAttr(src)}" alt="ภาพตัวอย่างคลิป ${escAttr(item.title)}">` : ''}
@@ -79,7 +83,6 @@ function buildCard(item) {
     <div class="video-body">
       <div class="video-meta"><span class="category-dot ${item.category==='อาสาหาธรรม'?'':'mam'}"></span>${escapeHtml(categoryShort)}<span aria-hidden="true">·</span>${escapeHtml(date)}</div>
       <h3 class="video-title">${escapeHtml(item.title)}</h3>
-      <p class="video-desc">${escapeHtml(cleanDescription(item.description,155))}</p>
       <div class="video-foot">
         <button class="video-details" type="button" data-action="details" data-id="${escAttr(item.key)}">รายละเอียด <span aria-hidden="true">→</span></button>
         ${link ? `<a class="watch-link" href="${escAttr(link)}" target="_blank" rel="noopener noreferrer" aria-label="รับชม ${escAttr(item.title)} จาก ${escAttr(item.platform)}">รับชมคลิป <span aria-hidden="true">↗</span></a>` : ''}
@@ -130,7 +133,7 @@ function sanitizeData(raw) {
     title:String(x.title||'ไม่มีชื่อเรื่อง'),description:String(x.description||''),
     category:String(x.category||'รายการอื่น'),platform:String(x.platform||'YouTube'),
     url:String(x.url||''),video_id:String(x.video_id||''),published_at:String(x.published_at||''),
-    minutes:Number(x.minutes||0),kind:String(x.kind||'ตอนเต็ม/ไลฟ์')
+    minutes:Number(x.minutes||0),kind:String(x.kind||'ตอนเต็ม/ไลฟ์'),thumbnail:String(x.thumbnail||'')
   };
   return item;
  }).filter(x=>{
@@ -138,14 +141,40 @@ function sanitizeData(raw) {
   seen.add(x.key);return true;
  });
 }
+function renderCategories() {
+  const map=new Map();
+  for(const v of state.items){
+    if(!map.has(v.category))map.set(v.category,[]);
+    map.get(v.category).push(v);
+  }
+  const categories=[...map.entries()];
+  el('categoryGrid').innerHTML=categories.map(([name,items],i)=>{
+    const selected=items.find(x=>x.thumbnail)||items[0];
+    const src=thumbUrl(selected);
+    return `<button class="category-card" type="button" data-category="${escapeHtml(name)}">
+      <span class="category-cover">${src?`<img src="${escapeHtml(src)}" alt="" loading="lazy">`:''}</span>
+      <span class="category-content"><span class="category-index">0${i+1} / SERIES</span><strong>${escapeHtml(name)}</strong><span class="category-count">${items.length.toLocaleString('th-TH')} คลิป <span aria-hidden="true">→</span></span></span>
+    </button>`;
+  }).join('');
+  el('seriesTabs').innerHTML=`<button class="tab active" data-series="all" aria-pressed="true" type="button">ทั้งหมด</button>`+
+    categories.map(([name])=>`<button class="tab" type="button" data-series="${escapeHtml(name)}" aria-pressed="false">${escapeHtml(name)}</button>`).join('');
+}
+function renderFeatured(){
+  const featured=[];
+  const categories=[...new Set(state.items.map(x=>x.category))];
+  for(const category of categories){
+    const group=state.items.filter(x=>x.category===category).sort((a,b)=>b.published_at.localeCompare(a.published_at));
+    featured.push(...group.slice(0,3));
+  }
+  el('featuredGrid').innerHTML=featured.map(buildCard).join('');
+}
+
 function populateStats(raw) {
  const count=state.items.length;
- el('statVideos').textContent=count.toLocaleString('th-TH');
- el('statSeries').textContent=new Set(state.items.map(x=>x.category)).size.toString().padStart(2,'0');
  const years=[...new Set(state.items.map(x=>detectYear(x)).filter(x=>/^\d{4}$/.test(x)))].sort();
- el('statYears').textContent=years.length ? `${(+years[0]+543).toString().slice(-2)}–${(+years.at(-1)+543).toString().slice(-2)}` : '—';
- el('catAsaCount').textContent=state.items.filter(x=>x.category==='อาสาหาธรรม').length;
- el('catMamCount').textContent=state.items.filter(x=>x.category==='มามองพุทธ มุมมองพระ').length;
+ el('heroVideoCount').textContent=count.toLocaleString('th-TH');
+ renderCategories();
+ renderFeatured();
  el('yearFilter').innerHTML='<option value="all">ทุกปี</option>'+years.reverse().map(y=>`<option value="${y}">พ.ศ. ${Number(y)+543}</option>`).join('');
  const date=raw.generated_at ? new Date(raw.generated_at) : null;
  el('updatedPill').textContent=date && !Number.isNaN(date.getTime()) ? 'ข้อมูลล่าสุด '+new Intl.DateTimeFormat('th-TH',{day:'numeric',month:'short',year:'numeric'}).format(date) : 'รายการจากแหล่งข้อมูลต้นทาง';
@@ -185,8 +214,14 @@ function bindEvents() {
  el('heroSearchForm').addEventListener('submit',(e)=>{e.preventDefault();state.query=el('heroSearch').value.trim();state.shown=PAGE_SIZE;updateFilters();el('library').scrollIntoView({behavior:'smooth'});});
  el('librarySearch').addEventListener('input',(e)=>{state.query=e.target.value.trim();state.shown=PAGE_SIZE;el('heroSearch').value=state.query;render();});
  el('clearSearch').addEventListener('click',()=>{state.query='';state.shown=PAGE_SIZE;updateFilters();el('librarySearch').focus();});
- qa('#seriesTabs .tab').forEach(btn=>btn.addEventListener('click',()=>chooseCategory(btn.dataset.series)));
- qa('.category-card').forEach(btn=>btn.addEventListener('click',()=>chooseCategory(btn.dataset.category)));
+ el('seriesTabs').addEventListener('click',e=>{
+  const b=e.target.closest('[data-series]');
+  if(b)chooseCategory(b.dataset.series);
+ });
+ el('categoryGrid').addEventListener('click',e=>{
+  const b=e.target.closest('[data-category]');
+  if(b)chooseCategory(b.dataset.category);
+ });
  el('yearFilter').addEventListener('change',e=>{state.year=e.target.value;state.shown=PAGE_SIZE;render();});
  el('platformFilter').addEventListener('change',e=>{state.platform=e.target.value;state.shown=PAGE_SIZE;render();});
  el('sortSelect').addEventListener('change',e=>{state.sort=e.target.value;state.shown=PAGE_SIZE;render();});
@@ -194,7 +229,7 @@ function bindEvents() {
  el('resetFilters').addEventListener('click',resetFilters);
  el('emptyReset').addEventListener('click',resetFilters);
  el('showMore').addEventListener('click',()=>{state.shown+=PAGE_SIZE;render();});
- el('videoGrid').addEventListener('click',e=>{
+ [el('videoGrid'),el('featuredGrid')].forEach(container=>container.addEventListener('click',e=>{
   const button=e.target.closest('[data-action]');if(!button)return;
   const item=state.items.find(x=>x.key===button.dataset.id);if(!item)return;
   if(button.dataset.action==='details')openDetails(item.key);
@@ -202,9 +237,9 @@ function bindEvents() {
    const key=favoriteId(item);
    if(state.favorites.has(key)){state.favorites.delete(key);toast('นำคลิปออกจากรายการที่บันทึกแล้ว');}
    else {state.favorites.add(key);toast('บันทึกคลิปไว้ในเบราว์เซอร์นี้แล้ว');}
-   saveFavorites();render();
+   saveFavorites();render();renderFeatured();
   }
- });
+  }));
  el('closeDialog').addEventListener('click',closeDetails);
  el('videoDialog').addEventListener('click',(e)=>{if(e.target===el('videoDialog'))closeDetails();});
  el('videoDialog').addEventListener('cancel',(e)=>{e.preventDefault();closeDetails();});
