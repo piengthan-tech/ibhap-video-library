@@ -70,3 +70,6 @@
 
 .about-sources-only{grid-template-columns:minmax(0,820px)}
 @media(max-width:650px){.about-sources-only{grid-template-columns:minmax(0,1fr)}}
+
+/* Bottom-most creator credit, visually secondary to YDML/IBHAP information. */
+.footer-design-credit{border-top:1px solid rgba(207,229,247,.12);text-align:center;color:#b8cfe3;font-size:11px;line-height:1.7;letter-spacing:.2px;padding:12px 16px 18px}
