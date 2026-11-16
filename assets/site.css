@@ -246,3 +246,7 @@ body[data-page="quotes"] .quote-grid{
 .press-source-note{margin:26px 0 0;font-size:12px;line-height:1.8;color:#6a879e}
 @media(max-width:1050px){.press-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:740px){.press-grid{grid-template-columns:minmax(0,1fr);gap:16px}.press-tools{align-items:stretch;flex-direction:column}.press-tools label{width:100%}.press-select-label select{width:100%}.press-tools #pressCount{margin:0}}
+
+/* Contextual navigation to verified external media. */
+.press-media-link{margin:0 0 24px;font-size:14px;color:#45667f;line-height:1.7}
+.press-media-link a{font-weight:700;color:#006bbd;text-decoration:underline;text-underline-offset:3px}

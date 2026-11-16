@@ -160,7 +160,18 @@ press=f'''{intro('PRESS · INTERVIEWS · ARCHIVE','ข่าว บทสัม�
 <p id="pressCount" role="status" aria-live="polite">กำลังโหลดข้อมูล...</p></div>
 <div id="pressGrid" class="press-grid"><p class="loading">กำลังโหลดข่าวและผลงาน...</p></div>
 <p id="pressEmpty" class="empty" hidden>ไม่พบข้อมูลตรงกับคำค้น</p>
-<p class="press-source-note">ข้อมูลชุดนี้เป็นทะเบียนแหล่งอ้างอิง ไม่ใช่การเผยแพร่บทความต้นฉบับซ้ำ กรุณาอ่านฉบับเต็มจากเว็บไซต์ผู้เผยแพร่โดยตรง วันที่ที่แสดงเป็นวันที่เผยแพร่บทความ ไม่ใช่วันที่จัดกิจกรรมเสมอไป และข้อมูลโครงการย้อนหลังไม่ใช่ประกาศรับสมัครในปัจจุบัน</p>
+<p class="press-media-link">ต้องการดูวิดีโอที่เผยแพร่โดยหน่วยงานอื่น? <a href="./external-media.html">สื่อจากแหล่งภายนอกและรายการตรวจสอบ ↗</a></p>\n<p class="press-source-note">ข้อมูลชุดนี้เป็นทะเบียนแหล่งอ้างอิง ไม่ใช่การเผยแพร่บทความต้นฉบับซ้ำ กรุณาอ่านฉบับเต็มจากเว็บไซต์ผู้เผยแพร่โดยตรง วันที่ที่แสดงเป็นวันที่เผยแพร่บทความ ไม่ใช่วันที่จัดกิจกรรมเสมอไป และข้อมูลโครงการย้อนหลังไม่ใช่ประกาศรับสมัครในปัจจุบัน</p>
+</div></section>'''
+external_media=f'''{intro('EXTERNAL MEDIA · SOURCE REVIEW','สื่อจากแหล่งภายนอก','คลิปที่เผยแพร่โดยหน่วยงานอื่นและรายการเบาะแสจากแชตเก่า แยกสถานะการตรวจสอบอย่างชัดเจน')}
+<section class="section"><div class="container">
+<div class="press-tools">
+<label class="press-search-label" for="externalMediaSearch">ค้นหาสื่อ<input id="externalMediaSearch" type="search" placeholder="ค้นหาชื่อรายการหรือหน่วยงาน" autocomplete="off"></label>
+<label class="press-select-label" for="externalMediaStatus">สถานะการตรวจสอบ
+<select id="externalMediaStatus"><option value="verified">ตรวจสอบแหล่งเผยแพร่แล้ว</option><option value="needs_review">คลิปจากทะเบียนเก่าที่ยังต้องยืนยัน</option><option value="lead">เบาะแสและเอกสารที่ยังไม่ใช่คลิปยืนยัน</option><option value="all">แสดงทั้งหมด</option></select></label>
+<p id="externalMediaCount" role="status" aria-live="polite">กำลังโหลดข้อมูล...</p></div>
+<div id="externalMediaGrid" class="press-grid"><p class="loading">กำลังโหลดสื่อ...</p></div>
+<p id="externalMediaEmpty" class="empty" hidden>ไม่พบรายการที่ตรงกับเงื่อนไข</p>
+<p class="press-source-note">สถานะ “ตรวจสอบแหล่งเผยแพร่แล้ว” หมายถึงพบหน้าสื่อหรือหลักฐานผู้จัด ไม่ได้ยืนยันว่า Facebook เปิดรับชมได้โดยไม่เข้าสู่ระบบ ส่วนรายการ “เบาะแส” เป็นข้อมูลสำหรับค้นหาต่อ ไม่ใช่คลิปที่ตรวจสอบเนื้อหาสำเร็จแล้ว</p>
 </div></section>'''
 shorts=f'''{intro('SHORT-FORM VIDEO · TIKTOK','ธรรมะคลิปสั้น','Dhamma Shorts · คลิปจาก TikTok @domskyline21')}
 <section class="shorts-credit-banner"><div class="container"><aside class="source-credit" aria-label="ขอบคุณแหล่งเผยแพร่วิดีโอสั้น">
@@ -181,6 +192,7 @@ featured=f'''{intro('ORIGINAL VIDEO THUMBNAILS','คลิปจากราย�
 <section class="section"><div class="container"><div id="featuredSections"><div class="loading">กำลังโหลดคลิปจากรายการ...</div></div></div></section>'''
 library=f'''{intro('VIDEO LIBRARY','คลังวิดีโอ','ค้นหาชื่อเรื่องจากแหล่งเผยแพร่ต้นฉบับ และเปิดรับชมได้โดยตรง')}
 <section class="section"><div class="container">{tabs_bar()}
+<p class="press-media-link">ต้องการดูวิดีโอที่เผยแพร่โดยหน่วยงานอื่น? <a href="./external-media.html">สื่อจากแหล่งภายนอกและรายการตรวจสอบ ↗</a></p>
 {grid('คลังวิดีโอทั้งหมด','libraryGrid')}<div class="empty" id="emptyResults" hidden><h2>ไม่พบรายการที่ตรงกับคำค้น</h2><button type="button" id="clearAll">ดูวิดีโอทั้งหมด</button></div>
 <div class="load-wrap"><button id="loadMore" type="button" class="btn secondary" hidden>ดูวิดีโอเพิ่มเติม ↓</button></div></div></section>'''
 category=f'''{intro('SERIES','หมวดรายการ','','categories.html','หมวดรายการ')}
@@ -204,6 +216,7 @@ pages=[
  ('shorts.html','shorts','ธรรมะคลิปสั้น | '+name,'คลิปสั้นต้นฉบับจากบัญชี TikTok @domskyline21 ที่ตรวจสอบแหล่งและภาพปก',shorts),
  ('quotes.html','quotes','คำคมธรรมะ | '+name,'รวบรวมภาพคำคมธรรมะของพระมหานภันต์จากคลังภาพที่ผู้ดูแลจัดเตรียมและโพสต์ต้นฉบับที่ตรวจสอบได้',quotes),
  ('press.html','press','ข่าว บทสัมภาษณ์ และผลงาน | '+name,'คลังข่าว บทสัมภาษณ์ ประวัติ และผลงานย้อนหลังของพระมหานภันต์ พร้อมอ้างอิงแหล่งเผยแพร่ต้นฉบับ',press),
+ ('external-media.html','external-media','สื่อจากแหล่งภายนอก | '+name,'คลิปจากหน่วยงานภายนอกและเบาะแสที่แยกสถานะตรวจสอบ',external_media),
  ('library.html','library','คลังวิดีโอ | '+name,'ค้นหาและเลือกชมวิดีโอต้นฉบับ แยกหมวด ปี และช่องทาง',library),
  ('category.html','category','หมวดรายการ | '+name,'รายการคลิปตามหมวดหมู่จากทะเบียนจริง',category),
  ('video.html','video','รายละเอียดวิดีโอ | '+name,'รายละเอียดคลิปและลิงก์วิดีโอของผู้เผยแพร่ต้นฉบับ',video),

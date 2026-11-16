@@ -363,7 +363,7 @@ function bindShared(){
 function renderPressArchive(entries){
  const list=$('pressGrid'), search=$('pressSearch'), category=$('pressCategory');
  const count=$('pressCount'), empty=$('pressEmpty');
- const allowed=new Set(['https://hands-on.co.th','https://www.gotoknow.org','https://fmtint.com']);
+ const allowed=new Set(["https://blog.cofact.org","https://fb.mcu.ac.th","https://fmtint.com","https://hands-on.co.th","https://mgronline.com","https://monitor.co.id","https://theactive.thaipbs.or.th","https://thebuddh.com","https://thethaiger.com","https://watchakdaeng.com","https://www.dailynews.co.th","https://www.gchumanrights.org","https://www.gotoknow.org","https://www.iccgc.kr","https://www.nhrc.or.th","https://www.opsmoac.go.th","https://www.peacemakersnetwork.org","https://www.soiciety.com","https://www.thaipbs.or.th","https://www.tnews.co.th"]);
  const rows=(Array.isArray(entries)?entries:[]).filter(x=>{
   try{
    const u=new URL(x.url);
@@ -394,8 +394,40 @@ function renderPressArchive(entries){
  category.addEventListener('change',draw);
  draw();
 }
+function renderExternalMedia(entries){
+ const grid=$('externalMediaGrid'), search=$('externalMediaSearch'), status=$('externalMediaStatus'), count=$('externalMediaCount'), empty=$('externalMediaEmpty');
+ const allowed=new Set(['www.trueplookpanya.com','www.facebook.com','www.thaipbs.or.th','lnkd.in','www.traffic.org','watchakdaeng.com','www.opsmoac.go.th','www.kaiciid.org','social-mgr.mgronline.com','www.youtube.com']);
+ const records=(Array.isArray(entries)?entries:[]).filter(x=>{
+  try{const u=new URL(x.url);
+   return u.protocol==='https:' && allowed.has(u.hostname) && ['verified','needs_review','lead'].includes(x.status) && !!x.title && !!x.source && !!x.note;
+  }catch{return false}
+ });
+ function draw(){
+  const q=norm(search.value), filter=status.value;
+  const visible=records.filter(x=>(filter==='all'||x.status===filter) && (!q||norm([x.title,x.source,x.note].join(' ')).includes(q)));
+  grid.innerHTML=visible.map(x=>{
+   const isVideo=x.status==='verified',label=isVideo?'ตรวจสอบแหล่งเผยแพร่แล้ว':x.status==='needs_review'?'คลิปจากทะเบียนเก่า · รอตรวจ':'เบาะแส · ยังไม่ยืนยันคลิป';
+   const linkLabel=isVideo?'เปิดสื่อต้นฉบับ ↗':'ดูแหล่งอ้างอิง ↗';
+   return '<article class="press-card"><div class="press-meta"><span class="press-kind">'+esc(label)+'</span></div>'
+    +'<h2>'+esc(x.title)+'</h2><p class="press-summary">'+esc(x.note)+'</p>'
+    +'<div class="press-source"><span>แหล่งข้อมูล</span><strong>'+esc(x.source)+'</strong></div>'
+    +'<a class="press-outbound" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+linkLabel+'</a></article>';
+  }).join('');
+  count.textContent='พบ '+visible.length.toLocaleString('th-TH')+' จาก '+records.length.toLocaleString('th-TH')+' รายการ';
+  empty.hidden=visible.length>0;
+ }
+ search.addEventListener('input',draw);status.addEventListener('change',draw);draw();
+}
 async function boot(){
  bindShared();
+ if(page==='external-media'){
+  try{
+   const response=await fetch('./data/external-media.json',{cache:'no-cache'});
+   if(!response.ok)throw new Error('External media HTTP '+response.status);
+   const catalog=await response.json();renderExternalMedia(catalog.items);
+  }catch(error){console.error('Cannot load external media',error);$('externalMediaGrid').innerHTML='<p class="empty">ไม่สามารถโหลดทะเบียนสื่อภายนอกได้ กรุณาลองรีเฟรชหน้าเว็บ</p>';}
+  return;
+ }
  if(page==='press'){
   try{
    const response=await fetch('./data/press.json',{cache:'no-cache'});
