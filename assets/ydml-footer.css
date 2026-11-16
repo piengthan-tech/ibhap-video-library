@@ -75,12 +75,10 @@
 .footer-design-credit{
  border-top:1px solid rgba(207,229,247,.12);
  text-align:center;
- color:#FCA311;
- font-size:22px;
- font-weight:700;
- line-height:1.6;
- letter-spacing:.7px;
- padding:15px 16px 22px;
- -webkit-text-stroke:.3px rgba(255,211,138,.75);
- text-shadow:0 0 4px rgba(255,198,91,.72),0 0 12px rgba(252,163,17,.64),0 0 26px rgba(252,163,17,.32);
+ color:#fff;
+ font-size:18px;
+ font-weight:400;
+ line-height:1.7;
+ letter-spacing:.2px;
+ padding:12px 16px 18px;
 }
