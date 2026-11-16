@@ -73,23 +73,15 @@ function chooseCover(group){
  return originals[0] || [...group].sort(byDateDesc)[0];
 }
 function quoteCard(q){
- const image=esc(q.image), text=esc(q.text || '');
- const hasText=typeof q.text==='string' && q.text.trim().length>0;
- const fbSource=/^https:\/\/www\.facebook\.com\/photo\.php\?fbid=\d{10,18}$/.test(q.source_url||'');
- const alt=hasText
-   ? 'ภาพคำคมธรรมะจากพระมหานภันต์ ข้อความ: '+q.text.replace(/\s+/g,' ').slice(0,110)
+ const image=esc(q.image);
+ const quoteText=typeof q.text==='string'?q.text.trim():'';
+ const alt=quoteText
+   ? 'ภาพคำคมธรรมะพระมหานภันต์ ข้อความ: '+quoteText.replace(/\s+/g,' ').slice(0,110)
    : 'ภาพคำคมธรรมะพระมหานภันต์ สนฺติภทฺโท';
- let html='<article class="quote-card" data-photo-id="'+esc(q.id)+'">';
- html+='<a class="quote-image" href="'+image+'" target="_blank" rel="noopener noreferrer" aria-label="เปิดภาพคำคมธรรมะขนาดเต็ม">';
- html+='<img src="'+image+'" alt="'+esc(alt)+'" loading="lazy" decoding="async"></a>';
- html+='<div class="quote-body">';
- html+=hasText
-   ? '<blockquote class="quote-text">'+text+'</blockquote>'
-   : '<p class="quote-picture-note">อ่านคำคมจากภาพต้นฉบับ</p>';
- html+='<div class="quote-footer"><span>'+(fbSource?'ข้อความจากภาพต้นฉบับ':'ภาพจากคลังที่ผู้ดูแลเว็บไซต์จัดเตรียม')+'</span>';
- if(fbSource)html+='<a href="'+esc(q.source_url)+'" target="_blank" rel="noopener noreferrer">ดูโพสต์ Facebook ↗</a>';
- html+='</div></div></article>';
- return html;
+ return '<article class="quote-card" data-photo-id="'+esc(q.id)+'">'+
+   '<a class="quote-image" href="'+image+'" target="_blank" rel="noopener noreferrer" aria-label="เปิดภาพคำคมธรรมะขนาดเต็ม">'+
+   '<img src="'+image+'" alt="'+esc(alt)+'" loading="lazy" decoding="async"></a>'+
+   '</article>';
 }
 function quoteCategoryCard(){
  if(!quotes.length)return '';
