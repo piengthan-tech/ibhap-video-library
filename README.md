@@ -229,3 +229,14 @@
 - Page views are sent through GA4 automatic page_view. A separate archive_outbound_click custom event tracks clicks to external sources, with destination_type, destination_host, and source_section.
 - The page about.html#analytics-privacy explains how the system works and its limitations. Events may be blocked by browsers, consent choices, or network restrictions.
 - Google Analytics account ownership and access, data stream connection, real-time GA4 reception, and optional custom dimensions still require verification within the correct GA4 property.
+
+## SEO technical baseline — 17 พฤศจิกายน 2569
+
+- กำหนดชื่อหน้าและ Meta Description ที่สะท้อนคำค้นพระมหานภันต์ สนฺติภทฺโท / Ven. Napan ใน HTML ทั้ง 11 หน้า
+- Canonical ใช้โดเมน www.ydml.co.th/pmnapan-library/ ไม่ใช่ GitHub Pages; หน้า video/category ใช้ Canonical ตามพารามิเตอร์จริงเมื่อ JavaScript ทำงาน
+- เพิ่ม Open Graph image / URL, Twitter Card, robots meta และ JSON-LD ประเภท WebSite + CollectionPage/WebPage + BreadcrumbList เมื่อเหมาะสม
+- หน้าแรกเพิ่มลิงก์นำทางและเนื้อหาเชิงอธิบายที่เห็นได้ใน HTML ด้านล่างของหน้า โดยไม่เปลี่ยนภาพ/ข้อความแบนเนอร์หรือหมวดคลิป
+- หน้า video/category ปรับ title/description/OG title ตามรายการ/หมวดจากทะเบียนหลังโหลดข้อมูล ไม่สร้างคำสอนหรือข้อความวิดีโอใหม่
+- Sitemap ภายใต้ /pmnapan-library/sitemap.xml มีรายการอยู่แล้ว แต่ Sitemap หลัก /sitemap.xml ของ YDML ยังไม่อ้างอิงคลังธรรมะ ต้องดำเนินการที่โฮสต์เว็บไซต์หลัก และส่ง Sitemap ผ่าน Google Search Console
+- ไม่เพิ่ม Schema ประเภท LocalBusiness หรือ VideoObject บนหน้า outbound-link เพราะเว็บไซต์นี้เป็นคลังอ้างอิง ไม่ใช่ธุรกิจในพื้นที่หรือผู้โฮสต์วิดีโอ
+- การแก้เทคนิคไม่ได้รับประกันอันดับ SEO และยังต้องตรวจ Crawl/Indexing/Query impressions ด้วย Google Search Console

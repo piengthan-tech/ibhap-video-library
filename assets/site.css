@@ -258,3 +258,12 @@ body[data-page="quotes"] .quote-grid{
 .press-thumbnail img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .press-thumbnail-contain img{object-fit:contain}
 .press-thumbnail:focus-visible{outline:3px solid #157ed6;outline-offset:3px}
+
+/* Search-friendly evergreen navigation outside the primary hero. */
+.seo-discovery{padding-top:44px;padding-bottom:65px;background:#f5faff}
+.seo-discovery-inner{max-width:1020px;margin:auto}
+.seo-discovery h2{color:#103f72;font-size:clamp(18px,2.1vw,25px);margin:0 0 12px}
+.seo-discovery p{max-width:950px;color:#50738d;font-size:13px;line-height:1.95;margin:0 0 18px}
+.seo-discovery-links{display:flex;gap:10px;flex-wrap:wrap}
+.seo-discovery-links a{color:#0c6cb2;border:1px solid #bfdcf0;background:#fff;border-radius:9px;padding:8px 12px;font-size:12px;font-weight:600}
+.seo-discovery-links a:hover{text-decoration:underline;border-color:#0879d2}

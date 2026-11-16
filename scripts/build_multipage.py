@@ -65,7 +65,58 @@ def footer():
   <a href="#top" class="footer-back-top">↑ กลับขึ้นด้านบน</a>
  </div>
  </footer>'''
+SEO_TITLES={'home': 'พระมหานภันต์ สนฺติภทฺโท | คลังธรรมะ PMNapan Library', 'categories': 'หมวดรายการธรรมะ | พระมหานภันต์ สนฺติภทฺโท', 'featured': 'คลิปธรรมะและรายการย้อนหลัง | พระมหานภันต์', 'shorts': 'คลิปธรรมะสั้น TikTok | พระมหานภันต์ สนฺติภทฺโท', 'quotes': 'คำคมธรรมะจากภาพต้นฉบับ | พระมหานภันต์', 'press': 'ข่าว บทสัมภาษณ์ และผลงาน | พระมหานภันต์', 'external-media': 'สื่อจากแหล่งเผยแพร่ภายนอก | พระมหานภันต์', 'library': 'คลังวิดีโอธรรมะ YouTube และ TikTok | พระมหานภันต์', 'category': 'หมวดคลิปธรรมะ | PMNapan Library', 'video': 'รายละเอียดวิดีโอธรรมะ | PMNapan Library', 'about': 'แหล่งข้อมูลและที่มาคลังธรรมะ | PMNapan Library'}
+SEO_DESCRIPTIONS={'home': 'รวมคลิปธรรมะ คำคม ข่าวและบทสัมภาษณ์ที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท (Ven. Napan) พร้อมลิงก์วิดีโอและแหล่งเผยแพร่ต้นฉบับ', 'categories': 'สำรวจหมวดรายการธรรมะของพระมหานภันต์ สนฺติภทฺโท ทั้งอาสาหาธรรม รายการย้อนหลัง ธรรมบรรยาย และสื่อที่เกี่ยวข้องจากแหล่งเผยแพร่จริง', 'featured': 'เลือกชมรายการธรรมะและคลิปย้อนหลังที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท พร้อมภาพหน้าปกและลิงก์ไปยังผู้เผยแพร่ต้นฉบับ', 'shorts': 'รวบรวมคลิปธรรมะสั้นที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท จาก TikTok โดยรักษาลิงก์และคำบรรยายตามแหล่งเผยแพร่ต้นฉบับ', 'quotes': 'รวมภาพคำคมธรรมะของพระมหานภันต์ สนฺติภทฺโท จากภาพต้นฉบับที่ตรวจสอบแล้ว เปิดดูรูปภาพขนาดเต็มและสำรวจคำสอนจากแหล่งจริง', 'press': 'รวบรวมข่าว บทสัมภาษณ์ กิจกรรม และผลงานย้อนหลังที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท พร้อมสรุปสั้นและลิงก์ไปยังสำนักข่าวต้นฉบับ', 'external-media': 'คลิปจากหน่วยงานภายนอกที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท พร้อมแยกสถานะสื่อที่ตรวจสอบได้และเบาะแสที่ยังต้องตรวจสอบ', 'library': 'ค้นหาวิดีโอธรรมะของพระมหานภันต์ สนฺติภทฺโท และสื่อที่เกี่ยวข้อง เลือกหมวด ปี และแหล่งเผยแพร่ YouTube หรือ TikTok', 'category': 'ค้นหาและเลือกชมวิดีโอจากหมวดรายการธรรมะของพระมหานภันต์ สนฺติภทฺโท พร้อมลิงก์ต้นฉบับและข้อมูลการเผยแพร่', 'video': 'อ่านรายละเอียดวิดีโอที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท ตรวจชื่อเรื่องและเปิดวิดีโอจากแหล่งเผยแพร่ต้นฉบับ', 'about': 'ตรวจสอบแหล่งเผยแพร่วิดีโอ คำคม และข้อมูลอ้างอิงใน PMNapan Library เพื่อให้เข้าถึงคลังธรรมะของพระมหานภันต์ สนฺติภทฺโท ได้อย่างถูกต้อง'}
+SEO_PATHS={'home': '', 'categories': 'categories.html', 'featured': 'featured.html', 'shorts': 'shorts.html', 'quotes': 'quotes.html', 'press': 'press.html', 'external-media': 'external-media.html', 'library': 'library.html', 'category': 'category.html', 'video': 'video.html', 'about': 'about.html'}
+SEO_PERSON={'@type': 'Person', 'name': 'พระมหานภันต์ สนฺติภทฺโท', 'alternateName': ['Ven. Napan', 'PM Napan']}
+SEO_WEBSITE={'@type': 'WebSite', '@id': 'https://www.ydml.co.th/pmnapan-library/#website', 'url': 'https://www.ydml.co.th/pmnapan-library/', 'name': 'PMNapan Library Dhamma Archive', 'inLanguage': 'th', 'description': 'รวมคลิปธรรมะ คำคม ข่าวและบทสัมภาษณ์ที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท (Ven. Napan) พร้อมลิงก์วิดีโอและแหล่งเผยแพร่ต้นฉบับ'}
+
+def seo_tags(active,title,description):
+    import json
+    from html import escape as _escape
+    base='https://www.ydml.co.th/pmnapan-library/'
+    canonical=base+SEO_PATHS[active]
+    graph=[SEO_WEBSITE,{'@type':'CollectionPage' if active not in ('video','about') else 'WebPage',
+        '@id':canonical+'#webpage','url':canonical,'name':title,'description':description,
+        'inLanguage':'th','isPartOf':{'@id':base+'#website'},'about':SEO_PERSON}]
+    if active in ('category','video'):
+        graph=[SEO_WEBSITE]
+    if active not in ('home','category','video'):
+        graph.append({'@type':'BreadcrumbList','@id':canonical+'#breadcrumbs',
+          'itemListElement':[{'@type':'ListItem','position':1,'name':'หน้าแรก','item':base},
+          {'@type':'ListItem','position':2,'name':title.split(' | ')[0],'item':canonical}]})
+    tags=['<meta name="robots" content="index,follow,max-image-preview:large">',
+      '<meta property="og:site_name" content="PMNapan Library Dhamma Archive">',
+      '<meta property="og:locale" content="th_TH">',
+      '<meta property="og:image" content="'+base+'assets/monk-watering-960.webp">',
+      '<meta property="og:image:alt" content="PMNapan Library คลังธรรมะพระมหานภันต์">',
+      '<meta name="twitter:card" content="summary_large_image">']
+    if active in ('category','video'):
+        tags.append("""<script>
+(function(){
+  const p=new URLSearchParams(location.search);
+  const filename=location.pathname.split('/').pop();
+  const target=new URL(filename, 'https://www.ydml.co.th/pmnapan-library/');
+  if(filename==='video.html'){
+    const id=p.get('id')||p.get('clip');
+    if(id && /^(YouTube|TikTok):[A-Za-z0-9_-]{8,35}$/.test(id))target.searchParams.set('id',id);
+  }
+  if(filename==='category.html'){
+    const name=p.get('name');
+    if(name && name.length<110)target.searchParams.set('name',name);
+  }
+  const link=document.createElement('link');link.rel='canonical';link.href=target.href;document.head.appendChild(link);
+  const og=document.createElement('meta');og.setAttribute('property','og:url');og.content=target.href;document.head.appendChild(og);
+})();
+</script>""")
+    else:
+        tags.extend(['<link rel="canonical" href="'+canonical+'">','<meta property="og:url" content="'+canonical+'">'])
+    tags.append('<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False,separators=(',',':')).replace('</','<\\/')+'</script>')
+    return '\n'.join(tags)
+
 def shell(active,title,description,content):
+ title=SEO_TITLES.get(active,title)
+ description=SEO_DESCRIPTIONS.get(active,description)
  return f'''<!doctype html>
 <html lang="th"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -73,6 +124,7 @@ def shell(active,title,description,content):
 <meta name="description" content="{escape(description,quote=True)}">
 <meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}">
 <title>{escape(title)}</title>
+{seo_tags(active,title,description)}
 <!-- Keep the public address clean; preserve functional search and video parameters. -->
 <script>
 (() => {{
@@ -142,6 +194,7 @@ home=f'''<section class="hero"><div class="container hero-row"><div class="hero-
 </div></section>
 <section class="section"><div class="container"><div class="heading-row"><div><p class="kicker">DHAMMA QUOTES · ORIGINAL IMAGES</p><h2>คำคมธรรมะ</h2></div><a href="./quotes.html" class="text-link">ดูคำคมทั้งหมด ↗</a></div>
 <div id="homeQuotes" class="quote-grid"><div class="loading">กำลังโหลดคำคมธรรมะ...</div></div></div></section>'''
+home += '<section class="section seo-discovery" aria-labelledby="archiveExploreHeading"><div class="container"><div class="seo-discovery-inner"><h2 id="archiveExploreHeading">ค้นหาธรรมะและผลงานของพระมหานภันต์ สนฺติภทฺโท</h2><p>PMNapan Library รวบรวมรายการธรรมะและสื่อที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท หรือ Ven. Napan เพื่อให้ค้นหาคลิปเต็มจากผู้เผยแพร่ต้นฉบับได้สะดวก พร้อมแยกข้อมูลคำคม ข่าว และบทสัมภาษณ์ออกจากกันอย่างชัดเจน แหล่งข้อมูลมีทั้ง YouTube, TikTok และเว็บไซต์ของหน่วยงานต่าง ๆ โดยระบุที่มาและเก็บเฉพาะรายการที่ตรวจสอบได้</p><nav class="seo-discovery-links" aria-label="สำรวจคลังธรรมะ"><a href="./library.html">ค้นหาคลิปและธรรมบรรยาย</a><a href="./categories.html">เลือกหมวดรายการธรรมะ</a><a href="./shorts.html">ดูธรรมะคลิปสั้น</a><a href="./quotes.html">ดูภาพคำคมธรรมะ</a><a href="./press.html">อ่านข่าวและบทสัมภาษณ์</a><a href="./about.html">ตรวจสอบแหล่งเผยแพร่</a></nav></div></div></section>'
 categories=f'''{intro('ALL SERIES','หมวดรายการ','หมวดที่มีอยู่จริงในสารบัญวิดีโอ')}
 <section class="section"><div class="container"><div class="category-summary" id="categorySummary"></div>
 <div id="allCategories" class="series-grid"><div class="loading">กำลังโหลดหมวดรายการ...</div></div>

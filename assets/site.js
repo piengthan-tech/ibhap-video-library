@@ -210,7 +210,7 @@ function selectCategory(){
   return;
  }
  activeCategory=name;
- document.title=name+' | PMNapan Library Dhamma Archive';
+ updateDynamicSeo(name,'วิดีโอในหมวด '+name+' จากคลังธรรมะของพระมหานภันต์ สนฺติภทฺโท');
  $('pageTitle').textContent=name;
  $('currentCrumb').textContent=name;
  const group=items.filter(x=>x.category===name).sort(byDateDesc);
@@ -221,6 +221,41 @@ function selectCategory(){
  selected=group;visibleCount=PAGE_SIZE;
  drawPaged($('categoryGrid'));
 }
+function updateDynamicSeo(title, description, thumbnail){
+ if(title)document.title=title+' | PMNapan Library';
+ if(description){
+  const cleaned=String(description).replace(/\s+/g,' ').slice(0,180);
+  for(const selector of ['meta[name="description"]','meta[property="og:description"]']){
+   const el=document.querySelector(selector);if(el)el.content=cleaned;
+  }
+ }
+ const canonical=document.querySelector('link[rel="canonical"]')?.href;
+ if(canonical&&title&&description){
+  let schema=document.getElementById('pmnapan-dynamic-schema');
+  if(!schema){
+   schema=document.createElement('script');
+   schema.id='pmnapan-dynamic-schema';
+   schema.type='application/ld+json';
+   document.head.appendChild(schema);
+  }
+  schema.textContent=JSON.stringify({
+   '@context':'https://schema.org',
+   '@type':'WebPage',
+   '@id':canonical+'#webpage',
+   url:canonical,
+   name:title,
+   description:String(description).replace(/\s+/g,' ').slice(0,450),
+   inLanguage:'th',
+   isPartOf:{'@id':'https://www.ydml.co.th/pmnapan-library/#website'}
+  });
+ }
+ const ogTitle=document.querySelector('meta[property="og:title"]');
+ if(ogTitle&&title)ogTitle.content=title+' | PMNapan Library';
+ if(thumbnail&&(thumbnail.startsWith('https://')||thumbnail.startsWith('http://'))){
+  const ogImage=document.querySelector('meta[property="og:image"]');
+  if(ogImage)ogImage.content=thumbnail;
+ }
+}
 function renderVideoDetail(){
  const params=new URLSearchParams(location.search);
  const key=params.get('id')||params.get('clip')||'';
@@ -230,7 +265,7 @@ function renderVideoDetail(){
   $('videoDetail').innerHTML='<div class="empty"><p>ไม่มีข้อมูลวิดีโอนี้ในทะเบียน</p><a class="btn secondary" href="./library.html">กลับไปคลังวิดีโอ</a></div>';
   return;
  }
- document.title=x.title+' | PMNapan Library Dhamma Archive';
+ updateDynamicSeo(x.title, x.description||('วิดีโอจาก '+x.category+' บน PMNapan Library'), (thumb(x)||'').startsWith('https://') ? thumb(x) : '');
  $('pageTitle').textContent='รายละเอียดวิดีโอ';
  $('currentCrumb').textContent='รายละเอียดวิดีโอ';
  const src=thumb(x);
