@@ -364,6 +364,12 @@ function renderPressArchive(entries){
  const list=$('pressGrid'), search=$('pressSearch'), category=$('pressCategory');
  const count=$('pressCount'), empty=$('pressEmpty');
  const allowed=new Set(["https://blog.cofact.org","https://fb.mcu.ac.th","https://fmtint.com","https://hands-on.co.th","https://mgronline.com","https://monitor.co.id","https://theactive.thaipbs.or.th","https://thebuddh.com","https://thethaiger.com","https://watchakdaeng.com","https://www.dailynews.co.th","https://www.gchumanrights.org","https://www.gotoknow.org","https://www.iccgc.kr","https://www.nhrc.or.th","https://www.opsmoac.go.th","https://www.peacemakersnetwork.org","https://www.soiciety.com","https://www.thaipbs.or.th","https://www.tnews.co.th"]);
+ const imageHosts=new Set(["blog.cofact.org","content-images.thaipbs.or.th","fb.mcu.ac.th","files.wp.thaipbs.or.th","fmtint.com","image.tnews.co.th","lh3.googleusercontent.com","media.beehiiv.com","monitor.co.id","mpics-cdn.mgronline.com","static.nhrc.or.th","thebuddh.com","thethaiger.com","watchakdaeng.com","www.gchumanrights.org","www.hands-on.co.th","www.opsmoac.go.th"]);
+
+ function thumbnailUrl(raw){
+  if(typeof raw!=='string'||!raw)return '';
+  try{const url=new URL(raw);return url.protocol==='https:'&&imageHosts.has(url.hostname)?url.href:''}catch{return ''}
+ }
  const rows=(Array.isArray(entries)?entries:[]).filter(x=>{
   try{
    const u=new URL(x.url);
@@ -378,15 +384,26 @@ function renderPressArchive(entries){
   const query=norm(search.value), selected=category.value;
   const selectedRows=rows.filter(x=>(!selected||x.category===selected)
     && (!query||norm([x.title,x.summary,x.source,x.category,x.relation].join(' ')).includes(query)));
-  list.innerHTML=selectedRows.map(x=>
-   '<article class="press-card">'
+  list.innerHTML=selectedRows.map(x=>{
+   const image=thumbnailUrl(x.thumbnail);
+   const thumb=image
+     ? '<a class="press-thumbnail'+(x.thumbnail_fit==='contain'?' press-thumbnail-contain':'')+'" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" aria-label="อ่านบทความต้นฉบับ: '+esc(x.title)+'">'
+        +'<img src="'+esc(image)+'" alt="ภาพประกอบต้นฉบับ: '+esc(x.title)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a>'
+     : '';
+   return '<article class="press-card">'
+   +thumb
    +'<div class="press-meta"><span class="press-kind">'+esc(x.category)+'</span><span>'+esc(x.published_at?formatDate(x.published_at):'ไม่ระบุวันที่เผยแพร่')+'</span></div>'
    +'<h2>'+esc(x.title)+'</h2>'
    +'<p class="press-summary">'+esc(x.summary)+'</p>'
    +'<div class="press-source"><span>แหล่งเผยแพร่</span><strong>'+esc(x.source)+'</strong></div>'
    +'<a class="press-outbound" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">อ่านต้นฉบับ ↗</a>'
    +'</article>'
-  ).join('');
+  }).join('');
+  list.querySelectorAll('.press-thumbnail img').forEach(img=>{
+   const hide=()=>img.closest('.press-thumbnail')?.remove();
+   img.addEventListener('error',hide,{once:true});
+   if(img.complete&&img.naturalWidth===0)hide();
+  });
   count.textContent='พบ '+selectedRows.length.toLocaleString('th-TH')+' จาก '+rows.length.toLocaleString('th-TH')+' รายการ';
   empty.hidden=selectedRows.length!==0;
  }

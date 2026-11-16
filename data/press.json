@@ -12,7 +12,11 @@
       "published_at": "2018-06-19",
       "summary": "บทสัมภาษณ์พระมหานภันต์เกี่ยวกับการศึกษาต่อที่ University of Leeds และแนวคิดนำการสื่อสาร กลยุทธ์การตลาด และ CSR มาประยุกต์กับงานเผยแผ่พระพุทธศาสนาและการสร้างสันติภาพ",
       "relation": "ผู้ให้สัมภาษณ์",
-      "url": "https://hands-on.co.th/blog/review-corporate-communications-marketing-public-relations-university-of-leeds/"
+      "url": "https://hands-on.co.th/blog/review-corporate-communications-marketing-public-relations-university-of-leeds/",
+      "thumbnail": "https://www.hands-on.co.th/wp-content/uploads/2018/08/2-3.jpg",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_original",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "gotoknow-project-84-2011",
@@ -32,7 +36,11 @@
       "published_at": "",
       "summary": "ประวัติย่อและข้อมูลการทำงานด้านการพัฒนาคน การศึกษาวิถีพุทธ การออกแบบหลักสูตร และโครงการของกลุ่มเพื่อชีวิตดีงาม จากหน้าโปรไฟล์ที่เผยแพร่สาธารณะ",
       "relation": "ประวัติจากบัญชีผู้เผยแพร่",
-      "url": "https://www.gotoknow.org/user/pmnapan/profile"
+      "url": "https://www.gotoknow.org/user/pmnapan/profile",
+      "thumbnail": "https://lh3.googleusercontent.com/a/ACg8ocIXJQgsCb6E2qGEhVdslHGBvFWdEgkCwDNg_ZywZEQMJsh_hMLvpw=s256-p",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "article_original",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "fmtint-institute-history",
@@ -42,7 +50,11 @@
       "published_at": "",
       "summary": "ประวัติการก่อตั้งและพัฒนาการของกลุ่มเพื่อชีวิตดีงาม โดยระบุบทบาทของพระมหานภันต์ในการออกแบบหลักสูตรฝึกอบรมและจัดกระบวนการเรียนรู้ตั้งแต่ พ.ศ. 2544",
       "relation": "ผู้ร่วมออกแบบหลักสูตรตามประวัติหน่วยงาน",
-      "url": "https://fmtint.com/history/"
+      "url": "https://fmtint.com/history/",
+      "thumbnail": "https://fmtint.com/wp-content/uploads/2017/05/MG_4307.jpg",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_original",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N001",
@@ -54,7 +66,11 @@
       "summary": "บทสัมภาษณ์พระมหานภันต์เกี่ยวกับงานสันติภาพในภาคใต้ สิทธิมนุษยชน และการเรียนรู้เพื่อพัฒนาชุมชน",
       "relation": "ผู้ให้สัมภาษณ์",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N001"
+      "source_record": "N001",
+      "thumbnail": "https://www.gchumanrights.org/wp-content/uploads/2026/02/Ven-Napan-APMA-lisbon-2024-1024x683.jpg",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_original",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N002",
@@ -78,7 +94,11 @@
       "summary": "บทความว่าด้วยการมีส่วนร่วมด้านสิ่งแวดล้อมและพื้นที่สนทนาสาธารณะ มีการให้ความเห็นของพระมหานภันต์",
       "relation": "ผู้ให้ความเห็น",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N003"
+      "source_record": "N003",
+      "thumbnail": "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,quality=80,width=1200,onerror=redirect/uploads/asset/file/66150252-4825-4750-9361-6a93223f576c/20261011_164510.jpg.jpg?t=1791874618",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N004",
@@ -90,7 +110,11 @@
       "summary": "ข้อมูลกิจกรรมพัฒนาความรู้สิทธิมนุษยชนและการมีส่วนร่วมของภาคประชาสังคมในภาคใต้ ซึ่งกล่าวถึงพระมหานภันต์",
       "relation": "ผู้มีส่วนร่วมในกิจกรรม",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N004"
+      "source_record": "N004",
+      "thumbnail": "https://static.nhrc.or.th/file/content/a-1750132678.jpg?thumbnail=true",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N005",
@@ -102,7 +126,11 @@
       "summary": "ข่าวกิจกรรมคณะพุทธศาสตร์วันที่ 4 กุมภาพันธ์ 2569 ยืนยันพระมหานภันต์เป็นหนึ่งในวิทยากร พร้อมลิงก์วิดีโอต้นฉบับ",
       "relation": "วิทยากรร่วม",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N005"
+      "source_record": "N005",
+      "thumbnail": "https://fb.mcu.ac.th/wp-content/uploads/2026/02/a3eventsamanaba02fbibsc-5.jpg",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N006",
@@ -114,7 +142,11 @@
       "summary": "ประกาศกิจกรรมฟังธรรมวันที่ 2 มีนาคม 2569 และการถ่ายทอดสดทางออนไลน์ โดยระบุพระมหานภันต์เป็นวิทยากร",
       "relation": "วิทยากร",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N006"
+      "source_record": "N006",
+      "thumbnail": "https://www.opsmoac.go.th/data/news/l/690400000064.png",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N007",
@@ -138,7 +170,11 @@
       "summary": "สรุปประเด็นจาก Cofact Live Talk เรื่องธรรมะกับการรับมือข้อมูลยุค AI และข้อมูลเท็จ",
       "relation": "ผู้ร่วมสนทนา",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N008"
+      "source_record": "N008",
+      "thumbnail": "https://blog.cofact.org/wp-content/uploads/2024/02/IMG_2781.jpeg",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N009",
@@ -150,7 +186,11 @@
       "summary": "บทความถอดประเด็นความหลากหลาย เพศวิถี การยอมรับความแตกต่าง และบทสนทนาระหว่างศาสนา",
       "relation": "ผู้ร่วมสนทนา",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N009"
+      "source_record": "N009",
+      "thumbnail": "https://blog.cofact.org/wp-content/uploads/2024/07/IMG_4831.jpeg",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N010",
@@ -162,7 +202,11 @@
       "summary": "รายงานเวทีการตรวจสอบข้อมูลและการแสวงหาความจริง โดยพระมหานภันต์มีส่วนร่วมเปิดวงสนทนา",
       "relation": "ผู้ร่วมกิจกรรม",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N010"
+      "source_record": "N010",
+      "thumbnail": "https://blog.cofact.org/wp-content/uploads/2025/07/IMG_2734.jpeg",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N011",
@@ -174,7 +218,11 @@
       "summary": "บทความเรื่องการรู้เท่าทันข้อมูล อคติทางศาสนา และการสร้างความเข้าใจระหว่างผู้มีความเชื่อต่างกัน",
       "relation": "บุคคลที่กล่าวถึง",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N011"
+      "source_record": "N011",
+      "thumbnail": "https://blog.cofact.org/wp-content/uploads/2023/04/1680704013492.jpg",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N012",
@@ -186,7 +234,11 @@
       "summary": "บทสนทนาเรื่องศาสนา ความต่างทางความคิด การรับฟัง และความเท่าเทียมในสังคม",
       "relation": "ผู้ให้ความเห็น",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N012"
+      "source_record": "N012",
+      "thumbnail": "https://files.wp.thaipbs.or.th/theactive/2021/11/Act_Web_Read-thailandtalks.jpg",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N013",
@@ -198,7 +250,11 @@
       "summary": "ข่าววิเคราะห์เหตุการณ์และมุมมองต่อการจัดการความขัดแย้ง มีความคิดเห็นจากพระมหานภันต์",
       "relation": "ผู้ให้ความเห็น",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N013"
+      "source_record": "N013",
+      "thumbnail": "https://files.wp.thaipbs.or.th/theactive/2021/10/AN_Web_16x10-211026-1-%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%83%E0%B8%88%E0%B8%99%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%9E%E0%B8%B5%E0%B9%88%E0%B8%AA%E0%B8%B5%E0%B8%8A%E0%B8%A1%E0%B8%9E%E0%B8%B9.jpg",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N014",
@@ -210,7 +266,11 @@
       "summary": "บทความเกี่ยวกับการระดมทุนทำบุญเพื่อสาธารณะและความรับผิดชอบต่อสังคม มีความเห็นจากพระมหานภันต์",
       "relation": "ผู้ให้ความเห็น",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N014"
+      "source_record": "N014",
+      "thumbnail": "https://files.wp.thaipbs.or.th/theactive/2024/03/Act_Web_Read-16x9_1-2.jpg",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N015",
@@ -222,7 +282,11 @@
       "summary": "ข่าวเหตุการณ์การลาสิกขาของพระมหาไพรวัลย์ที่กล่าวถึงบทบาทหรือการปรากฏตัวของพระมหานภันต์ ไม่ใช่ผลงานธรรมบรรยาย",
       "relation": "บุคคลที่ถูกกล่าวถึง",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N015"
+      "source_record": "N015",
+      "thumbnail": "https://content-images.thaipbs.or.th/imgpx1/unsafe/rt:fill/el:1/s:1200:630/q:90/aHR0cHM6Ly9vbmVjbXMudGhhaXBicy5vci50aC9tZWRpYS9xdHloSlJqQ0pyVnBidnA3cjdLbEU3S2FxZHByZGFZYVpxWWduV25hclpVUW15Mnl1SE55M0hQLmpwZw==.jpg",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N017",
@@ -234,7 +298,11 @@
       "summary": "ข่าวรณรงค์ต่อต้านการค้าเครื่องรางจากสัตว์ป่าในโครงการ Mercy is Power โดยมีพระมหานภันต์เกี่ยวข้อง",
       "relation": "ผู้มีส่วนร่วมในกิจกรรม",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N017"
+      "source_record": "N017",
+      "thumbnail": "https://mpics-cdn.mgronline.com/pics/Images/564000008152001.JPEG",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N018",
@@ -246,7 +314,11 @@
       "summary": "ประกาศกำหนดการธรรมะออนไลน์ใน พ.ศ. 2564 ซึ่งระบุชื่อพระมหานภันต์ และควรแยกวันจัดงานจากวันเผยแพร่บทความ",
       "relation": "วิทยากรตามประกาศย้อนหลัง",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N018"
+      "source_record": "N018",
+      "thumbnail": "https://watchakdaeng.com/wp-content/uploads/2021/07/dhammar-online-Asalha-Puja-Day-by-siriraj-assembly.jpg",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N019",
@@ -258,7 +330,11 @@
       "summary": "ข่าวประชุมระหว่างศาสนาระดับนานาชาติด้านการอยู่ร่วมกันและสันติภาพซึ่งระบุชื่อ Ven. Napan",
       "relation": "วิทยากรตามข่าว",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N019"
+      "source_record": "N019",
+      "thumbnail": "https://monitor.co.id/wp-content/uploads/2023/12/prasetyo.jpg",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N020",
@@ -282,7 +358,11 @@
       "summary": "อีกแหล่งรายงานกรณีเดียวกับข่าวโรงแรม โดยเก็บเป็นแหล่งอ้างอิงเพิ่มเติม ไม่ใช่เหตุการณ์ใหม่",
       "relation": "บุคคลในข่าว",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N021"
+      "source_record": "N021",
+      "thumbnail": "https://thebuddh.com/wp-content/uploads/2026/09/1-30.jpg",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N022",
@@ -294,7 +374,11 @@
       "summary": "ข่าวเผยแพร่ข้อคิดเกี่ยวกับความถูกต้องและการยอมรับการทุจริตหลังการเลือกตั้ง โดยต้องอ้างอิงเนื้อหาในบริบทต้นฉบับ",
       "relation": "ผู้แสดงความเห็น",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N022"
+      "source_record": "N022",
+      "thumbnail": "https://thethaiger.com/th/wp-content/uploads/2026/02/Powerful-words-from-Phra-Maha-Naphant-bring-Thais-back-to-their-senses-declaring-Seeing-corruption-as-normal-is-unacceptable.jpg",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N024",
@@ -318,7 +402,11 @@
       "summary": "ข่าวอีกสำนักเกี่ยวกับเหตุการณ์โรงแรมเดียวกับ N020 และ N021 บันทึกเพื่อเก็บแหล่งอ้างอิง โดยไม่ถือเป็นเหตุการณ์ใหม่",
       "relation": "บุคคลในข่าว",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N026"
+      "source_record": "N026",
+      "thumbnail": "https://image.tnews.co.th/uploads/images/md/2026/09/A0GrAKmoIdEwIUvn8iB4.webp",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "article_og_image",
+      "thumbnail_checked_at": "2026-11-16"
     }
   ],
   "updated_at": "2026-11-16",
@@ -332,5 +420,19 @@
       "N027"
     ],
     "note": "multiple articles about the same public event kept as independent sources; dates blank unless verified"
+  },
+  "image_policy": "ใช้เฉพาะรูปที่อยู่ในหน้าต้นฉบับหรือเป็น og:image จากผู้เผยแพร่เดิม ไม่สร้างหรือสังเคราะห์ภาพใหม่ ไม่ใส่ภาพหากมีเพียงโลโก้ทั่วไปหรือยังตรวจลิงก์ภาพไม่ได้",
+  "image_audit": {
+    "checked": "2026-11-16",
+    "total_items": 27,
+    "with_verified_images": 22,
+    "excluded_ids": [
+      "gotoknow-project-84-2011",
+      "N002",
+      "N007",
+      "N020",
+      "N024"
+    ],
+    "presentation": "external source image URLs; no image copies uploaded"
   }
 }

@@ -250,3 +250,11 @@ body[data-page="quotes"] .quote-grid{
 /* Contextual navigation to verified external media. */
 .press-media-link{margin:0 0 24px;font-size:14px;color:#45667f;line-height:1.7}
 .press-media-link a{font-weight:700;color:#006bbd;text-decoration:underline;text-underline-offset:3px}
+
+
+/* Original article thumbnails on press cards. Hide the media element if the source
+   rejects hotlinking; news without an image retains its normal compact card. */
+.press-thumbnail{display:block;flex-shrink:0;aspect-ratio:16/9;width:100%;margin-bottom:17px;overflow:hidden;border-radius:11px;background:#f1f7fc;box-shadow:0 0 0 1px #dae9f5}
+.press-thumbnail img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.press-thumbnail-contain img{object-fit:contain}
+.press-thumbnail:focus-visible{outline:3px solid #157ed6;outline-offset:3px}
