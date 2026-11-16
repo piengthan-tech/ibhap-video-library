@@ -207,3 +207,8 @@ img{display:block;max-width:100%}svg{width:20px;height:20px;fill:none;stroke:cur
  .video-source-credit .source-credit-copy{flex-basis:calc(100% - 50px)}
  .video-source-credit .source-credit-link{margin-left:47px}
 }
+
+/* Square quote artwork stays readable on the dedicated quote page. */
+body[data-page="quotes"] .quote-image{aspect-ratio:1;min-height:0}
+body[data-page="quotes"] .quote-image img{max-height:none;object-fit:contain}
+.quote-picture-note{font-size:13px;color:#416d8d;margin:0 0 12px}

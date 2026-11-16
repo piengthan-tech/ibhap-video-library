@@ -73,16 +73,23 @@ function chooseCover(group){
  return originals[0] || [...group].sort(byDateDesc)[0];
 }
 function quoteCard(q){
- const image=esc(q.image),text=esc(q.text),url=esc(q.source_url);
- return `<article class="quote-card" data-photo-id="${esc(q.id)}">
-   <a class="quote-image" href="${image}" target="_blank" rel="noopener noreferrer" aria-label="เปิดภาพคำคมธรรมะต้นฉบับ">
-     <img src="${image}" alt="ภาพคำคมธรรมะจากเพจพระมหานภันต์ ข้อความ: ${esc(q.text.replace(/\s+/g,' ').slice(0,110))}" loading="lazy" decoding="async">
-   </a>
-   <div class="quote-body"><blockquote class="quote-text">${text}</blockquote>
-     <div class="quote-footer"><span>ข้อความจากภาพต้นฉบับ</span>
-       <a href="${url}" target="_blank" rel="noopener noreferrer">ดูโพสต์ Facebook ↗</a></div>
-   </div>
- </article>`;
+ const image=esc(q.image), text=esc(q.text || '');
+ const hasText=typeof q.text==='string' && q.text.trim().length>0;
+ const fbSource=/^https:\/\/www\.facebook\.com\/photo\.php\?fbid=\d{10,18}$/.test(q.source_url||'');
+ const alt=hasText
+   ? 'ภาพคำคมธรรมะจากพระมหานภันต์ ข้อความ: '+q.text.replace(/\s+/g,' ').slice(0,110)
+   : 'ภาพคำคมธรรมะพระมหานภันต์ สนฺติภทฺโท';
+ let html='<article class="quote-card" data-photo-id="'+esc(q.id)+'">';
+ html+='<a class="quote-image" href="'+image+'" target="_blank" rel="noopener noreferrer" aria-label="เปิดภาพคำคมธรรมะขนาดเต็ม">';
+ html+='<img src="'+image+'" alt="'+esc(alt)+'" loading="lazy" decoding="async"></a>';
+ html+='<div class="quote-body">';
+ html+=hasText
+   ? '<blockquote class="quote-text">'+text+'</blockquote>'
+   : '<p class="quote-picture-note">อ่านคำคมจากภาพต้นฉบับ</p>';
+ html+='<div class="quote-footer"><span>'+(fbSource?'ข้อความจากภาพต้นฉบับ':'ภาพจากคลังที่ผู้ดูแลเว็บไซต์จัดเตรียม')+'</span>';
+ if(fbSource)html+='<a href="'+esc(q.source_url)+'" target="_blank" rel="noopener noreferrer">ดูโพสต์ Facebook ↗</a>';
+ html+='</div></div></article>';
+ return html;
 }
 function quoteCategoryCard(){
  if(!quotes.length)return '';
@@ -110,14 +117,21 @@ function renderQuotesPage(){
 }
 function validateQuotes(raw){
  const seen=new Set(),hashes=new Set();
- const items=Array.isArray(raw?.items)?raw.items:[];
- return items.filter(x=>{
-  if(!/^\d{10,18}$/.test(String(x.id||'')))return false;
-  if(!/^\.\/assets\/quotes\/\d{10,18}\.jpg$/.test(String(x.image||'')))return false;
-  if(x.image!=='./assets/quotes/'+x.id+'.jpg')return false;
-  if(x.source_url!=='https://www.facebook.com/photo.php?fbid='+x.id)return false;
-  if(typeof x.text!=='string'||!x.text.trim()||seen.has(x.id)||hashes.has(x.sha256))return false;
-  seen.add(x.id);hashes.add(x.sha256);return true;
+ const entries=Array.isArray(raw?.items)?raw.items:[];
+ return entries.filter(x=>{
+  if(typeof x.text!=='string'||! /^[0-9a-f]{64}$/.test(x.sha256||''))return false;
+  const id=String(x.id||''), img=String(x.image||'');
+  const curated=/^\d{10,18}$/.test(id)
+    && img==='./assets/quotes/'+id+'.jpg'
+    && x.source_url==='https://www.facebook.com/photo.php?fbid='+id
+    && !!x.text.trim();
+  const imported=/^local-[0-9a-f]{20}$/.test(id)
+    && img==='./assets/quotes/'+id+'.jpg'
+    && x.sha256.startsWith(id.slice(6))
+    && x.origin==='local_folder'
+    && x.source_url==='' && x.text==='';
+  if((!curated&&!imported)||seen.has(id)||hashes.has(x.sha256))return false;
+  seen.add(id);hashes.add(x.sha256);return true;
  });
 }
 function categoryCard(name,group,i){

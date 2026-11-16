@@ -22,6 +22,227 @@
       "published_at": "",
       "sha256": "e28a4b6bc89a318623548f068196535a3047f9ff326d277c6348454bb1959a4e",
       "verification": "ข้อความถอดตามที่ปรากฏบนภาพต้นฉบับ"
+    },
+    {
+      "id": "local-31123e9d75ab2b1cd26a",
+      "text": "",
+      "image": "./assets/quotes/local-31123e9d75ab2b1cd26a.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "31123e9d75ab2b1cd26a18e0948c2781622eb9436ed5c23bf1d48054c8f17a99",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-322ec7b336d23af0bf49",
+      "text": "",
+      "image": "./assets/quotes/local-322ec7b336d23af0bf49.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "322ec7b336d23af0bf49c96551c73ba214a6081f595fe83810e5d647bf021faa",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-81fdf84ca5ceec11a7e8",
+      "text": "",
+      "image": "./assets/quotes/local-81fdf84ca5ceec11a7e8.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "81fdf84ca5ceec11a7e81e182b1731c74b6796ffeecea972f3bbd65f2f28c2b1",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-effcbbac994f54bd8f6b",
+      "text": "",
+      "image": "./assets/quotes/local-effcbbac994f54bd8f6b.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "effcbbac994f54bd8f6b955ea773c6e4b941bfe02a833ff83a99049a52e698df",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-ffd440006d08590967e5",
+      "text": "",
+      "image": "./assets/quotes/local-ffd440006d08590967e5.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "ffd440006d08590967e5463181ff94179829a5aac5aeddf210411252032c6965",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-776606899c39a8931513",
+      "text": "",
+      "image": "./assets/quotes/local-776606899c39a8931513.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "776606899c39a89315139f1747e9f860aa1bc43a0de17cacccbd03e20d48f3ff",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-02ee72c543cf6b1abade",
+      "text": "",
+      "image": "./assets/quotes/local-02ee72c543cf6b1abade.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "02ee72c543cf6b1abadee6130181ef54226a1504362f573dd645880b611e50a8",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-a00cc84b4151482485bb",
+      "text": "",
+      "image": "./assets/quotes/local-a00cc84b4151482485bb.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "a00cc84b4151482485bbfc54e88a9c1b4eed5f48190fe91c4e4b1475e74cf4d1",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-34e1a4e2cb9bd27cdde2",
+      "text": "",
+      "image": "./assets/quotes/local-34e1a4e2cb9bd27cdde2.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "34e1a4e2cb9bd27cdde2dd90f201f06ca48d3db696e32a6a89fd986198d50a53",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-4aa8a324369f274d9f0a",
+      "text": "",
+      "image": "./assets/quotes/local-4aa8a324369f274d9f0a.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "4aa8a324369f274d9f0a4d5f5c5611b2272cf41055e97a07abdef19f3ccfd324",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-320f86ed3e44e06e5ece",
+      "text": "",
+      "image": "./assets/quotes/local-320f86ed3e44e06e5ece.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "320f86ed3e44e06e5ecec4576d4d4ed3a8047faf9f90f9a262195fd87f22a1be",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-5948f3efde1b72a0b9d6",
+      "text": "",
+      "image": "./assets/quotes/local-5948f3efde1b72a0b9d6.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "5948f3efde1b72a0b9d6cc875be178e6fb7aed89a9cbb12b51abe6021af68b99",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-4488a473ef58d43f6ea9",
+      "text": "",
+      "image": "./assets/quotes/local-4488a473ef58d43f6ea9.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "4488a473ef58d43f6ea92aa004e0c816b9fd75bb196f2c5ee6336a1ea97541c4",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-0ac691aa267fee011e6b",
+      "text": "",
+      "image": "./assets/quotes/local-0ac691aa267fee011e6b.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "0ac691aa267fee011e6b3003c04919fa2545efdb88f9081e092f1835db0f9bc1",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-beb3597a2969fcc8a3e4",
+      "text": "",
+      "image": "./assets/quotes/local-beb3597a2969fcc8a3e4.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "beb3597a2969fcc8a3e46fcbb96db36073f8567ae9b1dde1e62067a282087b47",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-0542c88f770544cc456d",
+      "text": "",
+      "image": "./assets/quotes/local-0542c88f770544cc456d.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "0542c88f770544cc456d9541c1f1cbb3cb9679dcc6fcb0f2e00c967769ae2a53",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-d25f4757b286a48e91b4",
+      "text": "",
+      "image": "./assets/quotes/local-d25f4757b286a48e91b4.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "d25f4757b286a48e91b4da4dae072eefee9c2f27a5ad2c32e069c47026c2b88c",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-bfd3a540add9ebcfcb86",
+      "text": "",
+      "image": "./assets/quotes/local-bfd3a540add9ebcfcb86.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "bfd3a540add9ebcfcb86ecae60811ea3f001cb616b39e7278ba1e491363fb189",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-5268a2094984576668cb",
+      "text": "",
+      "image": "./assets/quotes/local-5268a2094984576668cb.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "5268a2094984576668cb7e2d65a138c087a0668f0ac2c73b94c6a264a7e5535b",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+    },
+    {
+      "id": "local-b495f018901e2b9ab8a5",
+      "text": "",
+      "image": "./assets/quotes/local-b495f018901e2b9ab8a5.jpg",
+      "source_url": "",
+      "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
+      "published_at": "",
+      "sha256": "b495f018901e2b9ab8a556ad5eb9ec153dc553939d09b84469efc29bc7f344c2",
+      "origin": "local_folder",
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
     }
-  ]
+  ],
+  "import_note": "เพิ่มภาพคำคมจากแฟ้มต้นฉบับของผู้ดูแลโดยคงภาพเดิม; ตัดภาพที่ใช้ข้อความคำคมซ้ำหนึ่งภาพและไม่สร้างข้อความ/ลิงก์ Facebook ใหม่"
 }

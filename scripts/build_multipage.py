@@ -143,10 +143,10 @@ categories=f'''{intro('ALL SERIES','หมวดรายการ','หมว�
 <div id="allCategories" class="series-grid"><div class="loading">กำลังโหลดหมวดรายการ...</div></div>
 <aside class="program-note" id="relatedNotice" hidden><strong>เกี่ยวกับ “หลวงพี่ช่วยด้วย”</strong><p>รายการต้นฉบับ Workpoint ดำเนินรายการโดยพระมหาสมปอง ตาลปุตฺโต คลิปในหมวดนี้เป็นงานซับไตเติลของมูลนิธิ สกพ. ไม่ใช่วิดีโอที่พระมหานภันต์เป็นผู้บรรยาย</p><a href="https://www.youtube.com/playlist?list=PLFU5BMWz_rx10E1AiFivlOPsVO8qQFvmx" target="_blank" rel="noopener noreferrer">เพลย์ลิสต์ต้นทาง ↗</a></aside>
 </div></section>'''
-quotes=f'''{intro('DHAMMA QUOTES','คำคมธรรมะ','รวบรวมเฉพาะข้อความธรรมะบนภาพที่เผยแพร่จากเพจต้นทาง')}
+quotes=f'''{intro('DHAMMA QUOTES','คำคมธรรมะ','รวมภาพคำคมธรรมะจากคลังผู้ดูแลและจากเพจต้นทาง โดยรักษาข้อความตามภาพต้นฉบับ')}
 <section class="section"><div class="container">
 <div class="quote-toolbar">
-<label for="quoteSearch">ค้นหาคำคมธรรมะ</label><input type="search" id="quoteSearch" placeholder="ค้นหาข้อความจากภาพคำคม" autocomplete="off">
+<label for="quoteSearch">ค้นหาข้อความคำคมที่ถอดไว้</label><input type="search" id="quoteSearch" placeholder="ค้นหาในรายการที่มีข้อความถอดแล้ว" autocomplete="off">
 <p id="quotesCount" role="status" aria-live="polite">กำลังตรวจสอบ...</p></div>
 <div class="quote-grid" id="quoteGrid"><div class="loading">กำลังโหลดภาพคำคมธรรมะ...</div></div>
 <div class="empty" id="quoteEmpty" hidden>ไม่พบข้อความที่ตรงกับคำค้น</div>
@@ -191,7 +191,7 @@ pages=[
  ('categories.html','categories','หมวดรายการ | '+name,'หมวดรายการทั้งหมดจากทะเบียนวิดีโอต้นฉบับ',categories),
  ('featured.html','featured','คลิปจากรายการ | '+name,'คลิปจากรายการพร้อมภาพปกจากแหล่งเผยแพร่จริง',featured),
  ('shorts.html','shorts','ธรรมะคลิปสั้น | '+name,'คลิปสั้นต้นฉบับจากบัญชี TikTok @domskyline21 ที่ตรวจสอบแหล่งและภาพปก',shorts),
- ('quotes.html','quotes','คำคมธรรมะ | '+name,'เฉพาะภาพคำคมธรรมะและข้อความจริงจากเพจพระมหานภันต์พร้อมลิงก์ Facebook ต้นฉบับ',quotes),
+ ('quotes.html','quotes','คำคมธรรมะ | '+name,'รวบรวมภาพคำคมธรรมะของพระมหานภันต์จากคลังภาพที่ผู้ดูแลจัดเตรียมและโพสต์ต้นฉบับที่ตรวจสอบได้',quotes),
  ('library.html','library','คลังวิดีโอ | '+name,'ค้นหาและเลือกชมวิดีโอต้นฉบับ แยกหมวด ปี และช่องทาง',library),
  ('category.html','category','หมวดรายการ | '+name,'รายการคลิปตามหมวดหมู่จากทะเบียนจริง',category),
  ('video.html','video','รายละเอียดวิดีโอ | '+name,'รายละเอียดคลิปและลิงก์วิดีโอของผู้เผยแพร่ต้นฉบับ',video),
