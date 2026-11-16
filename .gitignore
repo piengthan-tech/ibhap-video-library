@@ -1,0 +1,7 @@
+scripts/
+.preview-*
+*.log
+.DS_Store
+.netlify/
+*.zip
+*.tmp

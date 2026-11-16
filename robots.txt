@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://piengthan-tech.github.io/ibhap-video-library/sitemap.xml
