@@ -360,8 +360,54 @@ function bindShared(){
  });
  try{const saved=JSON.parse(localStorage.getItem(storageKey)||'[]');favorites=new Set(Array.isArray(saved)?saved:[])}catch{favorites=new Set()}
 }
+function renderPressArchive(entries){
+ const list=$('pressGrid'), search=$('pressSearch'), category=$('pressCategory');
+ const count=$('pressCount'), empty=$('pressEmpty');
+ const allowed=new Set(['https://hands-on.co.th','https://www.gotoknow.org','https://fmtint.com']);
+ const rows=(Array.isArray(entries)?entries:[]).filter(x=>{
+  try{
+   const u=new URL(x.url);
+   return allowed.has(u.origin) && typeof x.title==='string' && !!x.title
+       && typeof x.summary==='string' && !!x.summary && !!x.category && !!x.source;
+  }catch{return false}
+ }).sort((a,b)=>(b.published_at||'').localeCompare(a.published_at||''));
+ [...new Set(rows.map(x=>x.category))].sort((a,b)=>a.localeCompare(b,'th')).forEach(name=>{
+  const opt=document.createElement('option');opt.value=name;opt.textContent=name;category.appendChild(opt);
+ });
+ function draw(){
+  const query=norm(search.value), selected=category.value;
+  const selectedRows=rows.filter(x=>(!selected||x.category===selected)
+    && (!query||norm([x.title,x.summary,x.source,x.category,x.relation].join(' ')).includes(query)));
+  list.innerHTML=selectedRows.map(x=>
+   '<article class="press-card">'
+   +'<div class="press-meta"><span class="press-kind">'+esc(x.category)+'</span><span>'+esc(x.published_at?formatDate(x.published_at):'ไม่ระบุวันที่เผยแพร่')+'</span></div>'
+   +'<h2>'+esc(x.title)+'</h2>'
+   +'<p class="press-summary">'+esc(x.summary)+'</p>'
+   +'<div class="press-source"><span>แหล่งเผยแพร่</span><strong>'+esc(x.source)+'</strong></div>'
+   +'<a class="press-outbound" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">อ่านต้นฉบับ ↗</a>'
+   +'</article>'
+  ).join('');
+  count.textContent='พบ '+selectedRows.length.toLocaleString('th-TH')+' จาก '+rows.length.toLocaleString('th-TH')+' รายการ';
+  empty.hidden=selectedRows.length!==0;
+ }
+ search.addEventListener('input',draw);
+ category.addEventListener('change',draw);
+ draw();
+}
 async function boot(){
  bindShared();
+ if(page==='press'){
+  try{
+   const response=await fetch('./data/press.json',{cache:'no-cache'});
+   if(!response.ok)throw new Error('Press HTTP '+response.status);
+   const catalog=await response.json();
+   renderPressArchive(catalog.items);
+  }catch(error){
+   console.error('Cannot load press archive',error);
+   $('pressGrid').innerHTML='<p class="empty">ไม่สามารถโหลดทะเบียนข่าวและผลงานได้ กรุณาลองรีเฟรชหน้าเว็บ</p>';
+  }
+  return;
+ }
  if(page==='home' && location.hash){
   const redirects={'#library':'library.html','#categories':'categories.html','#featured':'featured.html','#shorts':'shorts.html','#about':'about.html'};
   const destination=redirects[location.hash];

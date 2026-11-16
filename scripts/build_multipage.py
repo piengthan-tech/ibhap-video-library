@@ -10,6 +10,7 @@ nav=[
  ('featured.html','คลิปจากรายการ','featured'),
  ('shorts.html','ธรรมะคลิปสั้น','shorts'),
  ('quotes.html','คำคมธรรมะ','quotes'),
+ ('press.html','ข่าวและผลงาน','press'),
  ('library.html','คลังวิดีโอ','library'),
  ('about.html','แหล่งข้อมูล','about')
 ]
@@ -151,6 +152,16 @@ quotes=f'''{intro('DHAMMA QUOTES','คำคมธรรมะ','รวมภา
 <div class="quote-grid" id="quoteGrid"><div class="loading">กำลังโหลดภาพคำคมธรรมะ...</div></div>
 <div class="empty" id="quoteEmpty" hidden>ไม่พบข้อความที่ตรงกับคำค้น</div>
 </div></section>'''
+press=f'''{intro('PRESS · INTERVIEWS · ARCHIVE','ข่าว บทสัมภาษณ์ และผลงาน','หลักฐานการทำงานและเนื้อหาย้อนหลังจากแหล่งเผยแพร่ต้นฉบับ ตรวจสอบและแยกประเภทก่อนรวบรวม')}
+<section class="section"><div class="container">
+<div class="press-tools">
+<label class="press-search-label" for="pressSearch">ค้นหาเนื้อหา<input id="pressSearch" type="search" placeholder="ค้นหาชื่อเรื่อง แหล่งข่าว หรือคำสำคัญ" autocomplete="off"></label>
+<label class="press-select-label" for="pressCategory">ประเภท<select id="pressCategory"><option value="">ทุกประเภท</option></select></label>
+<p id="pressCount" role="status" aria-live="polite">กำลังโหลดข้อมูล...</p></div>
+<div id="pressGrid" class="press-grid"><p class="loading">กำลังโหลดข่าวและผลงาน...</p></div>
+<p id="pressEmpty" class="empty" hidden>ไม่พบข้อมูลตรงกับคำค้น</p>
+<p class="press-source-note">ข้อมูลชุดนี้เป็นทะเบียนแหล่งอ้างอิง ไม่ใช่การเผยแพร่บทความต้นฉบับซ้ำ กรุณาอ่านฉบับเต็มจากเว็บไซต์ผู้เผยแพร่โดยตรง วันที่ที่แสดงเป็นวันที่เผยแพร่บทความ ไม่ใช่วันที่จัดกิจกรรมเสมอไป และข้อมูลโครงการย้อนหลังไม่ใช่ประกาศรับสมัครในปัจจุบัน</p>
+</div></section>'''
 shorts=f'''{intro('SHORT-FORM VIDEO · TIKTOK','ธรรมะคลิปสั้น','Dhamma Shorts · คลิปจาก TikTok @domskyline21')}
 <section class="shorts-credit-banner"><div class="container"><aside class="source-credit" aria-label="ขอบคุณแหล่งเผยแพร่วิดีโอสั้น">
  <div class="source-credit-mark" aria-hidden="true">♫</div>
@@ -192,6 +203,7 @@ pages=[
  ('featured.html','featured','คลิปจากรายการ | '+name,'คลิปจากรายการพร้อมภาพปกจากแหล่งเผยแพร่จริง',featured),
  ('shorts.html','shorts','ธรรมะคลิปสั้น | '+name,'คลิปสั้นต้นฉบับจากบัญชี TikTok @domskyline21 ที่ตรวจสอบแหล่งและภาพปก',shorts),
  ('quotes.html','quotes','คำคมธรรมะ | '+name,'รวบรวมภาพคำคมธรรมะของพระมหานภันต์จากคลังภาพที่ผู้ดูแลจัดเตรียมและโพสต์ต้นฉบับที่ตรวจสอบได้',quotes),
+ ('press.html','press','ข่าว บทสัมภาษณ์ และผลงาน | '+name,'คลังข่าว บทสัมภาษณ์ ประวัติ และผลงานย้อนหลังของพระมหานภันต์ พร้อมอ้างอิงแหล่งเผยแพร่ต้นฉบับ',press),
  ('library.html','library','คลังวิดีโอ | '+name,'ค้นหาและเลือกชมวิดีโอต้นฉบับ แยกหมวด ปี และช่องทาง',library),
  ('category.html','category','หมวดรายการ | '+name,'รายการคลิปตามหมวดหมู่จากทะเบียนจริง',category),
  ('video.html','video','รายละเอียดวิดีโอ | '+name,'รายละเอียดคลิปและลิงก์วิดีโอของผู้เผยแพร่ต้นฉบับ',video),
