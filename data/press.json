@@ -391,22 +391,6 @@
       "relation": "ผู้ให้สัมภาษณ์ในรายงาน PDF หน้า 3",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
       "source_record": "N024"
-    },
-    {
-      "id": "N026",
-      "category": "ข่าวสังคม",
-      "title": "เดือด หลวงพ่อตกเครื่อง โรงแรมดังไม่ให้พัก อ้างเจ้าของเคร่งศาสนา",
-      "source": "TNews",
-      "published_at": "",
-      "url": "https://www.tnews.co.th/social/social-news/660148",
-      "summary": "ข่าวอีกสำนักเกี่ยวกับเหตุการณ์โรงแรมเดียวกับ N020 และ N021 บันทึกเพื่อเก็บแหล่งอ้างอิง โดยไม่ถือเป็นเหตุการณ์ใหม่",
-      "relation": "บุคคลในข่าว",
-      "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N026",
-      "thumbnail": "https://image.tnews.co.th/uploads/images/md/2026/09/A0GrAKmoIdEwIUvn8iB4.webp",
-      "thumbnail_fit": "contain",
-      "thumbnail_source": "article_og_image",
-      "thumbnail_checked_at": "2026-11-16"
     }
   ],
   "updated_at": "2026-11-16",
@@ -419,13 +403,20 @@
       "N025",
       "N027"
     ],
-    "note": "multiple articles about the same public event kept as independent sources; dates blank unless verified"
+    "note": "multiple articles about the same public event kept as independent sources; dates blank unless verified",
+    "removed_at_user_request": [
+      {
+        "id": "N026",
+        "date": "2026-11-16",
+        "reason": "User requested removal of specific TNews article"
+      }
+    ]
   },
   "image_policy": "ใช้เฉพาะรูปที่อยู่ในหน้าต้นฉบับหรือเป็น og:image จากผู้เผยแพร่เดิม ไม่สร้างหรือสังเคราะห์ภาพใหม่ ไม่ใส่ภาพหากมีเพียงโลโก้ทั่วไปหรือยังตรวจลิงก์ภาพไม่ได้",
   "image_audit": {
     "checked": "2026-11-16",
-    "total_items": 27,
-    "with_verified_images": 22,
+    "total_items": 26,
+    "with_verified_images": 21,
     "excluded_ids": [
       "gotoknow-project-84-2011",
       "N002",
