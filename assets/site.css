@@ -212,3 +212,15 @@ img{display:block;max-width:100%}svg{width:20px;height:20px;fill:none;stroke:cur
 body[data-page="quotes"] .quote-image{aspect-ratio:1;min-height:0}
 body[data-page="quotes"] .quote-image img{max-height:none;object-fit:contain}
 .quote-picture-note{font-size:13px;color:#416d8d;margin:0 0 12px}
+
+/* Quote archive: three columns on desktop, responsive on smaller screens. */
+body[data-page="quotes"] .quote-grid{
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:20px;
+}
+@media(max-width:1050px){
+ body[data-page="quotes"] .quote-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:740px){
+ body[data-page="quotes"] .quote-grid{grid-template-columns:minmax(0,1fr);gap:18px}
+}
