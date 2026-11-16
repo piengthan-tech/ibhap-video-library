@@ -218,3 +218,14 @@
 - รับไฟล์ต้นฉบับจากผู้ดูแลเว็บไซต์ ตรวจ SHA-256 เทียบต้นฉบับสำเร็จ แปลงเป็น WebP สำหรับแสดงบนการ์ดข่าวโดยไม่เปลี่ยนเนื้อหาในภาพ
 - เก็บภาพที่ `assets/press/` แล้วตั้งค่า thumbnail ใน `data/press.json` พร้อมบันทึกที่มาว่าเป็นไฟล์จากผู้ดูแลเว็บไซต์ โดยไม่ไปดึงภาพแทนจากสำนักข่าวอื่น
 - ข้อมูลข่าวและลิงก์ต้นฉบับเดิมยังอยู่ครบ 26 รายการ; รูปประกอบ 23 รายการ อีก 3 รายการไม่มีรูปที่ยืนยันแล้ว
+
+## Google Analytics 4 — PMNapan Library
+
+- Installed measurement ID: G-FE674RJ7BN, restricted by code deployment to the 11 HTML pages under /pmnapan-library/.
+- assets/analytics.js loads the Google tag only after a visitor explicitly agrees to analytics. Rejection or no decision means no Google tag request.
+- Consent choice is stored in localStorage under pmnapan_ga4_consent_v1. The persistent "ตั้งค่าคุกกี้" footer button allows review and withdrawal.
+- Google consent settings default to denied for all four categories. Google Ads personalization and signals remain disabled even if analytics consent is granted.
+- GA cookies are namespaced with pmnapan prefix and scoped to /pmnapan-library/. No historical visits are backfilled.
+- Page views are sent through GA4 automatic page_view. A separate archive_outbound_click custom event tracks clicks to external sources, with destination_type, destination_host, and source_section.
+- The page about.html#analytics-privacy explains how the system works and its limitations. Events may be blocked by browsers, consent choices, or network restrictions.
+- Google Analytics account ownership and access, data stream connection, real-time GA4 reception, and optional custom dimensions still require verification within the correct GA4 property.
