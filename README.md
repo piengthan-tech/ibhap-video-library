@@ -1,4 +1,4 @@
-# PMNapan Linrary Dhamma Archive
+# PMNapan Library Dhamma Archive
 
 เว็บไซต์สาธารณะสำหรับค้นหารายการวิดีโอของพระมหานภันต์ สนฺติภทฺโท รวมถึงรายการที่มูลนิธิ สกพ. จัดทำงานซับไตเติล (แยกประเภทและอธิบายความเกี่ยวข้องชัดเจน) ใช้ภาพปกวิดีโอจากผู้เผยแพร่ต้นทาง หรือภาพนิ่งจากต้นฉบับที่ตรวจสอบแล้ว ไม่สร้างภาพปกหรือคำพูดใหม่
 
@@ -53,3 +53,17 @@
 - World Council of Churches: https://www.oikoumene.org/news/dialogue-focuses-on-understanding-and-relations-through-a-buddhist-lens
 - Workpoint / พระมหาสมปอง: https://www.youtube.com/watch?v=2xBib9rtZZU
 - เพลย์ลิสต์ซับ Workpoint ของ IBHAP: https://www.youtube.com/playlist?list=PLFU5BMWz_rx10E1AiFivlOPsVO8qQFvmx
+
+
+## แยกหน้าเว็บไซต์ — 16 พ.ย. 2569
+
+- หน้าแรก: index.html
+- หมวดทั้งหมด: categories.html
+- คลิปจากรายการ: featured.html
+- คลังวิดีโอพร้อมค้นหา: library.html
+- คลิปตามหมวด: category.html?name=<ชื่อหมวดที่เข้ารหัส URL>
+- รายละเอียดแต่ละคลิป: video.html?id=<platform:video_id>
+- แหล่งข้อมูล: about.html
+- เมนูหลักเป็นการนำทางไปหน้า HTML จริง พร้อมการเปลี่ยน URL และปุ่ม Browser Back/Forward; ไม่ใช้การ scroll หัวข้อบนหน้าแรก
+- ชื่อเว็บไซต์แก้เป็น PMNapan Library Dhamma Archive ทั้ง HTML และชื่อใน JSON
+- ภาพหมวดและบัตรคลิปใช้แต่ภาพนิ่งจากวิดีโอต้นฉบับ/ภาพ YouTube ตาม video ID เดิม ไม่มีการสร้างภาพปกใหม่และไม่มีข้อความแต่งเองในภาพ

@@ -1,97 +1,40 @@
 <!doctype html>
-<html lang="th">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="th"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#ffffff">
-<meta name="description" content="PMNapan Linrary Dhamma Archive — สารบัญวิดีโอของพระมหานภันต์ สนฺติภทฺโท พร้อมลิงก์วิดีโอต้นฉบับ">
-<meta property="og:type" content="website">
-<meta property="og:title" content="PMNapan Linrary Dhamma Archive">
-<meta property="og:description" content="สารบัญวิดีโอพระมหานภันต์ สนฺติภทฺโท จากแหล่งเผยแพร่ต้นฉบับ">
-<title>PMNapan Linrary Dhamma Archive</title>
+<meta name="description" content="สารบัญวิดีโอพระมหานภันต์ สนฺติภทฺโท และงานสื่อที่เกี่ยวข้อง">
+<meta property="og:type" content="website"><meta property="og:title" content="PMNapan Library Dhamma Archive"><meta property="og:description" content="สารบัญวิดีโอพระมหานภันต์ สนฺติภทฺโท และงานสื่อที่เกี่ยวข้อง">
+<title>PMNapan Library Dhamma Archive</title>
 <link rel="icon" type="image/png" href="./assets/mascot.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/style.css">
-<script defer src="./assets/app.js"></script>
-</head>
-<body>
-<a href="#library" class="skip-link">ข้ามไปยังคลังวิดีโอ</a>
-<header class="header" id="top">
- <div class="container header-inner">
-  <a class="brand" href="#top" aria-label="PMNapan Linrary Dhamma Archive หน้าแรก"><img src="./assets/mascot.png" alt="" width="48" height="48"><span class="brand-name">PMNapan Linrary<span>Dhamma Archive</span></span></a>
-  <nav class="nav" aria-label="เมนูหลัก"><a href="#top" class="nav-link active">หน้าแรก</a><a href="#categories" class="nav-link">หมวดรายการ</a><a href="#featured" class="nav-link">คลิปจากรายการ</a><a href="#library" class="nav-link">คลังวิดีโอ</a><a href="#about" class="nav-link">แหล่งข้อมูล</a></nav>
-  <a href="#library" class="header-action">ค้นหาวิดีโอ <span aria-hidden="true">↗</span></a>
-  <button class="menu-toggle" type="button" id="menuToggle" aria-label="เปิดเมนู" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
- </div>
- <nav class="mobile-nav" id="mobileNav" aria-label="เมนูโทรศัพท์" hidden><a href="#top">หน้าแรก</a><a href="#categories">หมวดรายการ</a><a href="#featured">คลิปจากรายการ</a><a href="#library">คลังวิดีโอ</a><a href="#about">แหล่งข้อมูล</a></nav>
-</header>
-<main>
- <section class="hero" aria-labelledby="heroTitle">
-  <div class="hero-wave"></div>
-  <div class="container hero-inner">
-   <div class="hero-copy">
-    <div class="hero-eyebrow"><span class="hero-line"></span> VIDEO ARCHIVE</div>
-    <h1 id="heroTitle">PMNapan Linrary<br><span>Dhamma Archive</span></h1>
-    <p class="hero-subhead">คลังวิดีโอพระมหานภันต์ สนฺติภทฺโท</p>
-    <p class="hero-detail">คลิปพระมหานภันต์ และงานสื่อซับไตเติลที่เกี่ยวข้องกับมูลนิธิ สกพ.</p>
-    <div class="hero-actions"><a href="#library" class="hero-cta"><span aria-hidden="true">▶</span> เข้าสู่คลังวิดีโอ</a><a href="#categories" class="hero-cta-secondary">เลือกหมวดรายการ <span aria-hidden="true">↗</span></a></div>
-    <div class="hero-count"><span id="heroVideoCount">—</span> วิดีโอในคลัง</div>
-   </div>
-   <div class="hero-mascot"><div class="mascot-halo"></div><img src="./assets/mascot.png" width="560" height="560" alt="มาสคอตการ์ตูนพระสวมแว่นตาและจีวรสีส้ม" fetchpriority="high"></div>
-  </div>
- </section>
- <section class="discover-strip" aria-labelledby="quickSearchTitle">
-  <div class="container discover-inner">
-   <form id="heroSearchForm" class="hero-search" role="search">
-    <label for="heroSearch" id="quickSearchTitle">ค้นหาวิดีโอ</label>
-    <div class="hero-search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg><input id="heroSearch" type="search" placeholder="ค้นหาชื่อคลิปหรือคำสำคัญจากต้นทาง" autocomplete="off"><button type="submit">ค้นหา <span aria-hidden="true">→</span></button></div>
-   </form>
-  </div>
- </section>
- <section class="section categories" id="categories">
-  <div class="container">
-   <div class="section-head"><div><span class="section-kicker">CATEGORIES</span><h2>เนื้อหาแนะนำ</h2><p class="section-description">หมวดรายการที่มีอยู่ในสารบัญ</p></div><a href="#library" class="section-link">ดูคลิปทั้งหมด <span aria-hidden="true">→</span></a></div>
-   <div id="categoryGrid" class="category-grid" aria-label="หมวดรายการ"></div>
-   <aside class="program-notice" id="programNotice" hidden>
-      <strong>เกี่ยวกับหมวด “หลวงพี่ช่วยด้วย”</strong>
-      <p>รายการต้นฉบับของ Workpoint ดำเนินรายการโดยพระมหาสมปอง ตาลปุตฺโต ส่วนคลิปในหมวดนี้มาจากโครงการจัดทำซับไตเติลของมูลนิธิ สกพ. จึงไม่ถือว่าเป็นคลิปบรรยายของพระมหานภันต์</p>
-      <a href="https://www.youtube.com/playlist?list=PLFU5BMWz_rx10E1AiFivlOPsVO8qQFvmx" target="_blank" rel="noopener noreferrer">ดูเพลย์ลิสต์ต้นทาง ↗</a>
-   </aside>
-  </div>
- </section>
- <section class="section featured" id="featured">
-  <div class="container">
-   <div class="section-head"><div><span class="section-kicker">ORIGINAL VIDEO STILLS</span><h2>คลิปจากรายการ</h2></div><a href="#library" class="section-link">ดูทั้งหมด <span aria-hidden="true">→</span></a></div>
-   <div id="featuredGrid" class="video-grid" aria-label="รายการวิดีโอ"></div>
-  </div>
- </section>
- <section class="section library" id="library">
-  <div class="container">
-   <div class="section-head"><div><span class="section-kicker">VIDEO LIBRARY</span><h2>คลังวิดีโอทั้งหมด</h2></div><span class="updated-pill" id="updatedPill">กำลังโหลด...</span></div>
-   <div class="library-panel">
-    <div class="library-toolbar">
-     <div class="library-search-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg><label class="sr-only" for="librarySearch">ค้นหาชื่อคลิป</label><input id="librarySearch" type="search" placeholder="ค้นหาชื่อเรื่อง คำสำคัญ หรือคำอธิบายจากต้นทาง" autocomplete="off"><button id="clearSearch" type="button" aria-label="ล้างคำค้น" hidden>×</button></div>
-     <button id="favoritesToggle" class="favorites-toggle" type="button" aria-pressed="false"><span aria-hidden="true">♡</span> รายการที่บันทึก</button>
-    </div>
-    <div class="filter-row">
-     <div class="series-tabs" id="seriesTabs" role="group" aria-label="หมวดรายการ"><button class="tab active" type="button" data-series="all" aria-pressed="true">ทั้งหมด</button><button class="tab" type="button" data-series="อาสาหาธรรม" aria-pressed="false">อาสาหาธรรม</button><button class="tab" type="button" data-series="มามองพุทธ มุมมองพระ" aria-pressed="false">มามองพุทธ มุมมองพระ</button></div>
-     <div class="select-filters"><label class="sr-only" for="yearFilter">ปีเผยแพร่</label><select id="yearFilter"><option value="all">ทุกปี</option></select><label class="sr-only" for="platformFilter">แหล่งเผยแพร่</label><select id="platformFilter"><option value="all">ทุกแหล่ง</option><option value="YouTube">YouTube</option><option value="Facebook">Facebook</option></select><label class="sr-only" for="sortSelect">เรียงลำดับ</label><select id="sortSelect"><option value="new">ใหม่ล่าสุด</option><option value="old">เก่าสุด</option><option value="title">ชื่อเรื่อง ก–ฮ</option><option value="length">คลิปยาวที่สุด</option></select></div>
-    </div>
-    <div class="results-summary"><p id="resultsCount" role="status" aria-live="polite">กำลังโหลด...</p><button class="reset-button" id="resetFilters" type="button" hidden>ล้างตัวกรอง ↺</button></div>
-    <div class="video-grid" id="videoGrid"><div class="loading"><div class="spinner"></div>กำลังโหลดคลิป...</div></div>
-    <div class="empty-state" id="emptyState" hidden><h3>ไม่พบคลิปที่ตรงกับคำค้น</h3><button id="emptyReset" type="button">ดูทั้งหมด</button></div>
-    <div class="show-more-wrap"><button id="showMore" class="show-more" type="button" hidden>แสดงเพิ่มเติม ↓</button></div>
-   </div>
-  </div>
- </section>
- <section class="source-section" id="about"><div class="container source-inner"><div><span class="section-kicker">SOURCE INFORMATION</span><h2>แหล่งเผยแพร่ต้นฉบับ</h2></div><div class="source-links"><a href="https://www.youtube.com/@Napan" target="_blank" rel="noopener noreferrer">YouTube · PM Napan ↗</a><a href="https://www.youtube.com/channel/UCjScesRz_L16aIs-Kdtsh_g" target="_blank" rel="noopener noreferrer">YouTube · IBHAP Foundation ↗</a></div></div></section>
-</main>
-<footer class="footer"><div class="container footer-inner"><span>PMNapan Linrary Dhamma Archive</span><span>สารบัญลิงก์วิดีโอต้นฉบับ</span><span>© <span id="copyrightYear"></span></span></div></footer>
-<dialog class="video-dialog" id="videoDialog" aria-labelledby="dialogTitle"><div class="dialog-shell"><button class="dialog-close" id="closeDialog" type="button" aria-label="ปิดรายละเอียด">×</button><div class="dialog-image" id="dialogImage"></div><div class="dialog-content"><div class="dialog-tags" id="dialogTags"></div><h2 id="dialogTitle"></h2><div class="dialog-facts" id="dialogFacts"></div><p class="dialog-source-note" id="dialogSourceNote" hidden></p>
-   <p class="dialog-channel" id="dialogChannel"></p>
-   <h3>คำอธิบายจากผู้เผยแพร่</h3><p class="dialog-description" id="dialogDescription"></p><div class="dialog-actions"><a class="dialog-watch" id="dialogWatch" target="_blank" rel="noopener noreferrer">เปิดวิดีโอต้นฉบับ ↗</a><button class="dialog-copy" id="dialogCopy" type="button">คัดลอกลิงก์</button></div></div></div></dialog>
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
-</body>
-</html>
+<link rel="stylesheet" href="./assets/site.css">
+<script defer src="./assets/site.js"></script>
+</head><body data-page="home">
+<a href="#main" class="skip-link">ข้ามไปยังเนื้อหา</a>
+<header class="site-header" id="top"><div class="container header-wrap">
+<a href="./index.html" class="brand" aria-label="PMNapan Library Dhamma Archive กลับหน้าแรก">
+<img src="./assets/mascot.png" alt="" width="51" height="51">
+<span class="brand-label"><strong>PMNapan Library</strong><span>Dhamma Archive</span></span></a>
+<nav class="desktop-nav" aria-label="เมนูหลัก"><a href="./index.html" class="nav-link active" aria-current="page">หน้าแรก</a><a href="./categories.html" class="nav-link" >หมวดรายการ</a><a href="./featured.html" class="nav-link" >คลิปจากรายการ</a><a href="./library.html" class="nav-link" >คลังวิดีโอ</a><a href="./about.html" class="nav-link" >แหล่งข้อมูล</a></nav>
+<a class="header-cta" href="./library.html">ค้นหาวิดีโอ <span aria-hidden="true">↗</span></a>
+<button type="button" class="mobile-toggle" id="mobileToggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="เปิดเมนู"><span></span><span></span><span></span></button>
+</div><nav id="mobileMenu" class="mobile-menu" aria-label="เมนูโทรศัพท์" hidden><a href="./index.html" aria-current="page">หน้าแรก</a><a href="./categories.html" >หมวดรายการ</a><a href="./featured.html" >คลิปจากรายการ</a><a href="./library.html" >คลังวิดีโอ</a><a href="./about.html" >แหล่งข้อมูล</a></nav></header>
+<main id="main"><section class="hero"><div class="container hero-row"><div class="hero-copy">
+<p class="hero-kicker"><span></span> VIDEO ARCHIVE</p>
+<h1>PMNapan Library<br><span>Dhamma Archive</span></h1>
+<h2>คลังวิดีโอพระมหานภันต์ สนฺติภทฺโท</h2>
+<p class="hero-line">คลิปพระมหานภันต์ และงานสื่อซับไตเติลที่เกี่ยวข้องกับมูลนิธิ สกพ.</p>
+<div class="hero-actions"><a class="btn primary" href="./library.html">▶ เข้าสู่คลังวิดีโอ</a><a class="btn secondary" href="./categories.html">เลือกหมวดรายการ ↗</a></div>
+<p class="hero-total"><strong id="homeTotal">—</strong> วิดีโอในคลัง</p>
+</div><div class="hero-visual"><span class="blue-orbit"></span><img src="./assets/mascot.png" alt="มาสคอตพระการ์ตูนสวมแว่นตาและจีวรสีส้ม" width="540" height="540" fetchpriority="high"></div></div></section>
+<section class="quick-search"><div class="container"><form id="homeSearchForm" class="quick-search-form" role="search">
+<label for="homeSearch">ค้นหาวิดีโอ</label><input id="homeSearch" type="search" placeholder="พิมพ์ชื่อคลิปหรือคำสำคัญ" autocomplete="off">
+<button type="submit">ค้นหา →</button></form></div></section>
+<section class="section"><div class="container"><div class="heading-row"><div><p class="kicker">SERIES COLLECTION</p><h2>หมวดรายการ</h2></div><a href="./categories.html" class="text-link">ดูทุกหมวด →</a></div>
+<div id="homeCategories" class="series-grid"><div class="loading">กำลังโหลด...</div></div></div></section>
+<section class="section tinted"><div class="container"><div class="heading-row"><div><p class="kicker">FROM ORIGINAL VIDEOS</p><h2>คลิปจากรายการ</h2></div><a href="./featured.html" class="text-link">ดูเพิ่มเติม →</a></div>
+<div id="homeFeatured" class="video-grid" aria-label="คลิปจากรายการ"><div class="loading"><span class="spinner" aria-hidden="true"></span>กำลังโหลดข้อมูลวิดีโอ...</div></div></div></section></main>
+<footer class="site-footer"><div class="container foot-inner"><a href="./index.html" class="foot-name">PMNapan Library Dhamma Archive</a>
+<nav aria-label="ลิงก์ท้ายเว็บไซต์"><a href="./categories.html">หมวดรายการ</a><a href="./library.html">คลังวิดีโอ</a><a href="./about.html">แหล่งข้อมูล</a></nav>
+<span>© <span id="copyrightYear"></span></span></div></footer><div role="status" aria-live="polite" class="toast" id="toast"></div></body></html>
