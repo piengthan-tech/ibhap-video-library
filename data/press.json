@@ -82,7 +82,11 @@
       "summary": "รายงานกิจกรรมศาสนสัมพันธ์และการพัฒนาที่ยั่งยืนที่วัดสระเกศ เชื่อมโยงเครือข่ายความร่วมมือหลายศาสนา",
       "relation": "มีส่วนเกี่ยวข้องกับกิจกรรม",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N002"
+      "source_record": "N002",
+      "thumbnail": "./assets/press/n002-dailynews-interfaith.webp",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "user_supplied_original_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N003",
@@ -346,7 +350,11 @@
       "summary": "ข่าวการชี้แจงและขอโทษหลังเกิดกรณีปฏิเสธให้พระมหานภันต์เข้าพักโรงแรม เป็นรายงานข่าว ไม่ใช่กิจกรรมหรือธรรมบรรยาย",
       "relation": "บุคคลในข่าว",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N020"
+      "source_record": "N020",
+      "thumbnail": "./assets/press/n020-dailynews-apology.webp",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "user_supplied_original_image",
+      "thumbnail_checked_at": "2026-11-16"
     },
     {
       "id": "N021",
@@ -412,18 +420,16 @@
       }
     ]
   },
-  "image_policy": "ใช้เฉพาะรูปที่อยู่ในหน้าต้นฉบับหรือเป็น og:image จากผู้เผยแพร่เดิม ไม่สร้างหรือสังเคราะห์ภาพใหม่ ไม่ใส่ภาพหากมีเพียงโลโก้ทั่วไปหรือยังตรวจลิงก์ภาพไม่ได้",
+  "image_policy": "ใช้ภาพต้นฉบับจากแหล่งข่าว หรือภาพที่ผู้ดูแลเว็บไซต์ส่งให้เฉพาะบทความที่ตรงกัน ไม่สร้างภาพใหม่ หากยังตรวจภาพไม่ได้ให้แสดงการ์ดไม่มีรูป",
   "image_audit": {
     "checked": "2026-11-16",
     "total_items": 26,
-    "with_verified_images": 21,
+    "with_verified_images": 23,
     "excluded_ids": [
       "gotoknow-project-84-2011",
-      "N002",
       "N007",
-      "N020",
       "N024"
     ],
-    "presentation": "external source image URLs; no image copies uploaded"
+    "presentation": "21 external original-source image URLs and 2 locally hosted copies of user-uploaded images"
   }
 }

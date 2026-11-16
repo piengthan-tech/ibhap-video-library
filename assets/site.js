@@ -368,6 +368,7 @@ function renderPressArchive(entries){
 
  function thumbnailUrl(raw){
   if(typeof raw!=='string'||!raw)return '';
+  if(/^\.\/assets\/press\/[a-z0-9-]+\.webp$/.test(raw))return raw;
   try{const url=new URL(raw);return url.protocol==='https:'&&imageHosts.has(url.hostname)?url.href:''}catch{return ''}
  }
  const rows=(Array.isArray(entries)?entries:[]).filter(x=>{
