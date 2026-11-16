@@ -8,6 +8,7 @@ nav=[
  ('index.html','หน้าแรก','home'),
  ('categories.html','หมวดรายการ','categories'),
  ('featured.html','คลิปจากรายการ','featured'),
+ ('shorts.html','ธรรมะคลิปสั้น','shorts'),
  ('quotes.html','คำคมธรรมะ','quotes'),
  ('library.html','คลังวิดีโอ','library'),
  ('about.html','แหล่งข้อมูล','about')
@@ -96,7 +97,7 @@ def tabs_bar():
 </div><div class="filter-controls">
 <label>หมวดรายการ<select id="categoryFilter"><option value="all">ทุกหมวด</option></select></label>
 <label>ปีเผยแพร่<select id="yearFilter"><option value="all">ทุกปี</option></select></label>
-<label>ช่องทาง<select id="platformFilter"><option value="all">ทุกช่องทาง</option><option value="YouTube">YouTube</option><option value="Facebook">Facebook</option></select></label>
+<label>ช่องทาง<select id="platformFilter"><option value="all">ทุกช่องทาง</option><option value="YouTube">YouTube</option><option value="TikTok">TikTok</option><option value="Facebook">Facebook</option></select></label>
 <label>เรียงลำดับ<select id="sortFilter"><option value="new">ใหม่ล่าสุด</option><option value="old">เก่าสุด</option><option value="title">ชื่อเรื่อง ก–ฮ</option><option value="length">วิดีโอยาวที่สุด</option></select></label>
 </div><div class="filter-footer"><p id="resultCount" aria-live="polite">กำลังโหลด...</p><button type="button" class="reset-filter" id="resetFilters" hidden>ล้างตัวกรอง ↺</button></div></div>'''
 home=f'''<section class="hero"><div class="container hero-row"><div class="hero-copy">
@@ -113,6 +114,10 @@ home=f'''<section class="hero"><div class="container hero-row"><div class="hero-
 <div id="homeCategories" class="series-grid"><div class="loading">กำลังโหลด...</div></div></div></section>
 <section class="section tinted"><div class="container"><div class="heading-row"><div><p class="kicker">FROM ORIGINAL VIDEOS</p><h2>คลิปจากรายการ</h2></div><a href="./featured.html" class="text-link">ดูเพิ่มเติม →</a></div>
  {grid('คลิปจากรายการ','homeFeatured')}</div></section>
+<section class="section shorts-spotlight"><div class="container">
+<div class="heading-row"><div><p class="kicker">SHORT-FORM VIDEO · TIKTOK</p><h2>ธรรมะคลิปสั้น</h2></div><a href="./shorts.html" class="text-link">ดูคลิปทั้งหมด ↗</a></div>
+<div id="homeShorts" class="shorts-grid"><div class="loading">กำลังโหลดคลิปสั้น...</div></div>
+</div></section>
 <section class="section"><div class="container"><div class="heading-row"><div><p class="kicker">DHAMMA QUOTES · ORIGINAL IMAGES</p><h2>คำคมธรรมะ</h2></div><a href="./quotes.html" class="text-link">ดูคำคมทั้งหมด ↗</a></div>
 <div id="homeQuotes" class="quote-grid"><div class="loading">กำลังโหลดคำคมธรรมะ...</div></div></div></section>'''
 categories=f'''{intro('ALL SERIES','หมวดรายการ','หมวดที่มีอยู่จริงในสารบัญวิดีโอ')}
@@ -127,6 +132,13 @@ quotes=f'''{intro('DHAMMA QUOTES','คำคมธรรมะ','รวบรว
 <p id="quotesCount" role="status" aria-live="polite">กำลังตรวจสอบ...</p></div>
 <div class="quote-grid" id="quoteGrid"><div class="loading">กำลังโหลดภาพคำคมธรรมะ...</div></div>
 <div class="empty" id="quoteEmpty" hidden>ไม่พบข้อความที่ตรงกับคำค้น</div>
+</div></section>'''
+shorts=f'''{intro('SHORT-FORM VIDEO · TIKTOK','ธรรมะคลิปสั้น','Dhamma Shorts · คลิปจาก TikTok @domskyline21')}
+<section class="section"><div class="container">
+<div class="shorts-search-bar"><label for="shortsSearch">ค้นหาคลิปสั้น</label><input type="search" id="shortsSearch" placeholder="ค้นหาคำสำคัญจากคำบรรยายต้นฉบับ" autocomplete="off"><span id="shortsCount" aria-live="polite" role="status"></span></div>
+<div id="shortsGrid" class="shorts-grid"><div class="loading">กำลังโหลดคลิปสั้น...</div></div>
+<div id="shortsEmpty" class="empty" hidden>ไม่พบคลิปสั้นที่ตรงกับคำค้น</div>
+<div class="load-wrap"><button id="loadShorts" type="button" class="btn secondary" hidden>ดูคลิปเพิ่มเติม ↓</button></div>
 </div></section>'''
 featured=f'''{intro('ORIGINAL VIDEO THUMBNAILS','คลิปจากรายการ','ภาพที่แสดงเป็นภาพจากคลิปต้นฉบับ ไม่ใช่ภาพที่สร้างขึ้นใหม่')}
 <section class="section"><div class="container"><div id="featuredSections"><div class="loading">กำลังโหลดคลิปจากรายการ...</div></div></div></section>'''
@@ -152,6 +164,7 @@ pages=[
  ('index.html','home',name,'สารบัญวิดีโอพระมหานภันต์ สนฺติภทฺโท และงานสื่อที่เกี่ยวข้อง',home),
  ('categories.html','categories','หมวดรายการ | '+name,'หมวดรายการทั้งหมดจากทะเบียนวิดีโอต้นฉบับ',categories),
  ('featured.html','featured','คลิปจากรายการ | '+name,'คลิปจากรายการพร้อมภาพปกจากแหล่งเผยแพร่จริง',featured),
+ ('shorts.html','shorts','ธรรมะคลิปสั้น | '+name,'คลิปสั้นต้นฉบับจากบัญชี TikTok @domskyline21 ที่ตรวจสอบแหล่งและภาพปก',shorts),
  ('quotes.html','quotes','คำคมธรรมะ | '+name,'เฉพาะภาพคำคมธรรมะและข้อความจริงจากเพจพระมหานภันต์พร้อมลิงก์ Facebook ต้นฉบับ',quotes),
  ('library.html','library','คลังวิดีโอ | '+name,'ค้นหาและเลือกชมวิดีโอต้นฉบับ แยกหมวด ปี และช่องทาง',library),
  ('category.html','category','หมวดรายการ | '+name,'รายการคลิปตามหมวดหมู่จากทะเบียนจริง',category),

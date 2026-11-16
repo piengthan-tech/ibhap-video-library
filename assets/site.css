@@ -147,3 +147,33 @@ img{display:block;max-width:100%}svg{width:20px;height:20px;fill:none;stroke:cur
 /* Absolutely position original photos within their aspect-ratio preserving viewport. */
 .quote-image{position:relative;display:block;overflow:hidden}
 .quote-image img{position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:contain;object-position:center}
+
+
+/* TikTok shorts: vertical original thumbnails, no generated or cropped faces. */
+.shorts-spotlight{background:linear-gradient(135deg,#f3faff,#e5f4ff)}
+.shorts-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:21px}
+.short-card{min-width:0;background:white;border:1px solid #d8e8f4;border-radius:15px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.short-card:hover{box-shadow:0 13px 32px rgba(23,91,159,.10);transform:translateY(-3px)}
+.short-cover{aspect-ratio:9/13.5;position:relative;overflow:hidden;background:linear-gradient(145deg,#d3eaff,#f8fcff);display:flex;align-items:center;justify-content:center}
+.short-cover>a{height:100%;width:100%;display:block}.short-cover img{width:100%;height:100%;object-fit:contain}
+.short-platform,.short-duration{position:absolute;background:#154e7edb;color:white;border-radius:7px;padding:3px 7px;font-size:10px}
+.short-platform{top:10px;left:10px;font-family:Inter,sans-serif;font-weight:700}.short-duration{bottom:10px;right:10px}
+.short-info{display:flex;flex-direction:column;flex:1;padding:14px 16px 16px}
+.short-info h3{font-size:12px;color:#18446c;line-height:1.75;font-weight:550;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:0 0 15px;overflow-wrap:anywhere}
+.short-info h3 a:hover{color:#006ebc}
+.short-date{color:#7996ad;font-size:10px;margin:0 0 8px}
+.short-links{border-top:1px solid #e5eff8;padding-top:12px;display:flex;justify-content:space-between;gap:10px;margin-top:auto;font-size:11px}
+.short-links a:last-child{font-weight:600;color:#086dba}
+.shorts-search-bar{padding:16px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#f7fbff;border:1px solid #d8eaf8;border-radius:12px;margin-bottom:24px}
+.shorts-search-bar label{font-size:12px;font-weight:600;color:#16588f}
+.shorts-search-bar input{min-height:40px;background:white;border:1px solid #cee5f6;border-radius:8px;padding:7px 12px;flex:1;min-width:180px;font-size:12px}
+.shorts-search-bar span{color:#6384a0;font-size:11px}
+.short-video-card .video-image{aspect-ratio:9/13.5}
+.short-video-card .video-image img{object-fit:contain}
+.short-series-card .series-image{background:linear-gradient(130deg,#e5f4ff,#b8dafe)}
+.short-series-card .series-image img{object-fit:contain;object-position:center}
+.short-detail-poster{aspect-ratio:9/13.5;max-height:630px;background:#e4f3ff}
+.short-detail-poster img{object-fit:contain}
+@media(max-width:1100px){.shorts-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.shorts-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.short-info{padding:12px}.short-cover{aspect-ratio:9/14}.short-info h3{font-size:11px}.shorts-search-bar{gap:8px}.shorts-search-bar span{width:100%}}
+@media(max-width:370px){.shorts-grid{grid-template-columns:minmax(0,1fr)}}

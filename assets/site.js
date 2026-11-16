@@ -9,7 +9,7 @@ const storageKey = 'ven-napan-library-favorites-v1';
 let items = [], quotes = [], favorites = new Set(), visibleCount = PAGE_SIZE, activeCategory = '', selected = [];
 const esc = value => String(value ?? '').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const norm = value => String(value || '').normalize('NFC').toLocaleLowerCase('th').replace(/[\u200b\u200c\u200d]/g,'').trim();
-const safeLink = url => {try{const u=new URL(url);return u.protocol==='https:' && /(^|\.)(youtube\.com|youtu\.be|facebook\.com|fb\.watch)$/.test(u.hostname)}catch{return false}};
+const safeLink = url => {try{const u=new URL(url);return u.protocol==='https:' && /(^|\.)(youtube\.com|youtu\.be|facebook\.com|fb\.watch|tiktok\.com)$/.test(u.hostname)}catch{return false}};
 const idSafe = id=>/^[-_A-Za-z0-9]{11}$/.test(id);
 const uri = (file,params={}) => {
  const query=new URLSearchParams(params).toString();
@@ -17,6 +17,7 @@ const uri = (file,params={}) => {
 };
 function thumb(x){
  if(x.thumbnail && /^\.\/assets\/episode-stills\/[-_A-Za-z0-9]{11}\.jpg$/.test(x.thumbnail))return x.thumbnail;
+ if(x.platform==='TikTok' && x.thumbnail==='./assets/tiktok-covers/'+x.video_id+'.webp' && /^\d{19}$/.test(x.video_id))return x.thumbnail;
  return x.platform==='YouTube' && idSafe(x.video_id) ? 'https://i.ytimg.com/vi/'+x.video_id+'/hqdefault.jpg' : '';
 }
 function formatDate(value){
@@ -37,7 +38,7 @@ const related = x=>x.relation==='ibhap_subtitles';
 function openVideoHref(x){return uri('video.html',{id:x.key})}
 function card(x){
  const preview=thumb(x),liked=favorites.has(favoriteKey(x));
- return `<article class="video-card" data-key="${esc(x.key)}">
+ return `<article class="video-card ${x.platform==='TikTok'?'short-video-card':''}" data-key="${esc(x.key)}">
  <div class="video-image">
    <a href="${esc(openVideoHref(x))}" aria-label="รายละเอียดวิดีโอ ${esc(x.title)}">
    ${preview?`<img src="${esc(preview)}" alt="ภาพปกจากวิดีโอ ${esc(x.title)}" loading="lazy" decoding="async">`:'<span class="image-fallback">▶</span>'}
@@ -121,7 +122,7 @@ function validateQuotes(raw){
 }
 function categoryCard(name,group,i){
  const image=thumb(chooseCover(group));
- return `<a class="series-card" href="${esc(uri('category.html',{name}))}">
+ return `<a class="series-card ${name.includes('Dhamma Shorts')?'short-series-card':''}" href="${esc(name.includes('Dhamma Shorts')?'./shorts.html':uri('category.html',{name}))}">
   <div class="series-image">${image?`<img loading="lazy" decoding="async" src="${esc(image)}" alt="ภาพจากรายการ ${esc(name)}">`:'<span class="image-fallback">▶</span>'}<span class="series-number">0${i+1}</span></div>
   <div class="series-info"><strong>${esc(name)}</strong><span>${group.length.toLocaleString('th-TH')} คลิป <b aria-hidden="true">↗</b></span></div>
   </a>`;
@@ -134,6 +135,7 @@ function relatedNote(){
 }
 function renderHome(){
  $('homeTotal').textContent=items.length.toLocaleString('th-TH');
+ renderHomeShorts();
  renderHomeQuotes();
  $('homeCategories').innerHTML=categoryCards(categoryNames().slice(0,6));
  const selections=categoryNames().slice(0,6).map(name=>chooseCover(items.filter(x=>x.category===name))).filter(Boolean);
@@ -154,9 +156,44 @@ function renderFeatured(){
   const group=items.filter(x=>x.category===name).sort(byDateDesc);
   const cover=chooseCover(group);
   const featured=[cover,...group.filter(x=>x.key!==cover.key).slice(0,2)];
-  return `<section class="featured-section"><div class="heading-row"><h2>${esc(name)}</h2><a href="${esc(uri('category.html',{name}))}" class="text-link">ดูหมวดนี้ทั้งหมด ↗</a></div><div class="video-grid">${featured.map(card).join('')}</div></section>`;
+  return `<section class="featured-section"><div class="heading-row"><h2>${esc(name)}</h2><a href="${esc(name.includes('Dhamma Shorts')?'./shorts.html':uri('category.html',{name}))}" class="text-link">ดูหมวดนี้ทั้งหมด ↗</a></div><div class="video-grid">${featured.map(card).join('')}</div></section>`;
  });
  $('featuredSections').innerHTML=sections.join('');
+}
+const SHORTS_CATEGORY='ธรรมะคลิปสั้น | Dhamma Shorts';
+let shortsVisible=16, shortsFiltered=[];
+function shortCard(x){
+ const image=thumb(x);
+ return `<article class="short-card">
+ <div class="short-cover"><a href="${esc(openVideoHref(x))}" aria-label="ดูรายละเอียดคลิปสั้น ${esc(x.title)}"><img src="${esc(image)}" alt="ภาพปกต้นฉบับ TikTok ${esc(x.title.slice(0,80))}" loading="lazy" decoding="async"></a>
+  <span class="short-platform">TikTok</span><span class="short-duration">${duration(x.minutes)}</span></div>
+ <div class="short-info"><p class="short-date">${esc(formatDate(x.published_at))}</p>
+ <h3><a href="${esc(openVideoHref(x))}">${esc(x.title)}</a></h3>
+ <div class="short-links"><a href="${esc(openVideoHref(x))}">รายละเอียด →</a><a target="_blank" rel="noopener noreferrer" href="${esc(x.url)}">ดูบน TikTok ↗</a></div></div>
+ </article>`;
+}
+function renderHomeShorts(){
+ const section=$('homeShorts');if(!section)return;
+ const list=items.filter(x=>x.platform==='TikTok').sort(byDateDesc).slice(0,4);
+ section.innerHTML=list.map(shortCard).join('') || '<div class="empty">ยังไม่มีวิดีโอสั้นในคลัง</div>';
+}
+function renderShorts(){
+ const input=$('shortsSearch'),grid=$('shortsGrid'),more=$('loadShorts');
+ function display(){
+  grid.innerHTML=shortsFiltered.slice(0,shortsVisible).map(shortCard).join('');
+  more.hidden=shortsVisible>=shortsFiltered.length;
+  $('shortsEmpty').hidden=shortsFiltered.length>0;
+  $('shortsCount').textContent=shortsFiltered.length.toLocaleString('th-TH')+' คลิป';
+ }
+ function search(){
+  const q=norm(input.value).split(/\s+/).filter(Boolean);
+  shortsFiltered=items.filter(x=>x.platform==='TikTok' && x.category===SHORTS_CATEGORY
+   && q.every(t=>norm(x.title+' '+x.description+' '+x.published_at).includes(t))).sort(byDateDesc);
+  shortsVisible=16;display();
+ }
+ input.addEventListener('input',search);
+ more.addEventListener('click',()=>{shortsVisible+=16;display()});
+ search();
 }
 function selectCategory(){
  const name=new URLSearchParams(location.search).get('name')||'';
@@ -191,8 +228,8 @@ function renderVideoDetail(){
  $('pageTitle').textContent='รายละเอียดวิดีโอ';
  $('currentCrumb').textContent='รายละเอียดวิดีโอ';
  const src=thumb(x);
- $('videoDetail').innerHTML=`<div class="detail-poster">${src?`<img src="${esc(src)}" alt="ภาพปกวิดีโอ ${esc(x.title)}">`:''}</div>
- <div class="detail-content"><div class="detail-badges"><a href="${esc(uri('category.html',{name:x.category}))}">${esc(x.category)}</a><span>${esc(x.platform)}</span></div>
+ $('videoDetail').innerHTML=`<div class="detail-poster ${x.platform==='TikTok'?'short-detail-poster':''}">${src?`<img src="${esc(src)}" alt="ภาพปกวิดีโอ ${esc(x.title)}">`:''}</div>
+ <div class="detail-content"><div class="detail-badges"><a href="${esc(x.platform==='TikTok'?'./shorts.html':uri('category.html',{name:x.category}))}">${esc(x.category)}</a><span>${esc(x.platform)}</span></div>
  <h2>${esc(x.title)}</h2><dl><div><dt>วันที่เผยแพร่</dt><dd>${esc(formatDate(x.published_at))}</dd></div>
  ${x.minutes?'<div><dt>ความยาว</dt><dd>'+duration(x.minutes)+'</dd></div>':''}
  ${x.sourceChannel?'<div><dt>ช่องเผยแพร่</dt><dd>'+esc(x.sourceChannel)+'</dd></div>':''}
@@ -311,7 +348,7 @@ function bindShared(){
 async function boot(){
  bindShared();
  if(page==='home' && location.hash){
-  const redirects={'#library':'library.html','#categories':'categories.html','#featured':'featured.html','#about':'about.html'};
+  const redirects={'#library':'library.html','#categories':'categories.html','#featured':'featured.html','#shorts':'shorts.html','#about':'about.html'};
   const destination=redirects[location.hash];
   if(destination){location.replace('./'+destination);return}
  }
@@ -335,6 +372,7 @@ async function boot(){
    case 'quotes':renderQuotesPage();break;
    case 'categories':renderCategories();break;
    case 'featured':renderFeatured();break;
+   case 'shorts':renderShorts();break;
    case 'library':populateLibrary();break;
    case 'category':selectCategory();break;
    case 'video':renderVideoDetail();break;
