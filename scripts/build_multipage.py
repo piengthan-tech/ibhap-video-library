@@ -185,9 +185,9 @@ home=f'''<section class="hero"><div class="container hero-row"><div class="hero-
 <section class="quick-search"><div class="container"><form id="homeSearchForm" class="quick-search-form" role="search">
 <label for="homeSearch">ค้นหาวิดีโอ</label><input id="homeSearch" type="search" placeholder="พิมพ์ชื่อคลิปหรือคำสำคัญ" autocomplete="off">
 <button type="submit">ค้นหา →</button></form></div></section>
-<section class="section"><div class="container"><div class="heading-row"><div><p class="kicker">SERIES COLLECTION</p><h2>หมวดรายการ</h2></div><a href="./categories.html" class="text-link">ดูทุกหมวด →</a></div>
-<div id="homeCategories" class="series-grid"><div class="loading">กำลังโหลด...</div></div></div></section>
-<section class="section tinted"><div class="container"><div class="heading-row"><div><p class="kicker">FROM ORIGINAL VIDEOS</p><h2>คลิปจากรายการ</h2></div><a href="./featured.html" class="text-link">ดูเพิ่มเติม →</a></div>
+<section class="section home-series-section"><div class="container"><div class="heading-row"><div><p class="kicker">EXPLORE THE COLLECTION</p><h2>หมวดรายการ</h2><p class="home-section-hint">เลือกหมวดที่สนใจ เพื่อดูวิดีโอทั้งหมดในหมวดนั้น</p></div><a href="./categories.html" class="text-link">ดูทุกหมวด →</a></div>
+<div id="homeCategories" class="home-topic-grid" aria-label="เลือกหมวดวิดีโอ"><div class="loading">กำลังโหลดหมวดรายการ...</div></div></div></section>
+<section class="section tinted home-featured-section"><div class="container"><div class="heading-row"><div><p class="kicker">FROM ORIGINAL VIDEOS</p><h2>คลิปจากรายการ</h2><p class="home-section-hint">เลือกชมตัวอย่างวิดีโอ พร้อมลิงก์ไปยังคลิปต้นฉบับ</p></div><a href="./featured.html" class="text-link">ดูคลิปทั้งหมด →</a></div>
  {grid('คลิปจากรายการ','homeFeatured')}</div></section>
 <section class="section shorts-spotlight"><div class="container">
 <div class="heading-row"><div><p class="kicker">SHORT-FORM VIDEO · TIKTOK</p><h2>ธรรมะคลิปสั้น</h2></div><a href="./shorts.html" class="text-link">ดูคลิปทั้งหมด ↗</a></div>

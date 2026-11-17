@@ -136,6 +136,25 @@ function categoryCard(name,group,i){
 function categoryCards(names){
  return names.map((name,i)=>categoryCard(name,items.filter(x=>x.category===name),i)).join('');
 }
+// Home-only category navigation: intentionally no video cover images.
+// The separate "คลิปจากรายการ" section displays actual clip thumbnails.
+function homeCategoryCard(name, i){
+ const count=items.filter(x=>x.category===name).length;
+ const href=name.includes('Dhamma Shorts')?'./shorts.html':uri('category.html',{name});
+ const serial=String(i+1).padStart(2,'0');
+ return `<a class="home-topic-card" href="${esc(href)}" aria-label="เปิดหมวด ${esc(name)} มี ${count} คลิป">
+   <span class="home-topic-mark" aria-hidden="true"><span>${serial}</span></span>
+   <span class="home-topic-copy">
+     <span class="home-topic-eyebrow">หมวดวิดีโอ</span>
+     <strong class="home-topic-name">${esc(name)}</strong>
+     <span class="home-topic-count">${count.toLocaleString('th-TH')} คลิปในหมวดนี้</span>
+   </span>
+   <span class="home-topic-action" aria-hidden="true">↗</span>
+  </a>`;
+}
+function homeCategoryCards(names){
+ return names.map((name,i)=>homeCategoryCard(name,i)).join('');
+}
 function relatedNote(){
  return '<strong>เกี่ยวกับรายการ “หลวงพี่ช่วยด้วย”</strong><p>รายการต้นฉบับ Workpoint ดำเนินรายการโดยพระมหาสมปอง ตาลปุตฺโต คลิปหมวดนี้เป็นงานซับไตเติลของมูลนิธิ สกพ. ไม่ใช่คลิปที่พระมหานภันต์เป็นผู้บรรยาย</p><a href="https://www.youtube.com/playlist?list=PLFU5BMWz_rx10E1AiFivlOPsVO8qQFvmx" target="_blank" rel="noopener noreferrer">ดูเพลย์ลิสต์ต้นทาง ↗</a>';
 }
@@ -143,7 +162,7 @@ function renderHome(){
  $('homeTotal').textContent=items.length.toLocaleString('th-TH');
  renderHomeShorts();
  renderHomeQuotes();
- $('homeCategories').innerHTML=categoryCards(categoryNames().slice(0,6));
+ $('homeCategories').innerHTML=homeCategoryCards(categoryNames().slice(0,6));
  const selections=categoryNames().slice(0,6).map(name=>chooseCover(items.filter(x=>x.category===name))).filter(Boolean);
  $('homeFeatured').innerHTML=selections.map(card).join('');
  $('homeSearchForm').addEventListener('submit',e=>{
