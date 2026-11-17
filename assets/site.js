@@ -225,7 +225,7 @@ function renderHome(){
 }
 function renderCategories(){
  const categories=categoryNames();
- $('categorySummary').textContent=categories.length.toLocaleString('th-TH')+' หมวดวิดีโอ'+(quotes.length?' · 1 หมวดคำคมธรรมะ':'');
+ $('categorySummary').textContent=categories.length.toLocaleString('th-TH')+' หมวดวิดีโอ'+(quotes.length?' · 1 หมวดคำคมธรรมะ':'')+' · 1 หมวดพิเศษ';
  $('allCategories').innerHTML=categoryCards(categories)+quoteCategoryCard();
  const note=$('relatedNotice');note.hidden=!categories.some(n=>n.includes('หลวงพี่ช่วยด้วย'));
 }
@@ -622,6 +622,7 @@ function renderExternalMedia(entries){
 }
 async function boot(){
  bindShared();
+ if(page==='fourps')return;
  if(page==='external-media'){
   try{
    const response=await fetch('./data/external-media.json',{cache:'no-cache'});

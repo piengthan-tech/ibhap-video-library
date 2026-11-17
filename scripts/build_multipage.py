@@ -9,6 +9,7 @@ nav=[
  ('categories.html','หมวดรายการ','categories'),
  ('featured.html','คลิปจากรายการ','featured'),
  ('shorts.html','ธรรมะคลิปสั้น','shorts'),
+ ('four-ps.html','4 พส.','fourps'),
  ('quotes.html','คำคมธรรมะ','quotes'),
  ('press.html','ข่าวและผลงาน','press'),
  ('library.html','คลังวิดีโอ','library'),
@@ -69,10 +70,13 @@ def footer():
  </footer>'''
 SEO_TITLES={'home': 'พระมหานภันต์ สนฺติภทฺโท | คลังธรรมะ PMNapan Library', 'categories': 'หมวดรายการธรรมะ | พระมหานภันต์ สนฺติภทฺโท', 'featured': 'คลิปธรรมะและรายการย้อนหลัง | พระมหานภันต์', 'shorts': 'คลิปธรรมะสั้น TikTok | พระมหานภันต์ สนฺติภทฺโท', 'quotes': 'คำคมธรรมะจากภาพต้นฉบับ | พระมหานภันต์', 'press': 'ข่าว บทสัมภาษณ์ และผลงาน | พระมหานภันต์', 'external-media': 'สื่อจากแหล่งเผยแพร่ภายนอก | พระมหานภันต์', 'library': 'คลังวิดีโอธรรมะ YouTube และ TikTok | พระมหานภันต์', 'category': 'หมวดคลิปธรรมะ | PMNapan Library', 'video': 'รายละเอียดวิดีโอธรรมะ | PMNapan Library', 'about': 'แหล่งข้อมูลและที่มาคลังธรรมะ | PMNapan Library'}
 SEO_TITLES['saved']='คลิปที่บันทึกไว้ | PMNapan Library'
+SEO_TITLES['fourps']='ปรากฏการณ์ 4 พส. | เส้นเวลาข่าว คลิป และบทบาทพระมหานภันต์'
 SEO_DESCRIPTIONS={'home': 'รวมคลิปธรรมะ คำคม ข่าวและบทสัมภาษณ์ที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท (Ven. Napan) พร้อมลิงก์วิดีโอและแหล่งเผยแพร่ต้นฉบับ', 'categories': 'สำรวจหมวดรายการธรรมะของพระมหานภันต์ สนฺติภทฺโท ทั้งอาสาหาธรรม รายการย้อนหลัง ธรรมบรรยาย และสื่อที่เกี่ยวข้องจากแหล่งเผยแพร่จริง', 'featured': 'เลือกชมรายการธรรมะและคลิปย้อนหลังที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท พร้อมภาพหน้าปกและลิงก์ไปยังผู้เผยแพร่ต้นฉบับ', 'shorts': 'รวบรวมคลิปธรรมะสั้นที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท จาก TikTok โดยรักษาลิงก์และคำบรรยายตามแหล่งเผยแพร่ต้นฉบับ', 'quotes': 'รวมภาพคำคมธรรมะของพระมหานภันต์ สนฺติภทฺโท จากภาพต้นฉบับที่ตรวจสอบแล้ว เปิดดูรูปภาพขนาดเต็มและสำรวจคำสอนจากแหล่งจริง', 'press': 'รวบรวมข่าว บทสัมภาษณ์ กิจกรรม และผลงานย้อนหลังที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท พร้อมสรุปสั้นและลิงก์ไปยังสำนักข่าวต้นฉบับ', 'external-media': 'คลิปจากหน่วยงานภายนอกที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท พร้อมแยกสถานะสื่อที่ตรวจสอบได้และเบาะแสที่ยังต้องตรวจสอบ', 'library': 'ค้นหาวิดีโอธรรมะของพระมหานภันต์ สนฺติภทฺโท และสื่อที่เกี่ยวข้อง เลือกหมวด ปี และแหล่งเผยแพร่ YouTube หรือ TikTok', 'category': 'ค้นหาและเลือกชมวิดีโอจากหมวดรายการธรรมะของพระมหานภันต์ สนฺติภทฺโท พร้อมลิงก์ต้นฉบับและข้อมูลการเผยแพร่', 'video': 'อ่านรายละเอียดวิดีโอที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท ตรวจชื่อเรื่องและเปิดวิดีโอจากแหล่งเผยแพร่ต้นฉบับ', 'about': 'ตรวจสอบแหล่งเผยแพร่วิดีโอ คำคม และข้อมูลอ้างอิงใน PMNapan Library เพื่อให้เข้าถึงคลังธรรมะของพระมหานภันต์ สนฺติภทฺโท ได้อย่างถูกต้อง'}
 SEO_DESCRIPTIONS['saved']='ดูคลิปที่บันทึกไว้เฉพาะในเบราว์เซอร์นี้ สามารถจัดการรายการที่สนใจได้โดยไม่ต้องสมัครบัญชี'
+SEO_DESCRIPTIONS['fourps']='เปิดคลังพิเศษปรากฏการณ์ 4 พส. ปี 2564–2565 เรียงข่าวและคลิปตามเหตุการณ์ พร้อมบทบาทพระมหานภันต์ในช่วงให้กำลังใจมหาสมปองและพิธีลาสิกขา'
 SEO_PATHS={'home': '', 'categories': 'categories.html', 'featured': 'featured.html', 'shorts': 'shorts.html', 'quotes': 'quotes.html', 'press': 'press.html', 'external-media': 'external-media.html', 'library': 'library.html', 'category': 'category.html', 'video': 'video.html', 'about': 'about.html'}
 SEO_PATHS['saved']='saved.html'
+SEO_PATHS['fourps']='four-ps.html'
 SEO_PERSON={'@type': 'Person', 'name': 'พระมหานภันต์ สนฺติภทฺโท', 'alternateName': ['Ven. Napan', 'PM Napan']}
 SEO_WEBSITE={'@type': 'WebSite', '@id': 'https://www.ydml.co.th/pmnapan-library/#website', 'url': 'https://www.ydml.co.th/pmnapan-library/', 'name': 'PMNapan Library Dhamma Archive', 'inLanguage': 'th', 'description': 'รวมคลิปธรรมะ คำคม ข่าวและบทสัมภาษณ์ที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท (Ven. Napan) พร้อมลิงก์วิดีโอและแหล่งเผยแพร่ต้นฉบับ'}
 
@@ -122,6 +126,8 @@ def seo_tags(active,title,description):
     return '\n'.join(tags)
 
 def shell(active,title,description,content):
+ extra_css='<link rel="stylesheet" href="./assets/four-ps.css">' if active=='fourps' else ''
+ extra_js='<script defer src="./assets/four-ps.js"></script>' if active=='fourps' else ''
  title=SEO_TITLES.get(active,title)
  description=SEO_DESCRIPTIONS.get(active,description)
  return f'''<!doctype html>
@@ -153,9 +159,11 @@ def shell(active,title,description,content):
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./assets/site.css">
+{extra_css}
 <link rel="stylesheet" href="./assets/ydml-footer.css">
 <link rel="stylesheet" href="./assets/analytics.css">
 <script defer src="./assets/site.js"></script>
+{extra_js}
 <script defer src="./assets/analytics.js"></script>
 </head><body data-page="{active}">
 <a href="#main" class="skip-link">ข้ามไปยังเนื้อหา</a>
@@ -200,6 +208,12 @@ home=f'''<section class="hero"><div class="container hero-row"><div class="hero-
 <a href="./library.html" class="text-link">เปิดคลังวิดีโอ →</a></div>
 <div id="homeLatest" class="video-grid" aria-label="คลิปล่าสุดตามวันที่เผยแพร่"><div class="loading">กำลังโหลดรายการ...</div></div>
 </div></section>
+<section class="ps-home-promo" aria-labelledby="psHomePromoTitle"><div class="container ps-home-promo-inner">
+<div class="ps-promo-mark" aria-hidden="true">4</div>
+<div class="ps-home-promo-copy"><p class="kicker">SPECIAL ARCHIVE · 2564–2565</p><h2 id="psHomePromoTitle">ปรากฏการณ์ 4 พส.</h2>
+<p>ย้อนดูช่วงเวลาที่ไลฟ์ธรรมะกลายเป็นกระแส สู่มิตรภาพ การให้กำลังใจ และบทบาทของพระมหานภันต์ ผ่านข่าวและคลิปที่มีแหล่งอ้างอิง</p></div>
+<a class="ps-promo-link" href="./four-ps.html">สำรวจเส้นเวลาและคลิป <span aria-hidden="true">↗</span></a>
+</div></section>
 <section class="section home-series-section"><div class="container"><div class="heading-row"><div><p class="kicker">EXPLORE THE COLLECTION</p><h2>หมวดรายการ</h2><p class="home-section-hint">เลือกหมวดที่สนใจ เพื่อดูวิดีโอทั้งหมดในหมวดนั้น</p></div><a href="./categories.html" class="text-link">ดูทุกหมวด →</a></div>
 <div id="homeCategories" class="home-topic-grid" aria-label="เลือกหมวดวิดีโอ"><div class="loading">กำลังโหลดหมวดรายการ...</div></div></div></section>
 <section class="section tinted home-featured-section"><div class="container"><div class="heading-row"><div><p class="kicker">FROM ORIGINAL VIDEOS</p><h2>คลิปจากรายการ</h2><p class="home-section-hint">เลือกชมตัวอย่างวิดีโอ พร้อมลิงก์ไปยังคลิปต้นฉบับ</p></div><a href="./featured.html" class="text-link">ดูคลิปทั้งหมด →</a></div>
@@ -213,6 +227,9 @@ home=f'''<section class="hero"><div class="container hero-row"><div class="hero-
 home += '<section class="section seo-discovery" aria-labelledby="archiveExploreHeading"><div class="container"><div class="seo-discovery-inner"><h2 id="archiveExploreHeading">ค้นหาธรรมะและผลงานของพระมหานภันต์ สนฺติภทฺโท</h2><p>PMNapan Library รวบรวมรายการธรรมะและสื่อที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท หรือ Ven. Napan เพื่อให้ค้นหาคลิปเต็มจากผู้เผยแพร่ต้นฉบับได้สะดวก พร้อมแยกข้อมูลคำคม ข่าว และบทสัมภาษณ์ออกจากกันอย่างชัดเจน แหล่งข้อมูลมีทั้ง YouTube, TikTok และเว็บไซต์ของหน่วยงานต่าง ๆ โดยระบุที่มาและเก็บเฉพาะรายการที่ตรวจสอบได้</p><nav class="seo-discovery-links" aria-label="สำรวจคลังธรรมะ"><a href="./library.html">ค้นหาคลิปและธรรมบรรยาย</a><a href="./categories.html">เลือกหมวดรายการธรรมะ</a><a href="./shorts.html">ดูธรรมะคลิปสั้น</a><a href="./quotes.html">ดูภาพคำคมธรรมะ</a><a href="./press.html">อ่านข่าวและบทสัมภาษณ์</a><a href="./about.html">ตรวจสอบแหล่งเผยแพร่</a></nav></div></div></section>'
 categories=f'''{intro('ALL SERIES','หมวดรายการ','หมวดที่มีอยู่จริงในสารบัญวิดีโอ')}
 <section class="section"><div class="container"><div class="category-summary" id="categorySummary"></div>
+<a class="ps-category-banner" href="./four-ps.html" aria-label="เปิดหมวดพิเศษ ปรากฏการณ์ 4 พส.">
+<span class="ps-category-symbol" aria-hidden="true">4</span><span><small>หมวดพิเศษ · ประวัติศาสตร์สื่อออนไลน์</small><strong>ปรากฏการณ์ 4 พส.</strong>
+<em>เส้นเวลา ข่าว คลิป และเหตุการณ์สำคัญที่พระมหานภันต์มีส่วนร่วม</em></span><span class="ps-category-arrow" aria-hidden="true">↗</span></a>
 <div id="allCategories" class="series-grid"><div class="loading">กำลังโหลดหมวดรายการ...</div></div>
 <aside class="program-note" id="relatedNotice" hidden><strong>เกี่ยวกับ “หลวงพี่ช่วยด้วย”</strong><p>รายการต้นฉบับ Workpoint ดำเนินรายการโดยพระมหาสมปอง ตาลปุตฺโต คลิปในหมวดนี้เป็นงานซับไตเติลของมูลนิธิ สกพ. ไม่ใช่วิดีโอที่พระมหานภันต์เป็นผู้บรรยาย</p><a href="https://www.youtube.com/playlist?list=PLFU5BMWz_rx10E1AiFivlOPsVO8qQFvmx" target="_blank" rel="noopener noreferrer">เพลย์ลิสต์ต้นทาง ↗</a></aside>
 </div></section>'''
@@ -226,6 +243,8 @@ quotes=f'''{intro('DHAMMA QUOTES','คำคมธรรมะ','รวมภา
 </div></section>'''
 press=f'''{intro('PRESS · INTERVIEWS · ARCHIVE','ข่าว บทสัมภาษณ์ และผลงาน','หลักฐานการทำงานและเนื้อหาย้อนหลังจากแหล่งเผยแพร่ต้นฉบับ ตรวจสอบและแยกประเภทก่อนรวบรวม')}
 <section class="section"><div class="container">
+<aside class="ps-press-crosslink"><strong>สนใจข่าวและคลิปกระแส พส. ปี 2564–2565?</strong>
+<a href="./four-ps.html">เปิดคลังพิเศษ “ปรากฏการณ์ 4 พส.” ที่เรียงตามเหตุการณ์ ↗</a></aside>
 <div class="press-tools">
 <label class="press-search-label" for="pressSearch">ค้นหาเนื้อหา<input id="pressSearch" type="search" placeholder="ค้นหาชื่อเรื่อง แหล่งข่าว หรือคำสำคัญ" autocomplete="off"></label>
 <label class="press-select-label" for="pressCategory">ประเภท<select id="pressCategory"><option value="">ทุกประเภท</option></select></label>
@@ -295,11 +314,13 @@ saved=f'''{intro('SAVED VIDEOS','คลิปที่บันทึกไว�
 <a class="btn primary" href="./library.html">ไปที่คลังวิดีโอ →</a></div>
 <div class="load-wrap"><button id="loadMore" type="button" class="btn secondary" hidden>ดูคลิปที่บันทึกเพิ่มเติม ↓</button></div>
 </div></section>'''
+fourps='<section class="ps-hero" aria-labelledby="psHeroTitle"><div class="container ps-hero-container">\n<nav class="ps-breadcrumb" aria-label="ตำแหน่งหน้า"><a href="./index.html">หน้าแรก</a><span aria-hidden="true">/</span><span>ปรากฏการณ์ 4 พส.</span></nav>\n<div class="ps-hero-grid"><div class="ps-hero-content">\n<p class="ps-hero-eyebrow"><span class="ps-status-dot" aria-hidden="true"></span> PMNAPAN LIBRARY · SPECIAL ARCHIVE / 2021–2022</p>\n<h1 id="psHeroTitle">ปรากฏการณ์<br><span>4 พส.</span></h1>\n<p class="ps-hero-lead">จากไลฟ์ธรรมะที่ทำให้คนหัวเราะและหันมาสนใจพระพุทธศาสนา สู่บทสนทนาเรื่องความเหมาะสม มิตรภาพ และช่วงเวลาเปลี่ยนผ่านของพระนักเทศน์ทั้งสี่รูป</p>\n<div class="ps-hero-actions"><a href="#psSpotlight" class="ps-action-primary">เหตุการณ์ของพระมหานภันต์ <span aria-hidden="true">↘</span></a>\n<a href="#psTimelineSection" class="ps-action-secondary">สำรวจเส้นเวลาทั้งหมด <span aria-hidden="true">↓</span></a></div>\n</div><div class="ps-hero-art" aria-hidden="true"><div class="ps-art-halo"></div>\n<span class="ps-art-giant">4</span><span class="ps-art-caption">P S. · ARCHIVE</span>\n<span class="ps-art-chip ps-art-a">ไพรวัลย์</span><span class="ps-art-chip ps-art-b">สมปอง</span>\n<span class="ps-art-chip ps-art-c">สมพงษ์</span><span class="ps-art-chip ps-art-d">นภันต์</span></div></div>\n<div class="ps-hero-stats" aria-label="สถิติคอนเทนต์ในคลังพิเศษ">\n<div><strong id="psEventTotal">—</strong><span>เหตุการณ์</span></div>\n<div><strong id="psNewsTotal">—</strong><span>ข่าว / บทวิเคราะห์</span></div>\n<div><strong id="psVideoTotal">—</strong><span>คลิป / รายการ</span></div>\n<div><strong id="psNapanTotal">—</strong><span>เหตุการณ์เกี่ยวกับพระมหานภันต์</span></div>\n</div></div></section>\n<section class="ps-context" aria-labelledby="psAboutHeading"><div class="container">\n<div class="ps-context-head"><p class="ps-section-kicker">THE PEOPLE · FOUR MONKS</p><h2 id="psAboutHeading">เรื่องราวของ “4 พส.”</h2>\n<p>คำว่า 4 พส. ในคลังนี้ใช้กล่าวถึงพระนักเทศน์สี่รูปที่ปรากฏในข่าวและความทรงจำช่วงนั้น ไม่ได้หมายความว่ามีไลฟ์ฉบับเดียวที่ทั้งสี่รูปอยู่พร้อมกัน</p></div>\n<div id="psPeople" class="ps-people-grid"><p class="ps-loading">กำลังโหลดรายชื่อ...</p></div>\n</div></section>\n<section class="ps-spotlight" id="psSpotlight" aria-labelledby="psSpotlightTitle"><div class="container">\n<div class="ps-section-heading"><div><p class="ps-section-kicker">VEN. NAPAN · KEY MOMENTS</p><h2 id="psSpotlightTitle">หมุดหมายที่พระมหานภันต์มีส่วนร่วม</h2>\n<p>คัดเหตุการณ์ที่มีข่าวยืนยันการเข้าร่วมหรือการแสดงความเห็นของพระอาจารย์ โดยไม่สร้างคำพูดที่ไม่มีต้นฉบับ</p></div></div>\n<div id="psSpotlightGrid" class="ps-spotlight-grid"><p class="ps-loading">กำลังโหลดเหตุการณ์สำคัญ...</p></div>\n</div></section>\n<section class="ps-timeline-section" id="psTimelineSection" aria-labelledby="psTimelineTitle"><div class="container">\n<div class="ps-section-heading"><div><p class="ps-section-kicker">COMPLETE CHRONOLOGY</p><h2 id="psTimelineTitle">เส้นเวลา ข่าว และคลิป</h2>\n<p>เลือกดูตามแง่มุมที่สนใจ หรือค้นชื่อเหตุการณ์ / สำนักข่าว / บุคคล</p></div></div>\n<div class="ps-filter-shell" aria-label="ค้นหาและกรองเหตุการณ์"><div class="ps-filter-row">\n<label class="ps-search-label" for="psSearch"><span aria-hidden="true">⌕</span><input id="psSearch" type="search" placeholder="ค้นหาเหตุการณ์ ข่าว คลิป หรือชื่อบุคคล..." autocomplete="off"></label>\n<button id="psReset" type="button" class="ps-clear" hidden>ล้างตัวกรอง ×</button></div>\n<div class="ps-filter-pills" id="psFilters" role="group" aria-label="เลือกประเภทเหตุการณ์">\n<button class="ps-pill active" data-ps-filter="all" aria-pressed="true" type="button">ทั้งหมด</button>\n<button class="ps-pill" data-ps-filter="napan" aria-pressed="false" type="button">✦ พระมหานภันต์</button>\n<button class="ps-pill" data-ps-filter="news" aria-pressed="false" type="button">ข่าวและบทความ</button>\n<button class="ps-pill" data-ps-filter="video" aria-pressed="false" type="button">คลิปวิดีโอ</button>\n<button class="ps-pill" data-ps-filter="viral" aria-pressed="false" type="button">สีสันและกระแส</button>\n<button class="ps-pill" data-ps-filter="debate" aria-pressed="false" type="button">ข้อถกเถียง</button>\n<button class="ps-pill" data-ps-filter="change" aria-pressed="false" type="button">ช่วงเปลี่ยนผ่าน</button></div>\n<div class="ps-filter-bottom"><p id="psResultCount" role="status" aria-live="polite">กำลังโหลดรายการ...</p>\n<span>ปี 2564–2565 · เรียงตามวันเกิดเหตุการณ์</span></div></div>\n<div class="ps-timeline" id="psTimeline"><p class="ps-loading">กำลังเรียงเหตุการณ์จากหลักฐาน...</p></div>\n<div class="ps-empty" id="psEmpty" hidden><h3>ไม่พบเหตุการณ์ที่ตรงกับเงื่อนไข</h3><p>ลองค้นคำอื่น หรือเปลี่ยนหมวดการกรอง</p><button type="button" id="psEmptyReset">แสดงทั้งหมด</button></div>\n</div></section>\n<section class="ps-pending" id="psPendingSection" aria-labelledby="psPendingHeading"><div class="container">\n<div class="ps-section-heading"><div><p class="ps-section-kicker">RESEARCH DESK</p><h2 id="psPendingHeading">ต้นฉบับที่ยังอยู่ระหว่างสืบค้น</h2>\n<p>แยกจากรายการที่พบลิงก์แล้วอย่างชัดเจน เพื่อไม่ให้เข้าใจว่าคลิปข่าวคือไลฟ์ฉบับเต็ม</p></div></div>\n<div id="psPending" class="ps-pending-grid"><p class="ps-loading">กำลังโหลดรายการค้นต่อ...</p></div>\n</div></section>\n<section class="ps-note-section"><div class="container"><div class="ps-note-inner">\n<div class="ps-note-icon" aria-hidden="true">i</div><div><h2>หลักเกณฑ์การจัดเก็บและอ้างอิง</h2>\n<p>เนื้อหาหน้านี้รวบรวมข่าว บทสัมภาษณ์ รายการ และคลิปจากผู้เผยแพร่ต้นทาง สรุปเหตุการณ์โดยใช้หลักฐานที่มีจริง วันที่บนเส้นเวลาเป็นวันที่เกิดเหตุการณ์เมื่อทราบแน่ชัด ซึ่งอาจต่างจากวันที่เผยแพร่ข่าว; ข่าวและคลิปข่าวไม่ใช่วิดีโอไลฟ์ต้นฉบับทั้งหมด</p>\n<p>ข้อมูลเกี่ยวกับคำพูดและบทบาทของพระมหานภันต์จะไม่แต่งเติมหรือถอดเป็นคำพูดอ้างอิงโดยไม่มีต้นฉบับที่ตรวจสอบได้ หากพบข้อมูลใหม่สามารถปรับสถานะหลักฐานและเพิ่มลิงก์ได้ในภายหลัง</p>\n<a href="./about.html">ตรวจสอบแนวทางแหล่งเผยแพร่ของ PMNapan Library ↗</a></div></div></div></section>'
 pages=[
  ('index.html','home',name,'สารบัญวิดีโอพระมหานภันต์ สนฺติภทฺโท และงานสื่อที่เกี่ยวข้อง',home),
  ('categories.html','categories','หมวดรายการ | '+name,'หมวดรายการทั้งหมดจากทะเบียนวิดีโอต้นฉบับ',categories),
  ('featured.html','featured','คลิปจากรายการ | '+name,'คลิปจากรายการพร้อมภาพปกจากแหล่งเผยแพร่จริง',featured),
  ('shorts.html','shorts','ธรรมะคลิปสั้น | '+name,'คลิปสั้นต้นฉบับจากบัญชี TikTok @domskyline21 ที่ตรวจสอบแหล่งและภาพปก',shorts),
+ ('four-ps.html','fourps','ปรากฏการณ์ 4 พส. | '+name,'เส้นเวลา ข่าว คลิป และเหตุการณ์ที่เกี่ยวข้องกับพระมหานภันต์',fourps),
  ('quotes.html','quotes','คำคมธรรมะ | '+name,'รวบรวมภาพคำคมธรรมะของพระมหานภันต์จากคลังภาพที่ผู้ดูแลจัดเตรียมและโพสต์ต้นฉบับที่ตรวจสอบได้',quotes),
  ('press.html','press','ข่าว บทสัมภาษณ์ และผลงาน | '+name,'คลังข่าว บทสัมภาษณ์ ประวัติ และผลงานย้อนหลังของพระมหานภันต์ พร้อมอ้างอิงแหล่งเผยแพร่ต้นฉบับ',press),
  ('external-media.html','external-media','สื่อจากแหล่งภายนอก | '+name,'คลิปจากหน่วยงานภายนอกและเบาะแสที่แยกสถานะตรวจสอบ',external_media),
