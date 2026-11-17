@@ -33,11 +33,36 @@
   if(!https(s.url))return '';
   const video=s.kind==='video',id=video?youtubeId(s.url):'';
   const label=video?'คลิปข่าว / รายการ':s.kind==='report'?'รายงานวิเคราะห์':'ข่าว / บทความ';
-  const image=id?'<span class="ps-source-thumb"><img src="https://i.ytimg.com/vi/'+id+'/mqdefault.jpg" loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer"><span class="ps-video-mark" aria-hidden="true">▶</span></span>':'<span class="ps-source-icon" aria-hidden="true">'+(video?'▶':'▤')+'</span>';
+  const imageSrc=id?'https://i.ytimg.com/vi/'+id+'/mqdefault.jpg':https(s.thumbnail)?s.thumbnail:'';
+  const image=imageSrc?
+   '<span class="ps-source-thumb '+(id?'ps-source-thumb-video':'ps-source-thumb-news')+'"><img src="'+esc(imageSrc)+'" loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer" width="120" height="72">'
+    +(video?'<span class="ps-video-mark" aria-hidden="true">▶</span>':'')+'<span class="ps-thumb-fallback" aria-hidden="true">▤</span></span>':
+   '<span class="ps-source-icon" aria-hidden="true">'+(video?'▶':'▤')+'</span>';
   return '<a class="ps-source '+(video?'ps-source-video':'ps-source-news')+'" href="'+esc(s.url)+'" target="_blank" rel="noopener noreferrer" aria-label="เปิดแหล่งอ้างอิง '+esc(s.source)+': '+esc(s.title)+'">'
    +image+'<span class="ps-source-copy"><span class="ps-source-meta">'+esc(label)+' · '+esc(s.source)+'</span>'
    +'<strong>'+esc(s.title)+'</strong><span class="ps-source-note">'+esc(s.note||'เปิดดูจากผู้เผยแพร่ต้นทาง')+'</span></span>'
    +'<span class="ps-source-arrow" aria-hidden="true">↗</span></a>';
+ }
+ function illustrationSource(event,mode){
+  if(mode==='video'){
+   const video=event.sources.find(s=>s.kind==='video'&&youtubeId(s.url));
+   if(video)return {url:video.url,title:video.title,source:video.source,thumbnail:'https://i.ytimg.com/vi/'+youtubeId(video.url)+'/hqdefault.jpg',video:true};
+  }
+  const report=event.sources.find(s=>s.id===event.featured_source_id&&s.kind!=='video'&&https(s.thumbnail)&&https(s.url))
+    ||event.sources.find(s=>s.kind!=='video'&&https(s.thumbnail)&&https(s.url));
+  if(report)return {...report,video:false};
+  const video=event.sources.find(s=>s.kind==='video'&&youtubeId(s.url));
+  if(video)return {url:video.url,title:video.title,source:video.source,thumbnail:'https://i.ytimg.com/vi/'+youtubeId(video.url)+'/hqdefault.jpg',video:true};
+  return null;
+ }
+ function eventPhoto(event,mode){
+  const report=illustrationSource(event,mode);
+  if(!report)return '';
+  const caption=(report.video?'ภาพปกคลิปข่าว · ':'ภาพประกอบจากข่าว · ')+report.source;
+  return '<a class="ps-event-illustration" target="_blank" rel="noopener noreferrer" href="'+esc(report.url)+'" aria-label="เปิดแหล่งข่าวต้นทางของภาพประกอบ '+esc(report.source)+'">'
+    +'<span class="ps-event-illustration-media"><img src="'+esc(report.thumbnail)+'" alt="" width="480" height="270" loading="lazy" decoding="async" referrerpolicy="no-referrer">'
+    +'<span class="ps-event-image-fallback" aria-hidden="true">ดูรายละเอียดจากแหล่งข่าว</span></span>'
+    +'<span class="ps-event-illustration-caption"><span>'+esc(caption)+'</span><span aria-hidden="true">↗</span></span></a>';
  }
  function personCard(p,i){
   const role=p.short==='นภันต์'?'พระอาจารย์ที่มีบทบาทในเหตุการณ์และยังครองสมณเพศเมื่อกลุ่ม 4 พส. ถูกกล่าวถึง':'พระนักเทศน์ในกระแส 2564–2565';
@@ -45,25 +70,30 @@
    +'<strong class="ps-person-name">'+esc(p.name)+'</strong><span class="ps-person-role">'+esc(role)+'</span></article>';
  }
  function highlightCard(e){
-  return '<a class="ps-focus-card" href="#'+esc(e.id)+'"><span class="ps-focus-icon" aria-hidden="true">✦</span>'
-   +'<span class="ps-focus-date">'+esc(thaiDate(e.date,e.datePrecision))+'</span>'
-   +'<strong>'+esc(e.title)+'</strong><span class="ps-focus-link">ไปยังเหตุการณ์ ↗</span></a>';
+  const cover=eventPhoto(e,'news');
+  return '<a class="ps-focus-card" href="#'+esc(e.id)+'">'
+   +(cover?'<span class="ps-focus-photo"><img src="'+esc(illustrationSource(e,'news').thumbnail)+'" width="480" height="270" loading="eager" decoding="async" alt="" referrerpolicy="no-referrer"><span class="ps-focus-photo-fallback">ดูเหตุการณ์ในเส้นเวลา</span></span>':'')
+   +'<span class="ps-focus-body"><span class="ps-focus-date">'+esc(thaiDate(e.date,e.datePrecision))+'</span>'
+   +'<strong>'+esc(e.title)+'</strong><span class="ps-focus-link">อ่านเหตุการณ์และแหล่งข่าว <span aria-hidden="true">↗</span></span></span></a>';
  }
  function eventCard(e){
   const numVideo=e.sources.filter(x=>x.kind==='video').length,numNews=e.sources.length-numVideo;
   const items=state.filter==='video'?e.sources.filter(x=>x.kind==='video'):state.filter==='news'?e.sources.filter(isNews):e.sources;
   const limit=state.filter==='video'?6:e.napan?4:3;
   const first=items.slice(0,limit),more=items.slice(limit);
-  return '<article class="ps-event '+(e.napan?'ps-event-featured':'')+'" id="'+esc(e.id)+'">'
+  const category=['viral','debate','napan','change'].includes(e.category)?e.category:'general';
+  return '<article class="ps-event ps-event--'+category+' '+(e.napan?'ps-event-featured':'')+'" id="'+esc(e.id)+'">'
    +'<div class="ps-event-marker"><span class="ps-timeline-dot" aria-hidden="true"></span><span class="ps-event-date">'+esc(thaiDate(e.date,e.datePrecision))+'</span></div>'
-   +'<div class="ps-event-main"><div class="ps-event-upper"><span class="ps-event-category">'+esc(topics[e.category]||'เหตุการณ์')+'</span>'
-   +(e.napan?'<span class="ps-event-napan">✦ พระมหานภันต์มีส่วนร่วม</span>':'')+'</div>'
+   +'<div class="ps-event-main"><div class="ps-event-overview"><div class="ps-event-story">'
+   +'<div class="ps-event-upper"><span class="ps-event-category">'+esc(topics[e.category]||'เหตุการณ์')+'</span>'
+   +(e.napan?'<span class="ps-event-napan">เกี่ยวข้องกับพระมหานภันต์</span>':'')+'</div>'
    +'<h3>'+esc(e.title)+'</h3><p class="ps-event-desc">'+esc(e.summary)+'</p>'
-   +'<div class="ps-event-people"><span>บุคคลในเหตุการณ์</span>'+e.people.map(p=>'<span class="ps-person-tag">'+esc(p)+'</span>').join('')+'</div>'
-   +'<div class="ps-event-source-title"><strong>หลักฐานและแหล่งเผยแพร่</strong><span>'+(numNews?numNews+' ข่าว/บทความ':'')
+   +'<div class="ps-event-people"><span>บุคคลที่เกี่ยวข้อง</span>'+e.people.map(p=>'<span class="ps-person-tag">'+esc(p)+'</span>').join('')+'</div></div>'
+   +eventPhoto(e,state.filter)+'</div>'
+   +'<div class="ps-event-source-title"><strong>ข่าว คลิป และข้อมูลอ้างอิง</strong><span>'+(numNews?numNews+' ข่าว/บทความ':'')
    +(numNews&&numVideo?' · ':'')+(numVideo?numVideo+' คลิป':'')+'</span></div>'
    +'<div class="ps-source-list">'+first.map(sourceCard).join('')+'</div>'
-   +(more.length?'<details class="ps-more-sources"><summary>แสดงแหล่งอ้างอิงเพิ่มเติมอีก '+more.length+' รายการ <span aria-hidden="true">⌄</span></summary><div class="ps-source-list">'+more.map(sourceCard).join('')+'</div></details>':'')
+   +(more.length?'<details class="ps-more-sources"><summary>ดูแหล่งอ้างอิงเพิ่มเติมอีก '+more.length+' รายการ <span aria-hidden="true">⌄</span></summary><div class="ps-source-list">'+more.map(sourceCard).join('')+'</div></details>':'')
    +'</div></article>';
  }
  function renderVideoHighlights(){
@@ -128,7 +158,14 @@
    b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));
   });
   $('psTimeline').querySelectorAll('.ps-source-thumb img').forEach(img=>{
-   img.addEventListener('error',()=>img.parentElement.classList.add('ps-no-thumb'),{once:true});
+   const fail=()=>img.parentElement.classList.add('ps-no-thumb');
+   img.addEventListener('error',fail,{once:true});
+   img.addEventListener('load',()=>img.parentElement.classList.remove('ps-no-thumb'),{once:true});
+  });
+  $('psTimeline').querySelectorAll('.ps-event-illustration-media img').forEach(img=>{
+   const fail=()=>img.parentElement.classList.add('ps-event-image-error');
+   img.addEventListener('error',fail,{once:true});
+   img.addEventListener('load',()=>img.parentElement.classList.remove('ps-event-image-error'),{once:true});
   });
  }
  function reset(){
@@ -160,6 +197,11 @@
    $('psVideoTotal').textContent=allSources.filter(s=>s.kind==='video').length;
    $('psNapanTotal').textContent=state.events.filter(e=>e.napan).length;
    renderPending();renderVideoHighlights();render();
+   $('psSpotlightGrid').querySelectorAll('.ps-focus-photo img').forEach(img=>{
+     const fail=()=>img.parentElement.classList.add('ps-focus-photo-error');
+     img.addEventListener('error',fail,{once:true});
+     img.addEventListener('load',()=>img.parentElement.classList.remove('ps-focus-photo-error'),{once:true});
+   });
    if(/^#ps-\d+$/.test(location.hash))document.getElementById(location.hash.slice(1))?.scrollIntoView({block:'start'});
   }catch(error){
    console.error('Cannot load editorial archive',error);

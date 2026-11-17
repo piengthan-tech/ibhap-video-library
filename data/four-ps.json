@@ -40,7 +40,8 @@
           "source": "Manager Online",
           "title": "ไลฟ์สนทนาธรรมยอดผู้ชมมากกว่า 2 แสน",
           "url": "https://mgronline.com/onlinesection/detail/9640000087607",
-          "note": "สื่อรายงานบรรยากาศ"
+          "note": "สื่อรายงานบรรยากาศ",
+          "thumbnail": "https://mpics-cdn.mgronline.com/pics/Images/564000008949401.JPEG"
         },
         {
           "id": "ps-1-2",
@@ -48,7 +49,8 @@
           "source": "Sanook",
           "title": "ไลฟ์ปรากฏการณ์ พร้อมแกลเลอรี 35 ภาพ",
           "url": "https://www.sanook.com/news/8437902/",
-          "note": "เผยแพร่ 4 ก.ย. 2564"
+          "note": "เผยแพร่ 4 ก.ย. 2564",
+          "thumbnail": "https://s.isanook.com/ns/0/ud/1687/8437902/sanook_thumbnail_1200x720-2.jpg?ip/crop/w1200h700/q80/jpg"
         },
         {
           "id": "ps-1-3",
@@ -56,7 +58,8 @@
           "source": "Nation TV",
           "title": "วัดสร้อยทองลุกเป็นไฟ: นัดไลฟ์พระมหาไพรวัลย์–พระมหาสมปอง",
           "url": "https://www.nationtv.tv/news/378837566",
-          "note": "ข่าวประกาศกิจกรรม"
+          "note": "ข่าวประกาศกิจกรรม",
+          "thumbnail": "https://resource.nationtv.tv/uploads/images/md/2021/09/mit55lSOagwLgS7S4CsJ.jpg"
         }
       ],
       "id": "ps-01"
@@ -85,7 +88,8 @@
           "source": "Manager Online",
           "title": "เมื่อแบรนด์เข้าคอมเมนต์ในไลฟ์จนถูกวิพากษ์",
           "url": "https://mgronline.com/onlinesection/detail/9640000087844",
-          "note": "มุมจริยธรรมการตลาด"
+          "note": "มุมจริยธรรมการตลาด",
+          "thumbnail": "https://mpics-cdn.mgronline.com/pics/Images/564000008974101.JPEG"
         },
         {
           "id": "ps-2-3",
@@ -93,7 +97,8 @@
           "source": "Kapook",
           "title": "รวบรวมเรื่องฮาในช่วงไลฟ์ 2 พส.",
           "url": "https://hilight.kapook.com/view/216202",
-          "note": "ข่าวสรุปบรรยากาศ"
+          "note": "ข่าวสรุปบรรยากาศ",
+          "thumbnail": "https://hilight.thaicdn.net/r/1200/630/image_fb/44/216202-new-887977.jpg"
         },
         {
           "id": "ps-2-4",
@@ -104,7 +109,8 @@
           "note": "คลิปข่าว 5 ก.ย. ไม่ใช่ไลฟ์ฉบับเต็ม"
         }
       ],
-      "id": "ps-02"
+      "id": "ps-02",
+      "featured_source_id": "ps-2-3"
     },
     {
       "date": "2021-09-06",
@@ -122,7 +128,8 @@
           "source": "Thai PBS",
           "title": "ความเห็นเรื่องธรรมวินัยและกระแส 2 พส.",
           "url": "https://www.thaipbs.th/news/content/307656",
-          "note": "ข่าว 6 ก.ย. 2564"
+          "note": "ข่าว 6 ก.ย. 2564",
+          "thumbnail": "https://content-images.thaipbs.or.th/imgpx1/unsafe/rt:fill/el:1/s:1200:630/q:90/aHR0cHM6Ly9vbmVjbXMudGhhaXBicy5vci50aC9tZWRpYS9ET1d0STJNRGFtdGd4Q2VmRElZdFpIVmJpdEtmNXlubHVJNDQzdGc4UmpJVlF5eTlRVDd3T1NaR2J6YUtSLmpwZw%3D%3D.jpg"
         },
         {
           "id": "ps-3-2",
@@ -130,7 +137,8 @@
           "source": "Nation TV",
           "title": "คำว่า “พส.” กับกระแสศัพท์ใหม่บนโซเชียล",
           "url": "https://www.nationtv.tv/news/378838169",
-          "note": "ข่าว 6 ก.ย. 2564"
+          "note": "ข่าว 6 ก.ย. 2564",
+          "thumbnail": "https://resource.nationtv.tv/uploads/images/md/2021/09/pp8IqXQwdawt3KR4dg2P.jpg"
         },
         {
           "id": "ps-3-3",
@@ -165,7 +173,8 @@
           "note": "หน้ารายการและบทวิเคราะห์"
         }
       ],
-      "id": "ps-03"
+      "id": "ps-03",
+      "featured_source_id": "ps-3-2"
     },
     {
       "date": "2021-09-09",
@@ -183,7 +192,8 @@
           "source": "Thai PBS",
           "title": "สองพระมหาชี้แจงกรรมาธิการศาสนา",
           "url": "https://www.thaipbs.th/news/content/307738",
-          "note": "ข่าว 9 ก.ย. 2564"
+          "note": "ข่าว 9 ก.ย. 2564",
+          "thumbnail": "https://content-images.thaipbs.or.th/imgpx1/unsafe/rt:fill/el:1/s:1200:630/q:90/aHR0cHM6Ly9vbmVjbXMudGhhaXBicy5vci50aC9tZWRpYS9xdHloSlJqQ0pyVnBidm1XV2xNbmFBWVRsY2xwbGxKOXhINnBweHhocVVvZ1NVdjhyNGs5ZEQzLmpwZw%3D%3D.jpg"
         }
       ],
       "id": "ps-04"
@@ -204,7 +214,8 @@
           "source": "Thai PBS",
           "title": "ปรับไลฟ์สด ลดความตลก และจำนวนผู้ชมเปลี่ยนแปลง",
           "url": "https://www.thaipbs.th/news/content/307779",
-          "note": "ข่าว 10 ก.ย. 2564"
+          "note": "ข่าว 10 ก.ย. 2564",
+          "thumbnail": "https://content-images.thaipbs.or.th/imgpx1/unsafe/rt:fill/el:1/s:1200:630/q:90/aHR0cHM6Ly9vbmVjbXMudGhhaXBicy5vci50aC9tZWRpYS9xdHloSlJqQ0pyVnBidm1XZmhzd0tvWE9Id1UwTEZvQm5oaXlmcTlFbm1EckZSQkRWNmducE90LmpwZw%3D%3D.jpg"
         },
         {
           "id": "ps-5-2",
@@ -212,7 +223,8 @@
           "source": "Thai PBS",
           "title": "มส.ให้เจ้าคณะปกครองตักเตือนเรื่องรูปแบบไลฟ์",
           "url": "https://www.thaipbs.th/news/content/307800",
-          "note": "ข่าว 10 ก.ย. 2564"
+          "note": "ข่าว 10 ก.ย. 2564",
+          "thumbnail": "https://content-images.thaipbs.or.th/imgpx1/unsafe/rt:fill/el:1/s:1200:630/q:90/aHR0cHM6Ly9vbmVjbXMudGhhaXBicy5vci50aC9tZWRpYS9xdHloSlJqQ0pyVnBidm1YTUk3UGVJMExJMmJJcjRCc3R4bHo4REFCS0hLNXZPN0h5b3M5YXVaLmpwZw%3D%3D.jpg"
         },
         {
           "id": "ps-5-3",
@@ -220,7 +232,8 @@
           "source": "Manager Online",
           "title": "บทวิเคราะห์มุมมองที่หลากหลายต่อ 2 พส.",
           "url": "https://mgronline.com/specialscoop/detail/9640000090164",
-          "note": "บทวิเคราะห์ 12 ก.ย. 2564"
+          "note": "บทวิเคราะห์ 12 ก.ย. 2564",
+          "thumbnail": "https://mpics-cdn.mgronline.com/pics/Images/564000009211001.JPEG"
         }
       ],
       "id": "ps-05"
@@ -241,7 +254,8 @@
           "source": "Manager Online",
           "title": "มุมวิจารณ์การรีวิวสินค้าและบทบาทบนโซเชียล",
           "url": "https://mgronline.com/politics/detail/9640000093397",
-          "note": "บทความแสดงความคิดเห็น"
+          "note": "บทความแสดงความคิดเห็น",
+          "thumbnail": "https://mpics-cdn.mgronline.com/pics/Images/564000009541601.JPEG"
         }
       ],
       "id": "ps-06"
@@ -263,7 +277,8 @@
           "source": "Real Smart",
           "title": "Social Listening: ฮาไป ฟังธรรมะไป กับ 2 พส.",
           "url": "https://www.realsmart.co.th/blog/fun-dharma-by-monk-live-in-facebook-social-listening/",
-          "note": "วิเคราะห์ข้อมูล 2–7 ก.ย. 2564"
+          "note": "วิเคราะห์ข้อมูล 2–7 ก.ย. 2564",
+          "thumbnail": "https://www.realsmart.co.th/wp-content/uploads/2021/10/20211028_Website-thumbnail_%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B9%84%E0%B8%9E%E0%B8%A5%E0%B8%A7%E0%B8%B1%E0%B8%A5%E0%B8%A2%E0%B9%8C_Realsmart_001_01.png"
         }
       ],
       "id": "ps-07"
@@ -284,7 +299,8 @@
           "source": "Sanook / WOODY SHOW",
           "title": "สัมภาษณ์สองพระมหาและเบื้องหลังห้องไลฟ์",
           "url": "https://www.sanook.com/news/8452262/",
-          "note": "เรียบเรียงจากรายการโทรทัศน์"
+          "note": "เรียบเรียงจากรายการโทรทัศน์",
+          "thumbnail": "https://s.isanook.com/ns/0/ud/1690/8452262/6.jpg?ip/crop/w1200h700/q80/jpg"
         }
       ],
       "id": "ps-08"
@@ -305,7 +321,8 @@
           "source": "Amarin TV",
           "title": "พระมหาสมปอง–พระอาจารย์สมพงษ์ กับดราม่าร้านหมูกระทะ",
           "url": "https://www.amarintv.com/news/crime/102053",
-          "note": "รายงานเผยแพร่ 7 ต.ค. ระบุเหตุการณ์ 5 ต.ค."
+          "note": "รายงานเผยแพร่ 7 ต.ค. ระบุเหตุการณ์ 5 ต.ค.",
+          "thumbnail": "https://static.amarintv.com/media/PJVlR0ljpN9mLZ3TnXpsILP5BWz9EuqpskuHV1W4sEfZwZrqkQrnI6U4ZhhqVoflxj.jpg"
         }
       ],
       "id": "ps-09"
@@ -329,7 +346,8 @@
           "source": "Thai PBS",
           "title": "ถูกจ้องจับผิด–จับสึก จนเกิด #Saveพระมหาสมปอง",
           "url": "https://www.thaipbs.th/news/content/308493",
-          "note": "ข่าว 10 ต.ค. 2564"
+          "note": "ข่าว 10 ต.ค. 2564",
+          "thumbnail": "https://content-images.thaipbs.or.th/imgpx1/unsafe/rt:fill/el:1/s:1200:630/q:90/aHR0cHM6Ly9vbmVjbXMudGhhaXBicy5vci50aC9tZWRpYS9xdHloSlJqQ0pyVnBidm1iZjV3ZDQ3U0YwWnVua0MwTUZoWlNsN0FUcHExU25SbHZWWlhtS0tKLmpwZw%3D%3D.jpg"
         },
         {
           "id": "ps-10-2",
@@ -361,7 +379,8 @@
           "source": "Manager Online",
           "title": "สรุปข่าวสัปดาห์ ระบุพระมหานภันต์ร่วมให้กำลังใจ",
           "url": "https://mgronline.com/onlinesection/detail/9640000102676",
-          "note": "ข่าวสรุป 10–16 ต.ค. 2564"
+          "note": "ข่าวสรุป 10–16 ต.ค. 2564",
+          "thumbnail": "https://mpics-cdn.mgronline.com/pics/Images/564000010487001.JPEG"
         },
         {
           "id": "ps-10-6",
@@ -416,7 +435,8 @@
           "source": "Thai PBS",
           "title": "พระมหาสมปองให้ข้อมูลเรื่องกำหนดการและเหตุผลการเตรียมลาสิกขา",
           "url": "https://www.thaipbs.or.th/news/content/310199",
-          "note": "ข่าว 29 พ.ย. 2564"
+          "note": "ข่าว 29 พ.ย. 2564",
+          "thumbnail": "https://content-images.thaipbs.or.th/imgpx1/unsafe/rt:fill/el:1/s:1200:630/q:90/aHR0cHM6Ly9vbmVjbXMudGhhaXBicy5vci50aC9tZWRpYS9xdHloSlJqQ0pyVnBidnA2OVFGOFRFYXZqRTZIc3AyMWMzblBDVUlKMVk2V0hLYjhKSGkwTjdmLmpwZw%3D%3D.jpg"
         }
       ],
       "id": "ps-11"
@@ -440,7 +460,8 @@
           "source": "Thai PBS",
           "title": "ภาพและข่าวลาสิกขาที่วัดสระเกศ",
           "url": "https://www.thaipbs.or.th/news/content/310335",
-          "note": "ข่าว 3 ธ.ค. 2564"
+          "note": "ข่าว 3 ธ.ค. 2564",
+          "thumbnail": "https://content-images.thaipbs.or.th/imgpx1/unsafe/rt:fill/el:1/s:1200:630/q:90/aHR0cHM6Ly9vbmVjbXMudGhhaXBicy5vci50aC9tZWRpYS9xdHloSlJqQ0pyVnBidnA3cjdLbEU3S2FxZHByZGFZYVpxWWduV25hclpVUW15Mnl1SE55M0hQLmpwZw%3D%3D.jpg"
         },
         {
           "id": "ps-12-2",
@@ -484,7 +505,8 @@
           "source": "Thai PBS",
           "title": "ปิดฉาก 30 ปี พระนักเทศน์พระมหาสมปองลาสิกขา",
           "url": "https://www.thaipbs.or.th/news/content/311150",
-          "note": "ข่าว 29 ธ.ค. 2564"
+          "note": "ข่าว 29 ธ.ค. 2564",
+          "thumbnail": "https://content-images.thaipbs.or.th/imgpx1/unsafe/rt:fill/el:1/s:1200:630/q:90/aHR0cHM6Ly9vbmVjbXMudGhhaXBicy5vci50aC9tZWRpYS9xdHloSlJqQ0pyVnBidnFrbzIxRklnZ2Rla0tieUxPMXNUeDJiRlZsSHJrZlpWNVlSVzlLNWJQLmpwZw%3D%3D.jpg"
         },
         {
           "id": "ps-13-2",
@@ -528,7 +550,8 @@
           "source": "Komchadluek",
           "title": "เส้นทางพระอาจารย์สมพงษ์และวันลาสิกขา",
           "url": "https://www.komchadluek.net/news/500725",
-          "note": "ข่าวประวัติและเหตุการณ์"
+          "note": "ข่าวประวัติและเหตุการณ์",
+          "thumbnail": "https://media.komchadluek.net/uploads/images/md/2022/01/fOZ9hWsPRdyVlJfUWElc.webp"
         }
       ],
       "id": "ps-14"
@@ -553,7 +576,8 @@
           "source": "Komchadluek",
           "title": "พระมหานภันต์โพสต์ความทรงจำถึง 4 พส.",
           "url": "https://www.komchadluek.net/hot-social/501113",
-          "note": "ข่าว 14 ม.ค. 2565"
+          "note": "ข่าว 14 ม.ค. 2565",
+          "thumbnail": "https://media.komchadluek.net/uploads/images/md/2022/01/pPYbS9ftSH3C1cEgEvh4.webp"
         }
       ],
       "id": "ps-15"
@@ -577,9 +601,19 @@
           "title": "พระมหานภันต์สอนทิดไพรวัลย์ รับมือเสียงวิจารณ์",
           "url": "https://siamrath.co.th/n/318348",
           "note": "ข่าว 31 ม.ค. 2565"
+        },
+        {
+          "id": "ps-16-2",
+          "kind": "news",
+          "source": "Komchadluek",
+          "title": "ข่าวสืบเนื่องจากไลฟ์ “ให้พระมาสอน” วันที่ 30 มกราคม 2565",
+          "url": "https://www.komchadluek.net/hot-social/503476",
+          "note": "รายงานถึงไลฟ์สนทนาธรรมระหว่างพระมหานภันต์กับไพรวัลย์",
+          "thumbnail": "https://media.komchadluek.net/uploads/images/md/2022/01/aMpL2tNsJVAIrfnu3mt3.webp"
         }
       ],
-      "id": "ps-16"
+      "id": "ps-16",
+      "featured_source_id": "ps-16-2"
     }
   ],
   "pending": [

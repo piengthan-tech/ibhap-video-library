@@ -268,13 +268,13 @@
 
 - New public route four-ps.html (“4 พส.” in the main navigation), featured on the homepage, the category index, and the news archive. It is listed once in sitemap.xml.
 - This is a curated historical editorial collection, not a new videos.json video series. The special category has its own data registry at data/four-ps.json and page-local scripts/styles assets/four-ps.js and assets/four-ps.css.
-- Initial release: 16 timeline events; 31 source news/analysis links and 11 links to video news/programs, plus 6 source leads that require further evidence. Counts are calculated dynamically.
+- Initial release: 16 timeline events; 32 source news/analysis links and 11 links to video news/programs, plus 6 source leads that require further evidence. Counts are calculated dynamically.
 - The 5 highlighted events involving พระมหานภันต์ are October 9, November 29, December 3, January 14, and January 30. The October 9 live is a three-person live with Napan, Maha Sompong and Maha Phaiwan, NOT a confirmed live of all four monks at the same time.
 - News articles, news clips, and full original live recordings are distinct evidence types. A news clip must never be rebranded as a full original live. Video watchability and source permanence may change; linked items should be checked periodically.
 - The site displays the event date, not necessarily each article's publication date. Events with unverified exact dates must use month-only precision or the research-lead section; the Club Friday retrospective with unverified day/month is intentionally excluded from the chronological cards.
 - No attributed quote or spoken teaching has been fabricated. The page contains summaries based on identified source reporting and always links to the reporting outlet.
 - Data JSON sources may be expanded when verified. Preserve the editorial caveat, existing GA4 consent flow, SEO canonical, responsive navigation, browser-local saved clips, and Design By Opkip credit.
-- Validation: verify 16 events, 5 Napan milestones, 31 news/reports, 11 video/news links, 6 unresolved leads, chronological order, responsive breakpoint 360–1440px, all filters/search, and all 13 original/new pages. The generator scripts/build_multipage.py must continue to generate the new route.
+- Validation: verify 16 events, 5 Napan milestones, 32 news/reports, 11 video/news links, 6 unresolved leads, chronological order, responsive breakpoint 360–1440px, all filters/search, and all 13 original/new pages. The generator scripts/build_multipage.py must continue to generate the new route.
 
 ## 4 PS visual refresh — unchanged source photograph
 
@@ -283,5 +283,16 @@
 - The special collection OG/Twitter social preview uses that exact file. All other pages retain current previews.
 - Homepage special-collection feature card appears immediately after quick search. Category-index includes a photo card. The special archive page has a real-photo hero and three linked source-video preview cards, with no autoplay.
 - Design guidance reviewed from the locally installed ui-ux-pro-max skill on the connected Mac, adapted to existing PMNapan midnight-blue and amber brand identity.
-- Preserve 16 events, 31 news and analysis links, 11 news-video links, five Napan milestones and six unresolved leads; no quotes were generated.
+- Preserve 16 events, 32 news and analysis links, 11 news-video links, five Napan milestones and six unresolved leads; no quotes were generated.
 - Validation: byte-identical image SHA, native ratio at mobile/desktop, no CSS image filters, matching generated page source, full archive video preview and filtering, and all 13 pages' responsive nav/credits/consent.
+
+
+## Archive news-cover visual upgrade (18 Nov 2026)
+
+- The special archive spotlight heading is now neutral and archival: “เหตุการณ์สำคัญและบทบาทของพระมหานภันต์”. Its description references the historical evidence trail without invented quotes.
+- Each of the 16 timeline events has an actual source-linked article thumbnail. Five highlighted events show cover imagery, and news source cards include publisher preview thumbnails when live images were verified. A broken or blocked image falls back to a styled neutral placeholder instead of showing a broken-image icon.
+- The thumbnails are referenced by URL from the original news publishers’ Open Graph metadata; the site does not ingest or alter the publishers' original images. Each image links to the originating article and is labeled as a *news illustration*, not a documentary photograph taken at the exact timestamp of the event.
+- Four blocked Dailynews OG image URLs were removed as previews but the news links remain available. Publisher placeholder logos and broken icons are not used as featured event images; selected article cover sources may be set via `featured_source_id` in `data/four-ps.json`.
+- One additional verified, photo-backed article was added for the 30 January 2022 livestream, raising archived news/analysis references from 31 to 32. Video references remain 11, events remain 16, confirmed Napan-linked highlights remain five, and unresolved original-live leads remain six.
+- Timeline palette distinguishes viral moments (amber), formal debate (teal), Napan involvement (copper) and transition (soft violet) with contrast-aware tags and responsive cards. The separate original group photograph in the hero and homepage is unchanged.
+- External publisher thumbnails may become unavailable; audit links before major releases, keep the image error fallback, and do not misrepresent external news thumbnails as original full-length streams.
