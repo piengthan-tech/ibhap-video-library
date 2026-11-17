@@ -296,3 +296,9 @@
 - One additional verified, photo-backed article was added for the 30 January 2022 livestream, raising archived news/analysis references from 31 to 32. Video references remain 11, events remain 16, confirmed Napan-linked highlights remain five, and unresolved original-live leads remain six.
 - Timeline palette distinguishes viral moments (amber), formal debate (teal), Napan involvement (copper) and transition (soft violet) with contrast-aware tags and responsive cards. The separate original group photograph in the hero and homepage is unchanged.
 - External publisher thumbnails may become unavailable; audit links before major releases, keep the image error fallback, and do not misrepresent external news thumbnails as original full-length streams.
+
+## Thai PBS 3 December 2021 disrobing news thumbnail (18 Nov 2026)
+
+- Data: data/four-ps.json, event ps-12, Thai PBS source ps-12-1. The verified inline photograph no. 3 from https://www.thaipbs.or.th/news/content/310335 is used as the source thumbnail and, via featured_source_id, the main event illustration and Napan milestone card.
+- Reference photograph: https://onecms.thaipbs.or.th/media/KVunBvWg8dYIkQ2O6lHdhFxEgDbNiGSOJZI13keWs3eyjfHz2O45Yp.jpg (800 x 600 JPEG). Image is displayed directly from the publisher, not copied, modified or re-encoded. Cards credit Thai PBS and link to the original article.
+- The photograph was checked inside the article body, not merely the social-sharing cover. If the external image becomes unavailable, show the existing photo fallback instead of presenting a broken image.
