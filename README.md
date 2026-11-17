@@ -275,3 +275,13 @@
 - No attributed quote or spoken teaching has been fabricated. The page contains summaries based on identified source reporting and always links to the reporting outlet.
 - Data JSON sources may be expanded when verified. Preserve the editorial caveat, existing GA4 consent flow, SEO canonical, responsive navigation, browser-local saved clips, and Design By Opkip credit.
 - Validation: verify 16 events, 5 Napan milestones, 31 news/reports, 11 video/news links, 6 unresolved leads, chronological order, responsive breakpoint 360–1440px, all filters/search, and all 13 original/new pages. The generator scripts/build_multipage.py must continue to generate the new route.
+
+## 4 PS visual refresh — unchanged source photograph
+
+- Feature image for four-ps.html, homepage special collection, and category index is the original upload at assets/archive/four-ps-original.webp.
+- SHA-256: 15fa4423365b348092c952d22a6373e796aabdc173f4f4cdc34070992b444657 (217052 bytes, native 1200 × 630 WebP). Asset is copied byte-for-byte, not recompressed, retouched, resized, cropped or generated. Responsive CSS scales proportionally with height:auto so the whole image remains visible.
+- The special collection OG/Twitter social preview uses that exact file. All other pages retain current previews.
+- Homepage special-collection feature card appears immediately after quick search. Category-index includes a photo card. The special archive page has a real-photo hero and three linked source-video preview cards, with no autoplay.
+- Design guidance reviewed from the locally installed ui-ux-pro-max skill on the connected Mac, adapted to existing PMNapan midnight-blue and amber brand identity.
+- Preserve 16 events, 31 news and analysis links, 11 news-video links, five Napan milestones and six unresolved leads; no quotes were generated.
+- Validation: byte-identical image SHA, native ratio at mobile/desktop, no CSS image filters, matching generated page source, full archive video preview and filtering, and all 13 pages' responsive nav/credits/consent.

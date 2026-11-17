@@ -176,3 +176,63 @@
  .ps-press-crosslink{flex-direction:column;align-items:flex-start}
 }
 @media(prefers-reduced-motion:reduce){.ps-focus-card,.ps-action-primary{transition:none}}
+
+
+/* UI/UX Pro Max refinement — archive hero uses unchanged original photograph. */
+.ps-hero{background:radial-gradient(circle at 83% 13%,rgba(42,141,172,.18),transparent 33%),linear-gradient(122deg,#071b34,#103b61 83%,#0b5670);overflow:hidden}
+.ps-hero-grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,4vw,68px);padding:55px 0 50px;min-height:0}
+.ps-hero-content{max-width:590px}
+.ps-hero h1{font-size:clamp(48px,5.2vw,77px);line-height:1.12;letter-spacing:-1.9px;margin:24px 0 24px}
+.ps-hero h1 span{color:#ffbf71}
+.ps-hero-lead{font-size:15px;line-height:1.95;color:#e0eef6}
+.ps-hero-visual{margin:0;min-width:0;position:relative;padding:17px 0 4px 15px}
+.ps-hero-visual:before{content:'';position:absolute;top:-20px;right:-36px;width:68%;aspect-ratio:1;border:1px solid rgba(249,186,110,.2);border-radius:50%;pointer-events:none}
+.ps-hero-visual:after{content:'';position:absolute;bottom:34px;left:-12px;width:82px;height:82px;border-left:2px solid #f6b56e;border-bottom:2px solid #f6b56e;pointer-events:none}
+.ps-hero-photo-frame{position:relative;background:#fff;padding:8px;border:1px solid rgba(255,199,127,.78);box-shadow:0 24px 56px rgba(0,0,0,.22),9px 9px 0 rgba(242,165,79,.14)}
+.ps-hero-photo-frame img{display:block;width:100%;height:auto;max-width:100%}
+.ps-hero-photo-caption{display:flex;align-items:center;gap:9px;color:#d5e8f2;font-size:11px;line-height:1.65;margin:15px 0 0;padding:0 8px}
+.ps-image-status{flex:none;width:7px;height:7px;border-radius:50%;background:#ffbc77;box-shadow:0 0 0 4px rgba(255,188,119,.13)}
+.ps-hero-stats{padding:25px 0 31px;gap:20px}
+.ps-hero-stats strong{font-size:32px}
+.ps-action-primary{background:#f4b56c;color:#173c5b}
+.ps-action-primary:hover{background:#ffd097}
+.ps-action-primary:focus-visible,.ps-action-secondary:focus-visible{outline:3px solid #ffd097;outline-offset:3px}
+.ps-event{scroll-margin-top:100px}
+.ps-source{padding:14px 13px;min-height:86px;border-radius:11px}
+.ps-source-thumb{width:108px;height:64px}
+.ps-source-copy strong{font-size:12px;line-height:1.55}
+.ps-source-meta{font-size:10px}
+.ps-source-note{font-size:11px;line-height:1.55}
+.ps-source-icon{width:42px;height:42px;font-size:20px}
+.ps-source-arrow{font-size:17px}
+.ps-event-desc{font-size:14px;line-height:1.9}
+.ps-event-main{padding:27px 29px}
+.ps-event-upper{margin-bottom:12px}
+.ps-event h3{font-size:22px}
+.ps-context-head p:last-child,.ps-section-heading p:last-child{font-size:14px;line-height:1.85}
+.ps-focus-card:focus-visible,.ps-source:focus-visible{outline:3px solid #e69d40;outline-offset:3px}
+.ps-video-feature{padding:70px 0 74px;background:linear-gradient(155deg,#071c35,#103957 90%);color:#fff}
+.ps-video-feature .ps-section-kicker{color:#f5be82}
+.ps-video-feature .ps-section-heading h2{color:#fff}
+.ps-video-feature .ps-section-heading p:last-child{color:#c4dcec}
+.ps-video-feature-head{display:flex;justify-content:space-between;align-items:end;gap:22px}
+.ps-video-feature-link{font-weight:700;font-size:12px;color:#ffbe73;white-space:nowrap;border-bottom:1px solid rgba(255,190,115,.55);padding-bottom:5px}
+.ps-video-feature-link:hover{color:#ffd5a1}
+.ps-video-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:21px}
+.ps-video-teaser{display:flex;flex-direction:column;border:1px solid rgba(208,232,246,.22);background:#122f4c;border-radius:15px;overflow:hidden;color:#fff;transition:transform .22s,box-shadow .22s,border-color .22s}
+.ps-video-teaser:hover{transform:translateY(-4px);border-color:rgba(246,188,105,.62);box-shadow:0 16px 34px rgba(0,0,0,.19)}
+.ps-video-teaser:focus-visible{outline:3px solid #ffbd73;outline-offset:3px}
+.ps-video-teaser-photo{position:relative;display:block;aspect-ratio:16/9;background:linear-gradient(130deg,#133b59,#0c203c);overflow:hidden}
+.ps-video-teaser-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.ps-video-teaser-photo.ps-teaser-no-thumb img{display:none}
+.ps-video-teaser-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:49px;height:49px;background:rgba(0,25,47,.84);color:#fff;border:1px solid rgba(255,255,255,.85);border-radius:50%;font-size:19px;transition:background .2s}
+.ps-video-teaser:hover .ps-video-teaser-play{background:#c57c28}
+.ps-video-teaser-body{display:flex;flex-direction:column;gap:9px;flex:1;padding:19px}
+.ps-video-teaser-meta{display:flex;align-items:center;gap:7px;color:#a9cee2;font-size:10px;line-height:1.7}
+.ps-video-teaser-meta .ps-teaser-dot{width:5px;height:5px;background:#f6ba6f;border-radius:50%;flex:none}
+.ps-video-teaser-body strong{font-size:15px;line-height:1.75;color:#fff;font-weight:700;flex:1}
+.ps-video-teaser-cta{display:flex;align-items:center;justify-content:space-between;color:#ffc788;font-size:11px;font-weight:700;border-top:1px solid rgba(216,236,244,.18);padding-top:14px;margin-top:6px}
+@media(max-width:1080px){.ps-hero-grid{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:28px}.ps-hero h1{font-size:clamp(43px,5.1vw,63px)}.ps-hero-lead{font-size:14px}.ps-source-list{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:850px){.ps-hero-grid{grid-template-columns:1fr;gap:27px;padding-top:36px}.ps-hero-content{max-width:740px}.ps-hero-visual{max-width:740px;padding:0 6px;margin:0}.ps-hero-photo-frame{padding:6px}.ps-hero-visual:after{display:none}.ps-video-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.ps-hero-grid{gap:20px;padding:29px 0 20px}.ps-hero h1{font-size:clamp(39px,11vw,52px);margin:18px 0}.ps-hero-lead{font-size:13px;line-height:1.85}.ps-hero-visual{padding:0 2px}.ps-hero-photo-caption{font-size:10px}.ps-video-feature{padding:46px 0 50px}.ps-video-feature-head{flex-direction:column;align-items:flex-start;gap:14px}.ps-video-feature-grid{grid-template-columns:minmax(0,1fr);gap:15px}.ps-video-teaser-body{padding:17px}.ps-video-teaser-body strong{font-size:14px}.ps-event-main{padding:18px}.ps-event h3{font-size:18px}.ps-event-desc{font-size:13px}.ps-source-thumb{width:94px;height:55px}.ps-source-copy strong{font-size:12px}.ps-hero-stats strong{font-size:29px}}
+@media(prefers-reduced-motion:reduce){.ps-video-teaser,.ps-video-teaser-play{transition:none}.ps-video-teaser:hover{transform:none}}

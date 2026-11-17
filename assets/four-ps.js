@@ -66,6 +66,35 @@
    +(more.length?'<details class="ps-more-sources"><summary>แสดงแหล่งอ้างอิงเพิ่มเติมอีก '+more.length+' รายการ <span aria-hidden="true">⌄</span></summary><div class="ps-source-list">'+more.map(sourceCard).join('')+'</div></details>':'')
    +'</div></article>';
  }
+ function renderVideoHighlights(){
+  const target=$('psVideoFeatured');
+  if(!target)return;
+  const result=[],seen=new Set();
+  const prioritized=state.events.filter(e=>e.napan).concat(state.events.filter(e=>!e.napan));
+  for(const event of prioritized){
+   const item=event.sources.find(source=>source.kind==='video'&&youtubeId(source.url)&&!seen.has(source.url));
+   if(!item)continue;
+   seen.add(item.url);
+   result.push({event,source:item,id:youtubeId(item.url)});
+   if(result.length===3)break;
+  }
+  result.sort((a,b)=>a.event.date.localeCompare(b.event.date));
+  if(!result.length){
+    target.innerHTML='<p class="ps-loading">ไม่พบคลิปที่มีลิงก์วิดีโอต้นฉบับให้แสดงในขณะนี้ <a href="#psTimelineSection">ดูข้อมูลเหตุการณ์ทั้งหมด ↗</a></p>';
+    return;
+  }
+  target.innerHTML=result.map(({event,source,id})=>{
+   return '<a class="ps-video-teaser" href="'+esc(source.url)+'" target="_blank" rel="noopener noreferrer" aria-label="เปิดคลิปข่าว '+esc(source.title)+' จาก '+esc(source.source)+'">'
+    +'<span class="ps-video-teaser-photo"><img src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" width="480" height="270" loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer">'
+    +'<span class="ps-video-teaser-play" aria-hidden="true">▶</span></span>'
+    +'<span class="ps-video-teaser-body"><span class="ps-video-teaser-meta"><span class="ps-teaser-dot" aria-hidden="true"></span>'
+    +esc(source.source)+' · '+esc(thaiDate(event.date,event.datePrecision))+'</span>'
+    +'<strong>'+esc(source.title)+'</strong>'
+    +'<span class="ps-video-teaser-cta">เปิดคลิปข่าวจากแหล่งต้นทาง <span aria-hidden="true">↗</span></span></span></a>';
+  }).join('');
+  target.querySelectorAll('.ps-video-teaser-photo img').forEach(img=>
+    img.addEventListener('error',()=>img.parentElement.classList.add('ps-teaser-no-thumb'),{once:true}));
+ }
  function renderPending(){
   $('psPending').innerHTML=state.pending.map(p=>'<article class="ps-pending-card"><span class="ps-pending-state">◌ ยังไม่พบต้นฉบับที่ยืนยันได้</span>'
    +'<h3>'+esc(p.title)+'</h3><span class="ps-pending-date">'+esc(p.date)+'</span>'
@@ -130,7 +159,7 @@
    $('psNewsTotal').textContent=allSources.filter(isNews).length;
    $('psVideoTotal').textContent=allSources.filter(s=>s.kind==='video').length;
    $('psNapanTotal').textContent=state.events.filter(e=>e.napan).length;
-   renderPending();render();
+   renderPending();renderVideoHighlights();render();
    if(/^#ps-\d+$/.test(location.hash))document.getElementById(location.hash.slice(1))?.scrollIntoView({block:'start'});
   }catch(error){
    console.error('Cannot load editorial archive',error);
