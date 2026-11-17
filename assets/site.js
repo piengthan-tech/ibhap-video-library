@@ -31,6 +31,21 @@ function duration(minutes){
  const h=Math.floor(seconds/3600),m=Math.floor(seconds%3600/60),s=seconds%60;
  return h? h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0'):m+':'+String(s).padStart(2,'0');
 }
+const DISCOVERY_TOPICS=[
+ {id:'listening',label:'การรับฟัง',terms:['ฟัง','รับฟัง']},
+ {id:'life',label:'ชีวิตและความสุข',terms:['ความสุข','ชีวิต','ความทุกข์']},
+ {id:'mindfulness',label:'สติและสมาธิ',terms:['สติ','สมาธิ','ภาวนา']},
+ {id:'relationships',label:'ครอบครัวและเพื่อน',terms:['ครอบครัว','พ่อแม่','ความสัมพันธ์','เพื่อน']},
+ {id:'volunteer',label:'จิตอาสาและสังคม',terms:['จิตอาสา','งานอาสา','สังคม']},
+ {id:'everyday',label:'ธรรมะในชีวิตประจำวัน',terms:['ชีวิตประจำวัน','ปัญหาชีวิต','ธรรมะกับชีวิต']}
+];
+const discoveryTopic = id => DISCOVERY_TOPICS.find(t=>t.id===id);
+function topicMatches(item,topicId){
+ const topic=discoveryTopic(topicId);
+ if(!topic)return !topicId;
+ const sourceText=norm(item.title+' '+(item.description||''));
+ return topic.terms.some(word=>sourceText.includes(norm(word)));
+}
 const categoryNames = () => [...new Set(items.map(x=>x.category))];
 const byDateDesc=(a,b)=>(b.published_at||'').localeCompare(a.published_at||'') || a.title.localeCompare(b.title,'th');
 const favoriteKey=x=>x.platform+':'+x.video_id;
@@ -97,6 +112,11 @@ function renderHomeQuotes(){
 }
 function renderQuotesPage(){
  const input=$('quoteSearch');
+ const available=quotes.filter(item=>!!item.text.trim()).length;
+ const coverage=$('quoteSearchCoverage');
+ if(coverage)coverage.textContent='ค้นหาจากข้อความที่ตรวจสอบแล้ว '+available.toLocaleString('th-TH')+' จาก '+quotes.length.toLocaleString('th-TH')+' ภาพ ส่วนภาพอื่นยังเปิดดูได้ตามปกติ';
+ const clear=$('clearQuoteSearch');
+ if(clear)clear.addEventListener('click',()=>{input.value='';render();input.focus()});
  function render(){
    const q=norm(input.value);
    const filtered=quotes.filter(item=>!q||norm(item.text).includes(q));
@@ -158,10 +178,25 @@ function homeCategoryCards(names){
 function relatedNote(){
  return '<strong>เกี่ยวกับรายการ “หลวงพี่ช่วยด้วย”</strong><p>รายการต้นฉบับ Workpoint ดำเนินรายการโดยพระมหาสมปอง ตาลปุตฺโต คลิปหมวดนี้เป็นงานซับไตเติลของมูลนิธิ สกพ. ไม่ใช่คลิปที่พระมหานภันต์เป็นผู้บรรยาย</p><a href="https://www.youtube.com/playlist?list=PLFU5BMWz_rx10E1AiFivlOPsVO8qQFvmx" target="_blank" rel="noopener noreferrer">ดูเพลย์ลิสต์ต้นทาง ↗</a>';
 }
+function renderDiscoveryTopics(){
+ const el=$('homeDiscoveryTopics');if(!el)return;
+ const visible=DISCOVERY_TOPICS.map(t=>({...t,total:items.filter(x=>topicMatches(x,t.id)).length}))
+   .filter(t=>t.total>0);
+ el.innerHTML=visible.map(t=>
+  '<a class="discovery-topic" href="'+esc(uri('library.html',{topic:t.id}))+'">'
+  +'<strong>'+esc(t.label)+'</strong><span>'+t.total.toLocaleString('th-TH')+' คลิป ↗</span></a>'
+ ).join('');
+}
 function renderHome(){
  $('homeTotal').textContent=items.length.toLocaleString('th-TH');
  renderHomeShorts();
  renderHomeQuotes();
+ renderDiscoveryTopics();
+ const randomButton=$('randomArchiveClip');
+ if(randomButton)randomButton.addEventListener('click',()=>{
+  if(!items.length)return;
+  location.href=openVideoHref(items[Math.floor(Math.random()*items.length)]);
+ });
  $('homeCategories').innerHTML=homeCategoryCards(categoryNames().slice(0,6));
  const selections=categoryNames().slice(0,6).map(name=>chooseCover(items.filter(x=>x.category===name))).filter(Boolean);
  $('homeFeatured').innerHTML=selections.map(card).join('');
@@ -309,6 +344,21 @@ function renderVideoDetail(){
  <div class="detail-actions"><a class="btn primary" href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">เปิดวิดีโอต้นฉบับ ↗</a>
  <button class="btn secondary" data-save="${esc(x.key)}" type="button">${favorites.has(favoriteKey(x))?'♥ บันทึกแล้ว':'♡ บันทึกวิดีโอ'}</button>
  <button class="btn minimal" id="copyVideoLink" type="button">คัดลอกลิงก์ ↗</button></div></div>`;
+ const sameCategory=items.filter(y=>y.key!==x.key && y.category===x.category)
+   .sort(byDateDesc).slice(0,3);
+ if(sameCategory.length){
+   $('videoDetail').insertAdjacentHTML('beforeend',
+    '<section class="detail-related" aria-labelledby="detailRelatedTitle">'
+    +'<div class="heading-row"><div><p class="kicker">MORE FROM THIS SERIES</p>'
+    +'<h2 id="detailRelatedTitle">คลิปอื่นในหมวดเดียวกัน</h2>'
+    +'<p class="home-section-hint">คัดจากหมวดรายการเดียวกัน ไม่ได้หมายความว่าเนื้อหาในคลิปเหมือนกัน</p>'
+    +'</div><a class="text-link" href="'
+    +esc(x.platform==='TikTok'?'./shorts.html':uri('category.html',{name:x.category}))
+    +'">ดูหมวดนี้ทั้งหมด →</a></div>'
+    +'<div class="video-grid">'+sameCategory.map(card).join('')+'</div>'
+    +'</section>');
+   $('videoDetail').querySelectorAll('.detail-related .video-image img').forEach(attachImageFallback);
+ }
  $('copyVideoLink').addEventListener('click',async()=>{
   const text=location.href;
   try{await navigator.clipboard.writeText(text);showToast('คัดลอกลิงก์แล้ว')}catch{showToast('ไม่สามารถคัดลอกลิงก์โดยอัตโนมัติ')}
@@ -324,10 +374,11 @@ function drawPaged(grid){
 function attachImageFallback(img){
  img.addEventListener('error',()=>{img.remove();const span=document.createElement('span');span.className='image-fallback';span.textContent='▶';img.parentElement.append(span);},{once:true});
 }
-let filterState={q:'',category:'all',year:'all',platform:'all',sort:'new',fav:false};
+let filterState={q:'',category:'all',year:'all',platform:'all',sort:'new',fav:false,topic:null};
 function populateLibrary(){
  const params=new URLSearchParams(location.search);
  const category=params.get('category');
+ filterState.topic=discoveryTopic(params.get('topic'))?params.get('topic'):null;
  filterState.q=params.get('q')||'';
  filterState.category=categoryNames().includes(category)?category:'all';
  filterState.year=/^\d{4}$/.test(params.get('year')||'')?params.get('year'):'all';
@@ -344,11 +395,13 @@ function populateLibrary(){
  $('sortFilter').addEventListener('change',e=>{filterState.sort=e.target.value;refreshLibrary()});
  $('favoriteFilter').addEventListener('click',()=>{filterState.fav=!filterState.fav;refreshLibrary()});
  $('resetFilters').addEventListener('click',resetLibrary);
+ const clearTopic=$('clearTopic');
+ if(clearTopic)clearTopic.addEventListener('click',()=>{filterState.topic=null;refreshLibrary()});
  $('clearAll').addEventListener('click',resetLibrary);
  refreshLibrary();
 }
 function resetLibrary(){
- filterState={q:'',category:'all',year:'all',platform:'all',sort:'new',fav:false};
+ filterState={q:'',category:'all',year:'all',platform:'all',sort:'new',fav:false,topic:null};
  for(const key of ['searchInput','categoryFilter','yearFilter','platformFilter','sortFilter']){
   const e=$(key);
   e.value=key==='searchInput'?'':'all';
@@ -360,6 +413,7 @@ function refreshLibrary(){
  const query=norm(filterState.q).split(/\s+/).filter(Boolean);
  selected=items.filter(x=>
   (filterState.category==='all'||x.category===filterState.category)&&
+  (!filterState.topic||topicMatches(x,filterState.topic))&&
   (filterState.year==='all'||x.published_at?.startsWith(filterState.year))&&
   (filterState.platform==='all'||x.platform===filterState.platform)&&
   (!filterState.fav||favorites.has(favoriteKey(x)))&&
@@ -373,15 +427,35 @@ function refreshLibrary(){
  });
  visibleCount=PAGE_SIZE;
  $('resultCount').textContent='พบ '+selected.length.toLocaleString('th-TH')+' คลิป';
- $('emptyResults').hidden=selected.length!==0;
- $('resetFilters').hidden=!(filterState.q||filterState.category!=='all'||filterState.year!=='all'||filterState.platform!=='all'||filterState.sort!=='new'||filterState.fav);
+ const empty=$('emptyResults'),emptyHeading=$('emptyResultsHeading'),emptyHelp=$('emptyResultsHelp');
+ empty.hidden=selected.length!==0;
+ if(!selected.length && emptyHeading && emptyHelp){
+  if(filterState.fav && !favorites.size){
+   emptyHeading.textContent='ยังไม่มีคลิปที่บันทึกไว้';
+   emptyHelp.textContent='กดสัญลักษณ์หัวใจบนคลิปที่สนใจ เพื่อบันทึกไว้ดูภายหลังในเบราว์เซอร์นี้';
+  }else if(filterState.fav){
+   emptyHeading.textContent='ไม่มีคลิปที่บันทึกไว้ตรงกับตัวกรอง';
+   emptyHelp.textContent='ลองเปลี่ยนเงื่อนไข หรือกดแสดงคลิปทั้งหมด';
+  }else{
+   emptyHeading.textContent='ไม่พบคลิปที่ตรงกับเงื่อนไข';
+   emptyHelp.textContent='ลองใช้คำที่สั้นลง เปลี่ยนหัวข้อ หรือเลือกดูคลิปทั้งหมด';
+  }
+ }
+ const topicPanel=$('topicFilterStatus');
+ if(topicPanel){
+  topicPanel.hidden=!filterState.topic;
+  const name=$('topicFilterName');
+  if(name)name.textContent=discoveryTopic(filterState.topic)?.label||'';
+ }
+ $('resetFilters').hidden=!(filterState.q||filterState.category!=='all'||filterState.year!=='all'||filterState.platform!=='all'||filterState.sort!=='new'||filterState.fav||!!filterState.topic);
  $('favoriteFilter').setAttribute('aria-pressed',String(filterState.fav));
  drawPaged($('libraryGrid'));
  const u=new URL(location.href);
- for(const key of ['q','category','year'])u.searchParams.delete(key);
+ for(const key of ['q','category','year','topic'])u.searchParams.delete(key);
  if(filterState.q)u.searchParams.set('q',filterState.q);
  if(filterState.category!=='all')u.searchParams.set('category',filterState.category);
  if(filterState.year!=='all')u.searchParams.set('year',filterState.year);
+ if(filterState.topic)u.searchParams.set('topic',filterState.topic);
  history.replaceState(null,'',u.pathname+u.search);
 }
 function showToast(value){
@@ -404,8 +478,31 @@ function renderHomeCardsOnly(){
  const featured=categoryNames().slice(0,6).map(name=>chooseCover(items.filter(x=>x.category===name))).filter(Boolean);
  $('homeFeatured').innerHTML=featured.map(card).join('');
 }
+function initializeReadingControls(){
+ const key='pmnapan-reading-size-v1';
+ const status=$('readingSizeStatus');
+ const buttons=[...document.querySelectorAll('[data-reading-adjust]')];
+ if(!status||!buttons.length)return;
+ let level=0;
+ try{level=Math.max(0,Math.min(2,Number(localStorage.getItem(key))||0))}catch(_){}
+ const update=()=>{
+  document.documentElement.dataset.readingSize=String(level);
+  status.textContent=['ปกติ','ใหญ่','ใหญ่มาก'][level];
+  buttons.forEach(b=>{
+   const d=Number(b.dataset.readingAdjust);
+   b.disabled=d<0?level===0:level===2;
+  });
+ };
+ buttons.forEach(b=>b.addEventListener('click',()=>{
+  level=Math.max(0,Math.min(2,level+Number(b.dataset.readingAdjust)));
+  try{localStorage.setItem(key,String(level))}catch(_){}
+  update();
+ }));
+ update();
+}
 function bindShared(){
  $('copyrightYear').textContent=new Date().getFullYear();
+ initializeReadingControls();
  const toggle=$('mobileToggle'),menu=$('mobileMenu');
  toggle.addEventListener('click',()=>{menu.hidden=!menu.hidden;toggle.setAttribute('aria-expanded',String(!menu.hidden))});
  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.hidden=true;toggle.setAttribute('aria-expanded','false')}));

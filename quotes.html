@@ -56,9 +56,9 @@
 <section class="section"><div class="container">
 <div class="quote-toolbar">
 <label for="quoteSearch">ค้นหาข้อความคำคมที่ถอดไว้</label><input type="search" id="quoteSearch" placeholder="ค้นหาในรายการที่มีข้อความถอดแล้ว" autocomplete="off">
-<p id="quotesCount" role="status" aria-live="polite">กำลังตรวจสอบ...</p></div>
+<p id="quotesCount" role="status" aria-live="polite">กำลังตรวจสอบ...</p><p class="quote-search-coverage" id="quoteSearchCoverage" role="note"></p></div>
 <div class="quote-grid" id="quoteGrid"><div class="loading">กำลังโหลดภาพคำคมธรรมะ...</div></div>
-<div class="empty" id="quoteEmpty" hidden>ไม่พบข้อความที่ตรงกับคำค้น</div>
+<div class="empty" id="quoteEmpty" hidden><p>ยังไม่พบข้อความนี้ในภาพที่มีคำถอดตรวจสอบแล้ว ภาพคำคมอื่นอาจยังไม่ได้ถอดข้อความ</p><button id="clearQuoteSearch" type="button">ดูภาพคำคมทั้งหมด</button></div>
 </div></section></main>
 <footer class="site-footer" id="ydml-contact">
  <div class="container ydml-footer-main">
@@ -96,6 +96,7 @@
  <div class="container footer-bottom">
   <p>© <span id="copyrightYear"></span> บริษัท อยู่ ดี มี ลาภ จำกัด (You De Me Larp Co., Ltd.) · สงวนลิขสิทธิ์ทุกประการ</p>
   <button type="button" class="footer-analytics-preferences" id="analyticsPreferences">ตั้งค่าคุกกี้</button>
+  <div class="footer-reading-controls" role="group" aria-label="ปรับขนาดตัวอักษร"><span>ขนาดตัวอักษร</span><button type="button" data-reading-adjust="-1" aria-label="ลดขนาดตัวอักษร">A−</button><span id="readingSizeStatus" aria-live="polite">ปกติ</span><button type="button" data-reading-adjust="1" aria-label="เพิ่มขนาดตัวอักษร">A+</button></div>
   <a href="#top" class="footer-back-top">↑ กลับขึ้นด้านบน</a>
  </div>
  <div class="footer-design-credit">Design By Opkip</div>

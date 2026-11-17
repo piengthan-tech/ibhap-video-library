@@ -55,6 +55,7 @@
 <div class="intro-icon" aria-hidden="true"><img src="./assets/mascot.png" alt=""></div></div></div></section>
 <section class="section"><div class="container"><p class="press-media-link">ต้องการดูวิดีโอที่เผยแพร่โดยหน่วยงานอื่น? <a href="./external-media.html">สื่อจากแหล่งภายนอกและรายการตรวจสอบ ↗</a></p>
 <div class="filter-panel">
+<div class="topic-filter-status" id="topicFilterStatus" hidden><span>หัวข้อที่เลือก: <strong id="topicFilterName"></strong></span><button id="clearTopic" type="button">ล้างหัวข้อ ×</button></div>
 <div class="search-row">
 <label class="input-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">ค้นหาวิดีโอ</span><input type="search" id="searchInput" placeholder="ค้นหาชื่อเรื่องหรือคำสำคัญจากต้นทาง" autocomplete="off"></label>
 <button class="fav-filter" id="favoriteFilter" type="button" aria-pressed="false">♡ รายการที่บันทึก</button>
@@ -64,7 +65,7 @@
 <label>ช่องทาง<select id="platformFilter"><option value="all">ทุกช่องทาง</option><option value="YouTube">YouTube</option><option value="TikTok">TikTok</option><option value="Facebook">Facebook</option></select></label>
 <label>เรียงลำดับ<select id="sortFilter"><option value="new">ใหม่ล่าสุด</option><option value="old">เก่าสุด</option><option value="title">ชื่อเรื่อง ก–ฮ</option><option value="length">วิดีโอยาวที่สุด</option></select></label>
 </div><div class="filter-footer"><p id="resultCount" aria-live="polite">กำลังโหลด...</p><button type="button" class="reset-filter" id="resetFilters" hidden>ล้างตัวกรอง ↺</button></div></div>
-<div id="libraryGrid" class="video-grid" aria-label="คลังวิดีโอทั้งหมด"><div class="loading"><span class="spinner" aria-hidden="true"></span>กำลังโหลดข้อมูลวิดีโอ...</div></div><div class="empty" id="emptyResults" hidden><h2>ไม่พบรายการที่ตรงกับคำค้น</h2><button type="button" id="clearAll">ดูวิดีโอทั้งหมด</button></div>
+<div id="libraryGrid" class="video-grid" aria-label="คลังวิดีโอทั้งหมด"><div class="loading"><span class="spinner" aria-hidden="true"></span>กำลังโหลดข้อมูลวิดีโอ...</div></div><div class="empty" id="emptyResults" hidden><h2 id="emptyResultsHeading">ไม่พบคลิปที่ตรงกับเงื่อนไข</h2><p id="emptyResultsHelp">ลองค้นหาใหม่หรือเปลี่ยนตัวกรอง</p><button type="button" id="clearAll">แสดงคลิปทั้งหมด</button></div>
 <div class="load-wrap"><button id="loadMore" type="button" class="btn secondary" hidden>ดูวิดีโอเพิ่มเติม ↓</button></div></div></section></main>
 <footer class="site-footer" id="ydml-contact">
  <div class="container ydml-footer-main">
@@ -102,6 +103,7 @@
  <div class="container footer-bottom">
   <p>© <span id="copyrightYear"></span> บริษัท อยู่ ดี มี ลาภ จำกัด (You De Me Larp Co., Ltd.) · สงวนลิขสิทธิ์ทุกประการ</p>
   <button type="button" class="footer-analytics-preferences" id="analyticsPreferences">ตั้งค่าคุกกี้</button>
+  <div class="footer-reading-controls" role="group" aria-label="ปรับขนาดตัวอักษร"><span>ขนาดตัวอักษร</span><button type="button" data-reading-adjust="-1" aria-label="ลดขนาดตัวอักษร">A−</button><span id="readingSizeStatus" aria-live="polite">ปกติ</span><button type="button" data-reading-adjust="1" aria-label="เพิ่มขนาดตัวอักษร">A+</button></div>
   <a href="#top" class="footer-back-top">↑ กลับขึ้นด้านบน</a>
  </div>
  <div class="footer-design-credit">Design By Opkip</div>

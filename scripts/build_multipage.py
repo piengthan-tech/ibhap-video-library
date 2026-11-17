@@ -62,6 +62,7 @@ def footer():
  <div class="container footer-bottom">
   <p>© <span id="copyrightYear"></span> บริษัท อยู่ ดี มี ลาภ จำกัด (You De Me Larp Co., Ltd.) · สงวนลิขสิทธิ์ทุกประการ</p>
   <button type="button" class="footer-analytics-preferences" id="analyticsPreferences">ตั้งค่าคุกกี้</button>
+  <div class="footer-reading-controls" role="group" aria-label="ปรับขนาดตัวอักษร"><span>ขนาดตัวอักษร</span><button type="button" data-reading-adjust="-1" aria-label="ลดขนาดตัวอักษร">A−</button><span id="readingSizeStatus" aria-live="polite">ปกติ</span><button type="button" data-reading-adjust="1" aria-label="เพิ่มขนาดตัวอักษร">A+</button></div>
   <a href="#top" class="footer-back-top">↑ กลับขึ้นด้านบน</a>
  </div>
  <div class="footer-design-credit">Design By Opkip</div>
@@ -165,6 +166,7 @@ def grid(name,id):
  return f'<div id="{id}" class="video-grid" aria-label="{escape(name)}"><div class="loading"><span class="spinner" aria-hidden="true"></span>กำลังโหลดข้อมูลวิดีโอ...</div></div>'
 def tabs_bar():
  return '''<div class="filter-panel">
+<div class="topic-filter-status" id="topicFilterStatus" hidden><span>หัวข้อที่เลือก: <strong id="topicFilterName"></strong></span><button id="clearTopic" type="button">ล้างหัวข้อ ×</button></div>
 <div class="search-row">
 <label class="input-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">ค้นหาวิดีโอ</span><input type="search" id="searchInput" placeholder="ค้นหาชื่อเรื่องหรือคำสำคัญจากต้นทาง" autocomplete="off"></label>
 <button class="fav-filter" id="favoriteFilter" type="button" aria-pressed="false">♡ รายการที่บันทึก</button>
@@ -178,13 +180,14 @@ home=f'''<section class="hero"><div class="container hero-row"><div class="hero-
 <p class="hero-kicker"><span></span> VIDEO ARCHIVE</p>
 <h1>PMNapan Library<br><span>Dhamma Archive</span></h1>
 <h2>คลังวิดีโอพระมหานภันต์ สนฺติภทฺโท</h2>
-<div class="hero-actions"><a class="btn primary" href="./library.html">▶ เข้าสู่คลังวิดีโอ</a><a class="btn secondary" href="./categories.html">เลือกหมวดรายการ ↗</a></div>
+<div class="hero-actions"><a class="btn primary" href="./library.html">▶ เข้าสู่คลังวิดีโอ</a><a class="btn secondary" href="./categories.html">เลือกหมวดรายการ ↗</a><button class="btn minimal" id="randomArchiveClip" type="button">↝ สุ่มคลิปจากคลัง</button></div>
 <p class="hero-total"><strong id="homeTotal">—</strong> วิดีโอในคลัง</p>
 
 </div><div class="hero-visual"><span class="blue-orbit"></span><img src="./assets/monk-watering-960.webp" srcset="./assets/monk-watering-620.webp 620w, ./assets/monk-watering-960.webp 960w" sizes="(max-width: 650px) 300px, (max-width: 910px) 400px, 540px" alt="การ์ตูนพระรดน้ำต้นไม้ พร้อมสัญลักษณ์การพัฒนาที่ยั่งยืน" width="960" height="919" fetchpriority="high" decoding="async"></div></div></section>
 <section class="quick-search"><div class="container"><form id="homeSearchForm" class="quick-search-form" role="search">
 <label for="homeSearch">ค้นหาวิดีโอ</label><input id="homeSearch" type="search" placeholder="พิมพ์ชื่อคลิปหรือคำสำคัญ" autocomplete="off">
 <button type="submit">ค้นหา →</button></form></div></section>
+<section class="section home-discovery-section" aria-labelledby="topicDiscoverHeading"><div class="container"><div class="heading-row"><div><p class="kicker">FIND WHAT MATTERS</p><h2 id="topicDiscoverHeading">วันนี้อยากฟังเรื่องอะไร?</h2><p class="home-section-hint">เลือกหัวข้อเพื่อค้นหาคลิปที่มีคำเกี่ยวข้องในชื่อเรื่องหรือคำอธิบายต้นฉบับ ไม่ใช่การยืนยันคำพูดภายในคลิป</p></div></div><div id="homeDiscoveryTopics" class="discovery-topic-grid"><div class="loading">กำลังค้นหาหัวข้อจากคลัง...</div></div></div></section>
 <section class="section home-series-section"><div class="container"><div class="heading-row"><div><p class="kicker">EXPLORE THE COLLECTION</p><h2>หมวดรายการ</h2><p class="home-section-hint">เลือกหมวดที่สนใจ เพื่อดูวิดีโอทั้งหมดในหมวดนั้น</p></div><a href="./categories.html" class="text-link">ดูทุกหมวด →</a></div>
 <div id="homeCategories" class="home-topic-grid" aria-label="เลือกหมวดวิดีโอ"><div class="loading">กำลังโหลดหมวดรายการ...</div></div></div></section>
 <section class="section tinted home-featured-section"><div class="container"><div class="heading-row"><div><p class="kicker">FROM ORIGINAL VIDEOS</p><h2>คลิปจากรายการ</h2><p class="home-section-hint">เลือกชมตัวอย่างวิดีโอ พร้อมลิงก์ไปยังคลิปต้นฉบับ</p></div><a href="./featured.html" class="text-link">ดูคลิปทั้งหมด →</a></div>
@@ -205,9 +208,9 @@ quotes=f'''{intro('DHAMMA QUOTES','คำคมธรรมะ','รวมภา
 <section class="section"><div class="container">
 <div class="quote-toolbar">
 <label for="quoteSearch">ค้นหาข้อความคำคมที่ถอดไว้</label><input type="search" id="quoteSearch" placeholder="ค้นหาในรายการที่มีข้อความถอดแล้ว" autocomplete="off">
-<p id="quotesCount" role="status" aria-live="polite">กำลังตรวจสอบ...</p></div>
+<p id="quotesCount" role="status" aria-live="polite">กำลังตรวจสอบ...</p><p class="quote-search-coverage" id="quoteSearchCoverage" role="note"></p></div>
 <div class="quote-grid" id="quoteGrid"><div class="loading">กำลังโหลดภาพคำคมธรรมะ...</div></div>
-<div class="empty" id="quoteEmpty" hidden>ไม่พบข้อความที่ตรงกับคำค้น</div>
+<div class="empty" id="quoteEmpty" hidden><p>ยังไม่พบข้อความนี้ในภาพที่มีคำถอดตรวจสอบแล้ว ภาพคำคมอื่นอาจยังไม่ได้ถอดข้อความ</p><button id="clearQuoteSearch" type="button">ดูภาพคำคมทั้งหมด</button></div>
 </div></section>'''
 press=f'''{intro('PRESS · INTERVIEWS · ARCHIVE','ข่าว บทสัมภาษณ์ และผลงาน','หลักฐานการทำงานและเนื้อหาย้อนหลังจากแหล่งเผยแพร่ต้นฉบับ ตรวจสอบและแยกประเภทก่อนรวบรวม')}
 <section class="section"><div class="container">
@@ -250,7 +253,7 @@ featured=f'''{intro('ORIGINAL VIDEO THUMBNAILS','คลิปจากราย�
 library=f'''{intro('VIDEO LIBRARY','คลังวิดีโอ','ค้นหาชื่อเรื่องจากแหล่งเผยแพร่ต้นฉบับ และเปิดรับชมได้โดยตรง')}
 <section class="section"><div class="container">{tabs_bar()}
 <p class="press-media-link">ต้องการดูวิดีโอที่เผยแพร่โดยหน่วยงานอื่น? <a href="./external-media.html">สื่อจากแหล่งภายนอกและรายการตรวจสอบ ↗</a></p>
-{grid('คลังวิดีโอทั้งหมด','libraryGrid')}<div class="empty" id="emptyResults" hidden><h2>ไม่พบรายการที่ตรงกับคำค้น</h2><button type="button" id="clearAll">ดูวิดีโอทั้งหมด</button></div>
+{grid('คลังวิดีโอทั้งหมด','libraryGrid')}<div class="empty" id="emptyResults" hidden><h2 id="emptyResultsHeading">ไม่พบคลิปที่ตรงกับเงื่อนไข</h2><p id="emptyResultsHelp">ลองค้นหาใหม่หรือเปลี่ยนตัวกรอง</p><button type="button" id="clearAll">แสดงคลิปทั้งหมด</button></div>
 <div class="load-wrap"><button id="loadMore" type="button" class="btn secondary" hidden>ดูวิดีโอเพิ่มเติม ↓</button></div></div></section>'''
 category=f'''{intro('SERIES','หมวดรายการ','','categories.html','หมวดรายการ')}
 <section class="section"><div class="container"><div class="heading-row"><span id="categoryCount" class="category-total"></span><a href="./categories.html" class="text-link">← ทุกหมวดรายการ</a></div>

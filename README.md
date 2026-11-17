@@ -240,3 +240,16 @@
 - Sitemap ภายใต้ /pmnapan-library/sitemap.xml มีรายการอยู่แล้ว แต่ Sitemap หลัก /sitemap.xml ของ YDML ยังไม่อ้างอิงคลังธรรมะ ต้องดำเนินการที่โฮสต์เว็บไซต์หลัก และส่ง Sitemap ผ่าน Google Search Console
 - ไม่เพิ่ม Schema ประเภท LocalBusiness หรือ VideoObject บนหน้า outbound-link เพราะเว็บไซต์นี้เป็นคลังอ้างอิง ไม่ใช่ธุรกิจในพื้นที่หรือผู้โฮสต์วิดีโอ
 - การแก้เทคนิคไม่ได้รับประกันอันดับ SEO และยังต้องตรวจ Crawl/Indexing/Query impressions ด้วย Google Search Console
+
+## UX improvements — first iteration (17 Nov 2026)
+
+- Homepage shows six clickable interest-topic shortcuts, built by matching existing source titles and descriptions only. These are not transcripts, validated quote topics, or claims about what the speaker says inside a clip. Topics are explicitly labeled as metadata-based suggestions.
+- Topic filter persists as the allowlisted topic= parameter on library.html and is safely clearable; standard text/category/year/platform/favorite filters still work.
+- Homepage's "สุ่มคลิปจากคลัง" button navigates to a real existing catalog item.
+- Detail pages display up to three other videos in the same catalog category without implying the content or speech is identical; all links lead to existing detail pages and original sources.
+- A−/A+ reading controls are placed in every page footer. They keep the chosen UI reading size (three levels) in browser-local storage; no account or server data is involved.
+- No-results UX distinguishes an empty saved-items collection from an ordinary zero-match search.
+- Quotes gallery clearly states how many images have verified searchable transcriptions: at implementation time two of 22. No text is generated for the other images. A button restores the complete gallery when search yields no results.
+- All eleven HTML pages and scripts/build_multipage.py are kept consistent so regeneration preserves the changes.
+- Existing GA4 consent flow, analytics, SEO, image credits, original-content links, and source metadata were not changed.
+- Next editorial step: manually verify and transcribe quote-image text (20 images pending) before enabling full-text search for those images.
