@@ -32,7 +32,7 @@
  function sourceCard(s){
   if(!https(s.url))return '';
   const video=s.kind==='video',id=video?youtubeId(s.url):'';
-  const label=video?'คลิปข่าว / รายการ':s.kind==='report'?'รายงานวิเคราะห์':'ข่าว / บทความ';
+  const label=video?(s.video_type==='channel_upload'?'วิดีโอจากช่องผู้เผยแพร่':'คลิปข่าว / รายการ'):s.kind==='report'?'รายงานวิเคราะห์':'ข่าว / บทความ';
   const imageSrc=id?'https://i.ytimg.com/vi/'+id+'/mqdefault.jpg':https(s.thumbnail)?s.thumbnail:'';
   const image=imageSrc?
    '<span class="ps-source-thumb '+(id?'ps-source-thumb-video':'ps-source-thumb-news')+'"><img src="'+esc(imageSrc)+'" loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer" width="120" height="72">'
@@ -100,9 +100,14 @@
   const target=$('psVideoFeatured');
   if(!target)return;
   const result=[],seen=new Set();
-  const prioritized=state.events.filter(e=>e.napan).concat(state.events.filter(e=>!e.napan));
+  // Only one source per event; the editorially selected official upload gets first priority.
+  const prioritized=state.events.slice().sort((a,b)=>{
+   const ap=Number(!!a.featured_video_source_id),bp=Number(!!b.featured_video_source_id);
+   return bp-ap || Number(!!b.napan)-Number(!!a.napan) || a.date.localeCompare(b.date);
+  });
   for(const event of prioritized){
-   const item=event.sources.find(source=>source.kind==='video'&&youtubeId(source.url)&&!seen.has(source.url));
+   const item=event.sources.find(source=>source.id===event.featured_video_source_id&&source.kind==='video'&&youtubeId(source.url)&&!seen.has(source.url))
+    ||event.sources.find(source=>source.kind==='video'&&youtubeId(source.url)&&!seen.has(source.url));
    if(!item)continue;
    seen.add(item.url);
    result.push({event,source:item,id:youtubeId(item.url)});
@@ -120,7 +125,7 @@
     +'<span class="ps-video-teaser-body"><span class="ps-video-teaser-meta"><span class="ps-teaser-dot" aria-hidden="true"></span>'
     +esc(source.source)+' · '+esc(thaiDate(event.date,event.datePrecision))+'</span>'
     +'<strong>'+esc(source.title)+'</strong>'
-    +'<span class="ps-video-teaser-cta">เปิดคลิปข่าวจากแหล่งต้นทาง <span aria-hidden="true">↗</span></span></span></a>';
+    +'<span class="ps-video-teaser-cta">'+(source.video_type==='channel_upload'?'รับชมวิดีโอจากช่องผู้เผยแพร่':'เปิดคลิปข่าวจากแหล่งต้นทาง')+' <span aria-hidden="true">↗</span></span></span></a>';
   }).join('');
   target.querySelectorAll('.ps-video-teaser-photo img').forEach(img=>
     img.addEventListener('error',()=>img.parentElement.classList.add('ps-teaser-no-thumb'),{once:true}));

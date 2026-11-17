@@ -383,14 +383,6 @@
           "thumbnail": "https://mpics-cdn.mgronline.com/pics/Images/564000010487001.JPEG"
         },
         {
-          "id": "ps-10-6",
-          "kind": "video",
-          "source": "Thaiger / T Talk",
-          "title": "คลิปข่าวสรุป #Saveพระมหาสมปอง",
-          "url": "https://www.youtube.com/watch?v=kM9f8pD_Sn4",
-          "note": "ลิงก์จากบทความ Thaiger; ไม่ใช่ไลฟ์ฉบับเต็ม"
-        },
-        {
           "id": "ps-10-7",
           "kind": "video",
           "source": "workpointTODAY",
@@ -611,10 +603,20 @@
           "url": "https://www.komchadluek.net/hot-social/503476",
           "note": "รายงานถึงไลฟ์สนทนาธรรมระหว่างพระมหานภันต์กับไพรวัลย์",
           "thumbnail": "https://media.komchadluek.net/uploads/images/md/2022/01/aMpL2tNsJVAIrfnu3mt3.webp"
+        },
+        {
+          "id": "ps-16-3",
+          "kind": "video",
+          "source": "แพรรี่ ไพรวัลย์ [Official Channel]",
+          "title": "พระมหานภันต์ เทศนาสั่งสอน เตือนสติทิดไพรวัลย์",
+          "url": "https://www.youtube.com/watch?v=18fPYI2QNbo",
+          "note": "คลิปที่เผยแพร่บน YouTube วันที่ 30 ม.ค. 2565 จากช่องแพรรี่ ไพรวัลย์ [Official Channel]; ไม่ยืนยันว่าเป็นบันทึกไลฟ์ฉบับเต็ม",
+          "video_type": "channel_upload"
         }
       ],
       "id": "ps-16",
-      "featured_source_id": "ps-16-2"
+      "featured_source_id": "ps-16-2",
+      "featured_video_source_id": "ps-16-3"
     }
   ],
   "pending": [

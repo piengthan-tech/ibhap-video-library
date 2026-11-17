@@ -302,3 +302,10 @@
 - Data: data/four-ps.json, event ps-12, Thai PBS source ps-12-1. The verified inline photograph no. 3 from https://www.thaipbs.or.th/news/content/310335 is used as the source thumbnail and, via featured_source_id, the main event illustration and Napan milestone card.
 - Reference photograph: https://onecms.thaipbs.or.th/media/KVunBvWg8dYIkQ2O6lHdhFxEgDbNiGSOJZI13keWs3eyjfHz2O45Yp.jpg (800 x 600 JPEG). Image is displayed directly from the publisher, not copied, modified or re-encoded. Cards credit Thai PBS and link to the original article.
 - The photograph was checked inside the article body, not merely the social-sharing cover. If the external image becomes unavailable, show the existing photo fallback instead of presenting a broken image.
+
+## Four PS video availability audit and official-channel addition (18 Nov 2026)
+
+- Reviewed all 11 previously linked videos and programme pages. Ten were accessible through YouTube's oEmbed/thumbnail services or their respective programme pages; the Thaiger / T Talk YouTube link kM9f8pD_Sn4 returned HTTP 404 from both oEmbed and YouTube thumbnail endpoints. Removed only this unavailable video from event ps-10; its news reports remain.
+- Added https://www.youtube.com/watch?v=18fPYI2QNbo to the 30 January 2022 event ps-16. YouTube oEmbed confirms exact video title พระมหานภันต์ เทศนาสั่งสอน เตือนสติทิดไพรวัลย์, uploader แพรรี่ ไพรวัลย์ [Official Channel], and the thumbnail. Watch-page metadata displays a 2022-01-30 publication date. This is a channel-uploaded video; do not describe it as an independently verified full-length original livestream.
+- Set the video as preferred editorial featured-video source. The video showcase selects up to three distinct dated events, one clip per event, including this new official-channel upload. News-outlet videos retain their news-clip labels.
+- Totals remain 16 events, 32 source articles/analyses, 11 video/programme references, five Napan focus events and six unresolved source leads. All other video links and the original group photograph remain unchanged.
