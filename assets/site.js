@@ -31,20 +31,26 @@ function duration(minutes){
  const h=Math.floor(seconds/3600),m=Math.floor(seconds%3600/60),s=seconds%60;
  return h? h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0'):m+':'+String(s).padStart(2,'0');
 }
-const DISCOVERY_TOPICS=[
- {id:'listening',label:'การรับฟัง',terms:['ฟัง','รับฟัง']},
- {id:'life',label:'ชีวิตและความสุข',terms:['ความสุข','ชีวิต','ความทุกข์']},
- {id:'mindfulness',label:'สติและสมาธิ',terms:['สติ','สมาธิ','ภาวนา']},
- {id:'relationships',label:'ครอบครัวและเพื่อน',terms:['ครอบครัว','พ่อแม่','ความสัมพันธ์','เพื่อน']},
- {id:'volunteer',label:'จิตอาสาและสังคม',terms:['จิตอาสา','งานอาสา','สังคม']},
- {id:'everyday',label:'ธรรมะในชีวิตประจำวัน',terms:['ชีวิตประจำวัน','ปัญหาชีวิต','ธรรมะกับชีวิต']}
-];
+let DISCOVERY_TOPICS=[];
+const legacyTopicNames={listening:'family',life:'mind',mindfulness:'meditation',
+ relationships:'family',volunteer:'society',everyday:'mind'};
 const discoveryTopic = id => DISCOVERY_TOPICS.find(t=>t.id===id);
+function resolveTopicId(id){return discoveryTopic(id)?id:(legacyTopicNames[id]||null)}
 function topicMatches(item,topicId){
+ if(!topicId)return true;
  const topic=discoveryTopic(topicId);
- if(!topic)return !topicId;
- const sourceText=norm(item.title+' '+(item.description||''));
- return topic.terms.some(word=>sourceText.includes(norm(word)));
+ return !!topic && topic.keys.has(item.key);
+}
+async function loadCuratedTopics(){
+ const response=await fetch('./data/discovery-topics.json',{cache:'no-cache'});
+ if(!response.ok)throw new Error('Curated topic index HTTP '+response.status);
+ const raw=await response.json();
+ const validKeys=new Set(items.map(x=>x.key));
+ DISCOVERY_TOPICS=(Array.isArray(raw.topics)?raw.topics:[]).filter(t=>
+  /^[a-z]+$/.test(t.id||'')&&typeof t.label==='string'&&Array.isArray(t.keys)
+ ).map(t=>({id:t.id,label:t.label,description:t.description||'',
+  keys:new Set(t.keys.filter(key=>validKeys.has(key)))
+ })).filter(t=>t.keys.size>0);
 }
 const categoryNames = () => [...new Set(items.map(x=>x.category))];
 const byDateDesc=(a,b)=>(b.published_at||'').localeCompare(a.published_at||'') || a.title.localeCompare(b.title,'th');
@@ -180,18 +186,30 @@ function relatedNote(){
 }
 function renderDiscoveryTopics(){
  const el=$('homeDiscoveryTopics');if(!el)return;
- const visible=DISCOVERY_TOPICS.map(t=>({...t,total:items.filter(x=>topicMatches(x,t.id)).length}))
-   .filter(t=>t.total>0);
+ const visible=DISCOVERY_TOPICS.map(t=>({...t,total:t.keys.size}));
+ if(!visible.length){
+  el.innerHTML='<p class="discovery-empty">ยังไม่สามารถแสดงหัวข้อที่คัดเลือกได้ <a href="./library.html">เปิดคลังวิดีโอทั้งหมด ↗</a></p>';
+  return;
+ }
  el.innerHTML=visible.map(t=>
   '<a class="discovery-topic" href="'+esc(uri('library.html',{topic:t.id}))+'">'
   +'<strong>'+esc(t.label)+'</strong><span>'+t.total.toLocaleString('th-TH')+' คลิป ↗</span></a>'
  ).join('');
+}
+function renderHomeLatest(){
+ const target=$('homeLatest');
+ if(!target)return;
+ const recent=items.filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x.published_at||''))
+   .sort(byDateDesc).slice(0,3);
+ target.innerHTML=recent.length?recent.map(card).join(''):'<p class="empty">ยังไม่มีข้อมูลวันที่เผยแพร่จากต้นฉบับ</p>';
+ target.querySelectorAll('.video-image img').forEach(attachImageFallback);
 }
 function renderHome(){
  $('homeTotal').textContent=items.length.toLocaleString('th-TH');
  renderHomeShorts();
  renderHomeQuotes();
  renderDiscoveryTopics();
+ renderHomeLatest();
  const randomButton=$('randomArchiveClip');
  if(randomButton)randomButton.addEventListener('click',()=>{
   if(!items.length)return;
@@ -378,7 +396,7 @@ let filterState={q:'',category:'all',year:'all',platform:'all',sort:'new',fav:fa
 function populateLibrary(){
  const params=new URLSearchParams(location.search);
  const category=params.get('category');
- filterState.topic=discoveryTopic(params.get('topic'))?params.get('topic'):null;
+ filterState.topic=resolveTopicId(params.get('topic'));
  filterState.q=params.get('q')||'';
  filterState.category=categoryNames().includes(category)?category:'all';
  filterState.year=/^\d{4}$/.test(params.get('year')||'')?params.get('year'):'all';
@@ -446,6 +464,8 @@ function refreshLibrary(){
   topicPanel.hidden=!filterState.topic;
   const name=$('topicFilterName');
   if(name)name.textContent=discoveryTopic(filterState.topic)?.label||'';
+  const hint=$('topicFilterExplanation');
+  if(hint)hint.textContent='หัวข้อนี้คัดจากชื่อคลิปต้นฉบับ ไม่ได้ตรวจสอบคำพูดภายในคลิป';
  }
  $('resetFilters').hidden=!(filterState.q||filterState.category!=='all'||filterState.year!=='all'||filterState.platform!=='all'||filterState.sort!=='new'||filterState.fav||!!filterState.topic);
  $('favoriteFilter').setAttribute('aria-pressed',String(filterState.fav));
@@ -469,10 +489,23 @@ function toggleFavorite(key){
  else{favorites.add(id);showToast('บันทึกวิดีโอแล้ว')}
  try{localStorage.setItem(storageKey,JSON.stringify([...favorites]))}catch{}
  if(page==='library')refreshLibrary();
+ else if(page==='saved')renderSaved();
  else if(page==='video')renderVideoDetail();
  else if(page==='featured')renderFeatured();
  else if(page==='home')renderHomeCardsOnly();
  else if(page==='category')drawPaged($('categoryGrid'));
+}
+function renderSaved(){
+ const target=$('savedGrid');
+ if(!target)return;
+ const savedLookup=new Map(items.map(x=>[favoriteKey(x),x]));
+ selected=[...favorites].reverse().map(key=>savedLookup.get(key)).filter(Boolean);
+ const count=$('savedCount'),empty=$('savedEmpty');
+ if(count)count.textContent='บันทึกไว้ '+selected.length.toLocaleString('th-TH')+' คลิปในเบราว์เซอร์นี้';
+ if(empty)empty.hidden=selected.length!==0;
+ if(!target)return;
+ visibleCount=PAGE_SIZE;
+ drawPaged(target);
 }
 function renderHomeCardsOnly(){
  const featured=categoryNames().slice(0,6).map(name=>chooseCover(items.filter(x=>x.category===name))).filter(Boolean);
@@ -624,6 +657,12 @@ async function boot(){
    if(!x.key||!x.title||!x.category||!safeLink(x.url)||seen.has(x.key))return false;
    seen.add(x.key);return true;
   });
+  if(['home','library'].includes(page)){
+    try{await loadCuratedTopics()}catch(error){
+      DISCOVERY_TOPICS=[];
+      console.warn('Curated topics unavailable',error);
+    }
+  }
   if(['home','categories','quotes'].includes(page)){
     const qres=await fetch(QUOTES_URL,{cache:'no-cache'});
     if(!qres.ok)throw new Error('Quote catalog HTTP '+qres.status);
@@ -636,13 +675,14 @@ async function boot(){
    case 'featured':renderFeatured();break;
    case 'shorts':renderShorts();break;
    case 'library':populateLibrary();break;
+   case 'saved':renderSaved();break;
    case 'category':selectCategory();break;
    case 'video':renderVideoDetail();break;
   }
   document.querySelectorAll('.video-image img,.series-image img').forEach(attachImageFallback);
-  if(['library','category'].includes(page)){
+  if(['library','category','saved'].includes(page)){
    const load=$('loadMore');load.addEventListener('click',()=>{
-    visibleCount+=PAGE_SIZE;drawPaged(page==='library'?$('libraryGrid'):$('categoryGrid'));
+    visibleCount+=PAGE_SIZE;drawPaged(page==='library'?$('libraryGrid'):page==='saved'?$('savedGrid'):$('categoryGrid'));
    });
   }
  }catch(error){

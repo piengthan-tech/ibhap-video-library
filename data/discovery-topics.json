@@ -1,0 +1,95 @@
+{
+  "name": "PMNapan Library · curated discovery topics",
+  "selection_basis": "manual selection from original catalog video titles; not transcripts or verified speech topics",
+  "editorial_policy": "Each video is included solely where its source title explicitly supports the category. Adding new videos requires a separate editorial review. Do not infer teaching content from program names, hashtags, or template descriptions.",
+  "topics": [
+    {
+      "id": "mind",
+      "label": "ชีวิตและจิตใจ",
+      "description": "ชื่อคลิปเกี่ยวกับความรู้สึก ความทุกข์ ความเครียด และการดูแลใจ",
+      "keys": [
+        "YouTube:GNkeMcv-T6o",
+        "YouTube:LenQQkkePyU",
+        "YouTube:AqQ-6JSECa8",
+        "YouTube:ZVXHYCqddYU",
+        "YouTube:azQG0Pm9blk",
+        "YouTube:sF7MAj7Q7Ek",
+        "YouTube:KJmJ4CkNnao",
+        "YouTube:6htaJfraAVs",
+        "TikTok:7521012757915831570",
+        "TikTok:7362966244997205265",
+        "TikTok:7362951077085318417",
+        "TikTok:7300775459330034949",
+        "TikTok:7258287748803611910"
+      ]
+    },
+    {
+      "id": "merit",
+      "label": "การทำบุญและการให้",
+      "description": "ชื่อคลิปพูดถึงการทำบุญ ทาน และข้อสงสัยเรื่องบุญ",
+      "keys": [
+        "YouTube:oW9ec8t6tfs",
+        "YouTube:OEYR0b6141Y",
+        "YouTube:M6LUV0AdULw",
+        "YouTube:2Fw79Yj4Osw",
+        "YouTube:9STk1xCxNGA",
+        "YouTube:osPDImgoB04",
+        "YouTube:Iog2A0ErEB8",
+        "YouTube:imemkAlQ1wY",
+        "TikTok:7271662957044518150",
+        "TikTok:7205874882402438426"
+      ]
+    },
+    {
+      "id": "meditation",
+      "label": "สมาธิและฝึกจิต",
+      "description": "ชื่อคลิปเกี่ยวกับสมาธิ การฝึกจิต และการภาวนา",
+      "keys": [
+        "YouTube:-qGOJENhGIE",
+        "YouTube:k151VTWdXoc",
+        "YouTube:AtRgRKINAGg",
+        "YouTube:KMyWN1yjC9A",
+        "YouTube:Z1-fWr2MMP0",
+        "YouTube:U8HQ3aTan7k"
+      ]
+    },
+    {
+      "id": "society",
+      "label": "สังคมและสิ่งแวดล้อม",
+      "description": "ชื่อคลิปเกี่ยวกับการพัฒนาสังคม สิ่งแวดล้อม จิตอาสา และ SDGs",
+      "keys": [
+        "YouTube:5IaLC1u6HCo",
+        "YouTube:zfPLmRjppps",
+        "YouTube:JUBiIoi5080",
+        "YouTube:H6mxSbdArhY",
+        "YouTube:NrcmzzB_Bqo",
+        "YouTube:XlSAS4MSdOA",
+        "TikTok:7376919881939307777",
+        "TikTok:7428493700637969681",
+        "TikTok:7336776138271788290"
+      ]
+    },
+    {
+      "id": "family",
+      "label": "การสื่อสารและครอบครัว",
+      "description": "ชื่อคลิปเกี่ยวกับการสื่อสาร วันครอบครัว และความสัมพันธ์ในครอบครัว",
+      "keys": [
+        "YouTube:KQY_qHzP-fo",
+        "TikTok:7493097008400731399",
+        "TikTok:7493005546283339028",
+        "TikTok:7266272190323117318"
+      ]
+    },
+    {
+      "id": "work",
+      "label": "งานและทักษะชีวิต",
+      "description": "ชื่อคลิปเกี่ยวกับการทำงาน ทักษะ และมุมมองต่อการพัฒนาคน",
+      "keys": [
+        "YouTube:2IYzz1-VmZI",
+        "YouTube:aCVE01WPv24",
+        "YouTube:dgfa6vcwcm4",
+        "YouTube:vvVXGp9wihc"
+      ]
+    }
+  ]
+}

@@ -68,8 +68,11 @@ def footer():
  <div class="footer-design-credit">Design By Opkip</div>
  </footer>'''
 SEO_TITLES={'home': 'พระมหานภันต์ สนฺติภทฺโท | คลังธรรมะ PMNapan Library', 'categories': 'หมวดรายการธรรมะ | พระมหานภันต์ สนฺติภทฺโท', 'featured': 'คลิปธรรมะและรายการย้อนหลัง | พระมหานภันต์', 'shorts': 'คลิปธรรมะสั้น TikTok | พระมหานภันต์ สนฺติภทฺโท', 'quotes': 'คำคมธรรมะจากภาพต้นฉบับ | พระมหานภันต์', 'press': 'ข่าว บทสัมภาษณ์ และผลงาน | พระมหานภันต์', 'external-media': 'สื่อจากแหล่งเผยแพร่ภายนอก | พระมหานภันต์', 'library': 'คลังวิดีโอธรรมะ YouTube และ TikTok | พระมหานภันต์', 'category': 'หมวดคลิปธรรมะ | PMNapan Library', 'video': 'รายละเอียดวิดีโอธรรมะ | PMNapan Library', 'about': 'แหล่งข้อมูลและที่มาคลังธรรมะ | PMNapan Library'}
+SEO_TITLES['saved']='คลิปที่บันทึกไว้ | PMNapan Library'
 SEO_DESCRIPTIONS={'home': 'รวมคลิปธรรมะ คำคม ข่าวและบทสัมภาษณ์ที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท (Ven. Napan) พร้อมลิงก์วิดีโอและแหล่งเผยแพร่ต้นฉบับ', 'categories': 'สำรวจหมวดรายการธรรมะของพระมหานภันต์ สนฺติภทฺโท ทั้งอาสาหาธรรม รายการย้อนหลัง ธรรมบรรยาย และสื่อที่เกี่ยวข้องจากแหล่งเผยแพร่จริง', 'featured': 'เลือกชมรายการธรรมะและคลิปย้อนหลังที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท พร้อมภาพหน้าปกและลิงก์ไปยังผู้เผยแพร่ต้นฉบับ', 'shorts': 'รวบรวมคลิปธรรมะสั้นที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท จาก TikTok โดยรักษาลิงก์และคำบรรยายตามแหล่งเผยแพร่ต้นฉบับ', 'quotes': 'รวมภาพคำคมธรรมะของพระมหานภันต์ สนฺติภทฺโท จากภาพต้นฉบับที่ตรวจสอบแล้ว เปิดดูรูปภาพขนาดเต็มและสำรวจคำสอนจากแหล่งจริง', 'press': 'รวบรวมข่าว บทสัมภาษณ์ กิจกรรม และผลงานย้อนหลังที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท พร้อมสรุปสั้นและลิงก์ไปยังสำนักข่าวต้นฉบับ', 'external-media': 'คลิปจากหน่วยงานภายนอกที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท พร้อมแยกสถานะสื่อที่ตรวจสอบได้และเบาะแสที่ยังต้องตรวจสอบ', 'library': 'ค้นหาวิดีโอธรรมะของพระมหานภันต์ สนฺติภทฺโท และสื่อที่เกี่ยวข้อง เลือกหมวด ปี และแหล่งเผยแพร่ YouTube หรือ TikTok', 'category': 'ค้นหาและเลือกชมวิดีโอจากหมวดรายการธรรมะของพระมหานภันต์ สนฺติภทฺโท พร้อมลิงก์ต้นฉบับและข้อมูลการเผยแพร่', 'video': 'อ่านรายละเอียดวิดีโอที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท ตรวจชื่อเรื่องและเปิดวิดีโอจากแหล่งเผยแพร่ต้นฉบับ', 'about': 'ตรวจสอบแหล่งเผยแพร่วิดีโอ คำคม และข้อมูลอ้างอิงใน PMNapan Library เพื่อให้เข้าถึงคลังธรรมะของพระมหานภันต์ สนฺติภทฺโท ได้อย่างถูกต้อง'}
+SEO_DESCRIPTIONS['saved']='ดูคลิปที่บันทึกไว้เฉพาะในเบราว์เซอร์นี้ สามารถจัดการรายการที่สนใจได้โดยไม่ต้องสมัครบัญชี'
 SEO_PATHS={'home': '', 'categories': 'categories.html', 'featured': 'featured.html', 'shorts': 'shorts.html', 'quotes': 'quotes.html', 'press': 'press.html', 'external-media': 'external-media.html', 'library': 'library.html', 'category': 'category.html', 'video': 'video.html', 'about': 'about.html'}
+SEO_PATHS['saved']='saved.html'
 SEO_PERSON={'@type': 'Person', 'name': 'พระมหานภันต์ สนฺติภทฺโท', 'alternateName': ['Ven. Napan', 'PM Napan']}
 SEO_WEBSITE={'@type': 'WebSite', '@id': 'https://www.ydml.co.th/pmnapan-library/#website', 'url': 'https://www.ydml.co.th/pmnapan-library/', 'name': 'PMNapan Library Dhamma Archive', 'inLanguage': 'th', 'description': 'รวมคลิปธรรมะ คำคม ข่าวและบทสัมภาษณ์ที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท (Ven. Napan) พร้อมลิงก์วิดีโอและแหล่งเผยแพร่ต้นฉบับ'}
 
@@ -93,6 +96,8 @@ def seo_tags(active,title,description):
       '<meta property="og:image" content="'+base+'assets/monk-watering-960.webp">',
       '<meta property="og:image:alt" content="PMNapan Library คลังธรรมะพระมหานภันต์">',
       '<meta name="twitter:card" content="summary_large_image">']
+    if active=='saved':
+        tags[0]='<meta name="robots" content="noindex,follow">'
     if active in ('category','video'):
         tags.append("""<script>
 (function(){
@@ -175,19 +180,26 @@ def tabs_bar():
 <label>ปีเผยแพร่<select id="yearFilter"><option value="all">ทุกปี</option></select></label>
 <label>ช่องทาง<select id="platformFilter"><option value="all">ทุกช่องทาง</option><option value="YouTube">YouTube</option><option value="TikTok">TikTok</option><option value="Facebook">Facebook</option></select></label>
 <label>เรียงลำดับ<select id="sortFilter"><option value="new">ใหม่ล่าสุด</option><option value="old">เก่าสุด</option><option value="title">ชื่อเรื่อง ก–ฮ</option><option value="length">วิดีโอยาวที่สุด</option></select></label>
-</div><div class="filter-footer"><p id="resultCount" aria-live="polite">กำลังโหลด...</p><button type="button" class="reset-filter" id="resetFilters" hidden>ล้างตัวกรอง ↺</button></div></div>'''
+</div><div class="filter-footer"><p id="resultCount" aria-live="polite">กำลังโหลด...</p><a class="saved-view-link" href="./saved.html">♡ หน้าคลิปที่บันทึกไว้ ↗</a><button type="button" class="reset-filter" id="resetFilters" hidden>ล้างตัวกรอง ↺</button></div></div>'''
 home=f'''<section class="hero"><div class="container hero-row"><div class="hero-copy">
 <p class="hero-kicker"><span></span> VIDEO ARCHIVE</p>
 <h1>PMNapan Library<br><span>Dhamma Archive</span></h1>
 <h2>คลังวิดีโอพระมหานภันต์ สนฺติภทฺโท</h2>
 <div class="hero-actions"><a class="btn primary" href="./library.html">▶ เข้าสู่คลังวิดีโอ</a><a class="btn secondary" href="./categories.html">เลือกหมวดรายการ ↗</a><button class="btn minimal" id="randomArchiveClip" type="button">↝ สุ่มคลิปจากคลัง</button></div>
 <p class="hero-total"><strong id="homeTotal">—</strong> วิดีโอในคลัง</p>
+<a class="hero-saved-shortcut" href="./saved.html">♡ เปิดคลิปที่บันทึกไว้ <span aria-hidden="true">↗</span></a>
 
 </div><div class="hero-visual"><span class="blue-orbit"></span><img src="./assets/monk-watering-960.webp" srcset="./assets/monk-watering-620.webp 620w, ./assets/monk-watering-960.webp 960w" sizes="(max-width: 650px) 300px, (max-width: 910px) 400px, 540px" alt="การ์ตูนพระรดน้ำต้นไม้ พร้อมสัญลักษณ์การพัฒนาที่ยั่งยืน" width="960" height="919" fetchpriority="high" decoding="async"></div></div></section>
 <section class="quick-search"><div class="container"><form id="homeSearchForm" class="quick-search-form" role="search">
 <label for="homeSearch">ค้นหาวิดีโอ</label><input id="homeSearch" type="search" placeholder="พิมพ์ชื่อคลิปหรือคำสำคัญ" autocomplete="off">
 <button type="submit">ค้นหา →</button></form></div></section>
-<section class="section home-discovery-section" aria-labelledby="topicDiscoverHeading"><div class="container"><div class="heading-row"><div><p class="kicker">FIND WHAT MATTERS</p><h2 id="topicDiscoverHeading">วันนี้อยากฟังเรื่องอะไร?</h2><p class="home-section-hint">เลือกหัวข้อเพื่อค้นหาคลิปที่มีคำเกี่ยวข้องในชื่อเรื่องหรือคำอธิบายต้นฉบับ ไม่ใช่การยืนยันคำพูดภายในคลิป</p></div></div><div id="homeDiscoveryTopics" class="discovery-topic-grid"><div class="loading">กำลังค้นหาหัวข้อจากคลัง...</div></div></div></section>
+<section class="section home-discovery-section" aria-labelledby="topicDiscoverHeading"><div class="container"><div class="heading-row"><div><p class="kicker">FIND WHAT MATTERS</p><h2 id="topicDiscoverHeading">วันนี้อยากฟังเรื่องอะไร?</h2><p class="home-section-hint">เลือกหัวข้อที่คัดจากชื่อคลิปต้นฉบับ ไม่ใช่คำถอดเสียงหรือการยืนยันเนื้อหาภายในคลิป</p></div></div><div id="homeDiscoveryTopics" class="discovery-topic-grid"><div class="loading">กำลังค้นหาหัวข้อจากคลัง...</div></div></div></section>
+<section class="section home-latest-section" aria-labelledby="homeLatestTitle"><div class="container">
+<div class="heading-row"><div><p class="kicker">LATEST BY ORIGINAL PUBLISH DATE</p><h2 id="homeLatestTitle">คลิปล่าสุดตามวันที่เผยแพร่</h2>
+<p class="home-section-hint">เรียงตามวันที่เผยแพร่จากแหล่งต้นฉบับ ไม่ใช่วันที่เพิ่มเข้าคลัง</p></div>
+<a href="./library.html" class="text-link">เปิดคลังวิดีโอ →</a></div>
+<div id="homeLatest" class="video-grid" aria-label="คลิปล่าสุดตามวันที่เผยแพร่"><div class="loading">กำลังโหลดรายการ...</div></div>
+</div></section>
 <section class="section home-series-section"><div class="container"><div class="heading-row"><div><p class="kicker">EXPLORE THE COLLECTION</p><h2>หมวดรายการ</h2><p class="home-section-hint">เลือกหมวดที่สนใจ เพื่อดูวิดีโอทั้งหมดในหมวดนั้น</p></div><a href="./categories.html" class="text-link">ดูทุกหมวด →</a></div>
 <div id="homeCategories" class="home-topic-grid" aria-label="เลือกหมวดวิดีโอ"><div class="loading">กำลังโหลดหมวดรายการ...</div></div></div></section>
 <section class="section tinted home-featured-section"><div class="container"><div class="heading-row"><div><p class="kicker">FROM ORIGINAL VIDEOS</p><h2>คลิปจากรายการ</h2><p class="home-section-hint">เลือกชมตัวอย่างวิดีโอ พร้อมลิงก์ไปยังคลิปต้นฉบับ</p></div><a href="./featured.html" class="text-link">ดูคลิปทั้งหมด →</a></div>
@@ -251,8 +263,8 @@ shorts=f'''{intro('SHORT-FORM VIDEO · TIKTOK','ธรรมะคลิปส�
 featured=f'''{intro('ORIGINAL VIDEO THUMBNAILS','คลิปจากรายการ','ภาพที่แสดงเป็นภาพจากคลิปต้นฉบับ ไม่ใช่ภาพที่สร้างขึ้นใหม่')}
 <section class="section"><div class="container"><div id="featuredSections"><div class="loading">กำลังโหลดคลิปจากรายการ...</div></div></div></section>'''
 library=f'''{intro('VIDEO LIBRARY','คลังวิดีโอ','ค้นหาชื่อเรื่องจากแหล่งเผยแพร่ต้นฉบับ และเปิดรับชมได้โดยตรง')}
-<section class="section"><div class="container">{tabs_bar()}
-<p class="press-media-link">ต้องการดูวิดีโอที่เผยแพร่โดยหน่วยงานอื่น? <a href="./external-media.html">สื่อจากแหล่งภายนอกและรายการตรวจสอบ ↗</a></p>
+<section class="section"><div class="container"><p class="press-media-link">ต้องการดูวิดีโอที่เผยแพร่โดยหน่วยงานอื่น? <a href="./external-media.html">สื่อจากแหล่งภายนอกและรายการตรวจสอบ ↗</a></p>
+{tabs_bar()}
 {grid('คลังวิดีโอทั้งหมด','libraryGrid')}<div class="empty" id="emptyResults" hidden><h2 id="emptyResultsHeading">ไม่พบคลิปที่ตรงกับเงื่อนไข</h2><p id="emptyResultsHelp">ลองค้นหาใหม่หรือเปลี่ยนตัวกรอง</p><button type="button" id="clearAll">แสดงคลิปทั้งหมด</button></div>
 <div class="load-wrap"><button id="loadMore" type="button" class="btn secondary" hidden>ดูวิดีโอเพิ่มเติม ↓</button></div></div></section>'''
 category=f'''{intro('SERIES','หมวดรายการ','','categories.html','หมวดรายการ')}
@@ -270,6 +282,19 @@ about=f'''{intro('SOURCE INFORMATION','แหล่งข้อมูล')}
 <a href="https://www.facebook.com/NapanIBHAP/photos" target="_blank" rel="noopener noreferrer">Facebook · พระมหานภันต์ สกพ. - Ven.Napan IBHAP · รูปภาพ <span>↗</span></a>
 </div></div></div></section>'''
 about += '\n<section class="section analytics-privacy-section" id="analytics-privacy">\n<div class="container about-layout"><div class="about-panel">\n<h2>การวัดผลการใช้งานและความเป็นส่วนตัว</h2>\n<p>เว็บไซต์ PMNapan Library ใช้ Google Analytics 4 เพื่อวิเคราะห์จำนวนผู้เข้าชม จำนวนครั้งที่เปิดหน้าเว็บ หน้าที่ได้รับความนิยม และการคลิกลิงก์ไปยังคลิปหรือบทความต้นฉบับ การวัดผลนี้เริ่มทำงานเฉพาะเมื่อผู้เข้าชมกด “ยินยอม” เท่านั้น</p>\n<p>เมื่อยินยอม ข้อมูลการใช้งานบางส่วนจะถูกส่งให้ Google เพื่อจัดทำรายงานสถิติ โดยระบบอาจใช้คุกกี้เพื่อจดจำการเข้าชม ไม่ใช้ระบบนี้เพื่อแสดงโฆษณาแบบเจาะจง ผู้เข้าชมสามารถเปลี่ยนความยินยอมได้จากปุ่ม “ตั้งค่าคุกกี้” ที่ส่วนท้ายทุกหน้า การถอนความยินยอมจะหยุดการส่งข้อมูลครั้งต่อไป ไม่ลบข้อมูลที่ส่งไปแล้ว</p>\n<p>การคลิกไปยังเว็บไซต์ YouTube, TikTok หรือสื่อภายนอกไม่ได้หมายความว่ามีการรับชมวิดีโอจริง สถิติอาจไม่รวมผู้ที่ไม่ยินยอม ใช้ระบบบล็อกการติดตาม หรือถูกจำกัดจากเบราว์เซอร์</p>\n</div></div></section>'
+saved=f'''{intro('SAVED VIDEOS','คลิปที่บันทึกไว้','รวมคลิปที่คุณกดบันทึกบนอุปกรณ์และเบราว์เซอร์นี้')}
+<section class="section"><div class="container">
+<div class="saved-information">
+<div><strong>คลังส่วนตัวในเบราว์เซอร์นี้</strong>
+<p>รายการบันทึกจะอยู่เฉพาะในเบราว์เซอร์และอุปกรณ์นี้ ไม่ซิงก์ไปเครื่องอื่น และอาจหายไปหากล้างข้อมูลเว็บไซต์</p></div>
+<a class="btn secondary" href="./library.html">ค้นหาคลิปเพิ่มเติม →</a>
+</div>
+<p id="savedCount" class="category-summary" aria-live="polite">กำลังโหลดรายการที่บันทึก...</p>
+{grid('คลิปที่บันทึกไว้','savedGrid')}
+<div id="savedEmpty" class="empty" hidden><h2>ยังไม่มีคลิปที่บันทึกไว้</h2><p>กดรูปหัวใจ ♡ บนคลิปที่สนใจ แล้วกลับมาดูได้ที่หน้านี้</p>
+<a class="btn primary" href="./library.html">ไปที่คลังวิดีโอ →</a></div>
+<div class="load-wrap"><button id="loadMore" type="button" class="btn secondary" hidden>ดูคลิปที่บันทึกเพิ่มเติม ↓</button></div>
+</div></section>'''
 pages=[
  ('index.html','home',name,'สารบัญวิดีโอพระมหานภันต์ สนฺติภทฺโท และงานสื่อที่เกี่ยวข้อง',home),
  ('categories.html','categories','หมวดรายการ | '+name,'หมวดรายการทั้งหมดจากทะเบียนวิดีโอต้นฉบับ',categories),
@@ -279,6 +304,7 @@ pages=[
  ('press.html','press','ข่าว บทสัมภาษณ์ และผลงาน | '+name,'คลังข่าว บทสัมภาษณ์ ประวัติ และผลงานย้อนหลังของพระมหานภันต์ พร้อมอ้างอิงแหล่งเผยแพร่ต้นฉบับ',press),
  ('external-media.html','external-media','สื่อจากแหล่งภายนอก | '+name,'คลิปจากหน่วยงานภายนอกและเบาะแสที่แยกสถานะตรวจสอบ',external_media),
  ('library.html','library','คลังวิดีโอ | '+name,'ค้นหาและเลือกชมวิดีโอต้นฉบับ แยกหมวด ปี และช่องทาง',library),
+ ('saved.html','saved','คลิปที่บันทึกไว้ | '+name,'รายการวิดีโอที่บันทึกไว้ในเบราว์เซอร์',saved),
  ('category.html','category','หมวดรายการ | '+name,'รายการคลิปตามหมวดหมู่จากทะเบียนจริง',category),
  ('video.html','video','รายละเอียดวิดีโอ | '+name,'รายละเอียดคลิปและลิงก์วิดีโอของผู้เผยแพร่ต้นฉบับ',video),
  ('about.html','about','แหล่งข้อมูล | '+name,'ข้อมูลแหล่งเผยแพร่และหลักเกณฑ์ของคลังวิดีโอ',about)

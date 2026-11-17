@@ -355,3 +355,21 @@ html[data-reading-size="2"] .home-topic-name,html[data-reading-size="2"] .discov
 html[data-reading-size="2"] .detail-description,html[data-reading-size="2"] .press-summary,html[data-reading-size="2"] .about-panel p,html[data-reading-size="2"] .seo-discovery p{font-size:17px}
 html[data-reading-size="2"] .home-section-hint,html[data-reading-size="2"] .subline,html[data-reading-size="2"] .video-meta,html[data-reading-size="2"] .video-actions a,html[data-reading-size="2"] .home-topic-count,html[data-reading-size="2"] .quote-search-coverage{font-size:15px}
 html[data-reading-size="2"] .detail-content h2,html[data-reading-size="2"] .press-card h2{font-size:27px}
+
+
+/* UX 2A — source-verified topic discovery, latest by published date, and local saved clips. */
+.home-latest-section{background:#fff;border-bottom:1px solid #e6f0f7}
+.home-latest-section .video-grid{gap:19px}
+.home-latest-section .video-card{box-shadow:0 5px 18px rgba(20,74,116,.045)}
+.hero-saved-shortcut{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:6px 0;font-size:12px;color:#146eab;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.hero-saved-shortcut:hover{color:#07528d}
+.saved-view-link{font-size:12px;line-height:1.5;color:#0a6bad;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.saved-view-link:hover{color:#084f89}
+.saved-information{display:flex;justify-content:space-between;align-items:center;gap:22px;margin:0 0 24px;padding:20px 24px;background:linear-gradient(115deg,#f7fcff,#edf7ff);border:1px solid #d1e8f5;border-radius:15px}
+.saved-information strong{display:block;font-size:16px;color:#114c7d;line-height:1.5}
+.saved-information p{font-size:12px;line-height:1.8;color:#577a95;margin:5px 0 0;max-width:720px}
+.saved-information .btn{white-space:nowrap;flex-shrink:0}
+.discovery-empty{grid-column:1/-1;padding:20px;color:#4b6e8a;font-size:13px;line-height:1.8;border:1px solid #d3e7f4;border-radius:10px;background:#fff}
+.discovery-empty a{color:#067ac3;text-decoration:underline}
+@media(max-width:790px){.saved-information{flex-direction:column;align-items:flex-start;gap:13px}}
+@media(max-width:650px){.home-latest-section{padding-top:45px;padding-bottom:48px}.hero-saved-shortcut{font-size:11px}.saved-information{padding:17px 18px}.saved-information strong{font-size:14px}.saved-information p{font-size:11px}.filter-footer{flex-wrap:wrap;justify-content:flex-start;gap:10px}.filter-footer .saved-view-link{font-size:11px}}
