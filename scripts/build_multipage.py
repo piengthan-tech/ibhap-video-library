@@ -13,15 +13,28 @@ nav=[
  ('press.html','ข่าวและผลงาน','press'),
  ('four-ps.html','คลังพิเศษ','fourps')
 ]
-def header(active):
+page_files={key:file for file,label,key in nav}
+page_files.update({'categories':'categories.html','featured':'featured.html','category':'category.html','video':'video.html','saved':'saved.html','external-media':'external-media.html','about':'about.html','notfound':'404.html'})
+def header(active,lang='th'):
  nav_active={'categories':'library','featured':'library','category':'library','video':'library','saved':'library','external-media':'press'}.get(active,active)
+ current_file=page_files.get(active,'index.html')
  links=''.join(f'<a href="./{file}" class="nav-link{" active" if key==nav_active else ""}" {"aria-current=\"page\"" if key==nav_active else ""}>{label}</a>' for file,label,key in nav)
  mobile=''.join(f'<a href="./{file}" {"aria-current=\"page\"" if key==nav_active else ""}>{label}</a>' for file,label,key in nav)
+ th_active=' active' if lang=='th' else ''
+ en_active=' active' if lang=='en' else ''
+ th_current=' aria-current="true"' if lang=='th' else ''
+ en_current=' aria-current="true"' if lang=='en' else ''
+ language=f'''<nav class="language-switcher" aria-label="ภาษา">
+<a class="lang-option{th_active}" data-lang-choice="th" lang="th" hreflang="th" href="./{current_file}"{th_current}>TH</a>
+<span aria-hidden="true">/</span>
+<a class="lang-option{en_active}" data-lang-choice="en" lang="en" hreflang="en" href="./en/{current_file}"{en_current}>EN</a>
+</nav>'''
  return f'''<header class="site-header" id="top"><div class="container header-wrap">
 <a href="./index.html" class="brand" aria-label="{name} กลับหน้าแรก">
 <img src="./assets/mascot.png" alt="" width="51" height="51">
 <span class="brand-label"><strong>PMNapan Library</strong><span>Dhamma Archive</span></span></a>
 <nav class="desktop-nav" aria-label="เมนูหลัก">{links}</nav>
+{language}
 <a class="header-cta" href="./library.html">ค้นหาวิดีโอ <span aria-hidden="true">↗</span></a>
 <button type="button" class="mobile-toggle" id="mobileToggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="เปิดเมนู"><span></span><span></span><span></span></button>
 </div><nav id="mobileMenu" class="mobile-menu" aria-label="เมนูโทรศัพท์" hidden>{mobile}</nav></header>'''
@@ -90,28 +103,39 @@ SEO_PATHS['notfound']='404.html'
 SEO_PERSON={'@type': 'Person', '@id': 'https://www.ydml.co.th/pmnapan-library/#ven-napan', 'name': 'พระมหานภันต์ สนฺติภทฺโท', 'alternateName': ['Ven. Napan Santibhaddo', 'Venerable Napan Thawornbanjob', 'PM Napan'], 'url': 'https://www.ydml.co.th/pmnapan-library/ven-napan.html', 'image': 'https://www.ydml.co.th/pmnapan-library/assets/profile/ven-napan-profile-v2.webp', 'jobTitle': 'ผู้ช่วยเจ้าอาวาสวัดสระเกศราชวรมหาวิหาร', 'sameAs': ['https://www.kaiciid.org/who-we-are/fellows/ven-napan-thawornbanjob','https://ibhap.org/old/committee-members/','https://www.gchumanrights.org/gc-news/from-temple-to-classroom-how-a-buddhist-monk-is-bridging-faith-and-human-rights/']}
 SEO_WEBSITE={'@type': 'WebSite', '@id': 'https://www.ydml.co.th/pmnapan-library/#website', 'url': 'https://www.ydml.co.th/pmnapan-library/', 'name': 'PMNapan Library Dhamma Archive', 'inLanguage': 'th', 'description': 'รวมคลิปธรรมะ คำคม ข่าวและบทสัมภาษณ์ที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท (Ven. Napan) พร้อมลิงก์วิดีโอและแหล่งเผยแพร่ต้นฉบับ'}
 
-def seo_tags(active,title,description):
+def seo_tags(active,title,description,lang='th'):
     import json
     from html import escape as _escape
     base='https://www.ydml.co.th/pmnapan-library/'
-    canonical=base+SEO_PATHS[active]
+    path=SEO_PATHS[active]
+    canonical=base+('en/'+(path or 'index.html') if lang=='en' else path)
     page_type='ProfilePage' if active=='profile' else ('CollectionPage' if active not in ('video','about','notfound') else 'WebPage')
+    website_node=dict(SEO_WEBSITE)
+    website_node['inLanguage']=lang
+    if lang=='en':
+        website_node['description']='A source-linked archive of Dhamma videos, quotes, news and interviews related to Ven. Napan Santibhaddo.'
+    person_node=dict(SEO_PERSON)
+    if lang=='en':
+        person_node['jobTitle']='Assistant Abbot, Wat Saket Ratchaworamahawihan'
     page_node={'@type':page_type,'@id':canonical+'#webpage','url':canonical,'name':title,'description':description,
-        'inLanguage':'th','isPartOf':{'@id':base+'#website'},'about':SEO_PERSON}
+        'inLanguage':lang,'isPartOf':{'@id':base+'#website'},'about':person_node}
     if active=='profile':
-        page_node['mainEntity']=SEO_PERSON
-    graph=[SEO_WEBSITE,page_node]
+        page_node['mainEntity']=person_node
+    graph=[website_node,page_node]
     if active in ('category','video'):
-        graph=[SEO_WEBSITE]
+        graph=[website_node]
     if active not in ('home','category','video'):
         graph.append({'@type':'BreadcrumbList','@id':canonical+'#breadcrumbs',
-          'itemListElement':[{'@type':'ListItem','position':1,'name':'หน้าแรก','item':base},
+          'itemListElement':[{'@type':'ListItem','position':1,'name':('Home' if lang=='en' else 'หน้าแรก'),'item':(base+'en/index.html' if lang=='en' else base)},
           {'@type':'ListItem','position':2,'name':title.split(' | ')[0],'item':canonical}]})
     social_image=base+('assets/archive/four-ps-original.webp' if active=='fourps' else ('assets/profile/ven-napan-profile-v2.webp' if active=='profile' else 'assets/monk-watering-960.webp'))
-    social_alt='ภาพต้นฉบับพระสงฆ์สี่รูปในการสนทนา 4 พส.' if active=='fourps' else ('พระมหานภันต์ สนฺติภทฺโท ในงานเสวนาระหว่างศาสนา' if active=='profile' else 'PMNapan Library คลังธรรมะพระมหานภันต์')
+    if lang=='en':
+        social_alt='Original image from the Four Monks archive' if active=='fourps' else ('Ven. Napan Santibhaddo' if active=='profile' else 'PMNapan Library Dhamma Archive')
+    else:
+        social_alt='ภาพต้นฉบับพระสงฆ์สี่รูปในการสนทนา 4 พส.' if active=='fourps' else ('พระมหานภันต์ สนฺติภทฺโท ในงานเสวนาระหว่างศาสนา' if active=='profile' else 'PMNapan Library คลังธรรมะพระมหานภันต์')
     tags=['<meta name="robots" content="index,follow,max-image-preview:large">',
       '<meta property="og:site_name" content="PMNapan Library Dhamma Archive">',
-      '<meta property="og:locale" content="th_TH">',
+      '<meta property="og:locale" content="'+('en_US' if lang=='en' else 'th_TH')+'">',
       '<meta property="og:image" content="'+social_image+'">',
       '<meta property="og:image:alt" content="'+social_alt+'">',
       '<meta name="twitter:card" content="summary_large_image">']
@@ -121,22 +145,40 @@ def seo_tags(active,title,description):
           '<meta name="twitter:image" content="'+social_image+'">'])
     if active in ('saved','notfound'):
         tags[0]='<meta name="robots" content="noindex,follow">'
+    th_url=base+path
+    en_url=base+'en/'+(path or 'index.html')
+    tags.extend([
+      '<link rel="alternate" hreflang="th" href="'+th_url+'">',
+      '<link rel="alternate" hreflang="en" href="'+en_url+'">',
+      '<link rel="alternate" hreflang="x-default" href="'+th_url+'">'
+    ])
     if active in ('category','video'):
         tags.append("""<script>
 (function(){
   const p=new URLSearchParams(location.search);
   const filename=location.pathname.split('/').pop();
-  const target=new URL(filename, 'https://www.ydml.co.th/pmnapan-library/');
+  const root='https://www.ydml.co.th/pmnapan-library/';
+  const isEn=document.documentElement.lang.toLowerCase().startsWith('en');
+  const target=new URL((isEn?'en/':'')+filename, root);
+  const thTarget=new URL(filename,root);
+  const enTarget=new URL('en/'+filename,root);
   if(filename==='video.html'){
     const id=p.get('id')||p.get('clip');
-    if(id && /^(YouTube|TikTok):[A-Za-z0-9_-]{8,35}$/.test(id))target.searchParams.set('id',id);
+    if(id && /^(YouTube|TikTok):[A-Za-z0-9_-]{8,35}$/.test(id)){
+      target.searchParams.set('id',id);thTarget.searchParams.set('id',id);enTarget.searchParams.set('id',id);
+    }
   }
   if(filename==='category.html'){
     const name=p.get('name');
-    if(name && name.length<110)target.searchParams.set('name',name);
+    if(name && name.length<110){
+      target.searchParams.set('name',name);thTarget.searchParams.set('name',name);enTarget.searchParams.set('name',name);
+    }
   }
   const link=document.createElement('link');link.rel='canonical';link.href=target.href;document.head.appendChild(link);
   const og=document.createElement('meta');og.setAttribute('property','og:url');og.content=target.href;document.head.appendChild(og);
+  const thAlt=document.querySelector('link[rel="alternate"][hreflang="th"]');if(thAlt)thAlt.href=thTarget.href;
+  const enAlt=document.querySelector('link[rel="alternate"][hreflang="en"]');if(enAlt)enAlt.href=enTarget.href;
+  const xdAlt=document.querySelector('link[rel="alternate"][hreflang="x-default"]');if(xdAlt)xdAlt.href=thTarget.href;
 })();
 </script>""")
     else:
@@ -144,19 +186,22 @@ def seo_tags(active,title,description):
     tags.append('<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False,separators=(',',':')).replace('</','<\\/')+'</script>')
     return '\n'.join(tags)
 
-def shell(active,title,description,content):
+def shell(active,title,description,content,lang='th'):
  extra_css='<link rel="stylesheet" href="./assets/four-ps.css">' if active=='fourps' else ('<link rel="stylesheet" href="./assets/profile.css">' if active=='profile' else '')
  extra_js='<script defer src="./assets/four-ps.js"></script>' if active=='fourps' else ('<script defer src="./assets/profile.js"></script>' if active=='profile' else '')
- title=SEO_TITLES.get(active,title)
- description=SEO_DESCRIPTIONS.get(active,description)
+ if lang=='th':
+  title=SEO_TITLES.get(active,title)
+  description=SEO_DESCRIPTIONS.get(active,description)
+ base_tag='<base href="../">' if lang=='en' else ''
  return f'''<!doctype html>
-<html lang="th"><head>
+<html lang="{lang}"><head>
+{base_tag}
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#ffffff">
 <meta name="description" content="{escape(description,quote=True)}">
 <meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}">
 <title>{escape(title)}</title>
-{seo_tags(active,title,description)}
+{seo_tags(active,title,description,lang)}
 <!-- Keep the public address clean; preserve functional search and video parameters. -->
 <script>
 (() => {{
@@ -181,12 +226,13 @@ def shell(active,title,description,content):
 {extra_css}
 <link rel="stylesheet" href="./assets/ydml-footer.css">
 <link rel="stylesheet" href="./assets/analytics.css">
+<script defer src="./assets/i18n.js"></script>
 <script defer src="./assets/site.js"></script>
 {extra_js}
 <script defer src="./assets/analytics.js"></script>
-</head><body data-page="{active}">
+</head><body data-page="{active}" data-lang="{lang}">
 <a href="#main" class="skip-link">ข้ามไปยังเนื้อหา</a>
-{header(active)}
+{header(active,lang)}
 <main id="main">{content}</main>
 {footer()}<div role="status" aria-live="polite" class="toast" id="toast"></div></body></html>'''
 def intro(kicker,title,description='',back='index.html',back_text='หน้าแรก'):
@@ -400,7 +446,7 @@ profile='''<section class="profile-hero" aria-labelledby="profileTitle">
 </div>
 <div class="profile-facts" aria-label="ข้อมูลสำคัญ">
 <div class="profile-fact accent"><strong>ป.ธ. 9</strong><span>สำเร็จเปรียญธรรม 9 ประโยค จากสำนักเรียนวัดสระเกศ พ.ศ. 2545</span></div>
-<div class="profile-fact"><strong>2001</strong><span>ก่อตั้ง For Beautiful Life Group (FBLG) และดำรงบทบาทประธานถึงปี 2015</span></div>
+<div class="profile-fact"><strong>2001</strong><span>ก่อตั้งกลุ่มเพื่อชีวิตดีงาม (For Beautiful Life Group: FBLG) และดำรงบทบาทประธานถึงปี 2015</span></div>
 <div class="profile-fact"><strong>2015</strong><span>ก่อตั้ง Institute of Buddhist Management for Happiness and Peace Foundation (IBHAP)</span></div>
 <div class="profile-fact"><strong>2018</strong><span>KAICIID Fellow และกล่าวปาฐกถาในพิธีวิสาขบูชาครั้งแรกที่รัฐสภายุโรป</span></div>
 </div>
@@ -409,7 +455,7 @@ profile='''<section class="profile-hero" aria-labelledby="profileTitle">
 <section class="profile-band profile-work" id="profileWork" aria-labelledby="profileWorkTitle"><div class="container">
 <div class="profile-head"><div><p class="profile-section-kicker">AREAS OF WORK</p><h2 class="profile-section-title" id="profileWorkTitle">งานที่เชื่อมพระพุทธศาสนากับสังคมร่วมสมัย</h2><p>ผลงานของพระมหานภันต์ครอบคลุมตั้งแต่การเผยแผ่ธรรมะและการพัฒนาคน ไปจนถึงสันติภาพ สิทธิมนุษยชน ความร่วมมือระหว่างศาสนา และ SDGs</p></div></div>
 <div class="profile-work-grid">
-<article class="profile-work-card"><span class="profile-work-num">01</span><h3>การพัฒนาคนและการศึกษา</h3><p>ออกแบบกระบวนการเรียนรู้และฝึกอบรมด้านคุณธรรม จริยธรรม ภาวะผู้นำ และการพัฒนาศักยภาพ โดยเริ่มจากงาน For Beautiful Life Group ตั้งแต่ พ.ศ. 2544</p><a href="./press.html">ดูข่าวและผลงานที่เกี่ยวข้อง ↗</a></article>
+<article class="profile-work-card"><span class="profile-work-num">01</span><h3>การพัฒนาคนและการศึกษา</h3><p>ออกแบบกระบวนการเรียนรู้และฝึกอบรมด้านคุณธรรม จริยธรรม ภาวะผู้นำ และการพัฒนาศักยภาพ โดยเริ่มจากงานกลุ่มเพื่อชีวิตดีงาม (For Beautiful Life Group) ตั้งแต่ พ.ศ. 2544</p><a href="./press.html">ดูข่าวและผลงานที่เกี่ยวข้อง ↗</a></article>
 <article class="profile-work-card"><span class="profile-work-num">02</span><h3>สันติภาพและการอยู่ร่วมกัน</h3><p>ทำงานกับชุมชนและผู้นำศาสนาในพื้นที่ภาคใต้ของไทย เพื่อเยียวยาผู้ได้รับผลกระทบ ป้องกันความขัดแย้ง และสร้างพื้นที่อยู่ร่วมกันอย่างสันติ</p><a href="./press.html">สำรวจงานด้านสันติภาพ ↗</a></article>
 <article class="profile-work-card"><span class="profile-work-num">03</span><h3>Buddhism for SDGs</h3><p>ขับเคลื่อนแนวคิดการนำคุณค่าทางพระพุทธศาสนามาเชื่อมกับเป้าหมายการพัฒนาที่ยั่งยืน ทั้งในระดับชุมชน ประเทศ และเวทีนานาชาติ</p><a href="./library.html?topic=society">ดูคลิปด้านสังคมและ SDGs ↗</a></article>
 <article class="profile-work-card"><span class="profile-work-num">04</span><h3>การเสวนาระหว่างศาสนา</h3><p>สร้างความร่วมมือกับผู้นำและเครือข่ายศาสนาต่าง ๆ ผ่านการสนทนา การฝึกอบรม และเวทีนานาชาติ เพื่อเสริมความเข้าใจและความไว้วางใจ</p><a href="./external-media.html">ดูสื่อจากหน่วยงานภายนอก ↗</a></article>
@@ -444,7 +490,7 @@ profile='''<section class="profile-hero" aria-labelledby="profileTitle">
 <p class="profile-timeline-intro">คัดเลือกเหตุการณ์ที่มีแหล่งข้อมูลรองรับ เพื่อให้เห็นพัฒนาการจากการศึกษาพระธรรม สู่การทำงานพัฒนาคน สันติภาพ และความร่วมมือระดับนานาชาติ</p>
 <div class="profile-timeline-list">
 <div class="profile-milestone"><div class="profile-milestone-year">2543</div><div class="profile-milestone-dot"></div><div class="profile-milestone-copy"><strong>อุปสมบทเป็นพระภิกษุ</strong><p>ได้รับฉายา “สนฺติภทฺโท” และสืบต่อเส้นทางการศึกษาและการเผยแผ่พระพุทธศาสนา</p></div></div>
-<div class="profile-milestone"><div class="profile-milestone-year">2544</div><div class="profile-milestone-dot"></div><div class="profile-milestone-copy"><strong>ก่อตั้ง For Beautiful Life Group</strong><p>เริ่มต้นงานพัฒนาคนอย่างเป็นระบบผ่านการฝึกอบรม การเรียนรู้เชิงประสบการณ์ และการพัฒนาตนบนฐานไตรสิกขา</p></div></div>
+<div class="profile-milestone"><div class="profile-milestone-year">2544</div><div class="profile-milestone-dot"></div><div class="profile-milestone-copy"><strong>ก่อตั้งกลุ่มเพื่อชีวิตดีงาม (For Beautiful Life Group)</strong><p>เริ่มต้นงานพัฒนาคนอย่างเป็นระบบผ่านการฝึกอบรม การเรียนรู้เชิงประสบการณ์ และการพัฒนาตนบนฐานไตรสิกขา</p></div></div>
 <div class="profile-milestone"><div class="profile-milestone-year">2545</div><div class="profile-milestone-dot"></div><div class="profile-milestone-copy"><strong>สำเร็จเปรียญธรรม 9 ประโยค</strong><p>สำเร็จการศึกษาพระปริยัติธรรมระดับสูงสุดจากสำนักเรียนวัดสระเกศ</p></div></div>
 <div class="profile-milestone"><div class="profile-milestone-year">2556</div><div class="profile-milestone-dot"></div><div class="profile-milestone-copy"><strong>งานสื่อ TRUE Little Monks</strong><p>ทำหน้าที่ผู้ดำเนินรายการในโครงการสามเณรปลูกปัญญาธรรม ซึ่งรายการได้รับ Cannes Corporate &amp; Media Awards 2013</p></div></div>
 <div class="profile-milestone"><div class="profile-milestone-year">2558</div><div class="profile-milestone-dot"></div><div class="profile-milestone-copy"><strong>ก่อตั้ง IBHAP Foundation</strong><p>ขยายงานจากการพัฒนาคนสู่การประยุกต์พระพุทธศาสนากับความสุข สันติภาพ และการพัฒนาที่ยั่งยืน</p></div></div>
@@ -525,6 +571,25 @@ profile='''<section class="profile-hero" aria-labelledby="profileTitle">
 <a href="./library.html">เปิดคลังทั้งหมด ↗</a>
 </div></div></section>'''
 
+
+EN_PAGE_META={
+ 'home':('PMNapan Library Dhamma Archive | Ven. Napan Santibhaddo','A source-linked archive of Dhamma videos, quotes, news and interviews related to Ven. Napan Santibhaddo.'),
+ 'profile':('Ven. Napan Santibhaddo | Biography, Education & Work','Biography, education, peacebuilding, human rights, SDGs and international engagement of Ven. Napan Santibhaddo.'),
+ 'categories':('Dhamma Series | PMNapan Library','Browse Dhamma programs and video collections by category.'),
+ 'featured':('Featured Dhamma Videos | PMNapan Library','Selected Dhamma programs and archived videos linked to original publishers.'),
+ 'shorts':('Dhamma Shorts | PMNapan Library','Short-form Dhamma videos linked to original publishing sources.'),
+ 'fourps':('The 4 Monks Phenomenon | Timeline, News & Videos','A special archive of the 2021–2022 Four Monks online Dhamma phenomenon, including Ven. Napan’s role.'),
+ 'quotes':('Dhamma Quotes | PMNapan Library','Source-backed Dhamma quote images and searchable transcriptions.'),
+ 'press':('News, Interviews & Work | Ven. Napan','News, interviews, activities and published work related to Ven. Napan Santibhaddo.'),
+ 'external-media':('External Media | Ven. Napan','Programs and media from external organizations with links to original sources.'),
+ 'library':('Video Archive | Ven. Napan Santibhaddo','Search the video archive by title, series, year, platform and curated topic.'),
+ 'saved':('Saved Videos | PMNapan Library','Videos saved in this browser for later viewing.'),
+ 'category':('Video Series | PMNapan Library','Browse videos from a selected Dhamma series.'),
+ 'video':('Video Details | PMNapan Library','Video details with links to the original publisher.'),
+ 'about':('About the Archive & Sources | PMNapan Library','About PMNapan Library, its sources, citation practices, search scope and privacy.'),
+ 'notfound':('Page Not Found | PMNapan Library','The requested page could not be found in PMNapan Library.')
+}
+
 pages=[
  ('index.html','home',name,'สารบัญวิดีโอพระมหานภันต์ สนฺติภทฺโท และงานสื่อที่เกี่ยวข้อง',home),
  ('ven-napan.html','profile','ประวัติพระมหานภันต์ สนฺติภทฺโท | '+name,'ประวัติ การศึกษา งานสันติภาพ สิทธิมนุษยชน SDGs และบทบาทระดับนานาชาติของพระมหานภันต์',profile),
@@ -542,6 +607,10 @@ pages=[
  ('about.html','about','แหล่งข้อมูล | '+name,'ข้อมูลแหล่งเผยแพร่และหลักเกณฑ์ของคลังวิดีโอ',about),
  ('404.html','notfound','ไม่พบหน้าที่ต้องการ | '+name,'ไม่พบหน้าที่ต้องการใน PMNapan Library',notfound)
 ]
+en_dir=root/'en'
+en_dir.mkdir(exist_ok=True)
 for filename,key,title,description,body in pages:
- (root/filename).write_text(shell(key,title,description,body),encoding='utf-8')
- print("GENERATED",filename)
+ (root/filename).write_text(shell(key,title,description,body,'th'),encoding='utf-8')
+ en_title,en_description=EN_PAGE_META[key]
+ (en_dir/filename).write_text(shell(key,en_title,en_description,body,'en'),encoding='utf-8')
+ print("GENERATED",filename,"+ en/"+filename)

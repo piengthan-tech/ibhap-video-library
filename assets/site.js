@@ -2,6 +2,8 @@
 /* PMNapan Library — standalone pages on GitHub Pages, grounded in data/videos.json */
 const $ = id => document.getElementById(id);
 const page = document.body.dataset.page;
+const SITE_LANG = document.documentElement.lang.toLowerCase().startsWith('en') ? 'en' : 'th';
+const SITE_LOCALE = SITE_LANG==='en' ? 'en-US' : 'th-TH';
 const DATA_URL = './data/videos.json';
 const QUOTES_URL = './data/quotes.json';
 const TRANSCRIPTS_URL = './data/transcripts.json';
@@ -25,7 +27,7 @@ function thumb(x){
 function formatDate(value){
  if(!/^\d{4}-\d{2}-\d{2}$/.test(value||''))return 'ไม่ระบุวันที่เผยแพร่';
  const d=new Date(value+'T12:00:00+07:00');
- return Number.isNaN(d.getTime())?'ไม่ระบุวันที่เผยแพร่':new Intl.DateTimeFormat('th-TH',{day:'numeric',month:'short',year:'numeric'}).format(d);
+ return Number.isNaN(d.getTime())?'ไม่ระบุวันที่เผยแพร่':new Intl.DateTimeFormat(SITE_LOCALE,{day:'numeric',month:'short',year:'numeric'}).format(d);
 }
 function duration(minutes){
  const seconds=Math.round(Number(minutes||0)*60);
@@ -134,7 +136,7 @@ function quoteCategoryCard(){
  const q=quotes[0];
  return `<a class="series-card quote-series-card" href="./quotes.html">
   <div class="series-image"><img src="${esc(q.image)}" alt="ภาพคำคมธรรมะจากเพจพระมหานภันต์" loading="lazy"><span class="series-number">10</span></div>
-  <div class="series-info"><strong>คำคมธรรมะ</strong><span>${quotes.length.toLocaleString('th-TH')} ภาพ <b aria-hidden="true">↗</b></span></div>
+  <div class="series-info"><strong>คำคมธรรมะ</strong><span>${quotes.length.toLocaleString(SITE_LOCALE)} ภาพ <b aria-hidden="true">↗</b></span></div>
  </a>`;
 }
 function renderHomeQuotes(){
@@ -145,7 +147,7 @@ function renderQuotesPage(){
  const input=$('quoteSearch');
  const available=quotes.filter(item=>!!item.text.trim()).length;
  const coverage=$('quoteSearchCoverage');
- if(coverage)coverage.textContent='ค้นหาข้อความได้ '+available.toLocaleString('th-TH')+' จาก '+quotes.length.toLocaleString('th-TH')+' ภาพ โดยเปิดดูภาพทั้งหมดได้ตามปกติ';
+ if(coverage)coverage.textContent='ค้นหาข้อความได้ '+available.toLocaleString(SITE_LOCALE)+' จาก '+quotes.length.toLocaleString(SITE_LOCALE)+' ภาพ โดยเปิดดูภาพทั้งหมดได้ตามปกติ';
  const clear=$('clearQuoteSearch');
  if(clear)clear.addEventListener('click',()=>{input.value='';render();input.focus()});
  function render(){
@@ -153,7 +155,7 @@ function renderQuotesPage(){
    const filtered=quotes.filter(item=>!q||norm((item.text||'')+' '+(item.speaker||'')).includes(q));
    $('quoteGrid').innerHTML=filtered.map(quoteCard).join('');
    $('quoteEmpty').hidden=filtered.length>0;
-   $('quotesCount').textContent='พบ '+filtered.length.toLocaleString('th-TH')+' ภาพคำคมธรรมะ';
+   $('quotesCount').textContent='พบ '+filtered.length.toLocaleString(SITE_LOCALE)+' ภาพคำคมธรรมะ';
  }
  input.addEventListener('input',render);
  render();
@@ -182,7 +184,7 @@ function categoryCard(name,group,i){
  const image=thumb(chooseCover(group));
  return `<a class="series-card ${name.includes('Dhamma Shorts')?'short-series-card':''}" href="${esc(name.includes('Dhamma Shorts')?'./shorts.html':uri('category.html',{name}))}">
   <div class="series-image">${image?`<img loading="lazy" decoding="async" src="${esc(image)}" alt="ภาพจากรายการ ${esc(name)}">`:'<span class="image-fallback">▶</span>'}<span class="series-number">0${i+1}</span></div>
-  <div class="series-info"><strong>${esc(name)}</strong><span>${group.length.toLocaleString('th-TH')} คลิป <b aria-hidden="true">↗</b></span></div>
+  <div class="series-info"><strong>${esc(name)}</strong><span>${group.length.toLocaleString(SITE_LOCALE)} คลิป <b aria-hidden="true">↗</b></span></div>
   </a>`;
 }
 function categoryCards(names){
@@ -199,7 +201,7 @@ function homeCategoryCard(name, i){
    <span class="home-topic-copy">
      <span class="home-topic-eyebrow">หมวดวิดีโอ</span>
      <strong class="home-topic-name">${esc(name)}</strong>
-     <span class="home-topic-count">${count.toLocaleString('th-TH')} คลิปในหมวดนี้</span>
+     <span class="home-topic-count">${count.toLocaleString(SITE_LOCALE)} คลิปในหมวดนี้</span>
    </span>
    <span class="home-topic-action" aria-hidden="true">↗</span>
   </a>`;
@@ -220,7 +222,7 @@ function renderDiscoveryTopics(){
  el.innerHTML=visible.map(t=>
   '<a class="discovery-topic" href="'+esc(uri('library.html',{topic:t.id}))+'">'
   +'<span class="discovery-topic-copy"><strong>'+esc(t.label)+'</strong><small>'+esc(t.description)+'</small></span>'
-  +'<span class="discovery-topic-count">'+t.total.toLocaleString('th-TH')+' คลิป ↗</span></a>'
+  +'<span class="discovery-topic-count">'+t.total.toLocaleString(SITE_LOCALE)+' คลิป ↗</span></a>'
  ).join('');
 }
 function renderHomeLatest(){
@@ -232,7 +234,7 @@ function renderHomeLatest(){
  target.querySelectorAll('.video-image img').forEach(attachImageFallback);
 }
 function renderHome(){
- $('homeTotal').textContent=items.length.toLocaleString('th-TH');
+ $('homeTotal').textContent=items.length.toLocaleString(SITE_LOCALE);
  renderHomeShorts();
  renderHomeQuotes();
  renderDiscoveryTopics();
@@ -257,7 +259,7 @@ function renderHome(){
 }
 function renderCategories(){
  const categories=categoryNames();
- $('categorySummary').textContent=categories.length.toLocaleString('th-TH')+' หมวดวิดีโอ'+(quotes.length?' · 1 หมวดคำคมธรรมะ':'')+' · 1 หมวดพิเศษ';
+ $('categorySummary').textContent=categories.length.toLocaleString(SITE_LOCALE)+' หมวดวิดีโอ'+(quotes.length?' · 1 หมวดคำคมธรรมะ':'')+' · 1 หมวดพิเศษ';
  $('allCategories').innerHTML=categoryCards(categories)+quoteCategoryCard();
  const note=$('relatedNotice');note.hidden=!categories.some(n=>n.includes('หลวงพี่ช่วยด้วย'));
 }
@@ -293,7 +295,7 @@ function renderShorts(){
   grid.innerHTML=shortsFiltered.slice(0,shortsVisible).map(shortCard).join('');
   more.hidden=shortsVisible>=shortsFiltered.length;
   $('shortsEmpty').hidden=shortsFiltered.length>0;
-  $('shortsCount').textContent=shortsFiltered.length.toLocaleString('th-TH')+' คลิป';
+  $('shortsCount').textContent=shortsFiltered.length.toLocaleString(SITE_LOCALE)+' คลิป';
  }
  function search(){
   const q=norm(input.value).split(/\s+/).filter(Boolean);
@@ -318,7 +320,7 @@ function selectCategory(){
  $('pageTitle').textContent=name;
  $('currentCrumb').textContent=name;
  const group=items.filter(x=>x.category===name).sort(byDateDesc);
- $('categoryCount').textContent=group.length.toLocaleString('th-TH')+' คลิป';
+ $('categoryCount').textContent=group.length.toLocaleString(SITE_LOCALE)+' คลิป';
  const note=$('categoryRelationNote');
  note.hidden=!group.some(related);
  if(!note.hidden)note.innerHTML=relatedNote();
@@ -494,7 +496,7 @@ function populateLibrary(){
  filterState.topic=resolveTopicId(params.get('topic'));
  const topicChips=$('libraryTopicChips');
  if(topicChips)topicChips.innerHTML=DISCOVERY_TOPICS.map(t=>
-  '<a href="'+esc(uri('library.html',{topic:t.id}))+'" data-library-topic="'+esc(t.id)+'">'+esc(t.label)+' <span>'+t.keys.size.toLocaleString('th-TH')+'</span></a>'
+  '<a href="'+esc(uri('library.html',{topic:t.id}))+'" data-library-topic="'+esc(t.id)+'">'+esc(t.label)+' <span>'+t.keys.size.toLocaleString(SITE_LOCALE)+'</span></a>'
  ).join('');
  filterState.q=params.get('q')||'';
  filterState.category=categoryNames().includes(category)?category:'all';
@@ -544,7 +546,7 @@ function refreshLibrary(){
   return byDateDesc(a,b);
  });
  visibleCount=PAGE_SIZE;
- $('resultCount').textContent='พบ '+selected.length.toLocaleString('th-TH')+' คลิป';
+ $('resultCount').textContent='พบ '+selected.length.toLocaleString(SITE_LOCALE)+' คลิป';
  const empty=$('emptyResults'),emptyHeading=$('emptyResultsHeading'),emptyHelp=$('emptyResultsHelp');
  empty.hidden=selected.length!==0;
  if(!selected.length && emptyHeading && emptyHelp){
@@ -602,7 +604,7 @@ function renderSaved(){
  const savedLookup=new Map(items.map(x=>[favoriteKey(x),x]));
  selected=[...favorites].reverse().map(key=>savedLookup.get(key)).filter(Boolean);
  const count=$('savedCount'),empty=$('savedEmpty');
- if(count)count.textContent='บันทึกไว้ '+selected.length.toLocaleString('th-TH')+' คลิปในเบราว์เซอร์นี้';
+ if(count)count.textContent='บันทึกไว้ '+selected.length.toLocaleString(SITE_LOCALE)+' คลิปในเบราว์เซอร์นี้';
  if(empty)empty.hidden=selected.length!==0;
  if(!target)return;
  visibleCount=PAGE_SIZE;
@@ -622,7 +624,7 @@ function initializeReadingControls(){
  try{level=Math.max(0,Math.min(2,Number(localStorage.getItem(key))||0))}catch(_){}
  const update=()=>{
   document.documentElement.dataset.readingSize=String(level);
-  status.textContent=['ปกติ','ใหญ่','ใหญ่มาก'][level];
+  status.textContent=(SITE_LANG==='en'?['Normal','Large','Very large']:['ปกติ','ใหญ่','ใหญ่มาก'])[level];
   buttons.forEach(b=>{
    const d=Number(b.dataset.readingAdjust);
    b.disabled=d<0?level===0:level===2;
@@ -704,7 +706,7 @@ function renderPressArchive(entries){
    img.addEventListener('error',fail,{once:true});
    img.addEventListener('load',()=>img.closest('.press-thumbnail')?.classList.remove('press-thumbnail-placeholder'),{once:true});
   });
-  count.textContent='พบ '+selectedRows.length.toLocaleString('th-TH')+' จาก '+rows.length.toLocaleString('th-TH')+' รายการ';
+  count.textContent='พบ '+selectedRows.length.toLocaleString(SITE_LOCALE)+' จาก '+rows.length.toLocaleString(SITE_LOCALE)+' รายการ';
   empty.hidden=selectedRows.length!==0;
  }
  search.addEventListener('input',draw);
@@ -730,7 +732,7 @@ function renderExternalMedia(entries){
     +'<div class="press-source"><span>แหล่งข้อมูล</span><strong>'+esc(x.source)+'</strong></div>'
     +'<a class="press-outbound" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+linkLabel+'</a></article>';
   }).join('');
-  count.textContent='พบ '+visible.length.toLocaleString('th-TH')+' จาก '+records.length.toLocaleString('th-TH')+' รายการ';
+  count.textContent='พบ '+visible.length.toLocaleString(SITE_LOCALE)+' จาก '+records.length.toLocaleString(SITE_LOCALE)+' รายการ';
   empty.hidden=visible.length>0;
  }
  search.addEventListener('input',draw);status.addEventListener('change',draw);draw();

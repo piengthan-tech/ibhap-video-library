@@ -320,3 +320,14 @@
 - Added https://www.youtube.com/watch?v=18fPYI2QNbo to the 30 January 2022 event ps-16. YouTube oEmbed confirms exact video title พระมหานภันต์ เทศนาสั่งสอน เตือนสติทิดไพรวัลย์, uploader แพรรี่ ไพรวัลย์ [Official Channel], and the thumbnail. Watch-page metadata displays a 2022-01-30 publication date. This is a channel-uploaded video; do not describe it as an independently verified full-length original livestream.
 - Set the video as preferred editorial featured-video source. The video showcase selects up to three distinct dated events, one clip per event, including this new official-channel upload. News-outlet videos retain their news-clip labels.
 - Totals remain 16 events, 32 source articles/analyses, 11 video/programme references, five Napan focus events and six unresolved source leads. All other video links and the original group photograph remain unchanged.
+
+
+## Thai / English interface
+
+- Thai remains the default public route under `/pmnapan-library/`.
+- English pages are generated under `/pmnapan-library/en/` for the same 15 page types.
+- The header includes a TH / EN language switcher. The switch preserves the current page, supported query parameters, and hash anchors.
+- English interface/editorial translations are maintained in `data/i18n-en.json` and applied by `assets/i18n.js`, including content inserted dynamically after page load.
+- Original publisher titles, original quote wording, hashtags, and source names are intentionally preserved in their source language. Curated PMNapan Library summaries and interface labels are translated.
+- Thai and English pages expose canonical and `hreflang` links. `sitemap.xml` includes both language routes.
+- The verified Thai name for For Beautiful Life Group used in the profile is `กลุ่มเพื่อชีวิตดีงาม (For Beautiful Life Group)`.

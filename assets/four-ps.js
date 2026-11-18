@@ -5,17 +5,23 @@
  const $=id=>document.getElementById(id);
  if(document.body.dataset.page!=='fourps')return;
  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const norm=v=>String(v??'').normalize('NFC').toLocaleLowerCase('th').replace(/[\u200b\u200c\u200d]/g,'').trim();
- const months=['','มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
- const topics={viral:'สีสันและกระแส',debate:'ข้อถกเถียง',napan:'พระมหานภันต์',change:'ช่วงเปลี่ยนผ่าน'};
+ const SITE_LANG=document.documentElement.lang.toLowerCase().startsWith('en')?'en':'th';
+ const norm=v=>String(v??'').normalize('NFC').toLocaleLowerCase(SITE_LANG==='en'?'en':'th').replace(/[\u200b\u200c\u200d]/g,'').trim();
+ const months=SITE_LANG==='en'
+  ?['','January','February','March','April','May','June','July','August','September','October','November','December']
+  :['','มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+ const topics=SITE_LANG==='en'
+  ?{viral:'Culture & trends',debate:'Debate',napan:'Ven. Napan',change:'Transitions'}
+  :{viral:'สีสันและกระแส',debate:'ข้อถกเถียง',napan:'พระมหานภันต์',change:'ช่วงเปลี่ยนผ่าน'};
  const state={events:[],people:[],pending:[],query:'',filter:'all'};
  const isNews=s=>s.kind!=='video';
  function thaiDate(date,precision){
   const p=String(date||'').split('-'),y=Number(p[0]),m=Number(p[1]),d=Number(p[2]);
-  if(!y||!m||m>12)return 'ไม่ระบุวัน';
-  return (precision==='month'||!d?'':d+' ')+months[m]+' '+(y+543);
+  if(!y||!m||m>12)return SITE_LANG==='en'?'Date unavailable':'ไม่ระบุวัน';
+  const year=SITE_LANG==='en'?y:y+543;
+  return (precision==='month'||!d?'':d+' ')+months[m]+' '+year;
  }
- function monthLabel(date){const p=String(date).split('-');return months[Number(p[1])]+' '+(Number(p[0])+543);}
+ function monthLabel(date){const p=String(date).split('-');const y=Number(p[0]);return months[Number(p[1])]+' '+(SITE_LANG==='en'?y:y+543);}
  function ordered(a,b){
   const ma=a.date.slice(0,7),mb=b.date.slice(0,7);
   if(ma!==mb)return ma.localeCompare(mb);

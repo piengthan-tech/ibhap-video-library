@@ -1,8 +1,10 @@
 (()=>{'use strict';
+const SITE_LANG = document.documentElement.lang.toLowerCase().startsWith('en') ? 'en' : 'th';
+const SITE_LOCALE = SITE_LANG==='en' ? 'en-US' : 'th-TH';
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fmtDate=s=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(s||''))return '';const [y,m,d]=s.split('-').map(Number);return new Intl.DateTimeFormat('th-TH',{day:'numeric',month:'short',year:'numeric'}).format(new Date(y,m-1,d))};
-const minLabel=n=>Number(n)>0?Math.round(Number(n))+' นาที':'';
+const fmtDate=s=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(s||''))return '';const [y,m,d]=s.split('-').map(Number);return new Intl.DateTimeFormat(SITE_LOCALE,{day:'numeric',month:'short',year:'numeric'}).format(new Date(y,m-1,d))};
+const minLabel=n=>Number(n)>0?Math.round(Number(n))+(SITE_LANG==='en'?' min':' นาที'):'';
 
 function videoCard(v){
  const thumb=v.thumbnail||'./assets/monk-watering-620.webp';
@@ -31,9 +33,9 @@ async function init(){
   const [vd,pd,qd]=await Promise.all([getJson('./data/videos.json'),getJson('./data/press.json'),getJson('./data/quotes.json')]);
   const videos=vd.items||[],press=pd.items||[],quotes=qd.items||[];
   const vtotal=$('profileVideoTotal'),ptotal=$('profilePressTotal'),qtotal=$('profileQuoteTotal');
-  if(vtotal)vtotal.textContent=videos.length.toLocaleString('th-TH');
-  if(ptotal)ptotal.textContent=press.length.toLocaleString('th-TH');
-  if(qtotal)qtotal.textContent=quotes.length.toLocaleString('th-TH');
+  if(vtotal)vtotal.textContent=videos.length.toLocaleString(SITE_LOCALE);
+  if(ptotal)ptotal.textContent=press.length.toLocaleString(SITE_LOCALE);
+  if(qtotal)qtotal.textContent=quotes.length.toLocaleString(SITE_LOCALE);
 
   const asa=videos.filter(v=>v.category==='อาสาหาธรรม').sort((a,b)=>(b.published_at||'').localeCompare(a.published_at||'')).slice(0,3);
   const vg=$('profileVideoGrid');if(vg)vg.innerHTML=asa.length?asa.map(videoCard).join(''):'<div class="empty"><p>ยังไม่มีวิดีโอที่ตรงกับเงื่อนไข</p></div>';
