@@ -388,7 +388,12 @@ function renderVideoDetail(){
  const topicBlock=topicLinks?'<div class="detail-topic-block"><span>หัวข้อที่เกี่ยวข้อง</span><div class="detail-topic-links">'+topicLinks+'</div><small>คัดจากชื่อคลิปต้นฉบับตามดัชนีหัวข้อของคลัง ไม่ใช่การอนุมานจากคำพูดในวิดีโอ</small></div>':'';
  const transcript=transcriptFor(x);
  const transcriptBlock=transcript
-   ? '<section class="transcript-panel transcript-available" aria-labelledby="transcriptTitle"><div><p class="kicker">VERIFIED TRANSCRIPT</p><h3 id="transcriptTitle">คำถอดเสียงที่ตรวจสอบแล้ว</h3><p>'+esc(transcript.text)+'</p></div>'+(transcript.source_url?'<a href="'+esc(transcript.source_url)+'" target="_blank" rel="noopener noreferrer">ตรวจสอบแหล่งคำถอดเสียง ↗</a>':'')+'</section>'
+   ? '<section class="transcript-panel transcript-available" aria-labelledby="transcriptTitle">'
+     +'<div class="transcript-heading"><div><p class="kicker">VERIFIED TRANSCRIPT</p><h3 id="transcriptTitle">คำถอดเสียงที่ตรวจสอบแล้ว</h3>'
+     +'<p>แหล่งตรวจสอบ: '+esc(transcript.source_label||'ต้นฉบับที่ตรวจสอบแล้ว')+'</p></div>'
+     +(transcript.source_url?'<a href="'+esc(transcript.source_url)+'" target="_blank" rel="noopener noreferrer">เปิดแหล่งต้นฉบับ ↗</a>':'')+'</div>'
+     +'<details class="transcript-details"><summary>เปิดอ่านคำถอดเสียงฉบับเต็ม <span aria-hidden="true">⌄</span></summary>'
+     +'<div class="transcript-text">'+esc(transcript.text)+'</div></details></section>'
    : '<aside class="transcript-panel transcript-pending"><div><p class="kicker">TRANSCRIPT STATUS</p><h3>ยังไม่มีคำถอดเสียงที่ตรวจสอบแล้ว</h3><p>ระบบจะไม่นำข้อความที่สร้างขึ้นเองมาใช้แทนคำพูดต้นฉบับ การค้นหาหน้านี้จึงอ้างอิงชื่อคลิป คำอธิบาย และหัวข้อที่ตรวจสอบได้เท่านั้น</p></div></aside>';
  $('videoDetail').innerHTML=`<div class="detail-poster ${x.platform==='TikTok'?'short-detail-poster':''}">${src?`<img src="${esc(src)}" alt="ภาพปกวิดีโอ ${esc(x.title)}">`:''}</div>
  <div class="detail-content"><div class="detail-badges"><a href="${esc(x.platform==='TikTok'?'./shorts.html':uri('category.html',{name:x.category}))}">${esc(x.category)}</a><span>${esc(x.platform)}</span></div>

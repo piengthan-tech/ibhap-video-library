@@ -221,18 +221,18 @@
 
 ## Google Analytics 4 — PMNapan Library
 
-- Installed measurement ID: G-FE674RJ7BN, restricted by code deployment to the 11 HTML pages under /pmnapan-library/.
+- Installed measurement ID: G-FE674RJ7BN, restricted by code deployment to PMNapan Library pages under /pmnapan-library/.
 - assets/analytics.js loads the Google tag only after a visitor explicitly agrees to analytics. Rejection or no decision means no Google tag request.
 - Consent choice is stored in localStorage under pmnapan_ga4_consent_v1. The persistent "ตั้งค่าคุกกี้" footer button allows review and withdrawal.
 - Google consent settings default to denied for all four categories. Google Ads personalization and signals remain disabled even if analytics consent is granted.
 - GA cookies are namespaced with pmnapan prefix and scoped to /pmnapan-library/. No historical visits are backfilled.
-- Page views are sent through GA4 automatic page_view. A separate archive_outbound_click custom event tracks clicks to external sources, with destination_type, destination_host, and source_section.
+- Page views are sent through GA4 automatic page_view. archive_outbound_click tracks clicks to external sources. Additional consent-aware events track archive_search, archive_filter, archive_topic_select, archive_save, archive_4ps_section, archive_4ps_search, and archive_4ps_filter after analytics consent is granted.
 - The page about.html#analytics-privacy explains how the system works and its limitations. Events may be blocked by browsers, consent choices, or network restrictions.
-- Google Analytics account ownership and access, data stream connection, real-time GA4 reception, and optional custom dimensions still require verification within the correct GA4 property.
+- GA4 reception for www.ydml.co.th has been verified through the connected analytics source. A pre-new-event baseline is stored in docs/analytics-baseline-2026-11-18.md. Optional GA4 custom-dimension registration remains an external property configuration task.
 
 ## SEO technical baseline — 17 พฤศจิกายน 2569
 
-- กำหนดชื่อหน้าและ Meta Description ที่สะท้อนคำค้นพระมหานภันต์ สนฺติภทฺโท / Ven. Napan ใน HTML ทั้ง 11 หน้า
+- กำหนดชื่อหน้าและ Meta Description ที่สะท้อนคำค้นพระมหานภันต์ สนฺติภทฺโท / Ven. Napan ในหน้า HTML ของคลังตามเส้นทางที่เผยแพร่ในขณะนั้น
 - Canonical ใช้โดเมน www.ydml.co.th/pmnapan-library/ ไม่ใช่ GitHub Pages; หน้า video/category ใช้ Canonical ตามพารามิเตอร์จริงเมื่อ JavaScript ทำงาน
 - เพิ่ม Open Graph image / URL, Twitter Card, robots meta และ JSON-LD ประเภท WebSite + CollectionPage/WebPage + BreadcrumbList เมื่อเหมาะสม
 - หน้าแรกเพิ่มลิงก์นำทางและเนื้อหาเชิงอธิบายที่เห็นได้ใน HTML ด้านล่างของหน้า โดยไม่เปลี่ยนภาพ/ข้อความแบนเนอร์หรือหมวดคลิป
@@ -249,10 +249,10 @@
 - Detail pages display up to three other videos in the same catalog category without implying the content or speech is identical; all links lead to existing detail pages and original sources.
 - A−/A+ reading controls are placed in every page footer. They keep the chosen UI reading size (three levels) in browser-local storage; no account or server data is involved.
 - No-results UX distinguishes an empty saved-items collection from an ordinary zero-match search.
-- Quotes gallery clearly states how many images have verified searchable transcriptions: at implementation time two of 22. No text is generated for the other images. A button restores the complete gallery when search yields no results.
-- All eleven HTML pages and scripts/build_multipage.py are kept consistent so regeneration preserves the changes.
-- Existing GA4 consent flow, analytics, SEO, image credits, original-content links, and source metadata were not changed.
-- Next editorial step: manually verify and transcribe quote-image text (20 images pending) before enabling full-text search for those images.
+- Quotes gallery now has source-backed searchable text for 22 of 22 archived quote images. Imported local images were manually transcribed from text visibly present in the original image; speaker attribution is retained when the quote is not by พระมหานภันต์. No missing wording is generated.
+- All current public/library HTML routes and scripts/build_multipage.py are kept consistent so regeneration preserves the changes.
+- Existing GA4 consent flow, SEO, image credits, original-content links, and source metadata are preserved. Analytics now includes additional archive search/topic/filter/save/4-พส. interaction events, still gated by the same consent rule.
+- Quote-image transcription is complete for the current 22-image archive. The next source-dependent editorial step is adding verified video Transcripts when original captions or manually reviewed transcriptions become available.
 
 ## UX Phase 2A: curated topics, local saved clips, and source-published latest videos (17 November 2026)
 
@@ -261,8 +261,18 @@
 - saved.html is a dedicated page for saved video favorites stored in the visitor's browser. It is explicitly noindex for search engines and intentionally excluded from the sitemap because its content is browser-local and not publicly meaningful. The homepage and library contain links to the saved page. Nothing is synchronized across browsers or devices, and clearing site storage clears the saved list.
 - The homepage presents three videos latest by the existing published_at date from the original source, explicitly NOT by the date each item was added to the archive; the latter field does not exist in the catalog.
 - All newly authored pages are generated by scripts/build_multipage.py, which also maintains the SEO metadata and existing analytics/consent script tags.
-- Never turn the curated topic names into quotes or inferred spoken content. The later editorial phase should review and transcribe the remaining quote images from originals; it is not part of this release.
+- Never turn the curated topic names into quotes or inferred spoken content. The current quote-image set has been reviewed from the archived images; video Transcript work remains source-dependent and follows docs/transcript-workflow.md.
 - Acceptance tests: node --check assets/site.js; python3 -m py_compile scripts/build_multipage.py; generate fresh pages and compare index.html, library.html, saved.html against source; browser checks for all six topic filters, saved-list persistence/removal, newest-by-publication three-item display, legacy topic links, noindex saved page, GA4 consent preservation and no horizontal overflow on desktop/tablet/mobile.
+
+## Verified Transcript ingestion — 18 November 2026
+
+- data/transcripts.json is the public transcript registry. The site searches/displays entries only when status is verified.
+- scripts/fetch_youtube_caption_drafts.py can inspect/stage Thai YouTube captions in the git-ignored .transcript-drafts/ directory. It prefers publisher Thai subtitles and otherwise stages YouTube automatic captions; neither is auto-published.
+- scripts/import_transcript.py accepts .txt, .srt and .vtt files and defaults every import to draft.
+- Marking an import verified requires an explicit --review-note recording how it was checked against the source.
+- The importer validates the video key against data/videos.json, defaults the citation URL to the registered original video, records the source-file SHA-256, and never generates or repairs missing speech.
+- Full operating instructions and acceptance checks are in docs/transcript-workflow.md. A nine-category source-availability sample is recorded in docs/transcript-caption-discovery-2026-11-18.md and must not be treated as whole-library coverage.
+- As of 18 November 2026 there are no verified video Transcript entries, so no fabricated or unreviewed speech is included in public search.
 
 ## Special collection: ปรากฏการณ์ 4 พส. (2021–early 2022)
 

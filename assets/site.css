@@ -527,3 +527,15 @@ body { font-size:calc(15px + var(--reading-bump,0px)); line-height: 1.78; }
  html[data-reading-size="2"] .discovery-topic-grid{grid-template-columns:1fr}
 }
 .discovery-topic>.discovery-topic-copy,.discovery-topic-copy small{white-space:normal}
+
+.transcript-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.transcript-heading>div{min-width:0}
+.transcript-heading>div>p:last-child{font-size:calc(10px + var(--reading-bump,0px));color:#71899b;line-height:1.6}
+.transcript-heading>a{flex:none;margin-top:0}
+.transcript-details{margin-top:14px;border-top:1px solid #e0eaf2;padding-top:12px}
+.transcript-details summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;color:#174f77;font-size:calc(11px + var(--reading-bump,0px));font-weight:700;list-style:none}
+.transcript-details summary::-webkit-details-marker{display:none}
+.transcript-details[open] summary span{transform:rotate(180deg)}
+.transcript-details summary span{transition:transform .2s}
+.transcript-text{margin-top:14px;max-height:520px;overflow:auto;padding:14px;border:1px solid #e1eaf0;border-radius:9px;background:#fff;color:#4f6d82;font-size:calc(11px + var(--reading-bump,0px));line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:650px){.transcript-heading{flex-direction:column}.transcript-heading>a{margin-top:0}.transcript-text{max-height:440px;padding:12px}}

@@ -7,5 +7,6 @@ scripts/
 *.tmp
 _research/
 _review/
+.transcript-drafts/
 .modern-*.png
 assets/mascot-transparent.png
