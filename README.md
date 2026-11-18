@@ -267,6 +267,7 @@
 ## Verified Transcript ingestion — 18 November 2026
 
 - data/transcripts.json is the public transcript registry. The site searches/displays entries only when status is verified.
+- scripts/audit_youtube_caption_inventory.py performs metadata-only Thai-caption inventory checks and supports --resume so successful results are preserved while only blocked/error items are retried.
 - scripts/fetch_youtube_caption_drafts.py can inspect/stage Thai YouTube captions in the git-ignored .transcript-drafts/ directory. It prefers publisher Thai subtitles and otherwise stages YouTube automatic captions; neither is auto-published.
 - scripts/import_transcript.py accepts .txt, .srt and .vtt files and defaults every import to draft.
 - Marking an import verified requires an explicit --review-note recording how it was checked against the source.
