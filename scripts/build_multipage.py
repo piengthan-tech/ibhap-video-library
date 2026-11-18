@@ -87,7 +87,7 @@ SEO_PATHS['saved']='saved.html'
 SEO_PATHS['fourps']='four-ps.html'
 SEO_PATHS['profile']='ven-napan.html'
 SEO_PATHS['notfound']='404.html'
-SEO_PERSON={'@type': 'Person', '@id': 'https://www.ydml.co.th/pmnapan-library/#ven-napan', 'name': 'พระมหานภันต์ สนฺติภทฺโท', 'alternateName': ['Ven. Napan Santibhaddo', 'Venerable Napan Thawornbanjob', 'PM Napan'], 'url': 'https://www.ydml.co.th/pmnapan-library/ven-napan.html', 'image': 'https://www.ydml.co.th/pmnapan-library/assets/profile/ven-napan-hero.webp', 'jobTitle': 'ผู้ช่วยเจ้าอาวาสวัดสระเกศราชวรมหาวิหาร', 'sameAs': ['https://www.kaiciid.org/who-we-are/fellows/ven-napan-thawornbanjob','https://ibhap.org/old/committee-members/','https://www.gchumanrights.org/gc-news/from-temple-to-classroom-how-a-buddhist-monk-is-bridging-faith-and-human-rights/']}
+SEO_PERSON={'@type': 'Person', '@id': 'https://www.ydml.co.th/pmnapan-library/#ven-napan', 'name': 'พระมหานภันต์ สนฺติภทฺโท', 'alternateName': ['Ven. Napan Santibhaddo', 'Venerable Napan Thawornbanjob', 'PM Napan'], 'url': 'https://www.ydml.co.th/pmnapan-library/ven-napan.html', 'image': 'https://www.ydml.co.th/pmnapan-library/assets/profile/ven-napan-profile-v2.webp', 'jobTitle': 'ผู้ช่วยเจ้าอาวาสวัดสระเกศราชวรมหาวิหาร', 'sameAs': ['https://www.kaiciid.org/who-we-are/fellows/ven-napan-thawornbanjob','https://ibhap.org/old/committee-members/','https://www.gchumanrights.org/gc-news/from-temple-to-classroom-how-a-buddhist-monk-is-bridging-faith-and-human-rights/']}
 SEO_WEBSITE={'@type': 'WebSite', '@id': 'https://www.ydml.co.th/pmnapan-library/#website', 'url': 'https://www.ydml.co.th/pmnapan-library/', 'name': 'PMNapan Library Dhamma Archive', 'inLanguage': 'th', 'description': 'รวมคลิปธรรมะ คำคม ข่าวและบทสัมภาษณ์ที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท (Ven. Napan) พร้อมลิงก์วิดีโอและแหล่งเผยแพร่ต้นฉบับ'}
 
 def seo_tags(active,title,description):
@@ -107,7 +107,7 @@ def seo_tags(active,title,description):
         graph.append({'@type':'BreadcrumbList','@id':canonical+'#breadcrumbs',
           'itemListElement':[{'@type':'ListItem','position':1,'name':'หน้าแรก','item':base},
           {'@type':'ListItem','position':2,'name':title.split(' | ')[0],'item':canonical}]})
-    social_image=base+('assets/archive/four-ps-original.webp' if active=='fourps' else ('assets/profile/ven-napan-hero.webp' if active=='profile' else 'assets/monk-watering-960.webp'))
+    social_image=base+('assets/archive/four-ps-original.webp' if active=='fourps' else ('assets/profile/ven-napan-profile-v2.webp' if active=='profile' else 'assets/monk-watering-960.webp'))
     social_alt='ภาพต้นฉบับพระสงฆ์สี่รูปในการสนทนา 4 พส.' if active=='fourps' else ('พระมหานภันต์ สนฺติภทฺโท ในงานเสวนาระหว่างศาสนา' if active=='profile' else 'PMNapan Library คลังธรรมะพระมหานภันต์')
     tags=['<meta name="robots" content="index,follow,max-image-preview:large">',
       '<meta property="og:site_name" content="PMNapan Library Dhamma Archive">',
@@ -220,7 +220,7 @@ home=f'''<section class="hero"><div class="container hero-row"><div class="hero-
 <section class="quick-search"><div class="container"><form id="homeSearchForm" class="quick-search-form" role="search">
 <label for="homeSearch">ค้นหาวิดีโอ</label><input id="homeSearch" type="search" placeholder="พิมพ์ชื่อคลิปหรือคำสำคัญ" autocomplete="off">
 <button type="submit">ค้นหา →</button></form></div></section>
-<section class="profile-home-card" aria-labelledby="homeProfileTitle"><div class="container"><div class="profile-home-card-inner"><span class="profile-home-card-image"><img src="./assets/profile/ven-napan-hero.webp" alt="พระมหานภันต์ สนฺติภทฺโท" width="360" height="360" loading="lazy" decoding="async"></span><span class="profile-home-card-copy"><small>KNOW VEN. NAPAN</small><strong id="homeProfileTitle">รู้จักพระมหานภันต์ สนฺติภทฺโท</strong><p>จากสามเณรและการศึกษาพระปริยัติธรรม สู่การทำงานด้านสันติภาพ สิทธิมนุษยชน SDGs และการเสวนาระหว่างศาสนา</p></span><a href="./ven-napan.html">เปิดหน้าโปรไฟล์ ↗</a></div></div></section>
+<section class="profile-home-card" aria-labelledby="homeProfileTitle"><div class="container"><div class="profile-home-card-inner"><span class="profile-home-card-image"><img src="./assets/profile/ven-napan-profile-v2.webp" alt="พระมหานภันต์ สนฺติภทฺโท" width="360" height="360" loading="lazy" decoding="async"></span><span class="profile-home-card-copy"><small>KNOW VEN. NAPAN</small><strong id="homeProfileTitle">รู้จักพระมหานภันต์ สนฺติภทฺโท</strong><p>จากสามเณรและการศึกษาพระปริยัติธรรม สู่การทำงานด้านสันติภาพ สิทธิมนุษยชน SDGs และการเสวนาระหว่างศาสนา</p></span><a href="./ven-napan.html">เปิดหน้าโปรไฟล์ ↗</a></div></div></section>
 <section class="ps-home-promo" aria-labelledby="psHomePromoTitle">
 <div class="container">
 <a href="./four-ps.html" class="ps-home-feature" aria-label="เปิดคลังพิเศษ ปรากฏการณ์ 4 พส. ข่าว คลิป และเหตุการณ์สำคัญ">
@@ -381,7 +381,7 @@ profile='''<section class="profile-hero" aria-labelledby="profileTitle">
 </div>
 </div>
 <div class="profile-portrait-wrap">
-<div class="profile-portrait-frame"><img src="./assets/profile/ven-napan-hero.webp" alt="พระมหานภันต์ สนฺติภทฺโท" width="360" height="360" fetchpriority="high" decoding="async"></div>
+<div class="profile-portrait-frame"><img src="./assets/profile/ven-napan-profile-v2.webp" alt="พระมหานภันต์ สนฺติภทฺโท" width="360" height="360" fetchpriority="high" decoding="async"></div>
 </div>
 </div>
 </div>
