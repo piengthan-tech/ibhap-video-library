@@ -319,3 +319,18 @@
 
 /* Clearly identify reused editorial photographs when article-specific images are unavailable. */
 .ps-source-image-attribution{font-size:calc(10px + var(--reading-bump,0px));font-weight:650;color:#866d4e;line-height:1.55;margin-top:3px}
+
+
+/* Sticky archive section navigator and reading progress. */
+.ps-section-nav{position:sticky;top:80px;z-index:44;background:rgba(255,255,255,.97);backdrop-filter:blur(13px);border-bottom:1px solid #d9e7f0;box-shadow:0 5px 18px rgba(9,48,82,.055)}
+.ps-section-nav-inner{position:relative;min-height:52px;display:flex;align-items:center}
+.ps-section-links{display:flex;align-items:center;gap:4px;width:100%;overflow-x:auto;scrollbar-width:none;padding:7px 0 9px}
+.ps-section-links::-webkit-scrollbar{display:none}
+.ps-section-links a{flex:none;padding:7px 11px;border-radius:8px;color:#57758b;font-size:calc(10px + var(--reading-bump,0px));font-weight:650;white-space:nowrap}
+.ps-section-links a:hover{background:#edf6fb;color:#164d73}
+.ps-section-links a.active{background:#0e4d78;color:#fff}
+.ps-reading-progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:#e4edf3;overflow:hidden}
+.ps-reading-progress span{display:block;height:100%;width:0;background:var(--accent);transition:width .1s linear}
+#psPeopleSection,#psSpotlight,#psVideoFeature,#psTimelineSection,#psPendingSection,#psSourcesSection{scroll-margin-top:145px}
+@media(max-width:910px){.ps-section-nav{top:69px}.ps-section-links a{padding:6px 9px}}
+@media(max-width:650px){.ps-section-nav-inner{min-height:47px}.ps-section-links{gap:2px;padding:6px 0 8px}.ps-section-links a{font-size:calc(9px + var(--reading-bump,0px));padding:6px 8px}#psPeopleSection,#psSpotlight,#psVideoFeature,#psTimelineSection,#psPendingSection,#psSourcesSection{scroll-margin-top:126px}}

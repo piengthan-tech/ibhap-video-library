@@ -4,11 +4,13 @@ const $ = id => document.getElementById(id);
 const page = document.body.dataset.page;
 const DATA_URL = './data/videos.json';
 const QUOTES_URL = './data/quotes.json';
+const TRANSCRIPTS_URL = './data/transcripts.json';
 const PAGE_SIZE = 15;
 const storageKey = 'ven-napan-library-favorites-v1';
-let items = [], quotes = [], favorites = new Set(), visibleCount = PAGE_SIZE, activeCategory = '', selected = [];
+let items = [], quotes = [], transcripts = new Map(), favorites = new Set(), visibleCount = PAGE_SIZE, activeCategory = '', selected = [];
 const esc = value => String(value ?? '').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const norm = value => String(value || '').normalize('NFC').toLocaleLowerCase('th').replace(/[\u200b\u200c\u200d]/g,'').trim();
+const track = (name,params={}) => { try{window.pmnapanTrack?.(name,params)}catch(_){} };
 const safeLink = url => {try{const u=new URL(url);return u.protocol==='https:' && /(^|\.)(youtube\.com|youtu\.be|facebook\.com|fb\.watch|tiktok\.com)$/.test(u.hostname)}catch{return false}};
 const idSafe = id=>/^[-_A-Za-z0-9]{11}$/.test(id);
 const uri = (file,params={}) => {
@@ -52,6 +54,27 @@ async function loadCuratedTopics(){
   keys:new Set(t.keys.filter(key=>validKeys.has(key)))
  })).filter(t=>t.keys.size>0);
 }
+async function loadVerifiedTranscripts(){
+ transcripts=new Map();
+ try{
+  const response=await fetch(TRANSCRIPTS_URL,{cache:'no-cache'});
+  if(!response.ok)throw new Error('Transcript catalog HTTP '+response.status);
+  const raw=await response.json();
+  const validKeys=new Set(items.map(x=>x.key));
+  for(const t of Array.isArray(raw.items)?raw.items:[]){
+   if(t?.status==='verified'&&validKeys.has(t.key)&&typeof t.text==='string'&&t.text.trim()){
+    transcripts.set(t.key,{text:t.text.trim(),source_url:t.source_url||'',source_label:t.source_label||'ต้นฉบับที่ตรวจสอบแล้ว'});
+   }
+  }
+ }catch(error){
+  transcripts=new Map();
+  console.warn('Verified transcript catalog unavailable',error);
+ }
+}
+const topicIdsFor = item => DISCOVERY_TOPICS.filter(t=>t.keys.has(item.key)).map(t=>t.id);
+const topicLabelsFor = item => topicIdsFor(item).map(id=>discoveryTopic(id)?.label).filter(Boolean);
+const transcriptFor = item => transcripts.get(item.key)||null;
+const searchTextFor = item => [item.title,item.category,item.description,item.video_id,...topicLabelsFor(item),transcriptFor(item)?.text||''].join(' ');
 const categoryNames = () => [...new Set(items.map(x=>x.category))];
 const byDateDesc=(a,b)=>(b.published_at||'').localeCompare(a.published_at||'') || a.title.localeCompare(b.title,'th');
 const favoriteKey=x=>x.platform+':'+x.video_id;
@@ -96,12 +119,14 @@ function chooseCover(group){
 function quoteCard(q){
  const image=esc(q.image);
  const quoteText=typeof q.text==='string'?q.text.trim():'';
+ const speaker=q.speaker||'พระมหานภันต์ สนฺติภทฺโท';
  const alt=quoteText
-   ? 'ภาพคำคมธรรมะพระมหานภันต์ ข้อความ: '+quoteText.replace(/\s+/g,' ').slice(0,110)
-   : 'ภาพคำคมธรรมะพระมหานภันต์ สนฺติภทฺโท';
+   ? 'ภาพคำคม ข้อความโดย '+speaker+': '+quoteText.replace(/\s+/g,' ').slice(0,110)
+   : 'ภาพคำคมที่เกี่ยวข้องกับ '+speaker;
  return '<article class="quote-card" data-photo-id="'+esc(q.id)+'">'+
-   '<a class="quote-image" href="'+image+'" target="_blank" rel="noopener noreferrer" aria-label="เปิดภาพคำคมธรรมะขนาดเต็ม">'+
+   '<a class="quote-image" href="'+image+'" target="_blank" rel="noopener noreferrer" aria-label="เปิดภาพคำคมขนาดเต็ม">'+
    '<img src="'+image+'" alt="'+esc(alt)+'" loading="lazy" decoding="async"></a>'+
+   (quoteText?'<div class="quote-card-text"><strong>'+esc(speaker)+'</strong><p>'+esc(quoteText)+'</p></div>':'')+
    '</article>';
 }
 function quoteCategoryCard(){
@@ -125,7 +150,7 @@ function renderQuotesPage(){
  if(clear)clear.addEventListener('click',()=>{input.value='';render();input.focus()});
  function render(){
    const q=norm(input.value);
-   const filtered=quotes.filter(item=>!q||norm(item.text).includes(q));
+   const filtered=quotes.filter(item=>!q||norm((item.text||'')+' '+(item.speaker||'')).includes(q));
    $('quoteGrid').innerHTML=filtered.map(quoteCard).join('');
    $('quoteEmpty').hidden=filtered.length>0;
    $('quotesCount').textContent='พบ '+filtered.length.toLocaleString('th-TH')+' ภาพคำคมธรรมะ';
@@ -147,7 +172,8 @@ function validateQuotes(raw){
     && img==='./assets/quotes/'+id+'.jpg'
     && x.sha256.startsWith(id.slice(6))
     && x.origin==='local_folder'
-    && x.source_url==='' && x.text==='';
+    && x.source_url==='' && !!x.text.trim()
+    && x.text_source==='visible_text_in_archived_image';
   if((!curated&&!imported)||seen.has(id)||hashes.has(x.sha256))return false;
   seen.add(id);hashes.add(x.sha256);return true;
  });
@@ -193,7 +219,8 @@ function renderDiscoveryTopics(){
  }
  el.innerHTML=visible.map(t=>
   '<a class="discovery-topic" href="'+esc(uri('library.html',{topic:t.id}))+'">'
-  +'<strong>'+esc(t.label)+'</strong><span>'+t.total.toLocaleString('th-TH')+' คลิป ↗</span></a>'
+  +'<span class="discovery-topic-copy"><strong>'+esc(t.label)+'</strong><small>'+esc(t.description)+'</small></span>'
+  +'<span class="discovery-topic-count">'+t.total.toLocaleString('th-TH')+' คลิป ↗</span></a>'
  ).join('');
 }
 function renderHomeLatest(){
@@ -224,6 +251,7 @@ function renderHome(){
  }
  $('homeSearchForm').addEventListener('submit',e=>{
   e.preventDefault();const q=$('homeSearch').value.trim();
+  if(q)track('archive_search',{search_term:q,search_origin:'home'});
   location.href=uri('library.html',q?{q}:{});
  });
 }
@@ -354,6 +382,14 @@ function renderVideoDetail(){
  </div>
  <a class="source-credit-link" href="https://www.tiktok.com/@domskyline21" target="_blank" rel="noopener noreferrer" aria-label="เปิดบัญชี TikTok คุณลิงจั๊กจั๊ก">@domskyline21 <span aria-hidden="true">↗</span></a>
  </aside>` : '';
+ const relatedTopicIds=topicIdsFor(x);
+ const topicLinks=relatedTopicIds.map(id=>discoveryTopic(id)).filter(Boolean).map(t=>
+   '<a href="'+esc(uri('library.html',{topic:t.id}))+'">'+esc(t.label)+' ↗</a>').join('');
+ const topicBlock=topicLinks?'<div class="detail-topic-block"><span>หัวข้อที่เกี่ยวข้อง</span><div class="detail-topic-links">'+topicLinks+'</div><small>คัดจากชื่อคลิปต้นฉบับตามดัชนีหัวข้อของคลัง ไม่ใช่การอนุมานจากคำพูดในวิดีโอ</small></div>':'';
+ const transcript=transcriptFor(x);
+ const transcriptBlock=transcript
+   ? '<section class="transcript-panel transcript-available" aria-labelledby="transcriptTitle"><div><p class="kicker">VERIFIED TRANSCRIPT</p><h3 id="transcriptTitle">คำถอดเสียงที่ตรวจสอบแล้ว</h3><p>'+esc(transcript.text)+'</p></div>'+(transcript.source_url?'<a href="'+esc(transcript.source_url)+'" target="_blank" rel="noopener noreferrer">ตรวจสอบแหล่งคำถอดเสียง ↗</a>':'')+'</section>'
+   : '<aside class="transcript-panel transcript-pending"><div><p class="kicker">TRANSCRIPT STATUS</p><h3>ยังไม่มีคำถอดเสียงที่ตรวจสอบแล้ว</h3><p>ระบบจะไม่นำข้อความที่สร้างขึ้นเองมาใช้แทนคำพูดต้นฉบับ การค้นหาหน้านี้จึงอ้างอิงชื่อคลิป คำอธิบาย และหัวข้อที่ตรวจสอบได้เท่านั้น</p></div></aside>';
  $('videoDetail').innerHTML=`<div class="detail-poster ${x.platform==='TikTok'?'short-detail-poster':''}">${src?`<img src="${esc(src)}" alt="ภาพปกวิดีโอ ${esc(x.title)}">`:''}</div>
  <div class="detail-content"><div class="detail-badges"><a href="${esc(x.platform==='TikTok'?'./shorts.html':uri('category.html',{name:x.category}))}">${esc(x.category)}</a><span>${esc(x.platform)}</span></div>
  <h2>${esc(x.title)}</h2>${sourceCredit}<dl><div><dt>วันที่เผยแพร่</dt><dd>${esc(formatDate(x.published_at))}</dd></div>
@@ -361,8 +397,10 @@ function renderVideoDetail(){
  ${x.sourceChannel?'<div><dt>ช่องเผยแพร่</dt><dd>'+esc(x.sourceChannel)+'</dd></div>':''}
  </dl>
  ${x.sourceNote?'<aside class="detail-note">'+esc(x.sourceNote)+'</aside>':''}
+ ${topicBlock}
  <h3>คำอธิบายจากผู้เผยแพร่</h3>
  <p class="detail-description">${esc(x.description||'ไม่มีคำอธิบายจากผู้เผยแพร่')}</p>
+ ${transcriptBlock}
  <div class="detail-actions"><a class="btn primary" href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">เปิดวิดีโอต้นฉบับ ↗</a>
  <button class="btn secondary" data-save="${esc(x.key)}" type="button">${favorites.has(favoriteKey(x))?'♥ บันทึกแล้ว':'♡ บันทึกวิดีโอ'}</button>
  <button class="btn minimal" id="copyVideoLink" type="button">คัดลอกลิงก์ ↗</button></div></div>`;
@@ -380,6 +418,20 @@ function renderVideoDetail(){
     +'<div class="video-grid">'+sameCategory.map(card).join('')+'</div>'
     +'</section>');
    $('videoDetail').querySelectorAll('.detail-related .video-image img').forEach(attachImageFallback);
+ }
+ const sameKeys=new Set(sameCategory.map(y=>y.key));
+ const topicRelated=relatedTopicIds.length ? items.filter(y=>
+   y.key!==x.key && !sameKeys.has(y.key) && relatedTopicIds.some(id=>topicMatches(y,id))
+ ).sort(byDateDesc).slice(0,3) : [];
+ if(topicRelated.length){
+   const labels=relatedTopicIds.map(id=>discoveryTopic(id)?.label).filter(Boolean).join(' · ');
+   $('videoDetail').insertAdjacentHTML('beforeend',
+    '<section class="detail-related detail-topic-related" aria-labelledby="detailTopicRelatedTitle">'
+    +'<div class="heading-row"><div><p class="kicker">RELATED BY CURATED TOPIC</p>'
+    +'<h2 id="detailTopicRelatedTitle">เนื้อหาใกล้เคียงตามหัวข้อ</h2>'
+    +'<p class="home-section-hint">เชื่อมโยงจากดัชนีหัวข้อที่ตรวจจากชื่อคลิปต้นฉบับ: '+esc(labels)+' ไม่ใช่การสรุปคำสอนจาก Transcript</p>'
+    +'</div></div><div class="video-grid">'+topicRelated.map(card).join('')+'</div></section>');
+   $('videoDetail').querySelectorAll('.detail-topic-related .video-image img').forEach(attachImageFallback);
  }
  $('copyVideoLink').addEventListener('click',async()=>{
   const text=location.href;
@@ -401,6 +453,10 @@ function populateLibrary(){
  const params=new URLSearchParams(location.search);
  const category=params.get('category');
  filterState.topic=resolveTopicId(params.get('topic'));
+ const topicChips=$('libraryTopicChips');
+ if(topicChips)topicChips.innerHTML=DISCOVERY_TOPICS.map(t=>
+  '<a href="'+esc(uri('library.html',{topic:t.id}))+'" data-library-topic="'+esc(t.id)+'">'+esc(t.label)+' <span>'+t.keys.size.toLocaleString('th-TH')+'</span></a>'
+ ).join('');
  filterState.q=params.get('q')||'';
  filterState.category=categoryNames().includes(category)?category:'all';
  filterState.year=/^\d{4}$/.test(params.get('year')||'')?params.get('year'):'all';
@@ -411,10 +467,11 @@ function populateLibrary(){
  $('categoryFilter').value=filterState.category;
  $('yearFilter').value=filterState.year;
  $('searchInput').addEventListener('input',e=>{filterState.q=e.target.value.trim();refreshLibrary()});
- $('categoryFilter').addEventListener('change',e=>{filterState.category=e.target.value;refreshLibrary()});
- $('yearFilter').addEventListener('change',e=>{filterState.year=e.target.value;refreshLibrary()});
- $('platformFilter').addEventListener('change',e=>{filterState.platform=e.target.value;refreshLibrary()});
- $('sortFilter').addEventListener('change',e=>{filterState.sort=e.target.value;refreshLibrary()});
+ $('searchInput').addEventListener('change',e=>{const q=e.target.value.trim();if(q)track('archive_search',{search_term:q,search_origin:'library'})});
+ $('categoryFilter').addEventListener('change',e=>{filterState.category=e.target.value;track('archive_filter',{filter_name:'category',filter_value:e.target.value});refreshLibrary()});
+ $('yearFilter').addEventListener('change',e=>{filterState.year=e.target.value;track('archive_filter',{filter_name:'year',filter_value:e.target.value});refreshLibrary()});
+ $('platformFilter').addEventListener('change',e=>{filterState.platform=e.target.value;track('archive_filter',{filter_name:'platform',filter_value:e.target.value});refreshLibrary()});
+ $('sortFilter').addEventListener('change',e=>{filterState.sort=e.target.value;track('archive_filter',{filter_name:'sort',filter_value:e.target.value});refreshLibrary()});
  $('favoriteFilter').addEventListener('click',()=>{filterState.fav=!filterState.fav;refreshLibrary()});
  $('resetFilters').addEventListener('click',resetLibrary);
  const clearTopic=$('clearTopic');
@@ -439,7 +496,7 @@ function refreshLibrary(){
   (filterState.year==='all'||x.published_at?.startsWith(filterState.year))&&
   (filterState.platform==='all'||x.platform===filterState.platform)&&
   (!filterState.fav||favorites.has(favoriteKey(x)))&&
-  query.every(q=>norm([x.title,x.category,x.description,x.video_id].join(' ')).includes(q))
+  query.every(q=>norm(searchTextFor(x)).includes(q))
  );
  selected.sort((a,b)=>{
   if(filterState.sort==='old')return (a.published_at||'9999').localeCompare(b.published_at||'9999');
@@ -463,6 +520,7 @@ function refreshLibrary(){
    emptyHelp.textContent='ลองใช้คำที่สั้นลง เปลี่ยนหัวข้อ หรือเลือกดูคลิปทั้งหมด';
   }
  }
+ document.querySelectorAll('[data-library-topic]').forEach(link=>link.classList.toggle('active',link.dataset.libraryTopic===filterState.topic));
  const topicPanel=$('topicFilterStatus');
  if(topicPanel){
   topicPanel.hidden=!filterState.topic;
@@ -489,8 +547,8 @@ function showToast(value){
 function toggleFavorite(key){
  const x=items.find(x=>x.key===key);if(!x)return;
  const id=favoriteKey(x);
- if(favorites.has(id)){favorites.delete(id);showToast('นำออกจากรายการที่บันทึกแล้ว')}
- else{favorites.add(id);showToast('บันทึกวิดีโอแล้ว')}
+ if(favorites.has(id)){favorites.delete(id);showToast('นำออกจากรายการที่บันทึกแล้ว');track('archive_save',{action:'remove',video_key:x.key})}
+ else{favorites.add(id);showToast('บันทึกวิดีโอแล้ว');track('archive_save',{action:'add',video_key:x.key})}
  try{localStorage.setItem(storageKey,JSON.stringify([...favorites]))}catch{}
  if(page==='library')refreshLibrary();
  else if(page==='saved')renderSaved();
@@ -545,7 +603,11 @@ function bindShared(){
  toggle.addEventListener('click',()=>{menu.hidden=!menu.hidden;toggle.setAttribute('aria-expanded',String(!menu.hidden))});
  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.hidden=true;toggle.setAttribute('aria-expanded','false')}));
  document.addEventListener('click',e=>{
-  const target=e.target.closest('[data-save]');if(target){e.preventDefault();toggleFavorite(target.dataset.save)}
+  const target=e.target.closest('[data-save]');if(target){e.preventDefault();toggleFavorite(target.dataset.save);return}
+  const topic=e.target.closest('[data-library-topic],.discovery-topic');
+  if(topic){
+   try{const id=new URL(topic.href,location.href).searchParams.get('topic')||'';if(id)track('archive_topic_select',{topic_id:id})}catch(_){}
+  }
  });
  try{const saved=JSON.parse(localStorage.getItem(storageKey)||'[]');favorites=new Set(Array.isArray(saved)?saved:[])}catch{favorites=new Set()}
 }
@@ -666,12 +728,13 @@ async function boot(){
    if(!x.key||!x.title||!x.category||!safeLink(x.url)||seen.has(x.key))return false;
    seen.add(x.key);return true;
   });
-  if(['home','library'].includes(page)){
+  if(['home','library','video'].includes(page)){
     try{await loadCuratedTopics()}catch(error){
       DISCOVERY_TOPICS=[];
       console.warn('Curated topics unavailable',error);
     }
   }
+  if(['library','video'].includes(page))await loadVerifiedTranscripts();
   if(['home','categories','quotes'].includes(page)){
     const qres=await fetch(QUOTES_URL,{cache:'no-cache'});
     if(!qres.ok)throw new Error('Quote catalog HTTP '+qres.status);

@@ -1,7 +1,7 @@
 {
   "collection": "คำคมธรรมะ",
   "source_page_url": "https://www.facebook.com/NapanIBHAP/photos",
-  "updated_at": "2026-11-16",
+  "updated_at": "2026-11-18",
   "items": [
     {
       "id": "2034938724404330",
@@ -11,7 +11,9 @@
       "source_page": "พระมหานภันต์ สกพ. - Ven.Napan IBHAP",
       "published_at": "",
       "sha256": "3860369e0131f967bb178de7afd5343fe4fa32101eb204b59802b6dc0c69aa26",
-      "verification": "ข้อความถอดตามที่ปรากฏบนภาพต้นฉบับ"
+      "verification": "ข้อความถอดตามที่ปรากฏบนภาพต้นฉบับ",
+      "text_source": "source_post_or_curated_record",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "2022843488947187",
@@ -21,228 +23,291 @@
       "source_page": "พระมหานภันต์ สกพ. - Ven.Napan IBHAP",
       "published_at": "",
       "sha256": "e28a4b6bc89a318623548f068196535a3047f9ff326d277c6348454bb1959a4e",
-      "verification": "ข้อความถอดตามที่ปรากฏบนภาพต้นฉบับ"
+      "verification": "ข้อความถอดตามที่ปรากฏบนภาพต้นฉบับ",
+      "text_source": "source_post_or_curated_record",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-31123e9d75ab2b1cd26a",
-      "text": "",
+      "text": "ไม่ต้องสนใจเรื่องเป็นเจ้าคุณ\nแต่สนใจเรื่องที่เป็นคุณ เป็นประโยชน์\nและเป็นกุศลดีกว่า...",
       "image": "./assets/quotes/local-31123e9d75ab2b1cd26a.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "31123e9d75ab2b1cd26a18e0948c2781622eb9436ed5c23bf1d48054c8f17a99",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-322ec7b336d23af0bf49",
-      "text": "",
+      "text": "บางทีเราเห็นแต่ปัญหาหรือเปล่า\nแต่อีกด้านหนึ่งจะแก้ปัญหาได้\nเราก็ต้องเห็นปัญหาก่อน เห็นว่ามันแย่\nเราถึงจะสามารถแก้ไขปัญหานั้นได้",
       "image": "./assets/quotes/local-322ec7b336d23af0bf49.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "322ec7b336d23af0bf49c96551c73ba214a6081f595fe83810e5d647bf021faa",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-81fdf84ca5ceec11a7e8",
-      "text": "",
+      "text": "ถ้า Hate speech ทำให้คนเปลี่ยนไป\nเปลี่ยนใจ เปลี่ยนพฤติกรรมได้\nLove speech ก็น่าจะช่วยเปลี่ยนแปลง\nการรับรู้ และพฤติกรรมของคน\nที่มีต่อศาสนิกชนในศาสนาต่างๆ ได้",
       "image": "./assets/quotes/local-81fdf84ca5ceec11a7e8.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "81fdf84ca5ceec11a7e81e182b1731c74b6796ffeecea972f3bbd65f2f28c2b1",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-effcbbac994f54bd8f6b",
-      "text": "",
+      "text": "น้ำฝนหล่นจากฟ้า ไหลริน\nน้ำบ่อขุดจากดิน เพื่อใช้\nน้ำคำกล่าวได้ยิน เสนาะโสต\nน้ำจิตเอื้อเฟื้อไว้ สิ่งนี้มีคุณ",
       "image": "./assets/quotes/local-effcbbac994f54bd8f6b.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "effcbbac994f54bd8f6b955ea773c6e4b941bfe02a833ff83a99049a52e698df",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-ffd440006d08590967e5",
-      "text": "",
+      "text": "พกหินในอก อย่าพกถุง\nให้ใจหนักแน่น อย่าหวั่นไหวง่ายๆ\nพิจารณา ตรวจสอบ สอบถามเสียก่อน\nไม่ว่าสอบถามคนที่เล่า\nหรือสอบถามคนที่โดนพาดพิง",
       "image": "./assets/quotes/local-ffd440006d08590967e5.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "ffd440006d08590967e5463181ff94179829a5aac5aeddf210411252032c6965",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-776606899c39a8931513",
-      "text": "",
+      "text": "เราจะปล่อยให้ใจเราและโลกเรา\nเป็นอย่างนี้จริงหรือ\nคือโลกทั้งภายในและโลกทั้งภายนอก\nจะทำให้มีขยะอยู่อย่างนี้หรือ",
       "image": "./assets/quotes/local-776606899c39a8931513.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "776606899c39a89315139f1747e9f860aa1bc43a0de17cacccbd03e20d48f3ff",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-02ee72c543cf6b1abade",
-      "text": "",
+      "text": "สันติสุขในใจใคร เริ่มต้นได้ที่ใจเรา แต่อย่าจบที่ใจเรา\nเอาใจของเราไปรวมกับใจของคนอื่น เอาสมองของเรารวมกับสมองคนอื่น\nและเอามือของเรารวมกันเป็น Collaborative Action\nเชื่อว่าเราจะเปลี่ยนได้ทั้งปัจเจกบุคคล และ Social Structure\nที่จะทำให้สังคมนี้ขยะน้อยลง ทั้งในใจคนและในโลกนี้",
       "image": "./assets/quotes/local-02ee72c543cf6b1abade.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "02ee72c543cf6b1abadee6130181ef54226a1504362f573dd645880b611e50a8",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-a00cc84b4151482485bb",
-      "text": "",
+      "text": "ขอให้โยมพิจารณาว่า สิ่งที่โยมกำลังจะรับเข้าไปในทุกวัน\nเป็นขนม เป็นอาหารที่ดีต่อชีวิต\nหรือเป็นยาพิษที่ค่อยๆ ทำร้ายชีวิตตัวเอง",
       "image": "./assets/quotes/local-a00cc84b4151482485bb.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "a00cc84b4151482485bbfc54e88a9c1b4eed5f48190fe91c4e4b1475e74cf4d1",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-34e1a4e2cb9bd27cdde2",
-      "text": "",
+      "text": "ถ้าศาสนาไม่ได้รู้เรื่อง SDGs\nเราจะเป็นกระบอกเสียง\nให้คนอื่นได้ยากมาก\nนี่คือปัญหาของสถาบันศาสนาในปัจจุบัน\nทั้งที่จริง ๆ เป็นเรื่องที่สถาบันศาสนา\nทำอยู่ตลอดเวลา",
       "image": "./assets/quotes/local-34e1a4e2cb9bd27cdde2.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "34e1a4e2cb9bd27cdde2dd90f201f06ca48d3db696e32a6a89fd986198d50a53",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-4aa8a324369f274d9f0a",
-      "text": "",
+      "text": "ทุกคนล้วนทุกข์ในบางเรื่อง แล้วก็สุขในหลาย ๆ เรื่อง\nสำคัญที่สุด เราเองอาจจะเป็นการที่สร้างสุข\nหรือสร้างทุกข์ให้กับคนอื่นก็ได้\nเลือกเป็นคนสร้างสุขเถอะ\nเพราะว่าสร้างสุขออกไป ให้ความสุขออกไป\nสุดท้ายมันก็กลับมาที่เรา",
       "image": "./assets/quotes/local-4aa8a324369f274d9f0a.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "4aa8a324369f274d9f0a4d5f5c5611b2272cf41055e97a07abdef19f3ccfd324",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-320f86ed3e44e06e5ece",
-      "text": "",
+      "text": "จริงๆเราไม่ต้องพยายามไม่ทุกข์กับอะไร\nหรือไม่ต้องพยายามมีสุขก็ได้\nเพราะว่าความจริงแล้วความทุกข์มันคอยเราอยู่เสมอ",
       "image": "./assets/quotes/local-320f86ed3e44e06e5ece.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "320f86ed3e44e06e5ecec4576d4d4ed3a8047faf9f90f9a262195fd87f22a1be",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-5948f3efde1b72a0b9d6",
-      "text": "",
+      "text": "‘ปุพเพกตปุญญตา’ คือการทำกุศล\nที่ได้ทำอะไรดีๆร่วมกันในกาลก่อน\nแค่เราทำปัจจุบันขณะผ่านไป 1 วินาที\nมันก็เป็นอดีตไปแล้ว เป็นปุพเพฯ เหมือนกัน",
       "image": "./assets/quotes/local-5948f3efde1b72a0b9d6.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "5948f3efde1b72a0b9d6cc875be178e6fb7aed89a9cbb12b51abe6021af68b99",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-4488a473ef58d43f6ea9",
-      "text": "",
+      "text": "ความรุนแรง ไม่ว่าเกิดขึ้นแก่ใคร โดยใคร\nด้วยเหตุผลใด ที่นี่..หรือที่ไหน\nล้วนส่งผลกระทบรุนแรงต่อจิตใจ\nของทั้งผู้ทำ และของผู้ถูกกระทำ",
       "image": "./assets/quotes/local-4488a473ef58d43f6ea9.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "4488a473ef58d43f6ea92aa004e0c816b9fd75bb196f2c5ee6336a1ea97541c4",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-0ac691aa267fee011e6b",
-      "text": "",
+      "text": "พระพุทธเจ้าตรัสว่า\n“กมฺมุนา วตฺตตี โลโก กมฺมุนา วตฺตตี ปชา”\nสัตว์โลกย่อมเป็นไปตามกรรม\nและประชาชนก็เป็นไปตามกรรม หรือการกระทำ\nเริ่มจากวิธีคิด วิธีพูด และวิธีทำ",
       "image": "./assets/quotes/local-0ac691aa267fee011e6b.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "0ac691aa267fee011e6b3003c04919fa2545efdb88f9081e092f1835db0f9bc1",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-beb3597a2969fcc8a3e4",
-      "text": "",
+      "text": "“การบวช” เป็นบุญใหญ่ก็จริง\nแต่อย่ากดดันลูกหลานต้องบวช\nค่านิยมบางอย่างในสังคม\nถ้าไม่ระวังจะไปสร้างความทุกข์\nความอึดอัดให้กับคนส่วนหนึ่งได้เหมือนกัน",
       "image": "./assets/quotes/local-beb3597a2969fcc8a3e4.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "beb3597a2969fcc8a3e46fcbb96db36073f8567ae9b1dde1e62067a282087b47",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-0542c88f770544cc456d",
-      "text": "",
+      "text": "พระพุทธเจ้าตรัสไว้ว่า\n“โย จ ปุพฺเพ ปมชฺชิตฺวา ปจฺฉา โส นปฺปมชฺชติ\nโสมํ โลกํ ปภาเสติ อพฺภา มุตฺโตว จนฺทิมา”\nผู้ใดประมาทในกาลก่อน ไม่ประมาทภายหลัง\nผู้นั้นย่อมยังโลกนี้ให้สว่างไสว เหมือนพระจันทร์พ้นเมฆหมอกฉันนั้น",
       "image": "./assets/quotes/local-0542c88f770544cc456d.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "0542c88f770544cc456d9541c1f1cbb3cb9679dcc6fcb0f2e00c967769ae2a53",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-d25f4757b286a48e91b4",
-      "text": "",
+      "text": "‘ญาติโดยธรรม’ หนูว่าสำคัญกว่าญาติโดยสายเลือดในบางครั้งด้วยซ้ำ\nธรรมทำให้เรามีความเคารพนับถือกัน\nต่อให้เราไม่ได้เกิดมาเป็นสายเลือดเดียวกัน แต่มีความนับถือกันโดยธรรม\nหนูว่าเป็นญาติที่ยั่งยืนกว่า แล้วทำให้เรารักและเคารพกันได้จริงๆ",
       "image": "./assets/quotes/local-d25f4757b286a48e91b4.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "d25f4757b286a48e91b4da4dae072eefee9c2f27a5ad2c32e069c47026c2b88c",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "คุณแพรรี่ - ไพรวัลย์ วรรณบุตร"
     },
     {
       "id": "local-bfd3a540add9ebcfcb86",
-      "text": "",
+      "text": "ถ้าเรามองในแง่ร้ายก็ไม่ช่วยอะไร มองในแง่ดีก็โลกสวยเกินไป\nเพราะฉะนั้นต้องมองทั้ง 2 ส่วน\nทั้งแง่ดีและแง่ร้าย",
       "image": "./assets/quotes/local-bfd3a540add9ebcfcb86.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "bfd3a540add9ebcfcb86ecae60811ea3f001cb616b39e7278ba1e491363fb189",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-5268a2094984576668cb",
-      "text": "",
+      "text": "“โดนเพื่อนสนิทหักหลัง เสียใจมากๆ”\nอย่างน้อยวันนี้ก็รู้แล้ว ไม่ต้องโดนแอบหักหลังไปอีก\nอาจจะเป็น 5 ปี 10 ปี หรือบางทีอาจจะตลอดชีวิตก็ได้",
       "image": "./assets/quotes/local-5268a2094984576668cb.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "5268a2094984576668cb7e2d65a138c087a0668f0ac2c73b94c6a264a7e5535b",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     },
     {
       "id": "local-b495f018901e2b9ab8a5",
-      "text": "",
+      "text": "ในความที่โยมดูแลพระสงฆ์ เพราะเห็นว่าพระสงฆ์ประพฤติปฏิบัติ และเผยแผ่\nโยมอย่าลืมดูแลตัวเองด้วย เพราะพระนั้น\n‘ไม่มีเธอ ก็ไม่มีฉัน’\nไม่มีโยม พระก็จะไม่มีกำลังทำหน้าที่",
       "image": "./assets/quotes/local-b495f018901e2b9ab8a5.jpg",
       "source_url": "",
       "source_page": "ภาพคำคมธรรมะที่ผู้ดูแลเว็บไซต์จัดเตรียม",
       "published_at": "",
       "sha256": "b495f018901e2b9ab8a556ad5eb9ec153dc553939d09b84469efc29bc7f344c2",
       "origin": "local_folder",
-      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง"
+      "verification": "คัดจากภาพต้นฉบับที่ผู้ดูแลจัดเตรียม; ยังไม่ได้ถอดคำคมเป็นตัวอักษรหรือยืนยัน URL ต้นทาง",
+      "text_source": "visible_text_in_archived_image",
+      "transcription_review": "manual_visual_review_2026-11-18",
+      "speaker": "พระมหานภันต์ สนฺติภทฺโท"
     }
   ],
-  "import_note": "เพิ่มภาพคำคมจากแฟ้มต้นฉบับของผู้ดูแลโดยคงภาพเดิม; ตัดภาพที่ใช้ข้อความคำคมซ้ำหนึ่งภาพและไม่สร้างข้อความ/ลิงก์ Facebook ใหม่"
+  "import_note": "เพิ่มภาพคำคมจากแฟ้มต้นฉบับของผู้ดูแลโดยคงภาพเดิม; ตัดภาพที่ใช้ข้อความคำคมซ้ำหนึ่งภาพและไม่สร้างข้อความ/ลิงก์ Facebook ใหม่",
+  "text_index_note": "ข้อความค้นหาจากภาพคำคมทุกรายการได้รับการถอดจากข้อความที่มองเห็นในภาพหรือจากระเบียนต้นทางที่มีอยู่ โดยไม่สร้างถ้อยคำใหม่"
 }

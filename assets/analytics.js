@@ -58,6 +58,12 @@
     });
     clearOwnCookies();
   }
+  window.pmnapanTrack = function(name, params) {
+    if (!enabled || typeof window.gtag !== 'function') return;
+    if (!/^[a-z][a-z0-9_]{1,39}$/.test(String(name||''))) return;
+    window.gtag('event', name, Object.assign({source_section:document.body.dataset.page||'unknown'}, params||{}));
+  };
+
   function initialize() {
     const banner = document.createElement('section');
     banner.id = 'analyticsConsentBanner';

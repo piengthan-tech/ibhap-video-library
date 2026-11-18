@@ -53,15 +53,17 @@
 </div><nav id="mobileMenu" class="mobile-menu" aria-label="เมนูโทรศัพท์" hidden><a href="./index.html" >หน้าแรก</a><a href="./library.html" aria-current="page">คลังวิดีโอ</a><a href="./shorts.html" >ธรรมะคลิปสั้น</a><a href="./quotes.html" >คำคมธรรมะ</a><a href="./press.html" >ข่าวและผลงาน</a><a href="./four-ps.html" >คลังพิเศษ</a><a href="./about.html" >เกี่ยวกับ</a></nav></header>
 <main id="main"><section class="page-intro"><div class="container">
 <nav class="crumbs" aria-label="ตำแหน่งหน้า"><a href="./index.html">หน้าแรก</a><span aria-hidden="true">/</span><span id="currentCrumb">คลังวิดีโอ</span></nav>
-<div class="page-intro-row"><div><p class="kicker">VIDEO LIBRARY</p><h1 class="page-title" id="pageTitle">คลังวิดีโอ</h1><p class="subline" id="pageSubline">ค้นหาและรับชมวิดีโอตามหมวดรายการ ปีเผยแพร่ และช่องทาง</p></div>
+<div class="page-intro-row"><div><p class="kicker">VIDEO LIBRARY</p><h1 class="page-title" id="pageTitle">คลังวิดีโอ</h1><p class="subline" id="pageSubline">ค้นหาและรับชมวิดีโอตามหัวข้อ หมวดรายการ ปีเผยแพร่ และช่องทาง</p></div>
 <div class="intro-icon" aria-hidden="true"><img src="./assets/mascot.png" alt=""></div></div></div></section>
-<section class="section"><div class="container"><p class="press-media-link">วิดีโอและรายการจากหน่วยงานภายนอก <a href="./external-media.html">สำรวจสื่อจากแหล่งภายนอก ↗</a></p>
+<section class="section"><div class="container">
+<div class="knowledge-search-intro" aria-labelledby="knowledgeSearchTitle"><div><p class="kicker">SEARCH BY INTEREST</p><h2 id="knowledgeSearchTitle">อยากรู้ว่าเรื่องนี้อยู่ในคลิปไหน?</h2><p>พิมพ์เรื่องหรือคำที่สนใจ เช่น ความเครียด การให้ สมาธิ ครอบครัว หรือการทำงาน ระบบจะค้นจากชื่อคลิป คำอธิบาย และหัวข้อที่ตรวจสอบแล้ว รวมถึง Transcript เมื่อมีต้นฉบับที่ยืนยันได้</p></div><div id="libraryTopicChips" class="library-topic-chips" aria-label="หัวข้อแนะนำ"></div></div>
+<p class="press-media-link">วิดีโอและรายการจากหน่วยงานภายนอก <a href="./external-media.html">สำรวจสื่อจากแหล่งภายนอก ↗</a></p>
 <div class="filter-panel">
 <div class="topic-filter-status" id="topicFilterStatus" hidden><span>หัวข้อที่เลือก: <strong id="topicFilterName"></strong></span><button id="clearTopic" type="button">ล้างหัวข้อ ×</button></div>
 <div class="search-row">
-<label class="input-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">ค้นหาวิดีโอ</span><input type="search" id="searchInput" placeholder="ค้นหาชื่อคลิปหรือคำสำคัญ" autocomplete="off"></label>
+<label class="input-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">ค้นหาวิดีโอ</span><input type="search" id="searchInput" placeholder="ค้นหาชื่อคลิป คำอธิบาย หรือหัวข้อ" autocomplete="off"></label>
 <button class="fav-filter" id="favoriteFilter" type="button" aria-pressed="false">♡ รายการที่บันทึก</button>
-</div><div class="filter-controls">
+</div><p class="search-scope-note">ค้นหาจากชื่อคลิป คำอธิบาย และหัวข้อที่คัดจากชื่อคลิปต้นฉบับ และจะค้นจาก Transcript เฉพาะเมื่อมีคำถอดเสียงที่ตรวจสอบแล้ว</p><div class="filter-controls">
 <label>หมวดรายการ<select id="categoryFilter"><option value="all">ทุกหมวด</option></select></label>
 <label>ปีเผยแพร่<select id="yearFilter"><option value="all">ทุกปี</option></select></label>
 <label>ช่องทาง<select id="platformFilter"><option value="all">ทุกช่องทาง</option><option value="YouTube">YouTube</option><option value="TikTok">TikTok</option><option value="Facebook">Facebook</option></select></label>

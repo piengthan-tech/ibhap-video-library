@@ -182,17 +182,53 @@
  function reset(){
   state.filter='all';state.query='';$('psSearch').value='';render();
  }
+
+ function setupArchiveNavigation(){
+  const nav=$('psSectionNav'),bar=$('psProgressBar');
+  if(!nav||!bar)return;
+  const links=[...nav.querySelectorAll('[data-ps-section]')];
+  const sections=links.map(link=>document.getElementById(link.dataset.psSection)).filter(Boolean);
+  let ticking=false;
+  function update(){
+   ticking=false;
+   const headerH=document.querySelector('.site-header')?.getBoundingClientRect().height||0;
+   const navH=nav.getBoundingClientRect().height||0;
+   const marker=window.scrollY+headerH+navH+24;
+   let active=sections[0];
+   for(const section of sections)if(section.offsetTop<=marker)active=section;
+   links.forEach(link=>{
+    const on=link.dataset.psSection===active?.id;
+    link.classList.toggle('active',on);
+    if(on)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
+   });
+   const start=sections[0]?.offsetTop||0;
+   const end=(sections.at(-1)?.offsetTop||document.body.scrollHeight)+(sections.at(-1)?.offsetHeight||0)-window.innerHeight;
+   const progress=end>start?Math.max(0,Math.min(1,(window.scrollY-start)/(end-start))):0;
+   bar.style.width=(progress*100).toFixed(1)+'%';
+  }
+  function requestUpdate(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
+  window.addEventListener('scroll',requestUpdate,{passive:true});
+  window.addEventListener('resize',requestUpdate);
+  links.forEach(link=>link.addEventListener('click',()=>{
+    try{window.pmnapanTrack?.('archive_4ps_section',{section_id:link.dataset.psSection})}catch(_){}
+    setTimeout(requestUpdate,80);
+  }));
+  requestUpdate();
+ }
+
  function wire(){
   $('psSearch').addEventListener('input',e=>{state.query=e.target.value;render();});
+  $('psSearch').addEventListener('change',e=>{const q=e.target.value.trim();if(q)try{window.pmnapanTrack?.('archive_4ps_search',{search_term:q})}catch(_){}});
   $('psFilters').addEventListener('click',e=>{
    const button=e.target.closest('[data-ps-filter]');
-   if(button){state.filter=button.dataset.psFilter;render();}
+   if(button){state.filter=button.dataset.psFilter;try{window.pmnapanTrack?.('archive_4ps_filter',{filter_value:state.filter})}catch(_){}render();}
   });
   $('psReset').addEventListener('click',reset);
   $('psEmptyReset').addEventListener('click',reset);
  }
  async function load(){
   wire();
+  setupArchiveNavigation();
   try{
    const response=await fetch('./data/four-ps.json',{cache:'no-cache'});
    if(!response.ok)throw new Error('Archive HTTP '+response.status);
