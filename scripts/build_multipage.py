@@ -87,7 +87,7 @@ SEO_PATHS['saved']='saved.html'
 SEO_PATHS['fourps']='four-ps.html'
 SEO_PATHS['profile']='ven-napan.html'
 SEO_PATHS['notfound']='404.html'
-SEO_PERSON={'@type': 'Person', '@id': 'https://www.ydml.co.th/pmnapan-library/#ven-napan', 'name': 'พระมหานภันต์ สนฺติภทฺโท', 'alternateName': ['Ven. Napan Santibhaddo', 'Venerable Napan Thawornbanjob', 'PM Napan'], 'url': 'https://www.ydml.co.th/pmnapan-library/ven-napan.html', 'image': 'https://www.ydml.co.th/pmnapan-library/assets/profile/ven-napan-portrait.webp', 'jobTitle': 'ผู้ช่วยเจ้าอาวาสวัดสระเกศราชวรมหาวิหาร', 'sameAs': ['https://www.kaiciid.org/who-we-are/fellows/ven-napan-thawornbanjob','https://ibhap.org/old/committee-members/','https://www.gchumanrights.org/gc-news/from-temple-to-classroom-how-a-buddhist-monk-is-bridging-faith-and-human-rights/']}
+SEO_PERSON={'@type': 'Person', '@id': 'https://www.ydml.co.th/pmnapan-library/#ven-napan', 'name': 'พระมหานภันต์ สนฺติภทฺโท', 'alternateName': ['Ven. Napan Santibhaddo', 'Venerable Napan Thawornbanjob', 'PM Napan'], 'url': 'https://www.ydml.co.th/pmnapan-library/ven-napan.html', 'image': 'https://www.ydml.co.th/pmnapan-library/assets/profile/ven-napan-hero.webp', 'jobTitle': 'ผู้ช่วยเจ้าอาวาสวัดสระเกศราชวรมหาวิหาร', 'sameAs': ['https://www.kaiciid.org/who-we-are/fellows/ven-napan-thawornbanjob','https://ibhap.org/old/committee-members/','https://www.gchumanrights.org/gc-news/from-temple-to-classroom-how-a-buddhist-monk-is-bridging-faith-and-human-rights/']}
 SEO_WEBSITE={'@type': 'WebSite', '@id': 'https://www.ydml.co.th/pmnapan-library/#website', 'url': 'https://www.ydml.co.th/pmnapan-library/', 'name': 'PMNapan Library Dhamma Archive', 'inLanguage': 'th', 'description': 'รวมคลิปธรรมะ คำคม ข่าวและบทสัมภาษณ์ที่เกี่ยวข้องกับพระมหานภันต์ สนฺติภทฺโท (Ven. Napan) พร้อมลิงก์วิดีโอและแหล่งเผยแพร่ต้นฉบับ'}
 
 def seo_tags(active,title,description):
@@ -107,7 +107,7 @@ def seo_tags(active,title,description):
         graph.append({'@type':'BreadcrumbList','@id':canonical+'#breadcrumbs',
           'itemListElement':[{'@type':'ListItem','position':1,'name':'หน้าแรก','item':base},
           {'@type':'ListItem','position':2,'name':title.split(' | ')[0],'item':canonical}]})
-    social_image=base+('assets/archive/four-ps-original.webp' if active=='fourps' else ('assets/profile/ven-napan-wcc.webp' if active=='profile' else 'assets/monk-watering-960.webp'))
+    social_image=base+('assets/archive/four-ps-original.webp' if active=='fourps' else ('assets/profile/ven-napan-hero.webp' if active=='profile' else 'assets/monk-watering-960.webp'))
     social_alt='ภาพต้นฉบับพระสงฆ์สี่รูปในการสนทนา 4 พส.' if active=='fourps' else ('พระมหานภันต์ สนฺติภทฺโท ในงานเสวนาระหว่างศาสนา' if active=='profile' else 'PMNapan Library คลังธรรมะพระมหานภันต์')
     tags=['<meta name="robots" content="index,follow,max-image-preview:large">',
       '<meta property="og:site_name" content="PMNapan Library Dhamma Archive">',
@@ -381,8 +381,7 @@ profile='''<section class="profile-hero" aria-labelledby="profileTitle">
 </div>
 </div>
 <div class="profile-portrait-wrap">
-<div class="profile-portrait-frame"><img src="./assets/profile/ven-napan-portrait.webp" alt="พระมหานภันต์ สนฺติภทฺโท" width="360" height="450" fetchpriority="high" decoding="async"></div>
-<div class="profile-portrait-badge"><strong>มากกว่าสองทศวรรษของงานสังคม</strong><span>จากการพัฒนาคนในชุมชน สู่สันติภาพและความร่วมมือระดับนานาชาติ</span></div>
+<div class="profile-portrait-frame"><img src="./assets/profile/ven-napan-hero.webp" alt="พระมหานภันต์ สนฺติภทฺโท" width="360" height="360" fetchpriority="high" decoding="async"></div>
 </div>
 </div>
 </div>
