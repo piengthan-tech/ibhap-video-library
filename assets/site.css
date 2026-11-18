@@ -435,3 +435,40 @@ html[data-reading-size="2"] .detail-content h2,html[data-reading-size="2"] .pres
 @media(prefers-reduced-motion:reduce){.ps-home-feature,.ps-home-feature-cta span,.ps-category-banner{transition:none}.ps-home-feature:hover,.ps-category-banner:hover{transform:none}}
 
 .ps-home-feature{scroll-margin-top:100px}
+
+
+/* Editorial / readability pass: maintain the established brand, improve dense metadata and mobile navigation. */
+:root { --editorial-accent: #12658c; }
+body { font-size: 15px; line-height: 1.78; }
+.subline { font-size: 14px; line-height: 1.85; max-width: 760px; color: #526f87; }
+.home-section-hint { font-size: 13px; line-height: 1.85; color: #58758c; }
+.video-meta { font-size: 12px; line-height: 1.8; color: #5c748a; }
+.video-info h3 { font-size: 15px; line-height: 1.67; }
+.video-actions a { font-size: 12px; }
+.home-topic-eyebrow,.home-topic-count,.series-info>span { font-size: 12px; }
+.press-source-note,.program-note p { font-size: 13px; line-height: 1.9; }
+.filter-controls label { font-size: 12px; color: #466781; }
+.filter-controls select,.input-search input,.quick-search-form input { font-size: 13px; }
+.btn,.header-cta,.quick-search-form button { font-size: 13px; }
+.page-intro .crumbs { font-size: 12px; }
+.quote-search-coverage { font-size: 12px; }
+.about-editorial-intro { padding-bottom: 24px; }
+.about-editorial-intro .about-panel { border-left: 4px solid #218db2; box-shadow: 0 10px 28px rgba(14,68,107,.05); }
+.about-editorial-panel h3 { font-size: 17px; color: #185071; margin: 22px 0 9px; line-height: 1.5; }
+.about-editorial-panel p { font-size: 14px; color: #506f86; line-height: 1.95; margin: 0 0 13px; }
+.about-editorial-panel p:last-child { margin-bottom: 0; }
+/* When navigation would need 10px labels, use the mobile menu rather than crowding the header. */
+@media (max-width: 1130px) {
+  .desktop-nav,.header-cta { display: none; }
+  .mobile-toggle { display: flex; }
+  .header-wrap { min-height: 72px; }
+}
+@media (max-width: 650px) {
+  .subline { font-size: 13px; }
+  .home-section-hint { font-size: 13px; }
+  .video-meta { font-size: 12px; }
+  .quick-search-form input { font-size: 14px; }
+  .video-info h3 { font-size: 15px; }
+  .about-editorial-intro { padding-bottom: 16px; }
+  .about-editorial-panel p { font-size: 13px; }
+}

@@ -114,13 +114,13 @@ function quoteCategoryCard(){
 }
 function renderHomeQuotes(){
  const target=$('homeQuotes');
- if(target)target.innerHTML=quotes.length?quotes.slice(0,2).map(quoteCard).join(''):'<p class="empty">ยังไม่มีภาพคำคมที่ผ่านการตรวจสอบ</p>';
+ if(target)target.innerHTML=quotes.length?quotes.slice(0,2).map(quoteCard).join(''):'<p class="empty">ยังไม่มีภาพคำคมในคลัง</p>';
 }
 function renderQuotesPage(){
  const input=$('quoteSearch');
  const available=quotes.filter(item=>!!item.text.trim()).length;
  const coverage=$('quoteSearchCoverage');
- if(coverage)coverage.textContent='ค้นหาจากข้อความที่ตรวจสอบแล้ว '+available.toLocaleString('th-TH')+' จาก '+quotes.length.toLocaleString('th-TH')+' ภาพ ส่วนภาพอื่นยังเปิดดูได้ตามปกติ';
+ if(coverage)coverage.textContent='ค้นหาข้อความได้ '+available.toLocaleString('th-TH')+' จาก '+quotes.length.toLocaleString('th-TH')+' ภาพ โดยเปิดดูภาพทั้งหมดได้ตามปกติ';
  const clear=$('clearQuoteSearch');
  if(clear)clear.addEventListener('click',()=>{input.value='';render();input.focus()});
  function render(){
@@ -182,13 +182,13 @@ function homeCategoryCards(names){
  return names.map((name,i)=>homeCategoryCard(name,i)).join('');
 }
 function relatedNote(){
- return '<strong>เกี่ยวกับรายการ “หลวงพี่ช่วยด้วย”</strong><p>รายการต้นฉบับ Workpoint ดำเนินรายการโดยพระมหาสมปอง ตาลปุตฺโต คลิปหมวดนี้เป็นงานซับไตเติลของมูลนิธิ สกพ. ไม่ใช่คลิปที่พระมหานภันต์เป็นผู้บรรยาย</p><a href="https://www.youtube.com/playlist?list=PLFU5BMWz_rx10E1AiFivlOPsVO8qQFvmx" target="_blank" rel="noopener noreferrer">ดูเพลย์ลิสต์ต้นทาง ↗</a>';
+ return '<strong>เกี่ยวกับรายการ “หลวงพี่ช่วยด้วย”</strong><p>รายการ “หลวงพี่ช่วยด้วย” เผยแพร่โดย Workpoint และดำเนินรายการโดยพระมหาสมปอง ตาลปุตฺโต วิดีโอในหมวดนี้มีคำบรรยายที่จัดทำโดยมูลนิธิ สกพ.</p><a href="https://www.youtube.com/playlist?list=PLFU5BMWz_rx10E1AiFivlOPsVO8qQFvmx" target="_blank" rel="noopener noreferrer">ดูเพลย์ลิสต์ต้นทาง ↗</a>';
 }
 function renderDiscoveryTopics(){
  const el=$('homeDiscoveryTopics');if(!el)return;
  const visible=DISCOVERY_TOPICS.map(t=>({...t,total:t.keys.size}));
  if(!visible.length){
-  el.innerHTML='<p class="discovery-empty">ยังไม่สามารถแสดงหัวข้อที่คัดเลือกได้ <a href="./library.html">เปิดคลังวิดีโอทั้งหมด ↗</a></p>';
+  el.innerHTML='<p class="discovery-empty">ไม่สามารถแสดงหัวข้อได้ในขณะนี้ <a href="./library.html">เปิดคลังวิดีโอทั้งหมด ↗</a></p>';
   return;
  }
  el.innerHTML=visible.map(t=>
@@ -201,7 +201,7 @@ function renderHomeLatest(){
  if(!target)return;
  const recent=items.filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x.published_at||''))
    .sort(byDateDesc).slice(0,3);
- target.innerHTML=recent.length?recent.map(card).join(''):'<p class="empty">ยังไม่มีข้อมูลวันที่เผยแพร่จากต้นฉบับ</p>';
+ target.innerHTML=recent.length?recent.map(card).join(''):'<p class="empty">ยังไม่มีข้อมูลวันที่เผยแพร่</p>';
  target.querySelectorAll('.video-image img').forEach(attachImageFallback);
 }
 function renderHome(){
@@ -465,7 +465,7 @@ function refreshLibrary(){
   const name=$('topicFilterName');
   if(name)name.textContent=discoveryTopic(filterState.topic)?.label||'';
   const hint=$('topicFilterExplanation');
-  if(hint)hint.textContent='หัวข้อนี้คัดจากชื่อคลิปต้นฉบับ ไม่ได้ตรวจสอบคำพูดภายในคลิป';
+  if(hint)hint.textContent='วิดีโอในหัวข้อที่เลือก';
  }
  $('resetFilters').hidden=!(filterState.q||filterState.category!=='all'||filterState.year!=='all'||filterState.platform!=='all'||filterState.sort!=='new'||filterState.fav||!!filterState.topic);
  $('favoriteFilter').setAttribute('aria-pressed',String(filterState.fav));
@@ -608,7 +608,7 @@ function renderExternalMedia(entries){
   const q=norm(search.value), filter=status.value;
   const visible=records.filter(x=>(filter==='all'||x.status===filter) && (!q||norm([x.title,x.source,x.note].join(' ')).includes(q)));
   grid.innerHTML=visible.map(x=>{
-   const isVideo=x.status==='verified',label=isVideo?'ตรวจสอบแหล่งเผยแพร่แล้ว':x.status==='needs_review'?'คลิปจากทะเบียนเก่า · รอตรวจ':'เบาะแส · ยังไม่ยืนยันคลิป';
+   const isVideo=x.status==='verified',label=isVideo?'ยืนยันแหล่งเผยแพร่':x.status==='needs_review'?'อยู่ระหว่างตรวจสอบ':'ข้อมูลอ้างอิงเพิ่มเติม';
    const linkLabel=isVideo?'เปิดสื่อต้นฉบับ ↗':'ดูแหล่งอ้างอิง ↗';
    return '<article class="press-card"><div class="press-meta"><span class="press-kind">'+esc(label)+'</span></div>'
     +'<h2>'+esc(x.title)+'</h2><p class="press-summary">'+esc(x.note)+'</p>'

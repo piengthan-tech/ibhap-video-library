@@ -32,7 +32,7 @@
  function sourceCard(s){
   if(!https(s.url))return '';
   const video=s.kind==='video',id=video?youtubeId(s.url):'';
-  const label=video?(s.video_type==='channel_upload'?'วิดีโอจากช่องผู้เผยแพร่':'คลิปข่าว / รายการ'):s.kind==='report'?'รายงานวิเคราะห์':'ข่าว / บทความ';
+  const label=video?(s.video_type==='channel_upload'?'วิดีโอจากช่องผู้เผยแพร่':'คลิปข่าวและรายการ'):s.kind==='report'?'รายงานวิเคราะห์':'ข่าว / บทความ';
   const imageSrc=id?'https://i.ytimg.com/vi/'+id+'/mqdefault.jpg':https(s.thumbnail)?s.thumbnail:'';
   const image=imageSrc?
    '<span class="ps-source-thumb '+(id?'ps-source-thumb-video':'ps-source-thumb-news')+'"><img src="'+esc(imageSrc)+'" loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer" width="120" height="72">'
@@ -65,7 +65,7 @@
     +'<span class="ps-event-illustration-caption"><span>'+esc(caption)+'</span><span aria-hidden="true">↗</span></span></a>';
  }
  function personCard(p,i){
-  const role=p.short==='นภันต์'?'พระอาจารย์ที่มีบทบาทในเหตุการณ์และยังครองสมณเพศเมื่อกลุ่ม 4 พส. ถูกกล่าวถึง':'พระนักเทศน์ในกระแส 2564–2565';
+  const role=p.short==='นภันต์'?'พระนักเทศน์และผู้ร่วมเหตุการณ์สำคัญ':'พระนักเทศน์ที่เกี่ยวข้องกับปรากฏการณ์ พส.';
   return '<article class="ps-person"><span class="ps-person-index">'+String(i+1).padStart(2,'0')+'</span>'
    +'<strong class="ps-person-name">'+esc(p.name)+'</strong><span class="ps-person-role">'+esc(role)+'</span></article>';
  }
@@ -74,7 +74,7 @@
   return '<a class="ps-focus-card" href="#'+esc(e.id)+'">'
    +(cover?'<span class="ps-focus-photo"><img src="'+esc(illustrationSource(e,'news').thumbnail)+'" width="480" height="270" loading="eager" decoding="async" alt="" referrerpolicy="no-referrer"><span class="ps-focus-photo-fallback">ดูเหตุการณ์ในเส้นเวลา</span></span>':'')
    +'<span class="ps-focus-body"><span class="ps-focus-date">'+esc(thaiDate(e.date,e.datePrecision))+'</span>'
-   +'<strong>'+esc(e.title)+'</strong><span class="ps-focus-link">อ่านเหตุการณ์และแหล่งข่าว <span aria-hidden="true">↗</span></span></span></a>';
+   +'<strong>'+esc(e.title)+'</strong><span class="ps-focus-link">อ่านรายละเอียด <span aria-hidden="true">↗</span></span></span></a>';
  }
  function eventCard(e){
   const numVideo=e.sources.filter(x=>x.kind==='video').length,numNews=e.sources.length-numVideo;
@@ -90,10 +90,10 @@
    +'<h3>'+esc(e.title)+'</h3><p class="ps-event-desc">'+esc(e.summary)+'</p>'
    +'<div class="ps-event-people"><span>บุคคลที่เกี่ยวข้อง</span>'+e.people.map(p=>'<span class="ps-person-tag">'+esc(p)+'</span>').join('')+'</div></div>'
    +eventPhoto(e,state.filter)+'</div>'
-   +'<div class="ps-event-source-title"><strong>ข่าว คลิป และข้อมูลอ้างอิง</strong><span>'+(numNews?numNews+' ข่าว/บทความ':'')
+   +'<div class="ps-event-source-title"><strong>ข่าวและสื่อที่เกี่ยวข้อง</strong><span>'+(numNews?numNews+' ข่าว/บทความ':'')
    +(numNews&&numVideo?' · ':'')+(numVideo?numVideo+' คลิป':'')+'</span></div>'
    +'<div class="ps-source-list">'+first.map(sourceCard).join('')+'</div>'
-   +(more.length?'<details class="ps-more-sources"><summary>ดูแหล่งอ้างอิงเพิ่มเติมอีก '+more.length+' รายการ <span aria-hidden="true">⌄</span></summary><div class="ps-source-list">'+more.map(sourceCard).join('')+'</div></details>':'')
+   +(more.length?'<details class="ps-more-sources"><summary>ดูเพิ่มเติมอีก '+more.length+' รายการ <span aria-hidden="true">⌄</span></summary><div class="ps-source-list">'+more.map(sourceCard).join('')+'</div></details>':'')
    +'</div></article>';
  }
  function renderVideoHighlights(){
@@ -115,7 +115,7 @@
   }
   result.sort((a,b)=>a.event.date.localeCompare(b.event.date));
   if(!result.length){
-    target.innerHTML='<p class="ps-loading">ไม่พบคลิปที่มีลิงก์วิดีโอต้นฉบับให้แสดงในขณะนี้ <a href="#psTimelineSection">ดูข้อมูลเหตุการณ์ทั้งหมด ↗</a></p>';
+    target.innerHTML='<p class="ps-loading">ยังไม่มีวิดีโอสำหรับแสดงในส่วนนี้ <a href="#psTimelineSection">ดูข้อมูลเหตุการณ์ทั้งหมด ↗</a></p>';
     return;
   }
   target.innerHTML=result.map(({event,source,id})=>{
@@ -125,13 +125,13 @@
     +'<span class="ps-video-teaser-body"><span class="ps-video-teaser-meta"><span class="ps-teaser-dot" aria-hidden="true"></span>'
     +esc(source.source)+' · '+esc(thaiDate(event.date,event.datePrecision))+'</span>'
     +'<strong>'+esc(source.title)+'</strong>'
-    +'<span class="ps-video-teaser-cta">'+(source.video_type==='channel_upload'?'รับชมวิดีโอจากช่องผู้เผยแพร่':'เปิดคลิปข่าวจากแหล่งต้นทาง')+' <span aria-hidden="true">↗</span></span></span></a>';
+    +'<span class="ps-video-teaser-cta">'+(source.video_type==='channel_upload'?'รับชมวิดีโอ':'รับชมคลิปจากผู้เผยแพร่')+' <span aria-hidden="true">↗</span></span></span></a>';
   }).join('');
   target.querySelectorAll('.ps-video-teaser-photo img').forEach(img=>
     img.addEventListener('error',()=>img.parentElement.classList.add('ps-teaser-no-thumb'),{once:true}));
  }
  function renderPending(){
-  $('psPending').innerHTML=state.pending.map(p=>'<article class="ps-pending-card"><span class="ps-pending-state">◌ ยังไม่พบต้นฉบับที่ยืนยันได้</span>'
+  $('psPending').innerHTML=state.pending.map(p=>'<article class="ps-pending-card"><span class="ps-pending-state">อยู่ระหว่างรวบรวมข้อมูล</span>'
    +'<h3>'+esc(p.title)+'</h3><span class="ps-pending-date">'+esc(p.date)+'</span>'
    +'<p>'+esc(p.note)+'</p>'+(https(p.evidence)?'<a target="_blank" rel="noopener noreferrer" href="'+esc(p.evidence)+'">อ่านข่าวอ้างอิง ↗</a>':'')+'</article>').join('');
  }
@@ -210,7 +210,7 @@
    if(/^#ps-\d+$/.test(location.hash))document.getElementById(location.hash.slice(1))?.scrollIntoView({block:'start'});
   }catch(error){
    console.error('Cannot load editorial archive',error);
-   $('psTimeline').innerHTML='<p class="ps-load-error">ไม่สามารถโหลดเส้นเวลาได้ กรุณาลองรีเฟรช หรือเปิด <a href="./press.html">ข่าวและผลงาน ↗</a></p>';
+   $('psTimeline').innerHTML='<p class="ps-load-error">ไม่สามารถแสดงข้อมูลได้ในขณะนี้ กรุณาโหลดหน้าใหม่หรือดู <a href="./press.html">ข่าวและผลงาน ↗</a></p>';
    $('psPeople').innerHTML='';$('psSpotlightGrid').innerHTML='';$('psPending').innerHTML='';
    $('psResultCount').textContent='ไม่สามารถโหลดข้อมูลได้';
   }
