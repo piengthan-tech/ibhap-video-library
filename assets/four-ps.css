@@ -316,3 +316,6 @@
 
 .ps-spotlight{scroll-margin-top:96px}
 .ps-video-feature{scroll-margin-top:96px}
+
+/* Clearly identify reused editorial photographs when article-specific images are unavailable. */
+.ps-source-image-attribution{font-size:10px;font-weight:650;color:#866d4e;line-height:1.55;margin-top:3px}

@@ -363,7 +363,9 @@
           "source": "Prachachat",
           "title": "สรุปกระแสและการร่วมไลฟ์ของพระมหานภันต์",
           "url": "https://www.prachachat.net/hilight-prachachat/news-779385",
-          "note": "ข่าว 11 ต.ค. 2564"
+          "note": "ข่าว 11 ต.ค. 2564",
+          "thumbnail": "https://www.prachachat.net/wp-content/uploads/2021/10/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%AA%E0%B8%A1%E0%B8%9B%E0%B8%AD%E0%B8%87-%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%84%E0%B8%AB%E0%B9%89.jpg",
+          "thumbnail_credit": "Prachachat"
         },
         {
           "id": "ps-10-4",
@@ -371,7 +373,9 @@
           "source": "Thaiger",
           "title": "สรุปดราม่า #Saveพระมหาสมปอง",
           "url": "https://thethaiger.com/th/news/485986/",
-          "note": "ข่าว 11 ต.ค. 2564"
+          "note": "ข่าว 11 ต.ค. 2564",
+          "thumbnail": "https://thethaiger.com/th/wp-content/uploads/2021/10/%E0%B8%AA%E0%B8%A3%E0%B8%B8%E0%B8%9B%E0%B8%94%E0%B8%A3%E0%B8%B2%E0%B8%A1%E0%B9%88%E0%B8%B2-%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%AA%E0%B8%A1%E0%B8%9B%E0%B8%AD%E0%B8%87.jpg",
+          "thumbnail_credit": "Thaiger"
         },
         {
           "id": "ps-10-5",
@@ -468,8 +472,10 @@
           "kind": "news",
           "source": "Manager Online",
           "title": "คลิปบรรยากาศหลังลาสิกขาจากเพจพระมหาสมปอง",
-          "url": "https://ai-content.mgronline.com/onlinesection/detail/9640000119906",
-          "note": "ข่าวและสื่อประกอบจากเว็บไซต์ผู้เผยแพร่"
+          "url": "https://mgronline.com/onlinesection/detail/9640000119906",
+          "note": "ภาพข่าวและเรื่องราวบรรยากาศภายหลังการลาสิกขา",
+          "thumbnail": "https://mpics-cdn.mgronline.com/pics/Images/564000012244101.JPEG",
+          "thumbnail_credit": "Manager Online"
         },
         {
           "id": "ps-12-4",

@@ -548,7 +548,7 @@ function renderPressArchive(entries){
  const list=$('pressGrid'), search=$('pressSearch'), category=$('pressCategory');
  const count=$('pressCount'), empty=$('pressEmpty');
  const allowed=new Set(["https://blog.cofact.org","https://fb.mcu.ac.th","https://fmtint.com","https://hands-on.co.th","https://mgronline.com","https://monitor.co.id","https://theactive.thaipbs.or.th","https://thebuddh.com","https://thethaiger.com","https://watchakdaeng.com","https://www.dailynews.co.th","https://www.gchumanrights.org","https://www.gotoknow.org","https://www.iccgc.kr","https://www.nhrc.or.th","https://www.opsmoac.go.th","https://www.peacemakersnetwork.org","https://www.soiciety.com","https://www.thaipbs.or.th","https://www.tnews.co.th"]);
- const imageHosts=new Set(["blog.cofact.org","content-images.thaipbs.or.th","fb.mcu.ac.th","files.wp.thaipbs.or.th","fmtint.com","image.tnews.co.th","lh3.googleusercontent.com","media.beehiiv.com","monitor.co.id","mpics-cdn.mgronline.com","static.nhrc.or.th","thebuddh.com","thethaiger.com","watchakdaeng.com","www.gchumanrights.org","www.hands-on.co.th","www.opsmoac.go.th"]);
+ const imageHosts=new Set(["blog.cofact.org","content-images.thaipbs.or.th","fb.mcu.ac.th","files.wp.thaipbs.or.th","fmtint.com","image.tnews.co.th","lh3.googleusercontent.com","media.beehiiv.com","monitor.co.id","mpics-cdn.mgronline.com","static.nhrc.or.th","thebuddh.com","thethaiger.com","watchakdaeng.com","www.gchumanrights.org","www.hands-on.co.th","www.opsmoac.go.th","iccgc.kr","www.peacemakersnetwork.org"]);
 
  function thumbnailUrl(raw){
   if(typeof raw!=='string'||!raw)return '';
@@ -571,10 +571,13 @@ function renderPressArchive(entries){
     && (!query||norm([x.title,x.summary,x.source,x.category,x.relation].join(' ')).includes(query)));
   list.innerHTML=selectedRows.map(x=>{
    const image=thumbnailUrl(x.thumbnail);
+   const imageKind=x.thumbnail_source==='publisher_logo'?'ตราสัญลักษณ์ผู้เผยแพร่':
+     x.thumbnail_source==='publisher_profile'?'ภาพบัญชีผู้เผยแพร่':'ภาพประกอบบทความ';
    const thumb=image
      ? '<a class="press-thumbnail'+(x.thumbnail_fit==='contain'?' press-thumbnail-contain':'')+'" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" aria-label="อ่านบทความต้นฉบับ: '+esc(x.title)+'">'
-        +'<img src="'+esc(image)+'" alt="ภาพประกอบต้นฉบับ: '+esc(x.title)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a>'
-     : '';
+        +'<img src="'+esc(image)+'" alt="'+esc(imageKind)+': '+esc(x.source)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">'
+        +'<span class="press-thumbnail-fallback" aria-hidden="true">▤</span></a>'
+     : '<a class="press-thumbnail press-thumbnail-placeholder" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" aria-label="อ่านบทความต้นฉบับ: '+esc(x.title)+'"><span class="press-thumbnail-fallback" aria-hidden="true">▤</span></a>';
    return '<article class="press-card">'
    +thumb
    +'<div class="press-meta"><span class="press-kind">'+esc(x.category)+'</span><span>'+esc(x.published_at?formatDate(x.published_at):'ไม่ระบุวันที่เผยแพร่')+'</span></div>'
@@ -585,9 +588,9 @@ function renderPressArchive(entries){
    +'</article>'
   }).join('');
   list.querySelectorAll('.press-thumbnail img').forEach(img=>{
-   const hide=()=>img.closest('.press-thumbnail')?.remove();
-   img.addEventListener('error',hide,{once:true});
-   if(img.complete&&img.naturalWidth===0)hide();
+   const fail=()=>img.closest('.press-thumbnail')?.classList.add('press-thumbnail-placeholder');
+   img.addEventListener('error',fail,{once:true});
+   img.addEventListener('load',()=>img.closest('.press-thumbnail')?.classList.remove('press-thumbnail-placeholder'),{once:true});
   });
   count.textContent='พบ '+selectedRows.length.toLocaleString('th-TH')+' จาก '+rows.length.toLocaleString('th-TH')+' รายการ';
   empty.hidden=selectedRows.length!==0;
@@ -598,7 +601,7 @@ function renderPressArchive(entries){
 }
 function renderExternalMedia(entries){
  const grid=$('externalMediaGrid'), search=$('externalMediaSearch'), status=$('externalMediaStatus'), count=$('externalMediaCount'), empty=$('externalMediaEmpty');
- const allowed=new Set(['www.trueplookpanya.com','www.facebook.com','www.thaipbs.or.th','lnkd.in','www.traffic.org','watchakdaeng.com','www.opsmoac.go.th','www.kaiciid.org','social-mgr.mgronline.com','www.youtube.com']);
+ const allowed=new Set(['www.trueplookpanya.com','www.facebook.com','www.thaipbs.or.th','lnkd.in','www.traffic.org','watchakdaeng.com','www.opsmoac.go.th','www.kaiciid.org','mgronline.com','www.youtube.com']);
  const records=(Array.isArray(entries)?entries:[]).filter(x=>{
   try{const u=new URL(x.url);
    return u.protocol==='https:' && allowed.has(u.hostname) && ['verified','needs_review','lead'].includes(x.status) && !!x.title && !!x.source && !!x.note;

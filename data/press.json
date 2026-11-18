@@ -26,7 +26,11 @@
       "published_at": "2011-12-31",
       "summary": "บันทึกประชาสัมพันธ์โครงการของกลุ่มเพื่อชีวิตดีงามใน พ.ศ. 2554–2555 ซึ่งระบุชื่อพระมหานภันต์เป็นหนึ่งในพระวิทยากรหลักของโครงการ",
       "relation": "พระวิทยากรหลัก (ร่วมกับท่านอื่น)",
-      "url": "https://www.gotoknow.org/posts/529495"
+      "url": "https://www.gotoknow.org/posts/529495",
+      "thumbnail": "https://lh3.googleusercontent.com/a/ACg8ocIXJQgsCb6E2qGEhVdslHGBvFWdEgkCwDNg_ZywZEQMJsh_hMLvpw=s256-p",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "publisher_profile",
+      "thumbnail_checked_at": "2026-11-18"
     },
     {
       "id": "gotoknow-personal-profile",
@@ -162,7 +166,11 @@
       "summary": "กำหนดการประชุมนานาชาติระบุพระมหานภันต์เป็นผู้ดำเนินรายการเสวนาด้านการศึกษาทางจิตวิญญาณและสันติภาพ",
       "relation": "ผู้ดำเนินรายการ",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N007"
+      "source_record": "N007",
+      "thumbnail": "https://iccgc.kr/theme/iccgc/img/iccgc.jpg",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "publisher_logo",
+      "thumbnail_checked_at": "2026-11-18"
     },
     {
       "id": "N008",
@@ -398,7 +406,11 @@
       "summary": "รายงานมีหน้าบทสัมภาษณ์ Ven. Napan เกี่ยวกับบทบาทผู้นำศาสนา การส่งเสริมสิทธิสตรี และการมีส่วนร่วมด้านสันติภาพ",
       "relation": "ผู้ให้สัมภาษณ์ในรายงาน PDF หน้า 3",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N024"
+      "source_record": "N024",
+      "thumbnail": "https://www.peacemakersnetwork.org/wp-content/uploads/2023/05/network-beige-text-e1683917811508.png",
+      "thumbnail_fit": "contain",
+      "thumbnail_source": "publisher_logo",
+      "thumbnail_checked_at": "2026-11-18"
     }
   ],
   "updated_at": "2026-11-16",
@@ -420,16 +432,14 @@
       }
     ]
   },
-  "image_policy": "ใช้ภาพต้นฉบับจากแหล่งข่าว หรือภาพที่ผู้ดูแลเว็บไซต์ส่งให้เฉพาะบทความที่ตรงกัน ไม่สร้างภาพใหม่ หากยังตรวจภาพไม่ได้ให้แสดงการ์ดไม่มีรูป",
+  "image_policy": "ใช้ภาพประกอบจากหน้าแหล่งเผยแพร่ที่เกี่ยวข้องโดยระบุที่มา หากไม่มีภาพบทความที่ใช้งานได้อาจใช้ภาพบัญชีผู้เผยแพร่หรือตราสัญลักษณ์องค์กรแทน โดยแยกประเภทภาพอย่างชัดเจน ไม่สร้างภาพเหตุการณ์ขึ้นใหม่",
   "image_audit": {
-    "checked": "2026-11-16",
+    "checked": "2026-11-18",
     "total_items": 26,
-    "with_verified_images": 23,
-    "excluded_ids": [
-      "gotoknow-project-84-2011",
-      "N007",
-      "N024"
-    ],
-    "presentation": "21 external original-source image URLs and 2 locally hosted copies of user-uploaded images"
+    "with_preview_images": 26,
+    "article_or_user_supplied": 23,
+    "publisher_logo": 2,
+    "publisher_profile": 1,
+    "presentation": "Thumbnail ภาพข่าวจากต้นทางหรือภาพที่ผู้ดูแลจัดส่ง; ใช้ภาพบัญชีหรือโลโก้ผู้เผยแพร่ใน 3 รายการที่ไม่พบภาพบทความที่เปิดได้"
   }
 }
