@@ -73,7 +73,7 @@
  function personCard(p,i){
   const role=p.short==='นภันต์'?'พระนักเทศน์และผู้ร่วมเหตุการณ์สำคัญ':'พระนักเทศน์ที่เกี่ยวข้องกับปรากฏการณ์ พส.';
   const photo=p.image
-   ? '<div class="ps-person-photo"><img src="'+esc(p.image)+'" alt="ภาพประกอบ '+esc(p.name)+'" width="360" height="450" loading="lazy" decoding="async"></div>'
+   ? '<div class="ps-person-photo '+(p.short==='นภันต์'?'ps-person-photo-napan':'')+'"><img src="'+esc(p.image)+'" alt="ภาพประกอบ '+esc(p.name)+'" width="360" height="450" loading="lazy" decoding="async"></div>'
    : '';
   return '<article class="ps-person">'+photo+'<div class="ps-person-body"><span class="ps-person-index">'+String(i+1).padStart(2,'0')+'</span>'
    +'<strong class="ps-person-name">'+esc(p.name)+'</strong><span class="ps-person-role">'+esc(role)+'</span></div></article>';

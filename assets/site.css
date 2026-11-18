@@ -590,10 +590,10 @@ body { font-size:calc(15px + var(--reading-bump,0px)); line-height: 1.78; }
 /* Home profile gateway: compact, calm and consistent with the primary archive. */
 .profile-home-card{padding:34px 0 42px;background:#fff}
 .profile-home-card-inner{display:grid;grid-template-columns:116px minmax(0,1fr) auto;gap:22px;align-items:center;border:1px solid #d6e7f2;border-radius:17px;padding:18px 22px;background:linear-gradient(120deg,#fff,#f5fbff);box-shadow:0 8px 28px rgba(18,72,116,.05)}
-.profile-home-card-image{width:116px;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#eef5f9;border:1px solid #d8e8f2;display:flex;align-items:center;justify-content:center}
-.profile-home-card-image img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#eef5f9}
+.profile-home-card-image{width:116px;aspect-ratio:1/1;border-radius:16px;overflow:hidden;background:#eef5f9;border:1px solid #d8e8f2;display:flex;align-items:center;justify-content:center}
+.profile-home-card-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#eef5f9}
 .profile-home-card-copy small{display:block;color:#2b86b8;font:750 calc(9px + var(--reading-bump,0px))/1.5 'Inter','Prompt',sans-serif;letter-spacing:1.5px;margin-bottom:5px}
 .profile-home-card-copy strong{display:block;color:#123f6e;font-size:calc(19px + var(--reading-bump,0px));line-height:1.5}
 .profile-home-card-copy p{margin:5px 0 0;color:#627f95;font-size:calc(11px + var(--reading-bump,0px));line-height:1.75}
 .profile-home-card-inner>a{color:#0a70b7;border:1px solid #bad9ec;background:#fff;border-radius:9px;padding:9px 12px;font-size:calc(11px + var(--reading-bump,0px));font-weight:650;white-space:nowrap}
-@media(max-width:650px){.profile-home-card{padding:24px 0 32px}.profile-home-card-inner{grid-template-columns:72px minmax(0,1fr);gap:14px;padding:14px}.profile-home-card-image{width:72px;aspect-ratio:4/5}.profile-home-card-inner>a{grid-column:1/-1;justify-self:start}.profile-home-card-copy strong{font-size:calc(16px + var(--reading-bump,0px))}}
+@media(max-width:650px){.profile-home-card{padding:24px 0 32px}.profile-home-card-inner{grid-template-columns:72px minmax(0,1fr);gap:14px;padding:14px}.profile-home-card-image{width:72px;aspect-ratio:1/1}.profile-home-card-inner>a{grid-column:1/-1;justify-self:start}.profile-home-card-copy strong{font-size:calc(16px + var(--reading-bump,0px))}}
