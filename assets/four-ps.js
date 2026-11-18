@@ -140,7 +140,7 @@
     img.addEventListener('error',()=>img.parentElement.classList.add('ps-teaser-no-thumb'),{once:true}));
  }
  function renderPending(){
-  $('psPending').innerHTML=state.pending.map(p=>'<article class="ps-pending-card"><span class="ps-pending-state">อยู่ระหว่างรวบรวมข้อมูล</span>'
+  $('psPending').innerHTML=state.pending.map(p=>'<article class="ps-pending-card"><span class="ps-pending-state">ข้อมูลประกอบ</span>'
    +'<h3>'+esc(p.title)+'</h3><span class="ps-pending-date">'+esc(p.date)+'</span>'
    +'<p>'+esc(p.note)+'</p>'+(https(p.evidence)?'<a target="_blank" rel="noopener noreferrer" href="'+esc(p.evidence)+'">อ่านข่าวอ้างอิง ↗</a>':'')+'</article>').join('');
  }

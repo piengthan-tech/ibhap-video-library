@@ -419,16 +419,16 @@ function renderVideoDetail(){
  const relatedTopicIds=topicIdsFor(x);
  const topicLinks=relatedTopicIds.map(id=>discoveryTopic(id)).filter(Boolean).map(t=>
    '<a href="'+esc(uri('library.html',{topic:t.id}))+'">'+esc(t.label)+' ↗</a>').join('');
- const topicBlock=topicLinks?'<div class="detail-topic-block"><span>หัวข้อที่เกี่ยวข้อง</span><div class="detail-topic-links">'+topicLinks+'</div><small>คัดจากชื่อคลิปต้นฉบับตามดัชนีหัวข้อของคลัง ไม่ใช่การอนุมานจากคำพูดในวิดีโอ</small></div>':'';
+ const topicBlock=topicLinks?'<div class="detail-topic-block"><span>หัวข้อที่เกี่ยวข้อง</span><div class="detail-topic-links">'+topicLinks+'</div><small>จัดหมวดจากชื่อคลิปและข้อมูลกำกับของรายการ</small></div>':'';
  const transcript=transcriptFor(x);
  const transcriptBlock=transcript
    ? '<section class="transcript-panel transcript-available" aria-labelledby="transcriptTitle">'
-     +'<div class="transcript-heading"><div><p class="kicker">VERIFIED TRANSCRIPT</p><h3 id="transcriptTitle">คำถอดเสียงที่ตรวจสอบแล้ว</h3>'
-     +'<p>แหล่งตรวจสอบ: '+esc(transcript.source_label||'ต้นฉบับที่ตรวจสอบแล้ว')+'</p></div>'
+     +'<div class="transcript-heading"><div><p class="kicker">TRANSCRIPT</p><h3 id="transcriptTitle">คำถอดเสียงจากต้นฉบับ</h3>'
+     +'<p>แหล่งที่มา: '+esc(transcript.source_label||'ต้นฉบับที่ตรวจทานแล้ว')+'</p></div>'
      +(transcript.source_url?'<a href="'+esc(transcript.source_url)+'" target="_blank" rel="noopener noreferrer">เปิดแหล่งต้นฉบับ ↗</a>':'')+'</div>'
      +'<details class="transcript-details"><summary>เปิดอ่านคำถอดเสียงฉบับเต็ม <span aria-hidden="true">⌄</span></summary>'
      +'<div class="transcript-text">'+esc(transcript.text)+'</div></details></section>'
-   : '<aside class="transcript-panel transcript-pending"><div><p class="kicker">TRANSCRIPT STATUS</p><h3>ยังไม่มีคำถอดเสียงที่ตรวจสอบแล้ว</h3><p>ระบบจะไม่นำข้อความที่สร้างขึ้นเองมาใช้แทนคำพูดต้นฉบับ การค้นหาหน้านี้จึงอ้างอิงชื่อคลิป คำอธิบาย และหัวข้อที่ตรวจสอบได้เท่านั้น</p></div></aside>';
+   : '';
  $('videoDetail').innerHTML=`<div class="detail-poster ${x.platform==='TikTok'?'short-detail-poster':''}">${src?`<img src="${esc(src)}" alt="ภาพปกวิดีโอ ${esc(x.title)}" fetchpriority="high" decoding="async">`:''}</div>
  <div class="detail-content"><div class="detail-badges"><a href="${esc(x.platform==='TikTok'?'./shorts.html':uri('category.html',{name:x.category}))}">${esc(x.category)}</a><span>${esc(x.platform)}</span></div>
  <h2>${esc(x.title)}</h2>${sourceCredit}<dl><div><dt>วันที่เผยแพร่</dt><dd>${esc(formatDate(x.published_at))}</dd></div>
@@ -468,7 +468,7 @@ function renderVideoDetail(){
     '<section class="detail-related detail-topic-related" aria-labelledby="detailTopicRelatedTitle">'
     +'<div class="heading-row"><div><p class="kicker">RELATED BY CURATED TOPIC</p>'
     +'<h2 id="detailTopicRelatedTitle">เนื้อหาใกล้เคียงตามหัวข้อ</h2>'
-    +'<p class="home-section-hint">เชื่อมโยงจากดัชนีหัวข้อที่ตรวจจากชื่อคลิปต้นฉบับ: '+esc(labels)+' ไม่ใช่การสรุปคำสอนจาก Transcript</p>'
+    +'<p class="home-section-hint">หัวข้อที่เกี่ยวข้อง: '+esc(labels)+'</p>'
     +'</div></div><div class="video-grid">'+topicRelated.map(card).join('')+'</div></section>');
    $('videoDetail').querySelectorAll('.detail-topic-related .video-image img').forEach(attachImageFallback);
  }
@@ -723,8 +723,8 @@ function renderExternalMedia(entries){
   const q=norm(search.value), filter=status.value;
   const visible=records.filter(x=>(filter==='all'||x.status===filter) && (!q||norm([x.title,x.source,x.note].join(' ')).includes(q)));
   grid.innerHTML=visible.map(x=>{
-   const isVideo=x.status==='verified',label=isVideo?'ยืนยันแหล่งเผยแพร่':x.status==='needs_review'?'อยู่ระหว่างตรวจสอบ':'ข้อมูลอ้างอิงเพิ่มเติม';
-   const linkLabel=isVideo?'เปิดสื่อต้นฉบับ ↗':'ดูแหล่งอ้างอิง ↗';
+   const isVideo=x.status==='verified',label=isVideo?'แหล่งต้นทาง':x.status==='needs_review'?'รายการเพิ่มเติม':'ข้อมูลประกอบ';
+   const linkLabel=isVideo?'เปิดสื่อต้นฉบับ ↗':'เปิดแหล่งข้อมูล ↗';
    return '<article class="press-card"><div class="press-meta"><span class="press-kind">'+esc(label)+'</span></div>'
     +'<h2>'+esc(x.title)+'</h2><p class="press-summary">'+esc(x.note)+'</p>'
     +'<div class="press-source"><span>แหล่งข้อมูล</span><strong>'+esc(x.source)+'</strong></div>'
