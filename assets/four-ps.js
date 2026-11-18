@@ -193,7 +193,7 @@
    ticking=false;
    const headerH=document.querySelector('.site-header')?.getBoundingClientRect().height||0;
    const navH=nav.getBoundingClientRect().height||0;
-   const marker=window.scrollY+headerH+navH+24;
+   const marker=window.scrollY+headerH+navH+80;
    let active=sections[0];
    for(const section of sections)if(section.offsetTop<=marker)active=section;
    links.forEach(link=>{
