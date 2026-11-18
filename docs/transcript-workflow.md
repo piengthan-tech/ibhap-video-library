@@ -94,6 +94,36 @@ Dry run จะแสดง:
 - URL ต้นฉบับ
 - SHA-256 ของไฟล์ต้นทาง
 
+## Review queue และ Review Packet
+
+สร้างคิวตรวจตามหมวด:
+
+```bash
+python3 scripts/build_transcript_review_queue.py \
+  --category "อาสาหาธรรม" \
+  --out .transcript-drafts/aasaha-review-queue.json
+```
+
+คิวจะเรียงตามความพร้อมของแหล่งซับ แล้วตามความยาวคลิปจากสั้นไปยาว เพื่อให้เริ่มตรวจชุดที่ใช้เวลาน้อยก่อน
+
+สร้าง Private Review Packet จาก SRT Draft:
+
+```bash
+python3 scripts/build_transcript_review_packet.py \
+  --key YouTube:bjy001UX7Mc \
+  --file .transcript-drafts/captions/bjy001UX7Mc.th.srt
+```
+
+Review Packet:
+- แสดง subtitle เป็น cue พร้อม timestamp
+- timestamp คลิกกลับไปวิดีโอต้นฉบับได้
+- ค้นคำใน Draft ได้
+- ติ๊ก cue ที่ตรวจแล้วได้
+- สถานะการติ๊กเก็บเฉพาะใน localStorage ของ browser
+- ไฟล์ HTML อยู่ใต้ `.transcript-drafts/` และไม่เผยแพร่
+
+การติ๊ก cue ใน Review Packet ไม่ได้เปลี่ยนสถานะ Transcript เป็น verified โดยอัตโนมัติ ผู้ดูแลยังต้องตรวจต้นฉบับครบและนำเข้าด้วย `--verified --review-note`
+
 ## Acceptance checks
 
 หลังเพิ่ม Transcript จริงทุกครั้ง ให้ตรวจอย่างน้อย:
