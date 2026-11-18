@@ -66,9 +66,8 @@
     banner.hidden = true;
     banner.innerHTML = [
       '<div class="analytics-consent-copy"><strong>การเก็บสถิติผู้เข้าชม</strong>',
-      '<p>เว็บไซต์ใช้ Google Analytics เพื่อดูจำนวนผู้เข้าชม หน้าเว็บยอดนิยม และการคลิกไปยังแหล่งข้อมูลต้นฉบับ',
-      ' โดยจะเริ่มเก็บข้อมูลเมื่อคุณยินยอมเท่านั้น ไม่ใช้เพื่อการโฆษณา ',
-      '<a href="./about.html#analytics-privacy">รายละเอียดการใช้ข้อมูล</a></p></div>',
+      '<p>เราใช้ Google Analytics เพื่อวัดจำนวนผู้เข้าชมและพัฒนาเว็บไซต์ โดยเริ่มเก็บข้อมูลเมื่อคุณยินยอมเท่านั้น ไม่ใช้เพื่อโฆษณา ',
+      '<a href="./about.html#analytics-privacy">รายละเอียด</a></p></div>',
       '<div class="analytics-consent-actions">',
       '<button type="button" id="analyticsReject" class="analytics-consent-decline">ไม่ยินยอม</button>',
       '<button type="button" id="analyticsAccept" class="analytics-consent-accept">ยินยอม</button>',

@@ -215,9 +215,13 @@ function renderHome(){
   if(!items.length)return;
   location.href=openVideoHref(items[Math.floor(Math.random()*items.length)]);
  });
- $('homeCategories').innerHTML=homeCategoryCards(categoryNames().slice(0,6));
- const selections=categoryNames().slice(0,6).map(name=>chooseCover(items.filter(x=>x.category===name))).filter(Boolean);
- $('homeFeatured').innerHTML=selections.map(card).join('');
+ const homeCategories=$('homeCategories');
+ if(homeCategories)homeCategories.innerHTML=homeCategoryCards(categoryNames().slice(0,6));
+ const homeFeatured=$('homeFeatured');
+ if(homeFeatured){
+  const selections=categoryNames().slice(0,6).map(name=>chooseCover(items.filter(x=>x.category===name))).filter(Boolean);
+  homeFeatured.innerHTML=selections.map(card).join('');
+ }
  $('homeSearchForm').addEventListener('submit',e=>{
   e.preventDefault();const q=$('homeSearch').value.trim();
   location.href=uri('library.html',q?{q}:{});
@@ -508,8 +512,9 @@ function renderSaved(){
  drawPaged(target);
 }
 function renderHomeCardsOnly(){
+ const target=$('homeFeatured');if(!target)return;
  const featured=categoryNames().slice(0,6).map(name=>chooseCover(items.filter(x=>x.category===name))).filter(Boolean);
- $('homeFeatured').innerHTML=featured.map(card).join('');
+ target.innerHTML=featured.map(card).join('');
 }
 function initializeReadingControls(){
  const key='pmnapan-reading-size-v1';

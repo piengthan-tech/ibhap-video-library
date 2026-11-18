@@ -6,18 +6,17 @@ root=Path(__file__).resolve().parent.parent
 name="PMNapan Library Dhamma Archive"
 nav=[
  ('index.html','หน้าแรก','home'),
- ('categories.html','หมวดรายการ','categories'),
- ('featured.html','คลิปจากรายการ','featured'),
+ ('library.html','คลังวิดีโอ','library'),
  ('shorts.html','ธรรมะคลิปสั้น','shorts'),
- ('four-ps.html','4 พส.','fourps'),
  ('quotes.html','คำคมธรรมะ','quotes'),
  ('press.html','ข่าวและผลงาน','press'),
- ('library.html','คลังวิดีโอ','library'),
- ('about.html','แหล่งข้อมูล','about')
+ ('four-ps.html','คลังพิเศษ','fourps'),
+ ('about.html','เกี่ยวกับ','about')
 ]
 def header(active):
- links=''.join(f'<a href="./{file}" class="nav-link{" active" if key==active else ""}" {"aria-current=\"page\"" if key==active else ""}>{label}</a>' for file,label,key in nav)
- mobile=''.join(f'<a href="./{file}" {"aria-current=\"page\"" if key==active else ""}>{label}</a>' for file,label,key in nav)
+ nav_active={'categories':'library','featured':'library','category':'library','video':'library','saved':'library','external-media':'press'}.get(active,active)
+ links=''.join(f'<a href="./{file}" class="nav-link{" active" if key==nav_active else ""}" {"aria-current=\"page\"" if key==nav_active else ""}>{label}</a>' for file,label,key in nav)
+ mobile=''.join(f'<a href="./{file}" {"aria-current=\"page\"" if key==nav_active else ""}>{label}</a>' for file,label,key in nav)
  return f'''<header class="site-header" id="top"><div class="container header-wrap">
 <a href="./index.html" class="brand" aria-label="{name} กลับหน้าแรก">
 <img src="./assets/mascot.png" alt="" width="51" height="51">
@@ -206,7 +205,7 @@ home=f'''<section class="hero"><div class="container hero-row"><div class="hero-
 <p class="hero-kicker"><span></span> VIDEO ARCHIVE</p>
 <h1>PMNapan Library<br><span>Dhamma Archive</span></h1>
 <h2>คลังวิดีโอพระมหานภันต์ สนฺติภทฺโท</h2>
-<div class="hero-actions"><a class="btn primary" href="./library.html">▶ เข้าสู่คลังวิดีโอ</a><a class="btn secondary" href="./categories.html">เลือกหมวดรายการ ↗</a><button class="btn minimal" id="randomArchiveClip" type="button">↝ สุ่มคลิปจากคลัง</button></div>
+<div class="hero-actions"><a class="btn primary" href="./library.html">▶ ค้นหาธรรมะและวิดีโอ</a><a class="btn secondary" href="./categories.html">สำรวจหมวดรายการ ↗</a></div>
 <p class="hero-total"><strong id="homeTotal">—</strong> วิดีโอในคลัง</p>
 <a class="hero-saved-shortcut" href="./saved.html">♡ เปิดคลิปที่บันทึกไว้ <span aria-hidden="true">↗</span></a>
 
@@ -238,10 +237,6 @@ home=f'''<section class="hero"><div class="container hero-row"><div class="hero-
 <a href="./library.html" class="text-link">เปิดคลังวิดีโอ →</a></div>
 <div id="homeLatest" class="video-grid" aria-label="วิดีโอเผยแพร่ล่าสุด"><div class="loading">กำลังโหลดรายการ...</div></div>
 </div></section>
-<section class="section home-series-section"><div class="container"><div class="heading-row"><div><p class="kicker">EXPLORE THE COLLECTION</p><h2>หมวดรายการ</h2><p class="home-section-hint">เลือกหมวดที่สนใจ เพื่อดูวิดีโอทั้งหมดในหมวดนั้น</p></div><a href="./categories.html" class="text-link">ดูทุกหมวด →</a></div>
-<div id="homeCategories" class="home-topic-grid" aria-label="เลือกหมวดวิดีโอ"><div class="loading">กำลังโหลดหมวดรายการ...</div></div></div></section>
-<section class="section tinted home-featured-section"><div class="container"><div class="heading-row"><div><p class="kicker">FROM ORIGINAL VIDEOS</p><h2>คลิปจากรายการ</h2><p class="home-section-hint">รับชมรายการย้อนหลังจากแหล่งเผยแพร่ที่เกี่ยวข้อง</p></div><a href="./featured.html" class="text-link">ดูคลิปทั้งหมด →</a></div>
- {grid('คลิปจากรายการ','homeFeatured')}</div></section>
 <section class="section shorts-spotlight"><div class="container">
 <div class="heading-row"><div><p class="kicker">SHORT-FORM VIDEO · TIKTOK</p><h2>ธรรมะคลิปสั้น</h2></div><a href="./shorts.html" class="text-link">ดูคลิปทั้งหมด ↗</a></div>
 <div id="homeShorts" class="shorts-grid"><div class="loading">กำลังโหลดคลิปสั้น...</div></div>
