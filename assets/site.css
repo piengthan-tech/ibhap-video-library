@@ -554,3 +554,35 @@ body { font-size:calc(15px + var(--reading-bump,0px)); line-height: 1.78; }
  .empty-actions{flex-direction:column;align-items:stretch}
  .empty-actions .btn,.empty-actions button{width:100%}
 }
+
+
+/* Keep discovery-card counts inside the card at every text size. */
+.discovery-topic{
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:flex-start;
+  gap:10px;
+  overflow:hidden;
+}
+.discovery-topic>.discovery-topic-copy{
+  flex:1 1 auto;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+.discovery-topic>.discovery-topic-copy strong,
+.discovery-topic>.discovery-topic-copy small{
+  display:block;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+.discovery-topic>.discovery-topic-count{
+  flex:0 0 auto;
+  align-self:flex-end;
+  max-width:100%;
+  margin-top:auto;
+  white-space:nowrap;
+}
