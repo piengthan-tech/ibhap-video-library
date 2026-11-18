@@ -66,7 +66,6 @@ def footer():
   <div class="footer-reading-controls" role="group" aria-label="ปรับขนาดตัวอักษร"><span>ขนาดตัวอักษร</span><button type="button" data-reading-adjust="-1" aria-label="ลดขนาดตัวอักษร">A−</button><span id="readingSizeStatus" aria-live="polite">ปกติ</span><button type="button" data-reading-adjust="1" aria-label="เพิ่มขนาดตัวอักษร">A+</button></div>
   <a href="#top" class="footer-back-top">↑ กลับขึ้นด้านบน</a>
  </div>
- <div class="footer-design-credit">Design By Opkip</div>
  </footer>'''
 SEO_TITLES={'home': 'พระมหานภันต์ สนฺติภทฺโท | คลังธรรมะ PMNapan Library', 'categories': 'หมวดรายการธรรมะ | พระมหานภันต์ สนฺติภทฺโท', 'featured': 'คลิปธรรมะและรายการย้อนหลัง | พระมหานภันต์', 'shorts': 'คลิปธรรมะสั้น TikTok | พระมหานภันต์ สนฺติภทฺโท', 'quotes': 'คำคมธรรมะจากภาพต้นฉบับ | พระมหานภันต์', 'press': 'ข่าว บทสัมภาษณ์ และผลงาน | พระมหานภันต์', 'external-media': 'สื่อจากแหล่งเผยแพร่ภายนอก | พระมหานภันต์', 'library': 'คลังวิดีโอธรรมะ YouTube และ TikTok | พระมหานภันต์', 'category': 'หมวดคลิปธรรมะ | PMNapan Library', 'video': 'รายละเอียดวิดีโอธรรมะ | PMNapan Library', 'about': 'แหล่งข้อมูลและที่มาคลังธรรมะ | PMNapan Library'}
 SEO_TITLES['saved']='คลิปที่บันทึกไว้ | PMNapan Library'

@@ -273,7 +273,7 @@
 - News articles, news clips, and full original live recordings are distinct evidence types. A news clip must never be rebranded as a full original live. Video watchability and source permanence may change; linked items should be checked periodically.
 - The site displays the event date, not necessarily each article's publication date. Events with unverified exact dates must use month-only precision or the research-lead section; the Club Friday retrospective with unverified day/month is intentionally excluded from the chronological cards.
 - No attributed quote or spoken teaching has been fabricated. The page contains summaries based on identified source reporting and always links to the reporting outlet.
-- Data JSON sources may be expanded when verified. Preserve the editorial caveat, existing GA4 consent flow, SEO canonical, responsive navigation, browser-local saved clips, and Design By Opkip credit.
+- Data JSON sources may be expanded when verified. Preserve the editorial caveat, existing GA4 consent flow, SEO canonical, responsive navigation, browser-local saved clips, and YDML x IBHAP footer attribution.
 - Validation: verify 16 events, 5 Napan milestones, 32 news/reports, 11 video/news links, 6 unresolved leads, chronological order, responsive breakpoint 360–1440px, all filters/search, and all 13 original/new pages. The generator scripts/build_multipage.py must continue to generate the new route.
 
 ## 4 PS visual refresh — unchanged source photograph
