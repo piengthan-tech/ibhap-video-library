@@ -606,3 +606,24 @@ body { font-size:calc(15px + var(--reading-bump,0px)); line-height: 1.78; }
 .language-switcher>span{font:600 10px/1 'Inter',sans-serif;color:#9cb0bf}
 @media(max-width:1130px){.language-switcher{margin-left:auto}.header-wrap{gap:10px}}
 @media(max-width:650px){.language-switcher{padding:3px;gap:2px}.language-switcher .lang-option{min-width:34px;height:28px;padding:0 8px;font-size:10px}.language-switcher>span{font-size:9px}}
+
+/* Header navigation integrity: keep desktop navigation on one visual row. */
+.site-header .container{width:min(1760px,calc(100% - 64px))}
+.header-wrap{flex-wrap:nowrap;justify-content:flex-start;gap:clamp(12px,1.15vw,22px)}
+.brand{flex:0 0 auto;min-width:218px}
+.desktop-nav{flex:1 1 auto;min-width:0;flex-wrap:nowrap;justify-content:center;gap:clamp(11px,1.15vw,22px)}
+.desktop-nav .nav-link{flex:0 0 auto}
+.language-switcher,.header-cta,.mobile-toggle{flex:0 0 auto}
+
+/* Use the compact mobile navigation before the desktop row can wrap. */
+@media(max-width:1400px){
+ .site-header .container{width:min(1240px,calc(100% - 46px))}
+ .desktop-nav{display:none}
+ .mobile-toggle{display:flex}
+ .header-cta{margin-left:auto}
+ .language-switcher{margin-left:auto}
+}
+@media(max-width:650px){
+ .site-header .container{width:calc(100% - 34px)}
+ .language-switcher{margin-left:auto}
+}
