@@ -310,11 +310,11 @@ function selectCategory(){
  const options=categoryNames();
  if(!options.includes(name)){
   $('pageTitle').textContent='ไม่พบหมวดรายการ';
-  $('categoryGrid').innerHTML='<div class="empty"><p>ไม่มีหมวดรายการนี้ในทะเบียน</p><a class="btn secondary" href="./categories.html">กลับไปหมวดรายการ</a></div>';
+  $('categoryGrid').innerHTML='<div class="empty"><h2>ไม่พบหมวดรายการนี้</h2><p>หมวดที่เปิดอาจถูกเปลี่ยนชื่อหรือไม่มีอยู่ในทะเบียนปัจจุบัน</p><div class="empty-actions"><a class="btn primary" href="./library.html">ค้นหาในคลังวิดีโอ</a><a class="btn secondary" href="./categories.html">ดูทุกหมวดรายการ</a><a class="btn minimal" href="./index.html">กลับหน้าแรก</a></div></div>';
   return;
  }
  activeCategory=name;
- updateDynamicSeo(name,'วิดีโอในหมวด '+name+' จากคลังธรรมะของพระมหานภันต์ สนฺติภทฺโท');
+ updateDynamicSeo(name,'วิดีโอในหมวด '+name+' จากคลังธรรมะของพระมหานภันต์ สนฺติภทฺโท','',{pageType:'CollectionPage'});
  $('pageTitle').textContent=name;
  $('currentCrumb').textContent=name;
  const group=items.filter(x=>x.category===name).sort(byDateDesc);
@@ -325,16 +325,16 @@ function selectCategory(){
  selected=group;visibleCount=PAGE_SIZE;
  drawPaged($('categoryGrid'));
 }
-function updateDynamicSeo(title, description, thumbnail){
+function updateDynamicSeo(title, description, thumbnail, options={}){
  if(title)document.title=title+' | PMNapan Library';
- if(description){
-  const cleaned=String(description).replace(/\s+/g,' ').slice(0,180);
+ const cleaned=String(description||'').replace(/\s+/g,' ').slice(0,450);
+ if(cleaned){
   for(const selector of ['meta[name="description"]','meta[property="og:description"]']){
-   const el=document.querySelector(selector);if(el)el.content=cleaned;
+   const el=document.querySelector(selector);if(el)el.content=cleaned.slice(0,180);
   }
  }
  const canonical=document.querySelector('link[rel="canonical"]')?.href;
- if(canonical&&title&&description){
+ if(canonical&&title&&cleaned){
   let schema=document.getElementById('pmnapan-dynamic-schema');
   if(!schema){
    schema=document.createElement('script');
@@ -342,22 +342,42 @@ function updateDynamicSeo(title, description, thumbnail){
    schema.type='application/ld+json';
    document.head.appendChild(schema);
   }
-  schema.textContent=JSON.stringify({
-   '@context':'https://schema.org',
-   '@type':'WebPage',
+  const pageType=options.pageType||'WebPage';
+  const graph=[{
+   '@type':pageType,
    '@id':canonical+'#webpage',
    url:canonical,
    name:title,
-   description:String(description).replace(/\s+/g,' ').slice(0,450),
+   description:cleaned,
    inLanguage:'th',
-   isPartOf:{'@id':'https://www.ydml.co.th/pmnapan-library/#website'}
-  });
+   isPartOf:{'@id':'https://www.ydml.co.th/pmnapan-library/#website'},
+   about:{'@type':'Person','name':'พระมหานภันต์ สนฺติภทฺโท','alternateName':['Ven. Napan','PM Napan']}
+  },{
+   '@type':'BreadcrumbList',
+   '@id':canonical+'#breadcrumbs',
+   itemListElement:[
+    {'@type':'ListItem','position':1,'name':'หน้าแรก','item':'https://www.ydml.co.th/pmnapan-library/'},
+    {'@type':'ListItem','position':2,'name':title,'item':canonical}
+   ]
+  }];
+  if(options.videoObject){
+   const video=Object.assign({},options.videoObject,{'@id':canonical+'#video',url:canonical});
+   graph[0].mainEntity={'@id':canonical+'#video'};
+   graph.push(video);
+  }
+  schema.textContent=JSON.stringify({'@context':'https://schema.org','@graph':graph});
  }
  const ogTitle=document.querySelector('meta[property="og:title"]');
  if(ogTitle&&title)ogTitle.content=title+' | PMNapan Library';
- if(thumbnail&&(thumbnail.startsWith('https://')||thumbnail.startsWith('http://'))){
-  const ogImage=document.querySelector('meta[property="og:image"]');
-  if(ogImage)ogImage.content=thumbnail;
+ if(thumbnail){
+  let resolved='';
+  try{resolved=new URL(thumbnail,location.href).href}catch(_){}
+  if(/^https?:\/\//.test(resolved)){
+   const ogImage=document.querySelector('meta[property="og:image"]');
+   if(ogImage)ogImage.content=resolved;
+   const twitterImage=document.querySelector('meta[name="twitter:image"]');
+   if(twitterImage)twitterImage.content=resolved;
+  }
  }
 }
 function renderVideoDetail(){
@@ -366,10 +386,24 @@ function renderVideoDetail(){
  const x=items.find(x=>x.key===key);
  if(!x){
   $('pageTitle').textContent='ไม่พบวิดีโอ';
-  $('videoDetail').innerHTML='<div class="empty"><p>ไม่มีข้อมูลวิดีโอนี้ในทะเบียน</p><a class="btn secondary" href="./library.html">กลับไปคลังวิดีโอ</a></div>';
+  $('videoDetail').innerHTML='<div class="empty"><h2>ไม่พบวิดีโอนี้ในทะเบียน</h2><p>ลิงก์อาจไม่ครบ วิดีโออาจถูกเปลี่ยนรหัส หรือรายการนี้ไม่ได้อยู่ในคลังปัจจุบัน</p><div class="empty-actions"><a class="btn primary" href="./library.html">ค้นหาในคลังวิดีโอ</a><a class="btn secondary" href="./categories.html">ดูหมวดรายการ</a><a class="btn minimal" href="./index.html">กลับหน้าแรก</a></div></div>';
   return;
  }
- updateDynamicSeo(x.title, x.description||('วิดีโอจาก '+x.category+' บน PMNapan Library'), (thumb(x)||'').startsWith('https://') ? thumb(x) : '');
+ const preview=thumb(x)||'';
+ const totalSeconds=x.minutes?Math.max(1,Math.round(Number(x.minutes)*60)):0;
+ const durationIso=totalSeconds?('PT'+Math.floor(totalSeconds/3600)+'H'+Math.floor((totalSeconds%3600)/60)+'M'+(totalSeconds%60)+'S'):'';
+ const videoObject={
+  '@type':'VideoObject',
+  name:x.title,
+  description:String(x.description||('วิดีโอจาก '+x.category)).replace(/\s+/g,' ').slice(0,450),
+  sameAs:x.url,
+  inLanguage:'th'
+ };
+ if(x.platform==='YouTube'&&/^[A-Za-z0-9_-]{8,20}$/.test(x.video_id||''))videoObject.embedUrl='https://www.youtube.com/embed/'+x.video_id;
+ if(preview){try{videoObject.thumbnailUrl=[new URL(preview,location.href).href]}catch(_){}}
+ if(/^\d{4}-\d{2}-\d{2}$/.test(x.published_at||''))videoObject.uploadDate=x.published_at;
+ if(durationIso)videoObject.duration=durationIso;
+ updateDynamicSeo(x.title, x.description||('วิดีโอจาก '+x.category+' บน PMNapan Library'), preview,{pageType:'WebPage',videoObject});
  $('pageTitle').textContent='รายละเอียดวิดีโอ';
  $('currentCrumb').textContent='รายละเอียดวิดีโอ';
  const src=thumb(x);
@@ -395,7 +429,7 @@ function renderVideoDetail(){
      +'<details class="transcript-details"><summary>เปิดอ่านคำถอดเสียงฉบับเต็ม <span aria-hidden="true">⌄</span></summary>'
      +'<div class="transcript-text">'+esc(transcript.text)+'</div></details></section>'
    : '<aside class="transcript-panel transcript-pending"><div><p class="kicker">TRANSCRIPT STATUS</p><h3>ยังไม่มีคำถอดเสียงที่ตรวจสอบแล้ว</h3><p>ระบบจะไม่นำข้อความที่สร้างขึ้นเองมาใช้แทนคำพูดต้นฉบับ การค้นหาหน้านี้จึงอ้างอิงชื่อคลิป คำอธิบาย และหัวข้อที่ตรวจสอบได้เท่านั้น</p></div></aside>';
- $('videoDetail').innerHTML=`<div class="detail-poster ${x.platform==='TikTok'?'short-detail-poster':''}">${src?`<img src="${esc(src)}" alt="ภาพปกวิดีโอ ${esc(x.title)}">`:''}</div>
+ $('videoDetail').innerHTML=`<div class="detail-poster ${x.platform==='TikTok'?'short-detail-poster':''}">${src?`<img src="${esc(src)}" alt="ภาพปกวิดีโอ ${esc(x.title)}" fetchpriority="high" decoding="async">`:''}</div>
  <div class="detail-content"><div class="detail-badges"><a href="${esc(x.platform==='TikTok'?'./shorts.html':uri('category.html',{name:x.category}))}">${esc(x.category)}</a><span>${esc(x.platform)}</span></div>
  <h2>${esc(x.title)}</h2>${sourceCredit}<dl><div><dt>วันที่เผยแพร่</dt><dd>${esc(formatDate(x.published_at))}</dd></div>
  ${x.minutes?'<div><dt>ความยาว</dt><dd>'+duration(x.minutes)+'</dd></div>':''}
@@ -605,8 +639,14 @@ function bindShared(){
  $('copyrightYear').textContent=new Date().getFullYear();
  initializeReadingControls();
  const toggle=$('mobileToggle'),menu=$('mobileMenu');
- toggle.addEventListener('click',()=>{menu.hidden=!menu.hidden;toggle.setAttribute('aria-expanded',String(!menu.hidden))});
- menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.hidden=true;toggle.setAttribute('aria-expanded','false')}));
+ const setMobileMenu=open=>{
+  menu.hidden=!open;
+  toggle.setAttribute('aria-expanded',String(open));
+  toggle.setAttribute('aria-label',open?'ปิดเมนู':'เปิดเมนู');
+ };
+ toggle.addEventListener('click',()=>setMobileMenu(menu.hidden));
+ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMobileMenu(false)));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){setMobileMenu(false);toggle.focus()}});
  document.addEventListener('click',e=>{
   const target=e.target.closest('[data-save]');if(target){e.preventDefault();toggleFavorite(target.dataset.save);return}
   const topic=e.target.closest('[data-library-topic],.discovery-topic');

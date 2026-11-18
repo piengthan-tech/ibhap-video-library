@@ -539,3 +539,18 @@ body { font-size:calc(15px + var(--reading-bump,0px)); line-height: 1.78; }
 .transcript-details summary span{transition:transform .2s}
 .transcript-text{margin-top:14px;max-height:520px;overflow:auto;padding:14px;border:1px solid #e1eaf0;border-radius:9px;background:#fff;color:#4f6d82;font-size:calc(11px + var(--reading-bump,0px));line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere}
 @media(max-width:650px){.transcript-heading{flex-direction:column}.transcript-heading>a{margin-top:0}.transcript-text{max-height:440px;padding:12px}}
+
+
+/* Final UX/performance refinement. */
+.empty-actions{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:17px}
+.empty-actions .btn,.empty-actions button{min-height:42px}
+@supports (content-visibility:auto){
+ .video-card,.quote-card,.press-card,.short-card,.series-card{
+  content-visibility:auto;
+  contain-intrinsic-size:320px 420px;
+ }
+}
+@media(max-width:650px){
+ .empty-actions{flex-direction:column;align-items:stretch}
+ .empty-actions .btn,.empty-actions button{width:100%}
+}
