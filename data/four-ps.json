@@ -8,19 +8,23 @@
   "people": [
     {
       "name": "พระมหาไพรวัลย์ วรวณฺโณ",
-      "short": "ไพรวัลย์"
+      "short": "ไพรวัลย์",
+      "image": "./assets/archive/people/phra-maha-paiwan.webp"
     },
     {
       "name": "พระมหาสมปอง ตาลปุตฺโต",
-      "short": "สมปอง"
+      "short": "สมปอง",
+      "image": "./assets/archive/people/phra-maha-sompong.webp"
     },
     {
       "name": "พระอาจารย์สมพงษ์ รตนวํโส",
-      "short": "สมพงษ์"
+      "short": "สมพงษ์",
+      "image": "./assets/archive/people/phra-ajarn-sompong.webp"
     },
     {
       "name": "พระมหานภันต์ สนฺติภทฺโท",
-      "short": "นภันต์"
+      "short": "นภันต์",
+      "image": "./assets/archive/people/phra-maha-napan.webp"
     }
   ],
   "events": [
