@@ -411,9 +411,41 @@
       "thumbnail_fit": "contain",
       "thumbnail_source": "publisher_logo",
       "thumbnail_checked_at": "2026-11-18"
+    },
+    {
+      "id": "N025",
+      "category": "กำหนดการประชุม",
+      "title": "Meditation & Talk — Solidarity AI Conference",
+      "source": "Platform Cooperativism Consortium",
+      "published_at": "2026-10-26",
+      "url": "https://platform.coop/events/solidarity-ai/meditation-talk/",
+      "summary": "กำหนดการ Solidarity AI Conference ระบุพระมหานภันต์เป็นวิทยากรช่วง Meditation & Talk วันที่ 13 พฤศจิกายน 2569 เวลา 09:00–09:20 น. ณ จุฬาลงกรณ์มหาวิทยาลัย โดยเชื่อมหลักพุทธเรื่องเมตตา สติ การไม่เบียดเบียน และความสัมพันธ์เชื่อมโยงกันเข้ากับการใช้ AI อย่างมีวิจารณญาณและความรับผิดชอบ พร้อมนำสมาธิช่วงท้าย",
+      "relation": "วิทยากร",
+      "verified_basis": "ตรวจหน้าโปรแกรมและหน้ารายการต้นทางของ Platform Cooperativism Consortium พบชื่อ Venerable Phramaha Napan Santibhaddo (Thawornbanjob) และกำหนดเวลา 13 พฤศจิกายน 2026 เวลา 09:00–09:20",
+      "source_record": "AUTO-20261119-01",
+      "thumbnail": "https://platform.coop/wp-content/uploads/2026/07/VN-e1783615371979-367x250.png",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_original",
+      "thumbnail_checked_at": "2026-11-19"
+    },
+    {
+      "id": "N026",
+      "category": "ข่าวต่างประเทศ",
+      "title": "Dialogue focuses on understanding and relations through a Buddhist lens",
+      "source": "World Council of Churches",
+      "published_at": "2026-07-01",
+      "url": "https://www.oikoumene.org/news/dialogue-focuses-on-understanding-and-relations-through-a-buddhist-lens",
+      "summary": "บทความ World Council of Churches รายงานการเสวนาระหว่างวัยเมื่อวันที่ 22 มิถุนายน 2569 โดยระบุพระมหานภันต์เป็นผู้นำเสนอหลัก เชื่อมมุมมองพุทธกับการสร้างความเข้าใจระหว่างศาสนา การอยู่ร่วมกัน และผลกระทบของข้อมูลบิดเบือน พร้อมลิงก์ไปยังวิดีโอบันทึกการสนทนา",
+      "relation": "ผู้นำเสนอหลัก",
+      "verified_basis": "ตรวจบทความต้นทางของ World Council of Churches พบชื่อ Venerable Phramaha Napan Santibhaddo (Thawornbanjob) ระบุบทบาท main presenter และวันที่เผยแพร่ 1 July 2026",
+      "source_record": "AUTO-20261119-02",
+      "thumbnail": "https://www.oikoumene.org/sites/default/files/styles/max_1200x1200/public/2026-07/IMG_5088.jpg.webp?itok=sXosG4i3",
+      "thumbnail_fit": "cover",
+      "thumbnail_source": "article_original",
+      "thumbnail_checked_at": "2026-11-19"
     }
   ],
-  "updated_at": "2026-11-16",
+  "updated_at": "2026-11-19",
   "reconciliation": {
     "previous_items": 4,
     "added_verified_articles": 23,
