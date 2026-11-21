@@ -682,7 +682,7 @@ function renderPressArchive(entries){
  function draw(){
   const query=norm(search.value), selected=category.value;
   const selectedRows=rows.filter(x=>(!selected||x.category===selected)
-    && (!query||norm([x.title,x.summary,x.source,x.category,x.relation].join(' ')).includes(query)));
+    && (!query||norm([x.title,x.title_th,x.summary,x.topic,x.event_name,x.event_location,x.source,x.category,x.relation].join(' ')).includes(query)));
   list.innerHTML=selectedRows.map(x=>{
    const image=thumbnailUrl(x.thumbnail);
    const imageKind=x.thumbnail_source==='publisher_logo'?'ตราสัญลักษณ์ผู้เผยแพร่':
@@ -692,13 +692,33 @@ function renderPressArchive(entries){
         +'<img src="'+esc(image)+'" alt="'+esc(imageKind)+': '+esc(x.source)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">'
         +'<span class="press-thumbnail-fallback" aria-hidden="true">▤</span></a>'
      : '<a class="press-thumbnail press-thumbnail-placeholder" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" aria-label="อ่านบทความต้นฉบับ: '+esc(x.title)+'"><span class="press-thumbnail-fallback" aria-hidden="true">▤</span></a>';
+   const languageName={th:'ภาษาไทย',en:'ภาษาอังกฤษ',id:'ภาษาอินโดนีเซีย'}[x.language]||'ไม่ระบุภาษาต้นฉบับ';
+   const isEvent=!!(x.event_name||x.event_date||x.event_period);
+   const eventDate=x.event_date
+     ? formatDate(x.event_date)+(x.event_end_date && x.event_end_date!==x.event_date?' – '+formatDate(x.event_end_date):'')
+     : (x.event_period||'ไม่พบวันที่จัดงานที่ยืนยันได้');
+   const fact=(label,value)=>value
+     ? '<div class="press-fact"><dt>'+esc(label)+'</dt><dd>'+esc(value)+'</dd></div>'
+     : '';
+   const factRows=(x.event_name?fact('งาน / กิจกรรม',x.event_name):'')
+     +(isEvent?fact('วันที่จัดงาน',eventDate):'')
+     +fact('หัวข้อสำคัญ',x.topic)
+     +fact('บทบาทพระมหานภันต์',x.relation)
+     +fact('สถานที่',x.event_location);
+   const translatedTitle=x.title_th && norm(x.title_th)!==norm(x.title)
+     ? '<p class="press-title-translation" lang="th"><span>ชื่อเรื่องภาษาไทย</span>'+esc(x.title_th)+'</p>'
+     : '';
+   const externalLabel=x.language==='en'?'อ่านต้นฉบับภาษาอังกฤษ ↗':x.language==='id'?'อ่านต้นฉบับภาษาอินโดนีเซีย ↗':'อ่านต้นฉบับ ↗';
    return '<article class="press-card">'
    +thumb
-   +'<div class="press-meta"><span class="press-kind">'+esc(x.category)+'</span><span>'+esc(x.published_at?formatDate(x.published_at):'ไม่ระบุวันที่เผยแพร่')+'</span></div>'
-   +'<h2>'+esc(x.title)+'</h2>'
+   +'<div class="press-meta"><span class="press-meta-tags"><span class="press-kind">'+esc(x.category)+'</span><span class="press-language">'+esc(languageName)+'</span></span></div>'
+   +'<h2'+(x.language==='en'?' lang="en"':x.language==='id'?' lang="id"':'')+'>'+esc(x.title)+'</h2>'
+   +translatedTitle
    +'<p class="press-summary">'+esc(x.summary)+'</p>'
-   +'<div class="press-source"><span>แหล่งเผยแพร่</span><strong>'+esc(x.source)+'</strong></div>'
-   +'<a class="press-outbound" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">อ่านต้นฉบับ ↗</a>'
+   +'<dl class="press-facts">'+factRows+'</dl>'
+   +'<div class="press-source"><span>เผยแพร่บทความ: '+esc(x.published_at?formatDate(x.published_at):'ไม่พบวันที่เผยแพร่ที่ยืนยันได้')+'</span>'
+   +'<span>แหล่งเผยแพร่</span><strong>'+esc(x.source)+'</strong></div>'
+   +'<a class="press-outbound" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+externalLabel+'</a>'
    +'</article>'
   }).join('');
   list.querySelectorAll('.press-thumbnail img').forEach(img=>{
