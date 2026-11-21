@@ -124,7 +124,7 @@
       "thumbnail_source": "article_og_image",
       "thumbnail_checked_at": "2026-11-16",
       "language": "en",
-      "title_th": "Bangkok Climate Action Week: ใครมีส่วนกำหนดทิศทางการขับเคลื่อนด้านภูมิอากาศ?",
+      "title_th": "สัปดาห์ปฏิบัติการด้านสภาพภูมิอากาศกรุงเทพฯ: ใครมีส่วนกำหนดทิศทาง?",
       "event_name": "Religions for Climate Action ในงาน Bangkok Climate Action Week",
       "event_date": "2026-10-07",
       "topic": "การมีส่วนร่วมของชุมชน ความเท่าเทียม และการสื่อสารเรื่องสภาพภูมิอากาศ"
@@ -198,7 +198,7 @@
       "title": "International Conference on Global Citizenship 2026: Program",
       "source": "ICCGC",
       "published_at": "",
-      "url": "https://www.iccgc.kr/2026program_th.php",
+      "url": "https://www.iccgc.kr/2026program.php",
       "summary": "กำหนดการประชุมนานาชาติระหว่างวันที่ 18–21 สิงหาคม 2569 เว็บไซต์ผู้จัดฉบับภาษาอังกฤษระบุพระมหานภันต์เป็นผู้ดำเนินวงสนทนา Dialogue for Peace เรื่องการศึกษาทางจิตวิญญาณกับสันติภาพ (วันที่แสดงเป็นช่วงประชุมทั้งหมด ไม่ใช่วันที่ยืนยันเฉพาะช่วงของท่าน)",
       "relation": "ผู้ดำเนินรายการ",
       "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
@@ -213,7 +213,9 @@
       "event_date": "2026-08-18",
       "event_end_date": "2026-08-21",
       "event_location": "มหาวิทยาลัยศรีนครินทรวิโรฒ กรุงเทพมหานคร",
-      "topic": "การศึกษา จิตวิญญาณ สันติภาพ และการรับมือวิกฤตซ้อนวิกฤต"
+      "topic": "การศึกษา จิตวิญญาณ สันติภาพ และการรับมือวิกฤตซ้อนวิกฤต",
+      "alternate_url": "https://www.iccgc.kr/2026program_th.php",
+      "alternate_label": "ดูกำหนดการฉบับภาษาไทยของผู้จัด"
     },
     {
       "id": "N008",
