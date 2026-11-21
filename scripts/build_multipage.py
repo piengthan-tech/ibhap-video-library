@@ -227,7 +227,7 @@ def shell(active,title,description,content,lang='th'):
 <link rel="stylesheet" href="./assets/ydml-footer.css">
 <link rel="stylesheet" href="./assets/analytics.css">
 <script defer src="./assets/i18n.js"></script>
-<script defer src="./assets/site.js?v=20261121-press-cards"></script>
+<script defer src="./assets/site.js?v=20261121-press-dates"></script>
 {extra_js}
 <script defer src="./assets/analytics.js"></script>
 </head><body data-page="{active}" data-lang="{lang}">
