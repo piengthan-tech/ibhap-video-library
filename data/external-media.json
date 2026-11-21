@@ -1,6 +1,6 @@
 {
   "collection": "สื่อจากแหล่งภายนอกและทะเบียนตรวจสอบ",
-  "updated_at": "2026-11-16",
+  "updated_at": "2026-11-21",
   "editorial_policy": "verified=the original URL or organizer page was checked; needs_review=historic source registered but video content not reconfirmed; lead=reference only and not claimed as playable video",
   "items": [
     {
@@ -24,24 +24,16 @@
       "title": "ธรรมะกับการรับมือข้อมูลยุค AI",
       "source": "Cofact Thailand",
       "url": "https://www.facebook.com/CofactThailand/videos/3364914970467853",
-      "status": "verified",
-      "note": "คลิปการสนทนาธรรมของ Cofact มีบทความต้นทางยืนยันผู้ร่วมเสวนา"
-    },
-    {
-      "id": "V009",
-      "title": "Cofact Live Talk: ศาสนากับความหลากหลายทางเพศ",
-      "source": "Cofact Thailand",
-      "url": "https://www.facebook.com/CofactThailand/videos/506608675057080",
-      "status": "verified",
-      "note": "วิดีโอจาก Cofact Live Talk มีบทความสรุปประเด็นในเว็บไซต์ผู้จัด"
+      "status": "needs_review",
+      "note": "คลิปการสนทนาธรรมของ Cofact มีบทความต้นทางยืนยันผู้ร่วมเสวนา; บทความต้นทางยืนยันกิจกรรม แต่ยังไม่ยืนยันว่าผู้เข้าชมสามารถเล่นวิดีโอ Facebook ได้ (ตรวจ 21 พ.ย. 2569)"
     },
     {
       "id": "V010",
       "title": "Cofact Live Talk: ความจริงร่วมจาก 3 ภูมิภาค",
       "source": "Cofact Thailand",
       "url": "https://www.facebook.com/CofactThailand/videos/2170566536794017",
-      "status": "verified",
-      "note": "วิดีโอเสวนาจาก Cofact มีข่าวของผู้จัดเกี่ยวกับบทบาทพระมหานภันต์"
+      "status": "needs_review",
+      "note": "วิดีโอเสวนาจาก Cofact มีข่าวของผู้จัดเกี่ยวกับบทบาทพระมหานภันต์; บทความต้นทางยืนยันกิจกรรม แต่ยังไม่ยืนยันว่าผู้เข้าชมสามารถเล่นวิดีโอ Facebook ได้ (ตรวจ 21 พ.ย. 2569)"
     },
     {
       "id": "V011",
@@ -52,42 +44,10 @@
       "note": "หน้าวิดีโอการเสวนาเรื่องข้อมูลลวงและมิติทางจิตวิญญาณจาก Thai PBS"
     },
     {
-      "id": "A001",
-      "title": "อาสาหาธรรม LIVE (2 เม.ย. 2569)",
-      "source": "สื่ออาสาประชาชน",
-      "url": "https://www.facebook.com/sueasaprachachon/videos/1625751568664354",
-      "status": "needs_review",
-      "note": "ลิงก์จากไฟล์ต้นแบบคลังวิดีโอเดิม ยังไม่ยืนยันตัวคลิปผ่าน Facebook"
-    },
-    {
-      "id": "A002",
-      "title": "อาสาหาธรรม LIVE (26 มี.ค. 2569)",
-      "source": "สื่ออาสาประชาชน",
-      "url": "https://www.facebook.com/sueasaprachachon/videos/930298876260489",
-      "status": "needs_review",
-      "note": "ลิงก์จากไฟล์ต้นแบบคลังวิดีโอเดิม ยังไม่ยืนยันตัวคลิปผ่าน Facebook"
-    },
-    {
       "id": "A003",
       "title": "อาสาหาธรรม LIVE (22 มี.ค. 2569)",
       "source": "สื่ออาสาประชาชน",
       "url": "https://www.facebook.com/sueasaprachachon/videos/2347500382399471",
-      "status": "needs_review",
-      "note": "ลิงก์จากไฟล์ต้นแบบคลังวิดีโอเดิม ยังไม่ยืนยันตัวคลิปผ่าน Facebook"
-    },
-    {
-      "id": "A004",
-      "title": "อาสาหาธรรม LIVE (15 มี.ค. 2569)",
-      "source": "สื่ออาสาประชาชน",
-      "url": "https://www.facebook.com/sueasaprachachon/videos/1576240450104032",
-      "status": "needs_review",
-      "note": "ลิงก์จากไฟล์ต้นแบบคลังวิดีโอเดิม ยังไม่ยืนยันตัวคลิปผ่าน Facebook"
-    },
-    {
-      "id": "A005",
-      "title": "อาสาหาธรรม LIVE (12 มี.ค. 2569)",
-      "source": "สื่ออาสาประชาชน",
-      "url": "https://www.facebook.com/sueasaprachachon/videos/2325336554639405",
       "status": "needs_review",
       "note": "ลิงก์จากไฟล์ต้นแบบคลังวิดีโอเดิม ยังไม่ยืนยันตัวคลิปผ่าน Facebook"
     },
