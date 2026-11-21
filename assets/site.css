@@ -250,6 +250,7 @@ body[data-page="quotes"] .quote-grid{
 .press-fact dt{color:#567e9b;font-weight:600}
 .press-fact dd{margin:0;color:#264961}
 .press-source span+span{margin-top:5px}
+.press-alternate-link{display:block;align-self:flex-start;margin-top:8px;font-size:calc(12px + var(--reading-bump,0px));font-weight:600;color:#245f84;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:390px){.press-fact{grid-template-columns:minmax(0,1fr);gap:1px}}
 
 .press-source{display:grid;gap:3px;margin-top:auto;padding-top:14px;border-top:1px solid #e4eff7;font-size:calc(11px + var(--reading-bump,0px));color:#7898ae}
