@@ -222,12 +222,12 @@ def shell(active,title,description,content,lang='th'):
 <link rel="icon" type="image/png" href="./assets/mascot.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/site.css?v=20261119-light-switch">
+<link rel="stylesheet" href="./assets/site.css?v=20261121-press-cards">
 {extra_css}
 <link rel="stylesheet" href="./assets/ydml-footer.css">
 <link rel="stylesheet" href="./assets/analytics.css">
 <script defer src="./assets/i18n.js"></script>
-<script defer src="./assets/site.js"></script>
+<script defer src="./assets/site.js?v=20261121-press-cards"></script>
 {extra_js}
 <script defer src="./assets/analytics.js"></script>
 </head><body data-page="{active}" data-lang="{lang}">
@@ -327,7 +327,7 @@ press=f'''{intro('PRESS · INTERVIEWS · ARCHIVE','ข่าว บทสัม�
 <p id="pressCount" role="status" aria-live="polite">กำลังโหลดข้อมูล...</p></div>
 <div id="pressGrid" class="press-grid"><p class="loading">กำลังโหลดข่าวและผลงาน...</p></div>
 <p id="pressEmpty" class="empty" hidden>ไม่พบข้อมูลตรงกับคำค้น</p>
-<p class="press-media-link">วิดีโอและรายการจากหน่วยงานภายนอก <a href="./external-media.html">สำรวจสื่อจากแหล่งภายนอก ↗</a></p>\n<p class="press-source-note">ข่าวและบทความเชื่อมโยงไปยังเว็บไซต์ผู้เผยแพร่โดยตรง วันที่ที่แสดงเป็นวันที่เผยแพร่เนื้อหา ซึ่งอาจแตกต่างจากวันจัดกิจกรรม</p>
+<p class="press-media-link">วิดีโอและรายการจากหน่วยงานภายนอก <a href="./external-media.html">สำรวจสื่อจากแหล่งภายนอก ↗</a></p>\n<p class="press-source-note">การ์ดแต่ละรายการมีคำอธิบายภาษาไทย หัวข้อและบทบาทของพระอาจารย์ วันจัดกิจกรรม (เมื่อมีหลักฐาน) แสดงแยกจากวันที่เผยแพร่ข่าวหรือบทความ และเชื่อมโยงไปยังแหล่งเผยแพร่ต้นฉบับ</p>
 </div></section>'''
 external_media=f'''{intro('EXTERNAL MEDIA · SOURCE INDEX','สื่อจากแหล่งภายนอก','รวมรายการและสื่อจากหน่วยงานภายนอก พร้อมลิงก์ต้นทางและข้อมูลประกอบสำหรับการค้นคว้า')}
 <section class="section"><div class="container">
