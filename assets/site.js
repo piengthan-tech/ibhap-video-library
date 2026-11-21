@@ -26,8 +26,8 @@ function thumb(x){
 }
 function formatDate(value){
  if(!/^\d{4}-\d{2}-\d{2}$/.test(value||''))return 'ไม่ระบุวันที่เผยแพร่';
- const d=new Date(value+'T12:00:00+07:00');
- return Number.isNaN(d.getTime())?'ไม่ระบุวันที่เผยแพร่':new Intl.DateTimeFormat(SITE_LOCALE,{day:'numeric',month:'short',year:'numeric'}).format(d);
+ const d=new Date(value+'T00:00:00Z');
+ return Number.isNaN(d.getTime())?'ไม่ระบุวันที่เผยแพร่':new Intl.DateTimeFormat(SITE_LOCALE,{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(d);
 }
 function duration(minutes){
  const seconds=Math.round(Number(minutes||0)*60);
@@ -661,8 +661,8 @@ function bindShared(){
 function renderPressArchive(entries){
  const list=$('pressGrid'), search=$('pressSearch'), category=$('pressCategory');
  const count=$('pressCount'), empty=$('pressEmpty');
- const allowed=new Set(["https://blog.cofact.org","https://fb.mcu.ac.th","https://fmtint.com","https://hands-on.co.th","https://mgronline.com","https://monitor.co.id","https://theactive.thaipbs.or.th","https://thebuddh.com","https://thethaiger.com","https://watchakdaeng.com","https://www.dailynews.co.th","https://www.gchumanrights.org","https://www.gotoknow.org","https://www.iccgc.kr","https://www.nhrc.or.th","https://www.opsmoac.go.th","https://www.peacemakersnetwork.org","https://www.soiciety.com","https://www.thaipbs.or.th","https://www.tnews.co.th"]);
- const imageHosts=new Set(["blog.cofact.org","content-images.thaipbs.or.th","fb.mcu.ac.th","files.wp.thaipbs.or.th","fmtint.com","image.tnews.co.th","lh3.googleusercontent.com","media.beehiiv.com","monitor.co.id","mpics-cdn.mgronline.com","static.nhrc.or.th","thebuddh.com","thethaiger.com","watchakdaeng.com","www.gchumanrights.org","www.hands-on.co.th","www.opsmoac.go.th","iccgc.kr","www.peacemakersnetwork.org"]);
+ const allowed=new Set(["https://blog.cofact.org","https://fb.mcu.ac.th","https://fmtint.com","https://hands-on.co.th","https://mgronline.com","https://monitor.co.id","https://theactive.thaipbs.or.th","https://thebuddh.com","https://thethaiger.com","https://watchakdaeng.com","https://www.dailynews.co.th","https://www.gchumanrights.org","https://www.gotoknow.org","https://www.iccgc.kr","https://www.nhrc.or.th","https://www.opsmoac.go.th","https://www.peacemakersnetwork.org","https://www.soiciety.com","https://www.thaipbs.or.th","https://www.tnews.co.th","https://platform.coop","https://www.oikoumene.org"]);
+ const imageHosts=new Set(["blog.cofact.org","content-images.thaipbs.or.th","fb.mcu.ac.th","files.wp.thaipbs.or.th","fmtint.com","image.tnews.co.th","lh3.googleusercontent.com","media.beehiiv.com","monitor.co.id","mpics-cdn.mgronline.com","static.nhrc.or.th","thebuddh.com","thethaiger.com","watchakdaeng.com","www.gchumanrights.org","www.hands-on.co.th","www.opsmoac.go.th","iccgc.kr","www.peacemakersnetwork.org","platform.coop","www.oikoumene.org"]);
 
  function thumbnailUrl(raw){
   if(typeof raw!=='string'||!raw)return '';
