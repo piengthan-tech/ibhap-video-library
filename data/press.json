@@ -433,42 +433,6 @@
       "topic": "การอยู่ร่วมกันระหว่างศาสนาและสันติภาพระหว่างประเทศ"
     },
     {
-      "id": "N020",
-      "category": "ข่าวสังคมและเหตุการณ์",
-      "title": "จบลงด้วยดี เครือโรงแรมบีทูเข้ากราบขออภัยพระมหานภันต์",
-      "source": "เดลินิวส์",
-      "published_at": "2026-09-26",
-      "url": "https://www.dailynews.co.th/news/6224575/",
-      "summary": "ข่าวติดตามกรณีโรงแรมปฏิเสธให้พระมหานภันต์เข้าพัก และการเข้าขออภัยภายหลัง เป็นรายงานเหตุการณ์ทางสังคม ไม่ใช่งานสัมมนาหรือธรรมบรรยาย",
-      "relation": "บุคคลในข่าว",
-      "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N020",
-      "thumbnail": "./assets/press/n020-dailynews-apology.webp",
-      "thumbnail_fit": "cover",
-      "thumbnail_source": "user_supplied_original_image",
-      "thumbnail_checked_at": "2026-11-16",
-      "language": "th",
-      "topic": "การขอโทษและการแก้ไขกรณีปฏิเสธพระภิกษุเข้าพักโรงแรม"
-    },
-    {
-      "id": "N021",
-      "category": "ข่าวสังคมและเหตุการณ์",
-      "title": "พระนักเผยแผ่ถูกปฏิเสธเข้าพักโรงแรมอ้างเหตุผลทางศาสนา",
-      "source": "TheBuddh.com",
-      "published_at": "2026-09-26",
-      "url": "https://thebuddh.com/?p=97785",
-      "summary": "รายงานข่าวเกี่ยวกับเหตุการณ์ที่พระมหานภันต์ถูกปฏิเสธให้เข้าพักโรงแรม เป็นคนละแหล่งข่าวกับรายงานการขอโทษจาก Daily News แต่เป็นเหตุการณ์ที่เชื่อมโยงกัน",
-      "relation": "บุคคลในข่าว",
-      "verified_basis": "ตรวจต้นทาง HTTP 200 และพบชื่อพระมหานภันต์หรือชื่อภาษาอังกฤษ; ตรวจปีและวันที่เฉพาะรายการที่ยืนยันได้",
-      "source_record": "N021",
-      "thumbnail": "https://thebuddh.com/wp-content/uploads/2026/09/1-30.jpg",
-      "thumbnail_fit": "contain",
-      "thumbnail_source": "article_og_image",
-      "thumbnail_checked_at": "2026-11-16",
-      "language": "th",
-      "topic": "ข้อถกเถียงเรื่องการปฏิเสธพระภิกษุเข้าพักโรงแรม"
-    },
-    {
       "id": "N022",
       "category": "ข่าวสังคมและเหตุการณ์",
       "title": "เปิดข้อคิดพระมหานภันต์เตือนสติสังคมหลังเลือกตั้ง 2569",
@@ -565,15 +529,25 @@
         "id": "N026",
         "date": "2026-11-16",
         "reason": "User requested removal of specific TNews article"
+      },
+      {
+        "id": "N020",
+        "date": "2026-11-21",
+        "reason": "Requested removal of all news related to B2 hotel"
+      },
+      {
+        "id": "N021",
+        "date": "2026-11-21",
+        "reason": "Requested removal of all news related to same hotel incident"
       }
     ]
   },
   "image_policy": "ใช้ภาพประกอบจากหน้าแหล่งเผยแพร่ที่เกี่ยวข้องโดยระบุที่มา หากไม่มีภาพบทความที่ใช้งานได้อาจใช้ภาพบัญชีผู้เผยแพร่หรือตราสัญลักษณ์องค์กรแทน โดยแยกประเภทภาพอย่างชัดเจน ไม่สร้างภาพเหตุการณ์ขึ้นใหม่",
   "image_audit": {
-    "checked": "2026-11-19",
-    "total_items": 28,
-    "with_preview_images": 28,
-    "article_or_user_supplied": 25,
+    "checked": "2026-11-21",
+    "total_items": 26,
+    "with_preview_images": 26,
+    "article_or_user_supplied": 23,
     "publisher_logo": 2,
     "publisher_profile": 1,
     "presentation": "Thumbnail ภาพข่าวจากต้นทางหรือภาพที่ผู้ดูแลจัดส่ง; ใช้ภาพบัญชีหรือโลโก้ผู้เผยแพร่ใน 3 รายการที่ไม่พบภาพบทความที่เปิดได้"
