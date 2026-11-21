@@ -240,6 +240,18 @@ body[data-page="quotes"] .quote-grid{
 .press-kind{font-weight:650;border:1px solid #d1e5f5;border-radius:50px;padding:5px 9px;color:#145c92}
 .press-card h2{font-size:calc(17px + var(--reading-bump,0px));line-height:1.55;color:#153c66;margin:0 0 12px;overflow-wrap:anywhere}
 .press-summary{font-size:calc(13px + var(--reading-bump,0px));line-height:1.9;color:#496a85;margin:0 0 20px}
+/* Source-backed editorial detail on Thai, English and other-language news cards. */
+.press-meta-tags{display:flex;flex-wrap:wrap;align-items:center;gap:7px}
+.press-language{display:inline-block;padding:5px 9px;border:1px solid #dce8f0;background:#f5f9fc;border-radius:50px;color:#4c7088;font-weight:600}
+.press-title-translation{margin:-4px 0 12px;color:#2c5875;font-size:calc(13px + var(--reading-bump,0px));line-height:1.7;font-weight:600}
+.press-title-translation span{display:block;color:#718ca2;font-size:calc(11px + var(--reading-bump,0px));font-weight:500}
+.press-facts{display:grid;gap:11px;margin:0 0 19px;padding:15px 0;border-top:1px solid #e5eff7}
+.press-fact{display:grid;grid-template-columns:minmax(87px,98px) minmax(0,1fr);gap:8px;align-items:start;font-size:calc(12px + var(--reading-bump,0px));line-height:1.75;overflow-wrap:anywhere}
+.press-fact dt{color:#567e9b;font-weight:600}
+.press-fact dd{margin:0;color:#264961}
+.press-source span+span{margin-top:5px}
+@media(max-width:390px){.press-fact{grid-template-columns:minmax(0,1fr);gap:1px}}
+
 .press-source{display:grid;gap:3px;margin-top:auto;padding-top:14px;border-top:1px solid #e4eff7;font-size:calc(11px + var(--reading-bump,0px));color:#7898ae}
 .press-source strong{font-size:calc(12px + var(--reading-bump,0px));color:#42667f;font-weight:600}
 .press-outbound{display:inline-block;align-self:flex-start;margin-top:18px;color:#096cb7;font-size:calc(13px + var(--reading-bump,0px));font-weight:650}
