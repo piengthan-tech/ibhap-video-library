@@ -776,7 +776,7 @@ async function boot(){
  }
  if(page==='press'){
   try{
-   const response=await fetch('./data/press.json',{cache:'no-cache'});
+   const response=await fetch('./data/press.json?v=20261121-full28',{cache:'no-cache'});
    if(!response.ok)throw new Error('Press HTTP '+response.status);
    const catalog=await response.json();
    renderPressArchive(catalog.items);
