@@ -718,7 +718,7 @@ function renderExternalMedia(entries){
  const allowed=new Set(['www.trueplookpanya.com','www.facebook.com','www.thaipbs.or.th','lnkd.in','www.traffic.org','watchakdaeng.com','www.opsmoac.go.th','www.kaiciid.org','mgronline.com','www.youtube.com']);
  const records=(Array.isArray(entries)?entries:[]).filter(x=>{
   try{const u=new URL(x.url);
-   return u.protocol==='https:' && allowed.has(u.hostname) && ['verified','needs_review','lead'].includes(x.status) && !!x.title && !!x.source && !!x.note;
+   return u.protocol==='https:' && allowed.has(u.hostname) && ['verified','lead'].includes(x.status) && !!x.title && !!x.source && !!x.note;
   }catch{return false}
  });
  function draw(){
